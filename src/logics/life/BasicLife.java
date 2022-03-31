@@ -1,4 +1,4 @@
-package logics.life.basic_life;
+package logics.life;
 
 public interface BasicLife {
 	/**
