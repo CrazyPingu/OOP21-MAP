@@ -7,7 +7,7 @@ public class BasicLifeImpl implements BasicLife {
 	
 	public BasicLifeImpl(int health, int maxHealth) {
 		this.currentHealth = health; 
-		this.maxHealth = health; 
+		this.maxHealth = maxHealth; 
 	}
 	
 	

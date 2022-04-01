@@ -32,11 +32,18 @@ public class AdvancedLifeImpl implements AdvancedLife {
 
 	@Override
 	public void upgradeMaxHealth(int maxHealthValue) {
-		if(maxHealthValue <= this.maxHealthLimit) { 
-			life = new BasicLifeImpl(life.getCurrentHealth(), maxHealthValue);				
-		}else { 
-			life = new BasicLifeImpl(life.getCurrentHealth(), maxHealthLimit);
+		if(maxHealthValue > 0) { 
+			if(maxHealthValue <= this.maxHealthLimit) { 
+				life = new BasicLifeImpl(life.getCurrentHealth(), maxHealthValue);				
+			}else{ 
+				life = new BasicLifeImpl(life.getCurrentHealth(), maxHealthLimit);
+			}			
 		}
+	}
+
+	@Override
+	public int getMaxHealthLimit() {
+		return this.maxHealthLimit;
 	}
 
 }
