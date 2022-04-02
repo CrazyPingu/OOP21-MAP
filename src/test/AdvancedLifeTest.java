@@ -1,13 +1,12 @@
 package test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
 import logics.life.AdvancedLife;
 import logics.life.AdvancedLifeImpl;
-import logics.life.BasicLife;
-import logics.life.BasicLifeImpl;
 
 public class AdvancedLifeTest {
 
@@ -19,6 +18,9 @@ public class AdvancedLifeTest {
 	final private int EXTEND_HEALTH = 3; 
 
 	@Test
+	/*
+	 * test the correct creation of an AdvancedLife instantiation.  
+	 */
 	void createAdvancedLifeTest() {
 		AdvancedLife life = new AdvancedLifeImpl(this.HEALTH, this.MAX_HEALTH, this.MAX_HEALTH_LIMIT);
 		assertTrue(life.getCurrentHealth() == this.HEALTH);
@@ -27,6 +29,9 @@ public class AdvancedLifeTest {
 	}
 
 	@Test
+	/*
+	 * test the proprer operation of the method takeDamage
+	 */
 	void takeDamageTest() {
 		AdvancedLife life = new AdvancedLifeImpl(this.HEALTH, this.MAX_HEALTH, this.MAX_HEALTH_LIMIT);
 		life.takeDamage(this.DAMAGE);
@@ -35,7 +40,10 @@ public class AdvancedLifeTest {
 		assertTrue(life.getCurrentHealth() == 0);
 	}
 
-	@Test
+	@Test 
+	/*
+	 * test the proper operation of the method heal. 
+	 */
 	void healTest() {
 		AdvancedLife life = new AdvancedLifeImpl(this.HEALTH, this.MAX_HEALTH, this.MAX_HEALTH_LIMIT);
 		life.heal(HEAL);
@@ -45,18 +53,25 @@ public class AdvancedLifeTest {
 	}
 	
 	@Test
+	/*
+	 * test the proper operation of increasing the maxHealth value
+	 */
 	void increaseMaxHealthTest() { 
 		AdvancedLife life = new AdvancedLifeImpl(this.HEALTH, this.MAX_HEALTH, this.MAX_HEALTH_LIMIT);
 		life.upgradeMaxHealth(this.EXTEND_HEALTH + life.getMaxHealth());
 		assertTrue(life.getMaxHealth() == this.MAX_HEALTH + this.EXTEND_HEALTH);
-		life.upgradeMaxHealth(life.getMaxHealthLimit()+1);
+		life.upgradeMaxHealth(this.MAX_HEALTH_LIMIT+1);
 		assertTrue(life.getMaxHealth() == life.getMaxHealthLimit());
 	}
 	
-	@Test 
+	@Test
+	/*
+	 * test the proper operation of decresing the maxHealth value
+	 */
 	void decreseMaxHealthTest() { 
 		AdvancedLife life = new AdvancedLifeImpl(this.HEALTH, this.MAX_HEALTH, this.MAX_HEALTH_LIMIT);
 		life.upgradeMaxHealth(0);
+		assertFalse(life.getMaxHealth() == 0);
 		assertTrue(life.getMaxHealth() == this.MAX_HEALTH);
 		life.upgradeMaxHealth(this.MAX_HEALTH-1);
 		assertTrue(life.getMaxHealth() == this.MAX_HEALTH-1);

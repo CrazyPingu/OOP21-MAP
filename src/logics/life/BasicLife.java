@@ -10,19 +10,19 @@ public interface BasicLife {
 	/**
 	 * 
 	 * @param healValue represent the amount of life to increase. The helth value
-	 *                  can't be greater than max health
+	 *                  can't be greater than max health.
 	 */
 	public void heal(int healValue);
 
 	/**
 	 * 
-	 * @return the current health
+	 * @return the current health.
 	 */
 	public int getCurrentHealth();
 
 	/**
 	 * 
-	 * @return the maximum amount of health that can be reached
+	 * @return the maximum amount of health that can be reached.
 	 */
 	public int getMaxHealth();
 }
