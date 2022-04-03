@@ -40,7 +40,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	public void addImage(String fileName) {
 		try {
 			ImageModifier imgMod = new ImageModifier();
-			Image image = ImageIO.read(getClass().getResource("/resources/" + fileName));
+			Image image = ImageIO.read(getClass().getResource("resources/loadingScreen/" + fileName));
 			ImageIcon imageScaled = new ImageIcon(imgMod.scale(image, new Dimension(width / 2, height / 2)));
 			add(new JLabel(imageScaled), setDimensionObj(0));
 		} catch (IOException e) {
