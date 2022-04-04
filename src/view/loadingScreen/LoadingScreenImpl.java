@@ -39,7 +39,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	 */
 	public void addImage(String fileName) {
 		try {
-			Image image = ImageIO.read(getClass().getResource("resources/loadingScreen/" + fileName));
+			Image image = ImageIO.read(getClass().getResource("/resources/loadingScreen/" + fileName));
 			ImageIcon imageScaled = new ImageIcon(ImageModifier.scale(image, new Dimension(width / 2, height / 2)));
 			add(new JLabel(imageScaled), setDimensionObj(0));
 		} catch (IOException e) {
@@ -94,7 +94,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 		while (i < 100) {
 			try {
 				Thread.sleep(20);
-				this.progressBar.setValue(i); 
+				this.progressBar.setValue(i);
 				this.message.setForeground(Color.BLUE);
 				this.message.setText("LOADING " + Integer.toString(i) + "%");
 				i++;

@@ -10,10 +10,8 @@ public class ImageModifier {
 	public static final Image scale(Image image, Dimension size) {
 		double scaleFactor = Math.min(1d,
 				getScaleFactorToFit(new Dimension(image.getWidth(null), image.getHeight(null)), size));
-
 		int scaleWidth = (int) Math.round(image.getWidth(null) * scaleFactor);
 		int scaleHeight = (int) Math.round(image.getHeight(null) * scaleFactor);
-
 		return image.getScaledInstance(scaleWidth, scaleHeight, Image.SCALE_SMOOTH);
 	}
 
