@@ -17,7 +17,7 @@ public class Constant {
 	 * @return the number of pixel that matches to the same in 1920
 	 */
 	public static final int horizontalAspectRatio(int value) {
-		return HEIGHT * value / 1920;
+		return WIDTH * value / 1920;
 	}
 	
 	/**

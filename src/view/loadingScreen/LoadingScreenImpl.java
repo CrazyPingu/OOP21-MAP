@@ -25,7 +25,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	/**
 	 * {@inheritDoc}
 	 */
-	LoadingScreenImpl() {
+	public LoadingScreenImpl() {
 		this.setLayout(new GridBagLayout());
 		this.setBackground(Color.black);
 		addImage("aldoGiovanniEGiacomo.png");
@@ -89,7 +89,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	 * {@inheritDoc}
 	 */
 	public void runningPBar(basicFrame frame, String currentCardLayout, String guiCardLayout) {
-		frame.getCardLayout().show(frame.getJPanel(), "loading");
+		frame.showInFrame("currentCardLayout");
 		int i = 0;
 		while (i < 100) {
 			try {
@@ -102,6 +102,6 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 				e.printStackTrace();
 			}
 		}
-		//frame.getCardLayout().show(frame.getJPanel(), guiCardLayout);
+		frame.showInFrame(guiCardLayout);
 	}
 }

@@ -15,7 +15,7 @@ public class basicFrame extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	static GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0];
-	CardLayout cl;
+	CardLayout cardLayout;
 	JPanel panel;
 	
 	/**
@@ -25,16 +25,24 @@ public class basicFrame extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setUndecorated(true);
 		device.setFullScreenWindow(this);
-		cl = new CardLayout();
-		panel = new JPanel(cl);
+		cardLayout = new CardLayout();
+		panel = new JPanel(cardLayout);
 		add(panel);
 	}
 	
 	public CardLayout getCardLayout() {
-		return this.cl;
+		return this.cardLayout;
 	}
 	
 	public JPanel getJPanel() {
 		return this.panel;
+	}
+	
+	public void showInFrame(String cardLayoutName) {
+		this.cardLayout.show(this.panel, cardLayoutName);
+	}
+	
+	public void addToCardLayout(JPanel panel, String cardLayoutName) {
+		this.panel.add(panel, cardLayoutName);
 	}
 }
