@@ -89,7 +89,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	 * {@inheritDoc}
 	 */
 	public void runningPBar(basicFrame frame, String currentCardLayout, String guiCardLayout) {
-		frame.showInFrame("currentCardLayout");
+		frame.showInFrame(currentCardLayout);
 		int i = 0;
 		while (i < 100) {
 			try {
