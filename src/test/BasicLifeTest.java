@@ -60,7 +60,5 @@ public class BasicLifeTest {
 		life.heal(this.MAX_HEALTH);
 		assertTrue(life.getCurrentHealth() == this.MAX_HEALTH); 
 	}
-	
-	
-	
+
 }
