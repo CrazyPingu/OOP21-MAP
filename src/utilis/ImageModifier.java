@@ -5,9 +5,9 @@ import javax.swing.JButton;
 
 public class ImageModifier {
 
-
-	//given the image, and the size of the button / label it will scale based on your monitor
-	public Image scale(Image image, Dimension size) {
+	// given the image, and the size of the button / label it will scale based on
+	// your monitor
+	public static final Image scale(Image image, Dimension size) {
 		double scaleFactor = Math.min(1d,
 				getScaleFactorToFit(new Dimension(image.getWidth(null), image.getHeight(null)), size));
 
@@ -17,22 +17,18 @@ public class ImageModifier {
 		return image.getScaledInstance(scaleWidth, scaleHeight, Image.SCALE_SMOOTH);
 	}
 
-	private double getScaleFactor(int iMasterSize, int iTargetSize) {
-		return (double) iTargetSize / (double) iMasterSize;
-	}
-
-	private double getScaleFactorToFit(Dimension original, Dimension toFit) {
+	private static final double getScaleFactorToFit(Dimension original, Dimension toFit) {
 		double dScale = 1d;
 		if (original != null && toFit != null) {
-			double dScaleWidth = getScaleFactor(original.width, toFit.width);
-			double dScaleHeight = getScaleFactor(original.height, toFit.height);
+			double dScaleWidth = (double) toFit.width / (double) original.width;
+			double dScaleHeight = (double) toFit.height / (double) original.height;
 			dScale = Math.min(dScaleHeight, dScaleWidth);
 		}
 		return dScale;
 	}
 
-	//given an image and the size of the button / label it will fill the 
-	public Image scaleFullScreen(Image img, Dimension size) {
+	// given an image and the size of the button / label it will fill the
+	public static final Image scaleFullScreen(Image img, Dimension size) {
 		return img.getScaledInstance((int) (size.getWidth()), (int) (size.getHeight()), Image.SCALE_DEFAULT);
 	}
 
