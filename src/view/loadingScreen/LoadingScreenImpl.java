@@ -4,7 +4,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import utilis.ImageModifier;
-import view.basicFrame;
+import view.frame.basicFrame;
+
 import java.awt.*;
 import java.io.IOException;
 

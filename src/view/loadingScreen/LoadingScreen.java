@@ -1,6 +1,6 @@
 package view.loadingScreen;
 
-import view.basicFrame;
+import view.frame.basicFrame;
 
 /**
  * 

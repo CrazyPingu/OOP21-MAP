@@ -1,4 +1,4 @@
-package view;
+package view.frame;
 
 import java.awt.CardLayout;
 import java.awt.GraphicsDevice;
