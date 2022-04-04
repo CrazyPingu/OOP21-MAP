@@ -11,13 +11,13 @@ import javax.swing.JPanel;
  * Class to create the frame that will contain the whole GUI using the CardLayout
  * 
  */
-public class basicFrame extends JFrame{
+public class basicFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	static GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0];
 	CardLayout cardLayout;
 	JPanel panel;
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -29,19 +29,18 @@ public class basicFrame extends JFrame{
 		panel = new JPanel(cardLayout);
 		add(panel);
 	}
-	
-	public CardLayout getCardLayout() {
-		return this.cardLayout;
-	}
-	
-	public JPanel getJPanel() {
-		return this.panel;
-	}
-	
+
+	/**
+	 * @param cardLayoutName : the name of the CardLayout that will be shown
+	 */
 	public void showInFrame(String cardLayoutName) {
 		this.cardLayout.show(this.panel, cardLayoutName);
 	}
-	
+
+	/**
+	 * @param panel          : the current panel to add 
+	 * @param cardLayoutName : the name to give to the CardLayout 
+	 */
 	public void addToCardLayout(JPanel panel, String cardLayoutName) {
 		this.panel.add(panel, cardLayoutName);
 	}
