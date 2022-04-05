@@ -4,7 +4,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import utilis.ImageModifier;
-import view.frame.basicFrame;
+import view.frame.BasicFrame;
 
 import java.awt.*;
 import java.io.IOException;
@@ -89,7 +89,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void runningPBar(basicFrame frame, String currentCardLayout, String guiCardLayout) {
+	public void runningPBar(BasicFrame frame, String currentCardLayout, String guiCardLayout) {
 		frame.showInFrame(currentCardLayout);
 		int i = 0;
 		while (i < 100) {
