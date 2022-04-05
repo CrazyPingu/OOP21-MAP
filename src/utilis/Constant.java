@@ -1,5 +1,6 @@
 package utilis;
 
+import java.awt.Font;
 import java.awt.Toolkit;
 
 /**
@@ -27,5 +28,16 @@ public class Constant {
 	public static final int verticalAspectRatio(int value) {
 		return HEIGHT * value / 1080;
 	}
+	
+	 /**
+         * 
+         * @param fontName : the name of the font like Arial
+         * @param fontStyle : the style of the font like Plain or Bold
+         * @param fontSize : the size of the font in pixels
+         * @return a new font with the passed param
+         */
+        public static final Font genericFont(String fontName, int fontStyle, int fontSize) {
+            return new Font(fontName, fontStyle, horizontalAspectRatio(fontSize));
+        }
 
 }
