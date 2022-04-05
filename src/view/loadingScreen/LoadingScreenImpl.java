@@ -27,8 +27,8 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	 * {@inheritDoc}
 	 */
 	public LoadingScreenImpl() {
+		this.setOpaque(false);
 		this.setLayout(new GridBagLayout());
-		this.setBackground(Color.black);
 		addImage("aldoGiovanniEGiacomo.png");
 		addText();
 		addProgressBar();
