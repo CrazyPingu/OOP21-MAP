@@ -26,8 +26,8 @@ public class ImageModifier {
 	}
 
 	// given an image and the size of the button / label it will fill the
-	public static final Image scaleFullScreen(Image img, Dimension size) {
-		return img.getScaledInstance((int) (size.getWidth()), (int) (size.getHeight()), Image.SCALE_DEFAULT);
+	public static final Image scaleFullScreen(Image img) {
+		return img.getScaledInstance(Constant.WIDTH, Constant.HEIGHT, Image.SCALE_DEFAULT);
 	}
 
 }
