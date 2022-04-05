@@ -1,6 +1,6 @@
 package view.loadingScreen;
 
-import view.frame.basicFrame;
+import view.frame.BasicFrame;
 
 /**
  * 
@@ -37,6 +37,6 @@ public interface LoadingScreen {
 	 * @param guiCardLayout     : the name of the CardLayout that will be shown when
 	 *                          the progress bar reach 100%
 	 */
-	public void runningPBar(basicFrame frame, String currentCardLayout, String guiCardLayout);
+	public void runningPBar(BasicFrame frame, String currentCardLayout, String guiCardLayout);
 
 }

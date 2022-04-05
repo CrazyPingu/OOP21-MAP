@@ -3,8 +3,9 @@ package view.loadingScreen;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import utilis.Constant;
 import utilis.ImageModifier;
-import view.frame.basicFrame;
+import view.frame.BasicFrame;
 
 import java.awt.*;
 import java.io.IOException;
@@ -17,9 +18,7 @@ import java.io.IOException;
  */
 public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 
-	private static final long serialVersionUID = 1L;
-	private static final int width = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-	private static final int height = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+	private static final long serialVersionUID = 8291207301630291996L;
 	JProgressBar progressBar = new JProgressBar();
 	JLabel message = new JLabel("", SwingConstants.CENTER);
 
@@ -27,8 +26,8 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	 * {@inheritDoc}
 	 */
 	public LoadingScreenImpl() {
+		this.setOpaque(false);
 		this.setLayout(new GridBagLayout());
-		this.setBackground(Color.black);
 		addImage("aldoGiovanniEGiacomo.png");
 		addText();
 		addProgressBar();
@@ -41,7 +40,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	public void addImage(String fileName) {
 		try {
 			Image image = ImageIO.read(getClass().getResource("/resources/loadingScreen/" + fileName));
-			ImageIcon imageScaled = new ImageIcon(ImageModifier.scale(image, new Dimension(width / 2, height / 2)));
+			ImageIcon imageScaled = new ImageIcon(ImageModifier.scale(image, new Dimension(Constant.WIDTH / 2, Constant.HEIGHT / 2)));
 			add(new JLabel(imageScaled), setDimensionObj(0));
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -54,7 +53,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	private GridBagConstraints setDimensionObj(int gridy) {
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridy = gridy;
-		c.ipady = 80;
+		c.ipady = Constant.verticalAspectRatio(80);
 		return c;
 	}
 
@@ -63,7 +62,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	 */
 	public void addText() {
 		JLabel text = new JLabel("Marcello Apocalypse", SwingConstants.CENTER);
-		text.setFont(new Font("arial", Font.BOLD, width / 30));
+		text.setFont(new Font("arial", Font.BOLD, Constant.horizontalAspectRatio(70)));
 		text.setForeground(Color.RED);
 		add(text, setDimensionObj(1));
 	}
@@ -72,7 +71,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	 * {@inheritDoc}
 	 */
 	public void addMessage() {
-		message.setFont(new Font("arial", Font.BOLD, width / 60));
+		message.setFont(Constant.genericFont("Arial", Font.BOLD, 70));
 		add(message, setDimensionObj(3));
 	}
 
@@ -82,14 +81,14 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	public void addProgressBar() {
 		progressBar.setBackground(Color.BLACK);
 		progressBar.setForeground(Color.RED);
-		progressBar.setPreferredSize(new Dimension(width / 3, height / 102));
+		progressBar.setPreferredSize(new Dimension(Constant.WIDTH / 3, Constant.HEIGHT / 102));
 		add(progressBar, setDimensionObj(2));
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public void runningPBar(basicFrame frame, String currentCardLayout, String guiCardLayout) {
+	public void runningPBar(BasicFrame frame, String currentCardLayout, String guiCardLayout) {
 		frame.showInFrame(currentCardLayout);
 		int i = 0;
 		while (i < 100) {
