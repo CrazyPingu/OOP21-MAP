@@ -1,14 +1,26 @@
 package view.pause;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class PauseMenu extends JPanel{
+import utilis.Constant;
+
+public class PauseMenu extends JPanel implements ActionListener{
     /**
      * 
      */
+    
+    public static final int WIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+    public static final int HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
     private static final long serialVersionUID = 8006565750742104587L;
 
     /*
@@ -21,28 +33,49 @@ public class PauseMenu extends JPanel{
      */
     
     public PauseMenu() {
+        this.setOpaque(false);
         JButton resume = createJB("Resume");
         JButton newgame = createJB("New Game");
         JButton mainmenu = createJB("Main Menu");
         JButton quit = createJB("Quit");
+        JLabel pausetext =  labeltext("Pause Menu");
         
         this.setLayout(new GridBagLayout());
-        this.add(resume, setButtonPosition(0));
-        this.add(newgame, setButtonPosition(1));
-        this.add(mainmenu, setButtonPosition(2));
-        this.add(quit, setButtonPosition(3));
-        
+        this.add(pausetext, setButtonPosition(0, 70, 30));
+        this.add(resume, setButtonPosition(1, 30, 30));
+        this.add(newgame, setButtonPosition(2, 30, 30));
+        this.add(mainmenu, setButtonPosition(3, 30, 30));
+        this.add(quit, setButtonPosition(4, 30, 30));
+        quit.addActionListener(this);
         
     }
     
     private JButton createJB(String name) {
-        return new JButton(name);
+        JButton temp = new JButton(name);
+        temp.setFont(Constant.genericFont("Arial", Font.PLAIN, Constant.horizontalAspectRatio(40)));
+        temp.setPreferredSize(new Dimension(Constant.horizontalAspectRatio(350),Constant.verticalAspectRatio(150)));
+        
+        return temp;
     }
     
-    private GridBagConstraints setButtonPosition (int gridy) {
+   private JLabel labeltext(String name) {
+       JLabel pause = new JLabel(name, SwingConstants.CENTER);
+       pause.setForeground(Color.white);
+       pause.setPreferredSize(new Dimension(Constant.horizontalAspectRatio(500),Constant.verticalAspectRatio(100)));
+       pause.setFont(Constant.genericFont("Arial", Font.PLAIN, Constant.horizontalAspectRatio(80)));
+       return pause;
+   }
+    
+    private GridBagConstraints setButtonPosition (int gridy, int topPad, int botPad) {
         GridBagConstraints a = new GridBagConstraints();
+        topPad = Constant.verticalAspectRatio(topPad);
+        botPad = Constant.verticalAspectRatio(botPad);
         a.gridy = gridy;
+        a.insets = new Insets(topPad, 0, botPad, 0);
         return a;
-        
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        System.exit(0);
     }
 }
