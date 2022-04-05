@@ -1,6 +1,7 @@
 package view.frame;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import javax.swing.JFrame;
