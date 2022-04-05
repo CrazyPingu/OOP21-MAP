@@ -27,6 +27,7 @@ public class BasicFrame extends JFrame {
 		device.setFullScreenWindow(this);
 		cardLayout = new CardLayout();
 		panel = new JPanel(cardLayout);
+		panel.setBackground(Color.black);
 		add(panel);
 	}
 
