@@ -13,6 +13,10 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import utilis.Constant;
+import view.pause.action.MainMenuAction;
+import view.pause.action.NewGameAction;
+import view.pause.action.QuitAction;
+import view.pause.action.ResumeAction;
 
 public class PauseMenu extends JPanel implements ActionListener{
     /**
@@ -46,7 +50,11 @@ public class PauseMenu extends JPanel implements ActionListener{
         this.add(newgame, setButtonPosition(2, 30, 30));
         this.add(mainmenu, setButtonPosition(3, 30, 30));
         this.add(quit, setButtonPosition(4, 30, 30));
-        quit.addActionListener(this);
+        resume.addActionListener(new ResumeAction());
+        newgame.addActionListener(new NewGameAction());
+        mainmenu.addActionListener(new MainMenuAction());
+        quit.addActionListener(new QuitAction());
+        
         
     }
     
@@ -76,6 +84,7 @@ public class PauseMenu extends JPanel implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
-        System.exit(0);
+        // TODO Auto-generated method stub
+        
     }
 }
