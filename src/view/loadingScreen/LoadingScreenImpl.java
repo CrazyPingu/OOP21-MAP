@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import utilis.Constant;
+import utilis.GBCDimension;
 import utilis.ImageModifier;
 import view.frame.BasicFrame;
 
@@ -41,20 +42,10 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 		try {
 			Image image = ImageIO.read(getClass().getResource("/resources/loadingScreen/" + fileName));
 			ImageIcon imageScaled = new ImageIcon(ImageModifier.scale(image, new Dimension(Constant.WIDTH / 2, Constant.HEIGHT / 2)));
-			add(new JLabel(imageScaled), setDimensionObj(0));
+			add(new JLabel(imageScaled), GBCDimension.setDimension(0, 0, 0, Constant.verticalAspectRatio(80)));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	private GridBagConstraints setDimensionObj(int gridy) {
-		GridBagConstraints c = new GridBagConstraints();
-		c.gridy = gridy;
-		c.ipady = Constant.verticalAspectRatio(80);
-		return c;
 	}
 
 	/**
@@ -64,7 +55,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 		JLabel text = new JLabel("Marcello Apocalypse", SwingConstants.CENTER);
 		text.setFont(new Font("arial", Font.BOLD, Constant.horizontalAspectRatio(70)));
 		text.setForeground(Color.RED);
-		add(text, setDimensionObj(1));
+		add(text, GBCDimension.setDimension(0, 1, 0, Constant.verticalAspectRatio(80)));
 	}
 
 	/**
@@ -72,7 +63,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	 */
 	public void addMessage() {
 		message.setFont(Constant.genericFont("Arial", Font.BOLD, 70));
-		add(message, setDimensionObj(3));
+		add(message, GBCDimension.setDimension(0, 3, 0, Constant.verticalAspectRatio(80)));
 	}
 
 	/**
@@ -82,7 +73,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 		progressBar.setBackground(Color.BLACK);
 		progressBar.setForeground(Color.RED);
 		progressBar.setPreferredSize(new Dimension(Constant.WIDTH / 3, Constant.HEIGHT / 102));
-		add(progressBar, setDimensionObj(2));
+		add(progressBar, GBCDimension.setDimension(0, 2, 0, Constant.verticalAspectRatio(80)));
 	}
 
 	/**
