@@ -2,15 +2,12 @@ package view.loadingScreen;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
 import utilis.Constant;
-import utilis.GBCDimension;
+import utilis.GbcDimension;
 import utilis.ImageModifier;
 import view.frame.BasicFrame;
-
 import java.awt.*;
 import java.io.IOException;
-
 
 /**
  * 
@@ -41,8 +38,9 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	public void addImage(String fileName) {
 		try {
 			Image image = ImageIO.read(getClass().getResource("/resources/loadingScreen/" + fileName));
-			ImageIcon imageScaled = new ImageIcon(ImageModifier.scale(image, new Dimension(Constant.WIDTH / 2, Constant.HEIGHT / 2)));
-			add(new JLabel(imageScaled), GBCDimension.setDimension(0, 0, 0, Constant.verticalAspectRatio(80)));
+			ImageIcon imageScaled = new ImageIcon(
+					ImageModifier.scale(image, new Dimension(Constant.WIDTH / 2, Constant.HEIGHT / 2)));
+			add(new JLabel(imageScaled), new GbcDimension(0, 0, 0, Constant.verticalAspectRatio(80)));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -55,7 +53,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 		JLabel text = new JLabel("Marcello Apocalypse", SwingConstants.CENTER);
 		text.setFont(new Font("arial", Font.BOLD, Constant.horizontalAspectRatio(70)));
 		text.setForeground(Color.RED);
-		add(text, GBCDimension.setDimension(0, 1, 0, Constant.verticalAspectRatio(80)));
+		add(text, new GbcDimension(0, 1, 0, Constant.verticalAspectRatio(80)));
 	}
 
 	/**
@@ -63,7 +61,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	 */
 	public void addMessage() {
 		message.setFont(Constant.genericFont("Arial", Font.BOLD, 70));
-		add(message, GBCDimension.setDimension(0, 3, 0, Constant.verticalAspectRatio(80)));
+		add(message, new GbcDimension(0, 3, 0, Constant.verticalAspectRatio(80)));
 	}
 
 	/**
@@ -73,7 +71,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 		progressBar.setBackground(Color.BLACK);
 		progressBar.setForeground(Color.RED);
 		progressBar.setPreferredSize(new Dimension(Constant.WIDTH / 3, Constant.HEIGHT / 102));
-		add(progressBar, GBCDimension.setDimension(0, 2, 0, Constant.verticalAspectRatio(80)));
+		add(progressBar, new GbcDimension(0, 2, 0, Constant.verticalAspectRatio(80)));
 	}
 
 	/**
