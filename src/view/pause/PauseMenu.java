@@ -44,11 +44,11 @@ public class PauseMenu extends JPanel {
         JLabel pausetext = labeltext("Pause Menu");
 
         this.setLayout(new GridBagLayout());
-        this.add(pausetext, setButtonPosition(0, 70, 30));
-        this.add(resume, setButtonPosition(1, 30, 30));
-        this.add(newgame, setButtonPosition(2, 30, 30));
-        this.add(mainmenu, setButtonPosition(3, 30, 30));
-        this.add(quit, setButtonPosition(4, 30, 30));
+        this.add(pausetext, setButtonPosition(0, Constant.horizontalAspectRatio(70), Constant.verticalAspectRatio(30)));
+        this.add(resume, setButtonPosition(1, Constant.horizontalAspectRatio(30), Constant.verticalAspectRatio(30)));
+        this.add(newgame, setButtonPosition(2, Constant.horizontalAspectRatio(30), Constant.verticalAspectRatio(30)));
+        this.add(mainmenu, setButtonPosition(3, Constant.horizontalAspectRatio(30), Constant.verticalAspectRatio(30)));
+        this.add(quit, setButtonPosition(4, Constant.horizontalAspectRatio(30), Constant.verticalAspectRatio(30)));
         resume.addActionListener(new ResumeAction(frame));
         newgame.addActionListener(new NewGameAction(frame));
         mainmenu.addActionListener(new MainMenuAction(frame));
