@@ -6,32 +6,26 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
 import utilis.Constant;
 import utilis.ImageModifier;
+import view.frame.BasicFrame;
+import view.pause.action.MainMenuAction;
+import view.pause.action.NewGameAction;
+import view.pause.action.QuitAction;
+import view.pause.action.ResumeAction;
 
-public class PauseMenu extends JPanel implements ActionListener {
+public class PauseMenu extends JPanel{
 
     private static final long serialVersionUID = 8006565750742104587L;
     Image image;
-    /*
-     * Sarà composto da 4 bottoni: Continue, New Game, Main Menu, Quit Continue :
-     * Mostra la CardLayout del Gioco e chiude quella del menu di pausa New Game :
-     * Mostra la CardLayout del Gioco ma dall'inizio, perdendo tutti i salvataggi
-     * fatti finora Main Menu : Mostrerà il CardLayout del Menù Principale (tutti i
-     * salvataggi verranno persi anche in questo caso) Quit : Chiuderà il gioco
-     * (System.Exit(0);)
-     * 
-     */
 
-    public PauseMenu() {
+    public PauseMenu(BasicFrame frame) {
         try {
             image = ImageIO.read(getClass().getResource("/resources/pause/Background.jpg"));
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // this.setOpaque(false);
         JButton resume = createJB("Resume");
         JButton newgame = createJB("New Game");
         JButton mainmenu = createJB("Main Menu");
@@ -44,7 +38,11 @@ public class PauseMenu extends JPanel implements ActionListener {
         this.add(newgame, setButtonPosition(2, 30, 30));
         this.add(mainmenu, setButtonPosition(3, 30, 30));
         this.add(quit, setButtonPosition(4, 30, 30));
-        quit.addActionListener(this);
+        resume.addActionListener(new ResumeAction(frame));
+        newgame.addActionListener(new NewGameAction(frame));
+        mainmenu.addActionListener(new MainMenuAction(frame));
+        quit.addActionListener(new QuitAction());
+        
 
     }
 
@@ -75,14 +73,9 @@ public class PauseMenu extends JPanel implements ActionListener {
         return a;
     }
 
-    public void actionPerformed(ActionEvent e) {
-        System.exit(0);
-    }
-
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(ImageModifier.scaleFullScreen(image), 0, 0, null);
     }
 
-        
 }
