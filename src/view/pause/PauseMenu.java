@@ -1,14 +1,7 @@
 package view.pause;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.*;
 
@@ -19,10 +12,7 @@ import view.pause.action.QuitAction;
 import view.pause.action.ResumeAction;
 
 public class PauseMenu extends JPanel implements ActionListener{
-    /**
-     * 
-     */
-    
+
     public static final int WIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
     public static final int HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
     private static final long serialVersionUID = 8006565750742104587L;
@@ -30,10 +20,9 @@ public class PauseMenu extends JPanel implements ActionListener{
     /*
      * Sarà composto da 4 bottoni: Continue, New Game, Main Menu, Quit
      * Continue : Mostra la CardLayout del Gioco e chiude quella del menu di pausa
-     * New Game : Mostra la CardLayout del Gioco ma dall'inizio, perdendo tutti i salvataggi fatti finora
+     * New Game : Mostra la CardLayout del Gioco ma dall'inizio, perdendo tutti i salvataggi fatti fino a quel punto
      * Main Menu : Mostrerà il CardLayout del Menù Principale (tutti i salvataggi verranno persi anche in questo caso)
      * Quit : Chiuderà il gioco (System.Exit(0);)
-     * 
      */
     
     public PauseMenu() {
@@ -52,17 +41,14 @@ public class PauseMenu extends JPanel implements ActionListener{
         this.add(quit, setButtonPosition(4, 30, 30));
         resume.addActionListener(new ResumeAction());
         newgame.addActionListener(new NewGameAction());
-        mainmenu.addActionListener(new MainMenuAction());
-        quit.addActionListener(new QuitAction());
-        
-        
+        mainmenu.addActionListener(new MainMenuAction(null));
+        quit.addActionListener(new QuitAction());     
     }
     
     private JButton createJB(String name) {
         JButton temp = new JButton(name);
         temp.setFont(Constant.genericFont("Arial", Font.PLAIN, Constant.horizontalAspectRatio(40)));
         temp.setPreferredSize(new Dimension(Constant.horizontalAspectRatio(350),Constant.verticalAspectRatio(150)));
-        
         return temp;
     }
     
@@ -84,7 +70,6 @@ public class PauseMenu extends JPanel implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        
+        // TODO Auto-generated method stub        
     }
 }
