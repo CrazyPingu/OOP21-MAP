@@ -3,7 +3,7 @@ package view.game.logStats;
 import java.awt.*;
 import javax.swing.*;
 
-public class LabelAppareance extends JLabel {
+public class LabelAppearance extends JLabel {
 	
 	private static final long serialVersionUID = 7460837470380147330L;
 
