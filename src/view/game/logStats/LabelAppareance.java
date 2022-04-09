@@ -8,9 +8,9 @@ public class LabelAppareance extends JLabel {
 	private static final long serialVersionUID = 7460837470380147330L;
 
 	/**
-	 * Sets the appareance of stats and log labels
+	 * Sets the appearance of stats and log labels
 	 */
-	public void setAppareance () {
+	public void setAppearance () {
 		this.setOpaque(true);
         this.setBackground(Color.BLACK);
         this.setForeground(Color.WHITE);
