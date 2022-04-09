@@ -10,7 +10,7 @@ public class LabelAppareance extends JLabel {
 	/**
 	 * Sets the appareance of stats and log labels
 	 */
-	public void appareance () {
+	public void setAppareance () {
 		this.setOpaque(true);
         this.setBackground(Color.BLACK);
         this.setForeground(Color.WHITE);
