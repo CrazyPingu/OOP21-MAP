@@ -1,6 +1,6 @@
 package view.game.logStats;
 
-import javax.swing.JLabel;
+import logics.entity.Player;
 
 /**
  * 
@@ -8,18 +8,22 @@ import javax.swing.JLabel;
  *
  */
 
-public class LogImpl extends JLabel implements LogStats {
+public class LogImpl extends LabelAppearance implements LogStats {
 
-	private static final long serialVersionUID = -3771871536507992327L;
+	private static final long serialVersionUID = 3777939147427639785L;
+	private final String initialText="Marcello has to escape to survive...";
+
+	public LogImpl() {
+		this.setText(initialText);
+		this.setAppearance();
+	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
 
-	public void update() {
-		// TODO Auto-generated method stub
-		
+	public void update(Player player, String message) {
+		this.setText(player.getName() + " " + message);
 	}
-	
 	
 }
