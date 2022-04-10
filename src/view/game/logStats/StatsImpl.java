@@ -38,7 +38,7 @@ public class StatsImpl extends LabelAppearance implements LogStats {
 	 */
 
 	public void update(Player player, String message) {
-		this.setText("<html>Actions left: " + /*player.getActionNumberLeft() +*/
+		this.setText("<html>ACTIONS LEFT: " + /*player.getActionNumberLeft() +*/
 				"/" + player.getActionNumber() +
 				"<br/>MAX HEALTH: +" + player.getMaxHealth() +
 				"<br/>ATK: +" + /*(player.getAdditionalDamage+player.getBaseDamage) +*/ "</html>");
