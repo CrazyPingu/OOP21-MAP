@@ -11,9 +11,10 @@ import logics.entity.Player;
 public class LogImpl extends LabelAppearance implements LogStats {
 
 	private static final long serialVersionUID = 3777939147427639785L;
-	private final String initialText="Marcello has to escape to survive...";
+	private final String initialText="<html>Marcello has to escape to survive...";
 
 	public LogImpl() {
+		super();
 		this.setText(initialText);
 		this.setAppearance();
 	}
@@ -23,7 +24,7 @@ public class LogImpl extends LabelAppearance implements LogStats {
 	 */
 
 	public void update(Player player, String message) {
-		this.setText("<html>" + this.getText() + "<br/>" + player.getName() + " " + message);
+		this.setText(this.getText() + "<br/>" + player.getName() + " " + message);
 	}
 	
 }
