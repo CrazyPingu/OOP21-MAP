@@ -12,7 +12,7 @@ import utilis.Pair;
 public class RoomImpl implements Room {
 	private Pair<Integer, Integer> size;
 	private Pair<Integer, Integer> posPlayer;
-	private Map<Pair<Integer, Integer>, Entity> posEnemey;
+	private Map<Pair<Integer, Integer>, Entity> posEnemy;
 
 	/**
 	 * @param size      : the size of the room.
@@ -23,7 +23,7 @@ public class RoomImpl implements Room {
 			Map<Pair<Integer, Integer>, Entity> posEnemey) {
 		this.size = size;
 		this.posPlayer = posPlayer;
-		this.posEnemey = posEnemey;
+		this.posEnemy = posEnemey;
 	}
 
 	/**
@@ -44,6 +44,21 @@ public class RoomImpl implements Room {
 	 * {@inheritDoc}
 	 */
 	public Map<Pair<Integer, Integer>, Entity> getPosEnemy() {
-		return posEnemey;
+		return posEnemy;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void updatePosPlayer(Pair<Integer, Integer> newPosPlayer) {
+		this.posPlayer = newPosPlayer;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void updatePosEnemy(Pair<Integer, Integer> currentPos, Pair<Integer, Integer> futurePos) {
+		posEnemy.put(futurePos, posEnemy.get(currentPos));
+		posEnemy.remove(currentPos);
 	}
 }

@@ -6,6 +6,7 @@ package logics.room;
  *
  */
 public class RoomFactoryImpl implements RoomFactory {
+	
 
 	/**
 	 * {@inheritDoc}
