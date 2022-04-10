@@ -16,6 +16,7 @@ public class StatsImpl extends LabelAppearance implements LogStats {
 	 * @param player	: player object to init first values in the stats view
 	 */
 	public StatsImpl (Player player) {
+		super();
 		this.update(player, null);
 		this.setAppearance();
 	}
