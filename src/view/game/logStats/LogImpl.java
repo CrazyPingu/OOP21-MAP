@@ -23,7 +23,7 @@ public class LogImpl extends LabelAppearance implements LogStats {
 	 */
 
 	public void update(Player player, String message) {
-		this.setText(player.getName() + " " + message);
+		this.setText("<html>" + this.getText() + "<br/>" + player.getName() + " " + message);
 	}
 	
 }
