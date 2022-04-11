@@ -1,6 +1,5 @@
 package logics.room;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import logics.entity.EnemyFactoryImpl;
 import logics.entity.Entity;
@@ -24,8 +23,7 @@ public class GenerateRandomEnemyMap extends HashMap<Pair<Integer, Integer>, Enti
 		Entity generatedEnemy = null;
 			try {
 				generatedEnemy = (Entity)enemyFactory.getClass().getDeclaredMethods()[random].invoke(enemyFactory);
-			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
-					| SecurityException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("Error enemy generation");
 			}
