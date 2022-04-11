@@ -15,5 +15,5 @@ public interface RoomFactory {
 	/**
 	 * @return a new room that will be .
 	 */
-	public Room createBigRoom(Map<Pair<Integer, Integer>, Entity> enemy);
+	public Room createBigRoom();
 }
