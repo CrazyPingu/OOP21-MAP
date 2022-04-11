@@ -1,10 +1,5 @@
 package logics.room;
 
-import java.util.Map;
-
-import logics.entity.Entity;
-import utilis.Pair;
-
 /**
  * 
  * Interface that declares methods to generate room.
@@ -13,7 +8,14 @@ import utilis.Pair;
 public interface RoomFactory {
 
 	/**
-	 * @return a new room that will be .
+	 * @return a new room that will be the maximum size.
 	 */
 	public Room createBigRoom();
+	
+	/**
+	 * @return a new room that will be the minimum size.
+	 */
+	public Room createSmallRoom();
+	
+	
 }
