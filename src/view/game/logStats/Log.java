@@ -6,13 +6,12 @@ package view.game.logStats;
  *
  */
 
-public class LogImpl extends LabelAppearance {
+public class Log extends LabelAppearance {
 
 	private static final long serialVersionUID = 3777939147427639785L;
 	private final String initialText="<html>Marcello has to escape to survive...";
 
-	public LogImpl() {
-		super();
+	public Log() {
 		this.setText(initialText);
 		this.setAppearance();
 	}

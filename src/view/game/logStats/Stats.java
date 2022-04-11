@@ -15,7 +15,7 @@ import utilis.Constant;
  *
  */
 
-public class StatsImpl extends LabelAppearance {
+public class Stats extends LabelAppearance {
 
 	private static final long serialVersionUID = -678263256165523272L;
 	
@@ -24,7 +24,7 @@ public class StatsImpl extends LabelAppearance {
 	/**
 	 * @param player	: player object to init first values in the stats view
 	 */
-	public StatsImpl (Player player) {
+	public Stats (Player player) {
 		super();
 		this.update(player);
 		this.setAppearance();

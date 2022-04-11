@@ -10,7 +10,7 @@ public class ScrollableLog extends JScrollPane {
 
 	private static final long serialVersionUID = -2513174390328036056L;
 	
-	private static LogImpl logMessage = new LogImpl ();
+	private static Log logMessage = new Log ();
 	Border border;
 
 	public ScrollableLog () {
@@ -41,7 +41,7 @@ public class ScrollableLog extends JScrollPane {
 	}
 	
 	
-	public LogImpl getLogMessage() {
+	public Log getLogMessage() {
 		return logMessage;
 	}
 
