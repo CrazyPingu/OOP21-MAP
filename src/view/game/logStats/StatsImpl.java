@@ -15,7 +15,7 @@ import utilis.Constant;
  *
  */
 
-public class StatsImpl extends LabelAppearance implements LogStats {
+public class StatsImpl extends LabelAppearance {
 
 	private static final long serialVersionUID = -678263256165523272L;
 	
@@ -26,7 +26,7 @@ public class StatsImpl extends LabelAppearance implements LogStats {
 	 */
 	public StatsImpl (Player player) {
 		super();
-		this.update(player, null);
+		this.update(player);
 		this.setAppearance();
         border = BorderFactory.createLineBorder(Color.GRAY,3);
         this.setBorder(border);
@@ -34,10 +34,10 @@ public class StatsImpl extends LabelAppearance implements LogStats {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Updates the stats values shown on the screen.
 	 */
 
-	public void update(Player player, String message) {
+	public void update(Player player) {
 		this.setText("<html>ACTIONS LEFT: " + /*player.getActionNumberLeft() +*/
 				"/" + player.getActionNumber() +
 				"<br/>MAX HEALTH: +" + player.getMaxHealth() +

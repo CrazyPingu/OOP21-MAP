@@ -8,7 +8,7 @@ import logics.entity.Player;
  *
  */
 
-public class LogImpl extends LabelAppearance implements LogStats {
+public class LogImpl extends LabelAppearance {
 
 	private static final long serialVersionUID = 3777939147427639785L;
 	private final String initialText="<html>Marcello has to escape to survive...";
@@ -20,11 +20,11 @@ public class LogImpl extends LabelAppearance implements LogStats {
 	}
 	
 	/**
-	 * {@inheritDoc}
+	 * Updates the log messages shown on the screen.
 	 */
 
-	public void update(Player player, String message) {
-		this.setText(this.getText() + "<br/>" + player.getName() + " " + message);
+	public void update(String message) {
+		this.setText(this.getText() + "<br/>" + message);
 	}
 	
 }
