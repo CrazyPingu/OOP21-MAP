@@ -11,7 +11,7 @@ public class ScrollableStats extends ScrollPaneAppearance {
 	public ScrollableStats(Player player) {
 		super(statsValues);
 		statsValues.update(player);
-		super.setScrollPaneAppearance();
+		this.setScrollPaneAppearance();
 	}
 
 	/**

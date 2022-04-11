@@ -12,17 +12,14 @@ public class Stats extends TextAreaAppearance {
 
 	private static final long serialVersionUID = -678263256165523272L;
 
-	/**
-	 * @param player : player object to init first values in the stats view
-	 */
 	public Stats() {
 		super();
 	}
 
 	/**
-	 * Updates the stats values shown on the screen.
+	 * @param player : player object to init first values in the stats view
 	 */
-
+	
 	public void update(Player player) {
 		this.setText("ACTIONS LEFT: " + /* player.getActionNumberLeft() + */ "/" + player.getActionNumber()
 				+ "\nMAX HEALTH: +" + player.getMaxHealth()

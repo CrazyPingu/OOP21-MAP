@@ -21,20 +21,20 @@ public class ScrollPaneAppearance extends JScrollPane {
 	 */
 	public void setScrollPaneAppearance() {
 		this.setScrollBar();
-		super.setOpaque(false);
-		super.getViewport().setOpaque(false);
-		super.setPreferredSize(new Dimension(Constant.WIDTH / 4, Constant.HEIGHT * 2 / 3));
-		super.setBorder(border);
+		this.setOpaque(false);
+		this.getViewport().setOpaque(false);
+		this.setPreferredSize(new Dimension(Constant.WIDTH / 4, Constant.HEIGHT * 2 / 3));
+		this.setBorder(border);
 	}
 
 	/**
 	 * Sets the appearance of the scroll bars.
 	 */
 	public void setScrollBar() {
-		super.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		super.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		super.getVerticalScrollBar().setUnitIncrement(15);
-		super.getVerticalScrollBar().setOpaque(false);
+		this.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		this.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		this.getVerticalScrollBar().setUnitIncrement(15);
+		this.getVerticalScrollBar().setOpaque(false);
 	}
 
 }
