@@ -20,10 +20,10 @@ public class RoomImpl implements Room {
 	 * @param posEnemy  : the position of the enemy inside the room and their type.
 	 */
 	public RoomImpl(Pair<Integer, Integer> size, Pair<Integer, Integer> posPlayer,
-			Map<Pair<Integer, Integer>, Entity> posEnemey) {
+			Map<Pair<Integer, Integer>, Entity> posEnemy) {
 		this.size = size;
 		this.posPlayer = posPlayer;
-		this.posEnemy = posEnemey;
+		this.posEnemy = posEnemy;
 	}
 
 	/**
