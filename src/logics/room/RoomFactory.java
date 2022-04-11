@@ -17,5 +17,9 @@ public interface RoomFactory {
 	 */
 	public Room createSmallRoom();
 	
+	/**
+	 * @return a new room that will have a random size.
+	 */
+	public Room createRandomRoom();
 	
 }

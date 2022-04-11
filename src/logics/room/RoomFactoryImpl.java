@@ -1,5 +1,7 @@
 package logics.room;
 
+import java.util.Random;
+
 import utilis.Constant;
 import utilis.Pair;
 
@@ -10,27 +12,38 @@ import utilis.Pair;
  */
 public class RoomFactoryImpl implements RoomFactory {
 
-	private final int maxX = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(64);	//15
-	private final int maxY = Constant.TOP_HEIGHT / Constant.verticalAspectRatio(72);	//10
-	private final Pair<Integer, Integer> max = new Pair<Integer, Integer>(maxX, maxY);
+	private final int maxX = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(64);
+	private final int maxY = Constant.TOP_HEIGHT / Constant.verticalAspectRatio(72);
+	private final Pair<Integer, Integer> maxSize = new Pair<Integer, Integer>(maxX, maxY);
 
-	private final int minX = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(160);	//6
-	private final int minY = Constant.TOP_HEIGHT / Constant.verticalAspectRatio(144);	//5
-	private final Pair<Integer, Integer> min = new Pair<Integer, Integer>(minX, minY);
-	
+	private final int minX = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(160);
+	private final int minY = Constant.TOP_HEIGHT / Constant.verticalAspectRatio(144);
+	private final Pair<Integer, Integer> minSize = new Pair<Integer, Integer>(minX, minY);
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public Room createBigRoom() {
-		Pair<Integer, Integer> playerPos = new Pair<>(1, max.getY() / 2);
-		return new RoomImpl(max, playerPos, new GenerateRandomEnemyMap(max));
+		Pair<Integer, Integer> playerPos = new Pair<Integer, Integer>(2, maxSize.getY() / 2);
+		return new RoomImpl(maxSize, playerPos, new GenerateRandomEnemyMap(maxSize));
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public Room createSmallRoom() {
-		Pair<Integer, Integer> playerPos = new Pair<>(1, min.getY() / 2);
-		return new RoomImpl(min, playerPos, new GenerateRandomEnemyMap(min));
+		Pair<Integer, Integer> playerPos = new Pair<Integer, Integer>(1, minSize.getY() / 2);
+		return new RoomImpl(minSize, playerPos, new GenerateRandomEnemyMap(minSize));
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public Room createRandomRoom() {
+		Pair<Integer, Integer> randomSize = new Pair<Integer, Integer>(
+				new Random().ints(minSize.getX(), maxSize.getX()).findFirst().getAsInt(),
+				new Random().ints(minSize.getY(), maxSize.getY()).findFirst().getAsInt());
+		Pair<Integer, Integer> playerPos = new Pair<Integer, Integer>(0, randomSize.getY() / 2);
+		return new RoomImpl(randomSize, playerPos, new GenerateRandomEnemyMap(randomSize));
 	}
 }
