@@ -14,30 +14,22 @@ public class GenerateRandomEnemyMap extends HashMap<Pair<Integer, Integer>, Enti
 
 	public GenerateRandomEnemyMap(Pair<Integer, Integer> cells) {
 		for (int i = 0; i < cells.getX() * cells.getY() / 30; i++) {
-			Entity randomEnemy = generateRandomEnemy();
 			this.put(new Pair<Integer, Integer>(((int) Math.random() * cells.getX() - 3) + 3,
-					((int) Math.random() * cells.getY())), randomEnemy);
+					((int) Math.random() * cells.getY())), generateRandomEnemy());
 		}
 	}
 
 	private Entity generateRandomEnemy() {
 		int random = (int) Math.random() * possibleZombieNumber;
-		try {
-			var x = enemyFactory.getClass().getDeclaredMethods()[random].invoke(enemyFactory);
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		Entity generatedEnemy = null;
+			try {
+				generatedEnemy = (Entity)enemyFactory.getClass().getDeclaredMethods()[random].invoke(enemyFactory);
+			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
+					| SecurityException e) {
+				e.printStackTrace();
+				System.out.println("Error enemy generation");
+			}
+		return generatedEnemy;
 	}
 
 }
