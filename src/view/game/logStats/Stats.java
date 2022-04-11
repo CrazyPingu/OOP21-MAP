@@ -15,7 +15,7 @@ import utilis.Constant;
  *
  */
 
-public class Stats extends LabelAppearance {
+public class Stats extends TextAreaAppearance {
 
 	private static final long serialVersionUID = -678263256165523272L;
 	
