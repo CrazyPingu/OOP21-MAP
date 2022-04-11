@@ -1,7 +1,5 @@
 package view.game.logStats;
 
-import logics.entity.Player;
-
 /**
  * 
  * Create the log label to display.
@@ -24,7 +22,7 @@ public class LogImpl extends LabelAppearance {
 	 */
 
 	public void update(String message) {
-		this.setText(this.getText() + "<br/>" + message);
+		this.setText(this.getText() + "<br/>&nbsp " + message);
 	}
 	
 }

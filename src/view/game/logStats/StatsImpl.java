@@ -38,10 +38,10 @@ public class StatsImpl extends LabelAppearance {
 	 */
 
 	public void update(Player player) {
-		this.setText("<html>ACTIONS LEFT: " + /*player.getActionNumberLeft() +*/
+		this.setText("<html>&nbsp ACTIONS LEFT: " + /*player.getActionNumberLeft() +*/
 				"/" + player.getActionNumber() +
-				"<br/>MAX HEALTH: +" + player.getMaxHealth() +
-				"<br/>ATK: +" + /*(player.getAdditionalDamage+player.getBaseDamage) +*/ "</html>");
+				"<br/>&nbsp MAX HEALTH: +" + player.getMaxHealth() +
+				"<br/>&nbsp ATK: +" + /*(player.getAdditionalDamage+player.getBaseDamage) +*/ "</html>");
 	}	
 
 }
