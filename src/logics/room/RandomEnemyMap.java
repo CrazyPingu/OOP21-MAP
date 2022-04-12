@@ -5,7 +5,7 @@ import logics.entity.EnemyFactoryImpl;
 import logics.entity.Entity;
 import utilis.Pair;
 
-public class GenerateRandomEnemyMap extends HashMap<Pair<Integer, Integer>, Entity> {
+public class RandomEnemyMap extends HashMap<Pair<Integer, Integer>, Entity> {
 
 	private static final long serialVersionUID = -1346040616337955961L;
 	private final int spawningRatio = 30;
@@ -13,7 +13,7 @@ public class GenerateRandomEnemyMap extends HashMap<Pair<Integer, Integer>, Enti
 	private final EnemyFactoryImpl enemyFactory = new EnemyFactoryImpl();
 	private final int possibleZombieNumber = enemyFactory.getClass().getDeclaredMethods().length;
 
-	public GenerateRandomEnemyMap(Pair<Integer, Integer> cells) {
+	public RandomEnemyMap(Pair<Integer, Integer> cells) {
 		Pair<Integer, Integer> zombieSpawn;
 		for (int i = 0; i < cells.getX() * cells.getY() / spawningRatio; i++) {
 			do {
