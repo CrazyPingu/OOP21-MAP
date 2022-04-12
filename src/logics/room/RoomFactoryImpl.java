@@ -33,7 +33,7 @@ public class RoomFactoryImpl implements RoomFactory {
 	 */
 	public Room createSmallRoom() {
 		Pair<Integer, Integer> playerPos = new Pair<Integer, Integer>(1, minSize.getY() / 2);
-		return new RoomImpl(minSize, playerPos, new GenerateRandomEnemyMap(minSize));
+		return new RoomImpl(minSize, playerPos, new RandomEnemyMap(minSize));
 	}
 
 	/**
@@ -44,6 +44,6 @@ public class RoomFactoryImpl implements RoomFactory {
 				new Random().ints(minSize.getX(), maxSize.getX()).findFirst().getAsInt(),
 				new Random().ints(minSize.getY(), maxSize.getY()).findFirst().getAsInt());
 		Pair<Integer, Integer> playerPos = new Pair<Integer, Integer>(0, randomSize.getY() / 2);
-		return new RoomImpl(randomSize, playerPos, new GenerateRandomEnemyMap(randomSize));
+		return new RoomImpl(randomSize, playerPos, new RandomEnemyMap(randomSize));
 	}
 }
