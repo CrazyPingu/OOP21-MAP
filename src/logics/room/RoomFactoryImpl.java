@@ -25,7 +25,7 @@ public class RoomFactoryImpl implements RoomFactory {
 	 */
 	public Room createBigRoom() {
 		Pair<Integer, Integer> playerPos = new Pair<Integer, Integer>(2, maxSize.getY() / 2);
-		return new RoomImpl(maxSize, playerPos, new GenerateRandomEnemyMap(maxSize));
+		return new RoomImpl(maxSize, playerPos, new RandomEnemyMap(maxSize));
 	}
 
 	/**
