@@ -1,8 +1,6 @@
 package logics.weapon;
 
-import java.util.List;
-
-import utilis.Pair;
+import logics.strategy.Strategy;
 
 /**
  * 
@@ -20,5 +18,5 @@ public interface Weapon {
 	/**
 	 * @return the shooting strategy applied.
 	 */
-	public List<Pair<Integer, Integer>> getShootingStrategy();
+	public Strategy getShootingStrategy();
 }
