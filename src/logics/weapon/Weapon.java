@@ -7,6 +7,7 @@ import utilis.Pair;
 /**
  * 
  * Interface that declares methods for the weapon.
+ * Represent the "Context" of Factory interface.
  *
  */
 public interface Weapon {

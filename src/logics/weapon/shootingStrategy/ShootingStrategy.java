@@ -12,7 +12,7 @@ import utilis.Pair;
 public interface ShootingStrategy {
 
 	/**
-	 * @return a List<Pair<>> that rappresent the cells where the weapon can shoot.
+	 * @return a List<Pair<>> that represent the cells where the weapon can shoot.
 	 */
 	public List<Pair<Integer, Integer>> apply();
 

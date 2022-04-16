@@ -10,9 +10,9 @@ import logics.weapon.shootingStrategy.ShootingStrategy;
 public interface WeaponFactory {
 
 	/**
-	 * @param damage           : the damage that the weapon can deal.
-	 * @param shootingStrategy : the shooting strategy of the weapon.
-	 * @return a weapon with those statistic.
+	 * @param damage is the damage that the weapon can inflict
+	 * @param shootingStrategy is the shooting strategy of the weapon
+	 * @return a weapon
 	 */
 	public Weapon createWeapon(int damage, ShootingStrategy shootingStrategy);
 
