@@ -1,13 +1,13 @@
 package logics.weapon;
 
-import logics.weapon.shootingStrategy.ShootingStrategy;
+import logics.strategy.Strategy;
 
 public class WeaponFactoryImpl implements WeaponFactory {
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public Weapon createWeapon(int damage, ShootingStrategy shootingStrategy) {
+	public Weapon createWeapon(int damage, Strategy shootingStrategy) {
 		// TODO Auto-generated method stub
 		return null;
 	}

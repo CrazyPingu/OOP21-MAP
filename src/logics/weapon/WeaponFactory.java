@@ -1,6 +1,6 @@
 package logics.weapon;
 
-import logics.weapon.shootingStrategy.ShootingStrategy;
+import logics.strategy.Strategy;
 
 /**
  * 
@@ -14,6 +14,6 @@ public interface WeaponFactory {
 	 * @param shootingStrategy is the shooting strategy of the weapon
 	 * @return a weapon
 	 */
-	public Weapon createWeapon(int damage, ShootingStrategy shootingStrategy);
+	public Weapon createWeapon(int damage, Strategy shootingStrategy);
 
 }
