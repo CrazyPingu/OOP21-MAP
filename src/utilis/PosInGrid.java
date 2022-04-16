@@ -7,7 +7,7 @@ public class PosInGrid {
 
 	/**
 	 * 
-	 * @param pos  represent the position to check
+	 * @param pos  represents the position to check
 	 * @param size represents the grid size. First cordinate determinate the
 	 *             orizontal size (1 based) and second ones the vertical size.
 	 * @return true if the position is in the grid, false if it isn't
