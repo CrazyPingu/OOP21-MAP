@@ -21,5 +21,5 @@ public interface Movement {
 	 * 
 	 * @return the current number of action the entity can perform in a turn; 
 	 */
-	public int getAction(); 
+	public int getActionNumber(); 
 }
