@@ -9,6 +9,12 @@ import utilis.Pair;
 public class MovementFactoryImpl implements MovementFactory {
 
 	@Override
+	/**
+	 * @param actioNum represent the number of action the entity can perform in a
+	 *                 turn
+	 * @return a MovementImpl that contains a strategy that allow the entity to move
+	 *         in the cells around
+	 */
 	public MovementImpl stepMovement(int actioNum) {
 		return new MovementImpl(new aroundArea(), actioNum);
 	}
@@ -20,13 +26,11 @@ public class MovementFactoryImpl implements MovementFactory {
 			@Override
 			public List<Pair<Integer, Integer>> execute(Pair<Integer, Integer> pos, Pair<Integer, Integer> size) {
 
-				List<Pair<Integer, Integer>> availableCell = new ArrayList<Pair<Integer,Integer>>(); 
-				
-				
+				List<Pair<Integer, Integer>> availableCell = new ArrayList<Pair<Integer, Integer>>();
+
 				return null;
 			}
 		}, actioNum);
 	}
-	
 
 }
