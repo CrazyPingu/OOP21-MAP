@@ -7,12 +7,16 @@ public class PosInGrid {
 
 	/**
 	 * 
-	 * @param pos  represents the position to check
-	 * @param size represents the grid size. First cordinate determinate the
-	 *             orizontal size (1 based) and second ones the vertical size.
+	 * @param pos  represents the position to check (coordinate in 0 based sistem)
+	 * @param size represents the grid size. First coordinate determinates the
+	 *             horizontal number of cells (1 based) and second one the vertical
+	 *             number of cells.
 	 * @return true if the position is in the grid, false if it isn't
 	 */
 	public static final boolean checkPosInGrid(Pair<Integer, Integer> pos, Pair<Integer, Integer> size) {
-		return pos.getX() < size.getX() ? (pos.getY() < size.getY() ? true : false) : false;
+		if (pos.getX() < 0 || pos.getY() < 0 || pos.getX() >= size.getX() || pos.getY() >= size.getY()) {
+			return false;
+		}
+		return true;
 	}
 }
