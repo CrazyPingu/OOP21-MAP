@@ -24,5 +24,5 @@ public interface MovementFactory {
 	 * @return a MovementImpl that allow an entity to move in a "+" shape cells with
 	 *         a distance of 1 from his current position. 
 	 */
-	public MovementImpl jumpMovement(int actioNum);
+	public MovementImpl runMovement(int actioNum);
 }
