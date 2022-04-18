@@ -26,7 +26,6 @@ public class AsteriskArea implements Strategy {
 		this.distance = distance + VariableDistanceConstants.SINGLE_DISTANCE;
 	}
 	
-	@Override
 	/**
 	 * {inheritDoc}
 	 */
@@ -34,17 +33,16 @@ public class AsteriskArea implements Strategy {
 		List<Pair<Integer, Integer>> reachableCells = new ArrayList<Pair<Integer, Integer>>();		
 		AroundArea aroundArea = new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE);
 		List<Pair<Integer, Integer>> aroundAreaList = aroundArea.execute(pos, size);
-		
 		int counter=0;
 		
 		for (int i = pos.getX() - this.distance; i <= pos.getX() + this.distance; i++) {
 			for (int j = pos.getY() - this.distance; j <= pos.getY() + this.distance; j++) {
 				Pair<Integer, Integer> cellToAdd = new Pair<>(i, j);
-				counter++;
 				if (!aroundAreaList.contains(cellToAdd) && !pos.equals(cellToAdd)
 						&& PosInGrid.checkPosInGrid(cellToAdd, size) && counter%2==0) {
 						reachableCells.add(cellToAdd);
 				}
+				counter++;
 			}
 		}
 		
