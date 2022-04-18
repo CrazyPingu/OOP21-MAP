@@ -20,6 +20,10 @@ public interface WeaponFactory {
 	 */
 	public Weapon createDagger();
 	/**
+	 * @return a tube
+	 */
+	public Weapon createTube();
+	/**
 	 * @return a gun
 	 */
 	public Weapon createGun();
