@@ -22,6 +22,9 @@ public class AroundArea implements Strategy {
 	}
 
 	@Override
+	/**
+	 * {inheritDoc}
+	 */
 	public List<Pair<Integer, Integer>> execute(Pair<Integer, Integer> pos, Pair<Integer, Integer> size) {
 		List<Pair<Integer, Integer>> reachableCells = new ArrayList<Pair<Integer, Integer>>();
 		for (int i = pos.getX() - this.distance; i <= pos.getX() + this.distance; i++) {
