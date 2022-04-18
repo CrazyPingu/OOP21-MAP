@@ -2,6 +2,12 @@ package logics.weapon;
 
 import logics.strategy.concrete_strategies.*;
 
+/**
+ * 
+ * Factory with methods to create different types of weapons.
+ *
+ */
+
 public class WeaponFactoryImpl implements WeaponFactory {
 	
 	private static int STICK_DAMAGE = 1;

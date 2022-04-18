@@ -10,6 +10,11 @@ import logics.strategy.concrete_strategies.AsteriskArea;
 import logics.strategy.concrete_strategies.VariableDistanceConstants;
 import utilis.Pair;
 
+/**
+ * 
+ * Test of different cases of position choices with junit of an asterisk type selectable area.
+ *
+ */
 public class AsteriskAreaTest {
 	
 	private Pair<Integer, Integer> size, pos;
