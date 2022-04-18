@@ -71,4 +71,22 @@ public class AsteriskAreaTest {
 		
 		assertEquals(expectedResults, asteriskStrategy.execute(this.pos, this.size));
 	}
+	
+	@org.junit.Test
+	/**
+	 * test of grid's bottom left corner cell choice
+	 */
+	public void bottomLeftCornerTest() {
+		this.pos = new Pair<>(0,4);
+		
+		this.expectedResults.add(new Pair<>(0,2));
+		this.expectedResults.add(new Pair<>(2,2));
+		this.expectedResults.add(new Pair<>(2,4));
+		
+		this.expectedResults.add(new Pair<>(0,3));
+		this.expectedResults.add(new Pair<>(1,3));
+		this.expectedResults.add(new Pair<>(1,4));
+		
+		assertEquals(expectedResults, asteriskStrategy.execute(this.pos, this.size));
+	}
 }
