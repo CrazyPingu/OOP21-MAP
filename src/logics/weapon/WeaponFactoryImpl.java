@@ -28,14 +28,14 @@ public class WeaponFactoryImpl implements WeaponFactory {
 	 * {@inheritDoc}
 	 */
 	public Weapon createDagger() {
-		return new WeaponImpl(DAGGER_DAMAGE, new CrossArea());
+		return new WeaponImpl(DAGGER_DAMAGE, new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE));
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
 	public Weapon createTube() {
-		return new WeaponImpl(TUBE_DAMAGE, /*new AsteriskArea()*/);
+		return new WeaponImpl(TUBE_DAMAGE, new AsteriskArea(VariableDistanceConstants.SINGLE_DISTANCE));
 	}
 	
 	/**
