@@ -16,9 +16,14 @@ import utilis.PosInGrid;
 public class AsteriskArea implements Strategy {
 	
 	private int distance;
-
+	
+	/**
+	 * @param distance is how far from around area can reach
+	 * (if SINGLE_DISTANCE is required it will be considered starting from around area
+	 * that's why there's a sum with VariableDistanceConstants.SINGLE_DISTANCE)
+	 */
 	public AsteriskArea(int distance) {
-		this.distance = distance;
+		this.distance = distance + VariableDistanceConstants.SINGLE_DISTANCE;
 	}
 	
 	@Override
@@ -30,10 +35,14 @@ public class AsteriskArea implements Strategy {
 		AroundArea aroundArea = new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE);
 		List<Pair<Integer, Integer>> aroundAreaList = aroundArea.execute(pos, size);
 		
+		int counter=0;
+		
 		for (int i = pos.getX() - this.distance; i <= pos.getX() + this.distance; i++) {
 			for (int j = pos.getY() - this.distance; j <= pos.getY() + this.distance; j++) {
 				Pair<Integer, Integer> cellToAdd = new Pair<>(i, j);
-				if (!aroundAreaList.contains(cellToAdd) && !pos.equals(cellToAdd) && PosInGrid.checkPosInGrid(cellToAdd, size)) {
+				counter++;
+				if (!aroundAreaList.contains(cellToAdd) && !pos.equals(cellToAdd)
+						&& PosInGrid.checkPosInGrid(cellToAdd, size) && counter%2==0) {
 						reachableCells.add(cellToAdd);
 				}
 			}
