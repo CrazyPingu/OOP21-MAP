@@ -89,4 +89,22 @@ public class AsteriskAreaTest {
 		
 		assertEquals(expectedResults, asteriskStrategy.execute(this.pos, this.size));
 	}
+	
+	@org.junit.Test
+	/**
+	 * test of grid's upper left corner cell choice
+	 */
+	public void upperRightCornerTest() {
+		this.pos = new Pair<>(8,0);
+		
+		this.expectedResults.add(new Pair<>(6,0));
+		this.expectedResults.add(new Pair<>(6,2));
+		this.expectedResults.add(new Pair<>(8,2));
+		
+		this.expectedResults.add(new Pair<>(7,0));
+		this.expectedResults.add(new Pair<>(7,1));
+		this.expectedResults.add(new Pair<>(8,1));
+		
+		assertEquals(expectedResults, asteriskStrategy.execute(this.pos, this.size));
+	}
 }
