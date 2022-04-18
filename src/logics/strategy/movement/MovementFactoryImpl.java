@@ -13,7 +13,7 @@ public class MovementFactoryImpl implements MovementFactory {
 
 	@Override
 	public MovementImpl runMovement(int actioNum) {
-		return new MovementImpl(new CrossArea(), actioNum);
+		return new MovementImpl(new CrossArea(VariableDistanceConstants.DOUBLE_DISTANCE), actioNum);
 	}
 
 }

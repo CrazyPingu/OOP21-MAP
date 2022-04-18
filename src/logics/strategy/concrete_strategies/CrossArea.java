@@ -14,20 +14,26 @@ import utilis.PosInGrid;
  * 
  */
 public class CrossArea implements Strategy {
+	
+	private int distance;
+
+	public CrossArea(int distance) {
+		this.distance = distance;
+	}
 
 	@Override
 	public List<Pair<Integer, Integer>> execute(Pair<Integer, Integer> pos, Pair<Integer, Integer> size) {
 		List<Pair<Integer, Integer>> reachableCells = new ArrayList<Pair<Integer, Integer>>();
 		Pair<Integer, Integer> cellToAdd;
 
-		for (int i = pos.getX() - 2; i <= pos.getX() + 2; i++) {
+		for (int i = pos.getX() - this.distance; i <= pos.getX() + this.distance; i++) {
 			cellToAdd = new Pair<>(i, pos.getY());
 			if (!pos.equals(cellToAdd) && PosInGrid.checkPosInGrid(cellToAdd, size)) {
 				reachableCells.add(cellToAdd);
 			}
 		}
 
-		for (int i = pos.getY() - 2; i <= pos.getY() + 2; i++) {
+		for (int i = pos.getY() - this.distance; i <= pos.getY() + this.distance; i++) {
 			cellToAdd = new Pair<>(pos.getX(), i);
 			if (!pos.equals(cellToAdd) && PosInGrid.checkPosInGrid(cellToAdd, size)) {
 				reachableCells.add(cellToAdd);
