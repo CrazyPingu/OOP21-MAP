@@ -20,7 +20,7 @@ public class MovementTest {
 		this.movement = new MovementImpl(new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE), NUMBER_ACTION);
 		assertTrue(this.movement.getActionNumber() == NUMBER_ACTION);
 		
-		this.movement = new MovementImpl(new CrossArea(), NUMBER_ACTION);
+		this.movement = new MovementImpl(new CrossArea(VariableDistanceConstants.DOUBLE_DISTANCE), NUMBER_ACTION);
 		assertTrue(this.movement.getActionNumber() == NUMBER_ACTION);
 	}
 	
