@@ -11,7 +11,7 @@ public class CrossArea implements Strategy {
 
 	@Override
 	/**
-	 * Concrete strategy. Implements an algotithm that return the cross shape area
+	 * Concrete strategy. Implements an algorithm that returns the cross shape area
 	 * around the given coordinate.
 	 */
 	public List<Pair<Integer, Integer>> execute(Pair<Integer, Integer> pos, Pair<Integer, Integer> size) {

@@ -9,11 +9,11 @@ import utilis.PosInGrid;
 
 /**
  * 
- * Concrete strategy. Implements an algotithm that return the area around the
- * choosen position.
+ * Concrete strategy. Implements an algorithm that returns the area around the
+ * chosen position.
  *
  */
-public class aroundArea implements Strategy {
+public class AroundArea implements Strategy {
 
 	@Override
 	public List<Pair<Integer, Integer>> execute(Pair<Integer, Integer> pos, Pair<Integer, Integer> size) {
