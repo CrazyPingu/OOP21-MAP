@@ -7,13 +7,15 @@ import logics.strategy.Strategy;
 import utilis.Pair;
 import utilis.PosInGrid;
 
+/**
+ * 
+ * Concrete strategy. Implements an algorithm that returns a cross shaped area
+ * around the given coordinate.
+ * 
+ */
 public class CrossArea implements Strategy {
 
 	@Override
-	/**
-	 * Concrete strategy. Implements an algorithm that returns the cross shape area
-	 * around the given coordinate.
-	 */
 	public List<Pair<Integer, Integer>> execute(Pair<Integer, Integer> pos, Pair<Integer, Integer> size) {
 		List<Pair<Integer, Integer>> reachableCells = new ArrayList<Pair<Integer, Integer>>();
 		Pair<Integer, Integer> cellToAdd;
