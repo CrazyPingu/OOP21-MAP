@@ -2,8 +2,7 @@ package logics.weapon;
 
 import java.util.List;
 
-import logics.strategy.Strategy;
-import utilis.Pair;
+import logics.strategy.concrete_strategies.*;
 
 public class WeaponFactoryImpl implements WeaponFactory {
 	
@@ -16,60 +15,28 @@ public class WeaponFactoryImpl implements WeaponFactory {
 	 * {@inheritDoc}
 	 */
 	public Weapon createStick() {
-		Strategy stickStrategy = new Strategy() {
-			public List<Pair<Integer, Integer>> execute(Pair<Integer, Integer> pos, Pair<Integer, Integer> size) {
-				// TODO Auto-generated method stub
-				return null;
-			}		
-		};
-		
-		WeaponImpl stick = new WeaponImpl(STICK_DAMAGE, stickStrategy);		
-		return stick;
+		return new WeaponImpl(STICK_DAMAGE, new AroundArea());
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public Weapon createAx() {
-		Strategy axStrategy = new Strategy() {
-			public List<Pair<Integer, Integer>> execute(Pair<Integer, Integer> pos, Pair<Integer, Integer> size) {
-				// TODO Auto-generated method stub
-				return null;
-			}		
-		};
-		
-		WeaponImpl ax = new WeaponImpl(AX_DAMAGE, axStrategy);		
-		return ax;
+		return new WeaponImpl(AX_DAMAGE, new AroundArea());
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public Weapon createDagger() {
-		Strategy daggerStrategy = new Strategy() {
-			public List<Pair<Integer, Integer>> execute(Pair<Integer, Integer> pos, Pair<Integer, Integer> size) {
-				// TODO Auto-generated method stub
-				return null;
-			}		
-		};
-		
-		WeaponImpl dagger = new WeaponImpl(DAGGER_DAMAGE, daggerStrategy);		
-		return dagger;
+		return new WeaponImpl(DAGGER_DAMAGE, new CrossArea());
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
 	public Weapon createGun() {
-		Strategy gunStrategy = new Strategy() {
-			public List<Pair<Integer, Integer>> execute(Pair<Integer, Integer> pos, Pair<Integer, Integer> size) {
-				// TODO Auto-generated method stub
-				return null;
-			}		
-		};
-		
-		WeaponImpl gun = new WeaponImpl(GUN_DAMAGE, gunStrategy);		
-		return gun;
+		return new WeaponImpl(GUN_DAMAGE, new AroundArea());
 	}
 	
 }
