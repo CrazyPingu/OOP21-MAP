@@ -17,6 +17,9 @@ public class AroundArea implements Strategy {
 	
 	private int distance;
 
+	/**
+	 * @param distance is how far from around area can reach
+	 */
 	public AroundArea(int distance) {
 		this.distance = distance;
 	}

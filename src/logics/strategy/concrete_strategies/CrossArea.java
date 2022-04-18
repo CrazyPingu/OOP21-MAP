@@ -3,6 +3,8 @@ package logics.strategy.concrete_strategies;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.management.ConstructorParameters;
+
 import logics.strategy.Strategy;
 import utilis.Pair;
 import utilis.PosInGrid;
@@ -17,6 +19,9 @@ public class CrossArea implements Strategy {
 	
 	private int distance;
 
+	/**
+	 * @param distance is how far from around area can reach
+	 */
 	public CrossArea(int distance) {
 		this.distance = distance;
 	}
