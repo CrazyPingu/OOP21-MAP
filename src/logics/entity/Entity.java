@@ -1,9 +1,7 @@
 package logics.entity;
 
-import java.util.List;
-
+import logics.strategy.movement.Movement;
 import logics.weapon.Weapon;
-import utilis.Pair;
 
 /**
  * 
@@ -13,20 +11,15 @@ import utilis.Pair;
 public interface Entity {
 
 	/**
-	 * @return a List<Pair<>> that rappresent the cells where the entity can move.
+	 * @param healthValue value that will be added to the entity's current health.
 	 */
-	public List<Pair<Integer, Integer>> movingStrategy();
+	public void heal(int healValue);
 
 	/**
-	 * @param damageValue : value that will be decreased from the entity's current
+	 * @param damageValue value that will be decreased from the entity's current
 	 *                    health.
 	 */
-	public void takeDamage(int damageValue);
-
-	/**
-	 * @param healthValue : value that will be added to the entity's current health.
-	 */
-	public void takeHeal(int healValue);
+	public void damage(int damageValue);
 
 	/**
 	 * @return an Integer that rappresent the entity's current health.
@@ -34,9 +27,17 @@ public interface Entity {
 	public int getHealth();
 
 	/**
-	 * @return an Integer that rappresent the entity's maximum health.
+	 * 
+	 * @return the number of action that the entity can perform
 	 */
-	public int getMaxHealth();
+	public int getActionNumber(); 
+	
+	/**
+	 * 
+	 * @param actionNumber represent the new number of action that a entity can
+	 *                     perform in a turn
+	 */
+	public void setActionNumber(int actionNumber);
 
 	/**
 	 * @return the weapon that the entity is holding.
@@ -44,13 +45,19 @@ public interface Entity {
 	public Weapon getWeapon();
 
 	/**
-	 * @return an Integer that rappresent the number of actions that the entity can
-	 *         do in a turn.
+	 * @return a Movement that encapsulate number of anction and movement strategy
 	 */
-	public int getActionNumber();
+	public Movement getMovementSystem();
+
+	/**
+	 * 
+	 * @param movementSystem movement that will substitute the current one
+	 */
+	public void setMovementSystem(Movement movement);
 
 	/**
 	 * @return the name of the entity.
 	 */
 	public String getName();
+
 }
