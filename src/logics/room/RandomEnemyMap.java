@@ -1,6 +1,8 @@
 package logics.room;
 
 import java.util.HashMap;
+import java.util.Random;
+
 import logics.entity.EnemyFactoryImpl;
 import logics.entity.Entity;
 import utilis.Pair;
@@ -18,8 +20,8 @@ public class RandomEnemyMap extends HashMap<Pair<Integer, Integer>, Entity> {
 		for (int i = 0; i < cells.getX() * cells.getY() / spawningRatio; i++) {
 			do {
 				zombieSpawn = new Pair<Integer, Integer>(
-						((int) Math.random() * cells.getX() - forbiddenZombieSpawn) + forbiddenZombieSpawn,
-						((int) Math.random() * cells.getY()));
+						new Random().ints(forbiddenZombieSpawn, cells.getX()).findFirst().getAsInt(),
+						new Random().ints(0, cells.getY()).findFirst().getAsInt());
 			} while (!this.containsKey(zombieSpawn));
 			this.put(zombieSpawn, generateRandomEnemy());
 		}
