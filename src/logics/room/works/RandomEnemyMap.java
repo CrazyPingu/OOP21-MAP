@@ -6,7 +6,11 @@ import java.util.Random;
 import logics.entity.EnemyFactoryImpl;
 import logics.entity.Entity;
 import utilis.Pair;
-
+/**
+ * 
+ * Class that is a random generated map that contains entity associated with Pair
+ *
+ */
 public class RandomEnemyMap extends HashMap<Pair<Integer, Integer>, Entity> {
 
 	private static final long serialVersionUID = -1346040616337955961L;
@@ -15,6 +19,9 @@ public class RandomEnemyMap extends HashMap<Pair<Integer, Integer>, Entity> {
 	private final EnemyFactoryImpl enemyFactory = new EnemyFactoryImpl();
 	private final int possibleZombieNumber = enemyFactory.getClass().getDeclaredMethods().length;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public RandomEnemyMap(Pair<Integer, Integer> cells) {
 		Pair<Integer, Integer> zombieSpawn;
 		for (int i = 0; i < cells.getX() * cells.getY() / spawningRatio; i++) {
@@ -27,6 +34,10 @@ public class RandomEnemyMap extends HashMap<Pair<Integer, Integer>, Entity> {
 		}
 	}
 
+	/**
+	 * Function that call a random method of the enemyFactory
+	 * @return a random enemy
+	 */
 	private Entity generateRandomEnemy() {
 		int random = (int) Math.random() * possibleZombieNumber;
 		Entity generatedEnemy = null;
