@@ -1,7 +1,5 @@
 package logics.weapon;
 
-import logics.weapon.shootingStrategy.ShootingStrategy;
-
 /**
  * 
  * Interface that declares methods for the weapon factory.
@@ -10,10 +8,24 @@ import logics.weapon.shootingStrategy.ShootingStrategy;
 public interface WeaponFactory {
 
 	/**
-	 * @param damage           : the damage that the weapon can deal.
-	 * @param shootingStrategy : the shooting strategy of the weapon.
-	 * @return a weapon with those statistic.
+	 * @return a stick
 	 */
-	public Weapon createWeapon(int damage, ShootingStrategy shootingStrategy);
+	public Weapon createStick();
+	/**
+	 * @return a ax
+	 */
+	public Weapon createAx();
+	/**
+	 * @return a dagger
+	 */
+	public Weapon createDagger();
+	/**
+	 * @return a tube
+	 */
+	public Weapon createTube();
+	/**
+	 * @return a gun
+	 */
+	public Weapon createGun();
 
 }

@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import logics.strategy.Strategy;
 import logics.strategy.concrete_strategies.CrossArea;
-import logics.strategy.concrete_strategies.aroundArea;
+import logics.strategy.concrete_strategies.VariableDistanceConstants;
+import logics.strategy.concrete_strategies.AroundArea;
 import utilis.Pair;
 
 public class AroundAreaTest {
@@ -15,7 +16,7 @@ public class AroundAreaTest {
 	private final Pair<Integer, Integer> size = new Pair<>(7, 6);
 	private List<Pair<Integer, Integer>> expectedRes = new ArrayList<>();
 	private Pair<Integer, Integer> pos;
-	private Strategy strategy = new aroundArea();
+	private Strategy strategy = new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE);
 	
 	@Test
 	/*

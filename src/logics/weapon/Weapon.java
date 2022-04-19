@@ -1,12 +1,11 @@
 package logics.weapon;
 
-import java.util.List;
-
-import utilis.Pair;
+import logics.strategy.Strategy;
 
 /**
  * 
  * Interface that declares methods for the weapon.
+ * Represent the "Context" of Factory interface.
  *
  */
 public interface Weapon {
@@ -19,5 +18,5 @@ public interface Weapon {
 	/**
 	 * @return the shooting strategy applied.
 	 */
-	public List<Pair<Integer, Integer>> getShootingStrategy();
+	public Strategy getShootingStrategy();
 }

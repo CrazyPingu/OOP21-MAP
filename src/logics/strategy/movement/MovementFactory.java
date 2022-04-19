@@ -1,7 +1,7 @@
 package logics.strategy.movement;
 
-
 /**
+ * 
  * Interface that declares methods for the Movement Factory. Each method returns
  * a different type of movement.
  * 

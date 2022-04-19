@@ -1,20 +1,18 @@
 package test;
  
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import logics.strategy.Strategy;
 import logics.strategy.concrete_strategies.CrossArea;
+import logics.strategy.concrete_strategies.VariableDistanceConstants;
 import utilis.Pair;
 
 public class CrossAreaTest {
 	private final Pair<Integer, Integer> size = new Pair<>(7, 6);
 	private List<Pair<Integer, Integer>> expectedRes = new ArrayList<>();
 	private Pair<Integer, Integer> pos;
-	private Strategy strategy = new CrossArea();
+	private Strategy strategy = new CrossArea(VariableDistanceConstants.DOUBLE_DISTANCE);
 
 	@Test
 	/*
