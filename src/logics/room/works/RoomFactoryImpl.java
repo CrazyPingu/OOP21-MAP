@@ -1,8 +1,8 @@
 package logics.room.works;
 
 import java.util.Random;
-
 import logics.room.type.BigRoom;
+import logics.room.type.SmallRoom;
 import utilis.Constant;
 import utilis.Pair;
 
@@ -32,8 +32,7 @@ public class RoomFactoryImpl implements RoomFactory {
 	 * {@inheritDoc}
 	 */
 	public Room createSmallRoom() {
-		Pair<Integer, Integer> playerPos = new Pair<Integer, Integer>(1, minSize.getY() / 2);
-		return new RoomImpl(minSize, playerPos, new RandomEnemyMap(minSize));
+		return new SmallRoom(minSize);
 	}
 
 	/**
