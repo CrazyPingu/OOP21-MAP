@@ -2,6 +2,7 @@ package logics.room.works;
 
 import java.util.Random;
 import logics.room.type.BigRoom;
+import logics.room.type.RandomRoom;
 import logics.room.type.SmallRoom;
 import utilis.Constant;
 import utilis.Pair;
@@ -42,7 +43,6 @@ public class RoomFactoryImpl implements RoomFactory {
 		Pair<Integer, Integer> randomSize = new Pair<Integer, Integer>(
 				new Random().ints(minSize.getX(), maxSize.getX()).findFirst().getAsInt(),
 				new Random().ints(minSize.getY(), maxSize.getY()).findFirst().getAsInt());
-		Pair<Integer, Integer> playerPos = new Pair<Integer, Integer>(0, randomSize.getY() / 2);
-		return new RoomImpl(randomSize, playerPos, new RandomEnemyMap(randomSize));
+		return new RandomRoom(randomSize);
 	}
 }
