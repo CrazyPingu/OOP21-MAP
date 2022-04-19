@@ -2,6 +2,7 @@ package logics.room.works;
 
 import java.util.Random;
 
+import logics.room.type.BigRoom;
 import utilis.Constant;
 import utilis.Pair;
 
@@ -24,8 +25,7 @@ public class RoomFactoryImpl implements RoomFactory {
 	 * {@inheritDoc}
 	 */
 	public Room createBigRoom() {
-		Pair<Integer, Integer> playerPos = new Pair<Integer, Integer>(2, maxSize.getY() / 2);
-		return new RoomImpl(maxSize, playerPos, new RandomEnemyMap(maxSize));
+		return new BigRoom(maxSize);
 	}
 
 	/**

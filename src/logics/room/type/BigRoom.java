@@ -1,0 +1,13 @@
+package logics.room.type;
+
+import logics.room.works.RandomEnemyMap;
+import logics.room.works.RoomImpl;
+import utilis.Pair;
+
+public class BigRoom extends RoomImpl{
+
+	public BigRoom(Pair<Integer, Integer> size) {
+		super(size, new Pair<Integer, Integer>(2, size.getY() / 2), new RandomEnemyMap(size));
+	}
+
+}
