@@ -1,6 +1,5 @@
 package view.loadingScreen;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import utilis.Constant;
 import utilis.GbcDimension;
@@ -8,18 +7,19 @@ import utilis.ImageMethod;
 import utilis.ImageModifier;
 import view.frame.BasicFrame;
 import java.awt.*;
-import java.io.IOException;
 
 /**
  * 
  * JPanel that contain the loading screen
  *
  */
-public class LoadingScreenImpl extends JPanel implements LoadingScreen {
+public class LoadingScreenImpl extends JPanel implements LoadingScreen , Runnable{
 
 	private static final long serialVersionUID = 8291207301630291996L;
 	JProgressBar progressBar = new JProgressBar();
 	JLabel message = new JLabel("", SwingConstants.CENTER);
+	BasicFrame frame;
+	String guiCardLayout;
 
 	/**
 	 * {@inheritDoc}
@@ -37,7 +37,8 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	 * {@inheritDoc}
 	 */
 	public void addImage(String fileName) {
-		Image image = ImageModifier.scale( ImageMethod.getImage("loadingScreen/" + fileName), new Dimension(Constant.WIDTH / 2, Constant.HEIGHT / 2));
+		Image image = ImageModifier.scale(ImageMethod.getImage("loadingScreen/" + fileName),
+				new Dimension(Constant.WIDTH / 2, Constant.HEIGHT / 2));
 		add(new JLabel(new ImageIcon(image)), new GbcDimension(0, 0, 0, Constant.verticalAspectRatio(80)));
 	}
 
@@ -73,7 +74,16 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	 * {@inheritDoc}
 	 */
 	public void runningPBar(BasicFrame frame, String currentCardLayout, String guiCardLayout) {
+		this.frame = frame;
+		this.guiCardLayout = guiCardLayout;
 		frame.showInFrame(currentCardLayout);
+		new Thread(this).start();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void run() {
 		int i = 0;
 		while (i < 100) {
 			try {
