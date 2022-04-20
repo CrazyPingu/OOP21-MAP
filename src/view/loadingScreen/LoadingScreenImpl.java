@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import utilis.Constant;
 import utilis.GbcDimension;
+import utilis.ImageMethod;
 import utilis.ImageModifier;
 import view.frame.BasicFrame;
 import java.awt.*;
@@ -36,14 +37,8 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 	 * {@inheritDoc}
 	 */
 	public void addImage(String fileName) {
-		try {
-			Image image = ImageIO.read(getClass().getResource("/resources/loadingScreen/" + fileName));
-			ImageIcon imageScaled = new ImageIcon(
-					ImageModifier.scale(image, new Dimension(Constant.WIDTH / 2, Constant.HEIGHT / 2)));
-			add(new JLabel(imageScaled), new GbcDimension(0, 0, 0, Constant.verticalAspectRatio(80)));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Image image = ImageModifier.scale( ImageMethod.getImage("loadingScreen/" + fileName), new Dimension(Constant.WIDTH / 2, Constant.HEIGHT / 2));
+		add(new JLabel(new ImageIcon(image)), new GbcDimension(0, 0, 0, Constant.verticalAspectRatio(80)));
 	}
 
 	/**
