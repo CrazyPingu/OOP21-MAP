@@ -73,7 +73,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen , Runnabl
 	/**
 	 * {@inheritDoc}
 	 */
-	public void runningPBar(BasicFrame frame, String currentCardLayout, String guiCardLayout) {
+	public void startProgressBar(BasicFrame frame, String currentCardLayout, String guiCardLayout) {
 		this.frame = frame;
 		this.guiCardLayout = guiCardLayout;
 		frame.showInFrame(currentCardLayout);
