@@ -66,6 +66,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen , Runnabl
 	public void addMessage() {
 		message.setFont(Constant.genericFont("Arial", Font.BOLD, 70));
 		add(message, new GbcDimension(0, 3, 0, Constant.verticalAspectRatio(80)));
+		message.setForeground(Color.BLUE);
 	}
 
 	/**
@@ -96,7 +97,6 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen , Runnabl
 			try {
 				Thread.sleep(20);
 				this.progressBar.setValue(i);
-				this.message.setForeground(Color.BLUE);
 				this.message.setText("LOADING " + Integer.toString(i) + "%");
 				i++;
 			} catch (Exception e) {
