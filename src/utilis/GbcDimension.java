@@ -60,5 +60,25 @@ public class GbcDimension extends GridBagConstraints {
 		this.ipady = ipady;
 		this.insets = insets;
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public GbcDimension(int gridy, Insets insets) {
+		super();
+		this.gridy = gridy;
+		this.insets = insets;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public static Insets createInsets(int top, int left, int bottom, int right) {
+		top = Constant.verticalAspectRatio(top);
+		left = Constant.horizontalAspectRatio(left);
+		bottom = Constant.verticalAspectRatio(bottom);
+		right = Constant.horizontalAspectRatio(right);
+		return new Insets(top, left, bottom, right);
+	}
 
 }
