@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 public class BasicFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	static GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0];
+	static GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	CardLayout cardLayout;
 	JPanel panel;
 
