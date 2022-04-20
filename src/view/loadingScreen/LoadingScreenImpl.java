@@ -75,7 +75,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen , Runnabl
 		progressBar.setBackground(Color.BLACK);
 		progressBar.setForeground(Color.RED);
 		progressBar.setPreferredSize(new Dimension(Constant.WIDTH / 3, Constant.HEIGHT / 102));
-		add(progressBar, new GbcDimension(0, 2, 0, Constant.verticalAspectRatio(80)));
+		add(progressBar, new GbcDimension(0, 2, Constant.WIDTH / 3, Constant.verticalAspectRatio(80)));
 	}
 
 	/**
