@@ -15,7 +15,7 @@ public class ResumeAction implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        frame.showInFrame("Game");
 
     }
 

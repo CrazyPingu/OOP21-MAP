@@ -14,6 +14,6 @@ public class MainMenuAction implements ActionListener {
     }
     
     public void actionPerformed(ActionEvent e) {
-        frame.showInFrame("Main Menu");    
+        frame.showInFrame("MainMenu");    
     }
 }

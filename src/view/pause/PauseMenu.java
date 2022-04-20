@@ -7,11 +7,11 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import utilis.Constant;
+import utilis.GbcDimension;
 import utilis.ImageMethod;
 import utilis.ImageModifier;
 import view.frame.BasicFrame;
 import view.pause.action.MainMenuAction;
-import view.pause.action.NewGameAction;
 import view.pause.action.QuitAction;
 import view.pause.action.ResumeAction;
 
@@ -43,7 +43,11 @@ public class PauseMenu extends JPanel {
 //        this.add(pausetext, setButtonPosition(0, Constant.horizontalAspectRatio(70), Constant.verticalAspectRatio(30)));
 //        this.add(resume, setButtonPosition(1, Constant.horizontalAspectRatio(30), Constant.verticalAspectRatio(30)));
 //        this.add(mainmenu, setButtonPosition(3, Constant.horizontalAspectRatio(30), Constant.verticalAspectRatio(30)));
-//        this.add(quit, setButtonPosition(4, Constant.horizontalAspectRatio(30), Constant.verticalAspectRatio(30)));    
+//        this.add(quit, setButtonPosition(4, Constant.horizontalAspectRatio(30), Constant.verticalAspectRatio(30)));  
+        this.add(pausetext, new GbcDimension(0, GbcDimension.createInsets(70, 0, 30, 0));
+        this.add(resume, new GbcDimension(1, GbcDimension.createInsets(30, 0, 30, 0));
+        this.add(mainmenu, new GbcDimension(2, GbcDimension.createInsets(30, 0, 30, 0));
+        this.add(quit, new GbcDimension(3, GbcDimension.createInsets(30, 0, 30, 0));
         resume.addActionListener(new ResumeAction(frame));
         mainmenu.addActionListener(new MainMenuAction(frame));
         quit.addActionListener(new QuitAction());
