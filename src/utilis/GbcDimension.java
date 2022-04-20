@@ -2,34 +2,63 @@ package utilis;
 
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-
+/**
+ * 
+ * Class to simplify the usage of the GridBagConstraints, adding more constructor
+ *
+ */
 public class GbcDimension extends GridBagConstraints {
 
 	private static final long serialVersionUID = -6983927223360889689L;
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public GbcDimension(int gridx) {
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.gridx = gridx;
+		super();
+		this.gridx = gridx;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public GbcDimension(int gridx, int gridy) {
-		GridBagConstraints gbc = new GbcDimension(gridx);
-		gbc.gridy = gridy;
+		super();
+		this.gridx = gridx;
+		this.gridy = gridy;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public GbcDimension(int gridx, int gridy, int ipadx) {
-		GridBagConstraints gbc = new GbcDimension(gridx, gridy);
-		gbc.ipadx = ipadx;
+		super();
+		this.gridx = gridx;
+		this.gridy = gridy;
+		this.ipadx = ipadx;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public GbcDimension(int gridx, int gridy, int ipadx, int ipady) {
-		GridBagConstraints gbc = new GbcDimension(gridx, gridy, ipadx);
-		gbc.ipady = ipady;
+		super();
+		this.gridx = gridx;
+		this.gridy = gridy;
+		this.ipadx = ipadx;
+		this.ipady = ipady;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public GbcDimension(int gridx, int gridy, int ipadx, int ipady, Insets insets) {
-		GridBagConstraints gbc = new GbcDimension(gridx, gridy, ipadx, ipady);
-		gbc.insets = insets;
+		super();
+		this.gridx = gridx;
+		this.gridy = gridy;
+		this.ipadx = ipadx;
+		this.ipady = ipady;
+		this.insets = insets;
 	}
 
 }
