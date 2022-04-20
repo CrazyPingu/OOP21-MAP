@@ -8,12 +8,18 @@ import view.frame.BasicFrame;
 public class MainMenuAction implements ActionListener {
 
     private BasicFrame frame;
-
+    /**
+     * 
+     * {@inheritDoc}
+     */
     public MainMenuAction(BasicFrame frame){
         this.frame = frame;
     }
     
+    /**
+     * {@inheritDoc}
+     */
     public void actionPerformed(ActionEvent e) {
-        frame.showInFrame("Main Menu");    
+        frame.showInFrame("MainMenu");    
     }
 }

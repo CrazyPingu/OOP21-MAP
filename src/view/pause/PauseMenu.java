@@ -7,10 +7,11 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import utilis.Constant;
+import utilis.GbcDimension;
+import utilis.ImageMethod;
 import utilis.ImageModifier;
 import view.frame.BasicFrame;
 import view.pause.action.MainMenuAction;
-import view.pause.action.NewGameAction;
 import view.pause.action.QuitAction;
 import view.pause.action.ResumeAction;
 
@@ -31,29 +32,22 @@ public class PauseMenu extends JPanel {
      * @param frame : the frame passed in input, change the screen using buttons
      */
     public PauseMenu(BasicFrame frame) {
-        try {
-            image = ImageIO.read(getClass().getResource("/resources/pause/Background.jpg"));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    
+        image = ImageMethod.getImage("pause/Background.jpg");
         JButton resume = createJB("Resume");
-        JButton newgame = createJB("New Game");
         JButton mainmenu = createJB("Main Menu");
         JButton quit = createJB("Quit");
         JLabel pausetext = labeltext("Pause Menu");
 
         this.setLayout(new GridBagLayout());
-        this.add(pausetext, setButtonPosition(0, Constant.horizontalAspectRatio(70), Constant.verticalAspectRatio(30)));
-        this.add(resume, setButtonPosition(1, Constant.horizontalAspectRatio(30), Constant.verticalAspectRatio(30)));
-        this.add(newgame, setButtonPosition(2, Constant.horizontalAspectRatio(30), Constant.verticalAspectRatio(30)));
-        this.add(mainmenu, setButtonPosition(3, Constant.horizontalAspectRatio(30), Constant.verticalAspectRatio(30)));
-        this.add(quit, setButtonPosition(4, Constant.horizontalAspectRatio(30), Constant.verticalAspectRatio(30)));
+        this.add(pausetext, new GbcDimension(0, GbcDimension.createInsets(70, 0, 30, 0));
+        this.add(resume, new GbcDimension(1, GbcDimension.createInsets(30, 0, 30, 0));
+        this.add(mainmenu, new GbcDimension(2, GbcDimension.createInsets(30, 0, 30, 0));
+        this.add(quit, new GbcDimension(3, GbcDimension.createInsets(30, 0, 30, 0));
         resume.addActionListener(new ResumeAction(frame));
-        newgame.addActionListener(new NewGameAction(frame));
         mainmenu.addActionListener(new MainMenuAction(frame));
         quit.addActionListener(new QuitAction());
-
+        
     }
 
     /**
@@ -82,15 +76,6 @@ public class PauseMenu extends JPanel {
         pause.setPreferredSize(new Dimension(Constant.horizontalAspectRatio(500), Constant.verticalAspectRatio(100)));
         pause.setFont(Constant.genericFont("Arial", Font.PLAIN, Constant.horizontalAspectRatio(80)));
         return pause;
-    }
-        
-    private GridBagConstraints setButtonPosition(int gridy, int topPad, int botPad) {
-        GridBagConstraints a = new GridBagConstraints();
-        topPad = Constant.verticalAspectRatio(topPad);
-        botPad = Constant.verticalAspectRatio(botPad);
-        a.gridy = gridy;
-        a.insets = new Insets(topPad, 0, botPad, 0);
-        return a;
     }
 
     /**
