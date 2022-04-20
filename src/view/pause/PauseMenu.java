@@ -40,10 +40,6 @@ public class PauseMenu extends JPanel {
         JLabel pausetext = labeltext("Pause Menu");
 
         this.setLayout(new GridBagLayout());
-//        this.add(pausetext, setButtonPosition(0, Constant.horizontalAspectRatio(70), Constant.verticalAspectRatio(30)));
-//        this.add(resume, setButtonPosition(1, Constant.horizontalAspectRatio(30), Constant.verticalAspectRatio(30)));
-//        this.add(mainmenu, setButtonPosition(3, Constant.horizontalAspectRatio(30), Constant.verticalAspectRatio(30)));
-//        this.add(quit, setButtonPosition(4, Constant.horizontalAspectRatio(30), Constant.verticalAspectRatio(30)));  
         this.add(pausetext, new GbcDimension(0, GbcDimension.createInsets(70, 0, 30, 0));
         this.add(resume, new GbcDimension(1, GbcDimension.createInsets(30, 0, 30, 0));
         this.add(mainmenu, new GbcDimension(2, GbcDimension.createInsets(30, 0, 30, 0));
@@ -81,15 +77,6 @@ public class PauseMenu extends JPanel {
         pause.setFont(Constant.genericFont("Arial", Font.PLAIN, Constant.horizontalAspectRatio(80)));
         return pause;
     }
-//        
-//    private GridBagConstraints setButtonPosition(int gridy, int topPad, int botPad) {
-//        GridBagConstraints a = new GridBagConstraints();
-//        topPad = Constant.verticalAspectRatio(topPad);
-//        botPad = Constant.verticalAspectRatio(botPad);
-//        a.gridy = gridy;
-//        a.insets = new Insets(topPad, 0, botPad, 0);
-//        return a;
-//    }
 
     /**
      * {@inheritDoc}

@@ -10,10 +10,17 @@ public class ResumeAction implements ActionListener {
     
     BasicFrame frame;
     
+    /**
+     * 
+     * {@inheritDoc}
+     */
     public ResumeAction(BasicFrame frame) {
         this.frame = frame;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public void actionPerformed(ActionEvent e) {
         frame.showInFrame("Game");
 
