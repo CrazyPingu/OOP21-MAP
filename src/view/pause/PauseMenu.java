@@ -40,10 +40,10 @@ public class PauseMenu extends JPanel {
         JLabel pausetext = labeltext("Pause Menu");
 
         this.setLayout(new GridBagLayout());
-        this.add(pausetext, new GbcDimension(0, GbcDimension.createInsets(70, 0, 30, 0));
-        this.add(resume, new GbcDimension(1, GbcDimension.createInsets(30, 0, 30, 0));
-        this.add(mainmenu, new GbcDimension(2, GbcDimension.createInsets(30, 0, 30, 0));
-        this.add(quit, new GbcDimension(3, GbcDimension.createInsets(30, 0, 30, 0));
+        this.add(pausetext, new GbcDimension(0, GbcDimension.createInsets(70, 0, 30, 0)));
+        this.add(resume, new GbcDimension(1, GbcDimension.createInsets(30, 0, 30, 0)));
+        this.add(mainmenu, new GbcDimension(2, GbcDimension.createInsets(30, 0, 30, 0)));
+        this.add(quit, new GbcDimension(3, GbcDimension.createInsets(30, 0, 30, 0)));
         resume.addActionListener(new ResumeAction(frame));
         mainmenu.addActionListener(new MainMenuAction(frame));
         quit.addActionListener(new QuitAction());
