@@ -1,6 +1,9 @@
 package logics.room.works;
 
 import java.util.Map;
+
+import javax.swing.JButton;
+
 import logics.entity.Entity;
 import utilis.Pair;
 
@@ -13,6 +16,7 @@ public class RoomImpl implements Room {
 	private Pair<Integer, Integer> size;
 	private Pair<Integer, Integer> posPlayer;
 	private Map<Pair<Integer, Integer>, Entity> posEnemy;
+	private Map<Pair<Integer, Integer>, JButton> cells;
 
 	/**
 	 * @param size      : the size of the room.
@@ -52,6 +56,13 @@ public class RoomImpl implements Room {
 	 */
 	public void updatePosPlayer(Pair<Integer, Integer> newPosPlayer) {
 		this.posPlayer = newPosPlayer;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void addToCells(Pair<Integer, Integer> pos, JButton button) {
+		this.cells.put(pos, button);
 	}
 
 	/**

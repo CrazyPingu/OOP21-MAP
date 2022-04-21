@@ -1,6 +1,9 @@
 package logics.room.works;
 
 import java.util.Map;
+
+import javax.swing.JButton;
+
 import logics.entity.Entity;
 import utilis.Pair;
 
@@ -26,16 +29,21 @@ public interface Room {
 	 *         their type.
 	 */
 	public Map<Pair<Integer, Integer>, Entity> getPosEnemy();
-	
-	
+
+	/**
+	 * @param pos    : the position to add to the cells
+	 * @param button : the button correlated to the position
+	 */
+	public void addToCells(Pair<Integer, Integer> pos, JButton button);
+
 	/**
 	 * @param newPosPlayer the new player position
 	 */
 	public void updatePosPlayer(Pair<Integer, Integer> newPosPlayer);
-	
+
 	/**
 	 * @param currentPos : the current enemy's position
-	 * @param futurePos : the position that the enemy will have
+	 * @param futurePos  : the position that the enemy will have
 	 */
 	public void updatePosEnemy(Pair<Integer, Integer> currentPos, Pair<Integer, Integer> futurePos);
 }
