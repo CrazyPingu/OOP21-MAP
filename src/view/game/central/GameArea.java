@@ -1,5 +1,7 @@
 package view.game.central;
 
+import java.awt.GridLayout;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import logics.room.works.Room;
@@ -15,14 +17,15 @@ public class GameArea extends JPanel {
 		this.room = room;
 		this.size = room.getSize();
 		this.setOpaque(false);
-		placeCells(room.getSize(), room);
+		this.setLayout(new GridLayout(size.getX(), size.getY()));
+		placeCells();
 	}
 
-	private void placeCells(Pair<Integer, Integer> size, Room room) {
+	private void placeCells() {
 		for (int i = 0; i < size.getX(); i++) {
 			for (int j = 0; j < size.getY(); j++) {
-				JButton jb = new JButton();
-				room.addToCells(size, jb);
+				final JButton jb = new JButton(" ");
+				room.addToCells(new Pair<>(j, i), jb);
 				this.add(jb);
 			}
 		}
