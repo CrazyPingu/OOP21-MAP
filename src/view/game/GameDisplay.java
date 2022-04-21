@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JPanel;
 
+import logics.room.works.Room;
+
 /**
  * 
  * JPanel that will contain the top area of the game (with the stats, the log
@@ -17,10 +19,10 @@ public class GameDisplay extends JPanel {
 	/**
 	 * {@inheritDoc}
 	 */
-	public GameDisplay() {
+	public GameDisplay(Room room) {
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.black);
-		TopPanel top = new TopPanel();
+		TopPanel top = new TopPanel(room);
 		top.setOpaque(false);
 		JPanel action = new JPanel();
 		action.setOpaque(false);

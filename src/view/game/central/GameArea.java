@@ -1,9 +1,19 @@
 package view.game.central;
 
-public class GameArea {
+import javax.swing.JPanel;
+import logics.room.works.Room;
+import utilis.Pair;
 
-	public GameArea() {
-		// TODO Auto-generated constructor stub
+public class GameArea extends JPanel{
+
+	private static final long serialVersionUID = 2941617427011748438L;
+
+	public GameArea(Room room) {
+		placeCells(room.getSize());
+	}
+
+	private void placeCells(Pair<Integer, Integer> size) {
+		
 	}
 
 }
