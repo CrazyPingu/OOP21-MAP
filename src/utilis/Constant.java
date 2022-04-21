@@ -14,8 +14,8 @@ public class Constant {
 	public static final int HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 	public static final int TOP_HEIGHT = 3 * HEIGHT / 4;
 	public static final int ACTION_HEIGHT = HEIGHT / 4;
-	public static final int GAME_WIDTH = 11 * HEIGHT / 17;
-	public static final int LABEL_WIDTH = 3 * HEIGHT / 17;
+	public static final int GAME_WIDTH = 11 * WIDTH / 17;
+	public static final int LABEL_WIDTH = 3 * WIDTH / 17;
 	
 	
 	/**
