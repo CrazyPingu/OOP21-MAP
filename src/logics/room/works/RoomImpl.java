@@ -15,7 +15,7 @@ public class RoomImpl implements Room {
 	private Pair<Integer, Integer> size;
 	private Pair<Integer, Integer> posPlayer;
 	private Map<Pair<Integer, Integer>, Entity> posEnemy;
-	private Map<Pair<Integer, Integer>, JButton> cells;
+	private Map<JButton ,Pair<Integer, Integer>> cells;
 
 	/**
 	 * @param size      : the size of the room.
@@ -62,7 +62,7 @@ public class RoomImpl implements Room {
 	 * {@inheritDoc}
 	 */
 	public void addToCells(Pair<Integer, Integer> pos, JButton button) {
-		this.cells.put(pos, button);
+		this.cells.put(button, pos);
 	}
 
 	/**
