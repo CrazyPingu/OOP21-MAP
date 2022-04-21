@@ -20,7 +20,7 @@ public class GameDisplay extends JPanel {
 	public GameDisplay() {
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.black);
-		JPanel top = new JPanel();
+		TopPanel top = new TopPanel();
 		top.setOpaque(false);
 		JPanel action = new JPanel();
 		action.setOpaque(false);
