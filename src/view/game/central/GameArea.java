@@ -8,8 +8,13 @@ import utilis.Pair;
 public class GameArea extends JPanel {
 
 	private static final long serialVersionUID = 2941617427011748438L;
+	private Room room;
+	private Pair<Integer, Integer> size;
 
 	public GameArea(Room room) {
+		this.room = room;
+		this.size = room.getSize();
+		this.setOpaque(false);
 		placeCells(room.getSize(), room);
 	}
 

@@ -2,11 +2,10 @@ package view.game;
 
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
-
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import logics.entity.Player;
 import logics.room.works.Room;
 import utilis.Constant;
 import utilis.GbcDimension;
