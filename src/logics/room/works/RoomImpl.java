@@ -1,9 +1,8 @@
 package logics.room.works;
 
+import java.util.HashMap;
 import java.util.Map;
-
 import javax.swing.JButton;
-
 import logics.entity.Entity;
 import utilis.Pair;
 
@@ -28,6 +27,7 @@ public class RoomImpl implements Room {
 		this.size = size;
 		this.posPlayer = posPlayer;
 		this.posEnemy = posEnemy;
+		this.cells = new HashMap<>();
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class RoomImpl implements Room {
 	public void updatePosPlayer(Pair<Integer, Integer> newPosPlayer) {
 		this.posPlayer = newPosPlayer;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
