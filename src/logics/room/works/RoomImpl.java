@@ -3,6 +3,7 @@ package logics.room.works;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JButton;
+import logics.artefact.Artefact;
 import logics.entity.Entity;
 import utilis.Pair;
 
@@ -15,19 +16,23 @@ public class RoomImpl implements Room {
 	private Pair<Integer, Integer> size;
 	private Pair<Integer, Integer> posPlayer;
 	private Map<Pair<Integer, Integer>, Entity> posEnemy;
-	private Map<JButton ,Pair<Integer, Integer>> cells;
+	private Map<JButton, Pair<Integer, Integer>> cells;
+	private Map<Pair<Integer, Integer>, Artefact> spawnItems;
 
 	/**
-	 * @param size      : the size of the room.
-	 * @param posPlayer : the position of the player inside the room.
-	 * @param posEnemy  : the position of the enemy inside the room and their type.
+	 * 
+	 * @param size       the size of the room.
+	 * @param posPlayer  the position of the player inside the room.
+	 * @param posEnemy   the position of the enemy inside the room and their type.
+	 * @param spawnItems the map that contains all the items to spawn.
 	 */
 	public RoomImpl(Pair<Integer, Integer> size, Pair<Integer, Integer> posPlayer,
-			Map<Pair<Integer, Integer>, Entity> posEnemy) {
+			Map<Pair<Integer, Integer>, Entity> posEnemy, Map<Artefact, Pair<Integer, Integer>> spawnItems) {
 		this.size = size;
 		this.posPlayer = posPlayer;
 		this.posEnemy = posEnemy;
 		this.cells = new HashMap<>();
+		this.spawnItems = spawnItems;
 	}
 
 	/**
@@ -72,4 +77,9 @@ public class RoomImpl implements Room {
 		posEnemy.put(futurePos, posEnemy.get(currentPos));
 		posEnemy.remove(currentPos);
 	}
+
+	public void removeItem(Pair<Integer, Integer> pos) {
+		spawnItems.remove(pos);
+	}
+
 }
