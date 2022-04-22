@@ -85,4 +85,20 @@ public class RoomImpl implements Room {
 		spawnItems.remove(pos);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	public Map<Pair<Integer, Integer>, GameButton> getCells() {
+		return cells;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public Map<Pair<Integer, Integer>, Artefact> getSpawnItems() {
+		return spawnItems;
+	}
+	
+	
+
 }

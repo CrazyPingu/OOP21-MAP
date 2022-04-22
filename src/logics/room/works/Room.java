@@ -1,6 +1,8 @@
 package logics.room.works;
 
 import java.util.Map;
+
+import logics.artefact.Artefact;
 import logics.entity.Entity;
 import utilis.Pair;
 import view.game.central.GameButton;
@@ -49,4 +51,14 @@ public interface Room {
 	 * @param pos the position of the item to remove
 	 */
 	public void removeItem(Pair<Integer, Integer> pos);
+	
+	/**
+	 * @return the cells
+	 */
+	public Map<Pair<Integer, Integer>, GameButton> getCells();
+	
+	/**
+	 * @return the spawned items
+	 */
+	public Map<Pair<Integer, Integer>, Artefact> getSpawnItems();
 }
