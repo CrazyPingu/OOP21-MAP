@@ -31,8 +31,8 @@ public interface Room {
 	public Map<Pair<Integer, Integer>, Entity> getPosEnemy();
 
 	/**
-	 * @param pos    : the position to add to the cells
-	 * @param button : the button correlated to the position
+	 * @param pos    the position to add to the cells
+	 * @param button the button correlated to the position
 	 */
 	public void addToCells(Pair<Integer, Integer> pos, JButton button);
 
@@ -42,8 +42,13 @@ public interface Room {
 	public void updatePosPlayer(Pair<Integer, Integer> newPosPlayer);
 
 	/**
-	 * @param currentPos : the current enemy's position
-	 * @param futurePos  : the position that the enemy will have
+	 * @param currentPos the current enemy's position
+	 * @param futurePos  the position that the enemy will have
 	 */
 	public void updatePosEnemy(Pair<Integer, Integer> currentPos, Pair<Integer, Integer> futurePos);
+
+	/**
+	 * @param pos the position of the item to remove
+	 */
+	public void removeItem(Pair<Integer, Integer> pos);
 }

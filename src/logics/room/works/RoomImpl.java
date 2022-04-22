@@ -27,7 +27,7 @@ public class RoomImpl implements Room {
 	 * @param spawnItems the map that contains all the items to spawn.
 	 */
 	public RoomImpl(Pair<Integer, Integer> size, Pair<Integer, Integer> posPlayer,
-			Map<Pair<Integer, Integer>, Entity> posEnemy, Map<Artefact, Pair<Integer, Integer>> spawnItems) {
+			Map<Pair<Integer, Integer>, Entity> posEnemy, Map<Pair<Integer, Integer>, Artefact> spawnItems) {
 		this.size = size;
 		this.posPlayer = posPlayer;
 		this.posEnemy = posEnemy;
@@ -78,6 +78,9 @@ public class RoomImpl implements Room {
 		posEnemy.remove(currentPos);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public void removeItem(Pair<Integer, Integer> pos) {
 		spawnItems.remove(pos);
 	}
