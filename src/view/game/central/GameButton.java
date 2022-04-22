@@ -21,6 +21,7 @@ public class GameButton extends JButton implements ActionListener {
 	public GameButton(String text) {
 		super(text);
 		sprite = new JLabel("");
+		this.add(sprite);
 	}
 
 	protected void paintComponent(Graphics g) {
@@ -41,6 +42,10 @@ public class GameButton extends JButton implements ActionListener {
 	
 	public JLabel getSprite() {
 		return sprite;
+	}
+	
+	public void setSprite(JLabel label) {
+		this.sprite = label;
 	}
 
 }

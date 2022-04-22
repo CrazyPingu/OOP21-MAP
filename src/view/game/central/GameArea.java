@@ -1,6 +1,7 @@
 package view.game.central;
 
 import java.awt.GridLayout;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import logics.room.works.Room;
 import utilis.Pair;
@@ -27,6 +28,10 @@ public class GameArea extends JPanel {
 				this.add(jb);
 			}
 		}
+	}
+	
+	public void clearButton() {
+		room.getCells().entrySet().forEach(x -> x.getValue().setSprite(new JLabel("")));
 	}
 
 }
