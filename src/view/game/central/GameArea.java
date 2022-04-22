@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import logics.room.works.Room;
+import utilis.ImageMethod;
 import utilis.Pair;
 
 /**
@@ -39,10 +40,20 @@ public class GameArea extends JPanel {
 	}
 
 	/**
-	 * Method to remove all the objects from the room
+	 * Method to remove the objects at given position
+	 * @param pos the position of the object
 	 */
-	public void clearButton() {
-		room.getCells().entrySet().forEach(x -> x.getValue().setSprite(new JLabel("")));
+	private void clearGameObject(Pair<Integer, Integer> pos) {
+		room.getCells().get(pos).setSprite(new JLabel(""));
 	}
 
+	/**
+	 * Method to change the player position
+	 * @param oldPos the old position of the player
+	 * @param newPos the new position of the player
+	 */
+	private void movePlayer(Pair<Integer, Integer> oldPos, Pair<Integer, Integer> newPos) {
+		clearGameObject(oldPos);
+		room.getCells().get(newPos).setSprite(new JLabel(ImageMethod.getImageIcon("player/player.png")));
+	}
 }

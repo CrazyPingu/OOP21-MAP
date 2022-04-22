@@ -19,12 +19,15 @@ import utilis.ImageMethod;
 public class GameButton extends JButton implements ActionListener {
 
 	private static final long serialVersionUID = 1384166202851332499L;
-	Graphics2D g2;
+	private Graphics2D g2;
 	private JLabel sprite;
+	private JLabel strategyLabel;
 	
 	public GameButton() {
 		sprite = new JLabel("");
-		this.add(sprite);
+		strategyLabel = new JLabel("");
+		this.add(strategyLabel);
+		strategyLabel.add(sprite);
 	}
 
 	/**
