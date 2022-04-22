@@ -32,7 +32,7 @@ public class GameArea extends JPanel {
 	private void placeCells() {
 		for (int i = 0; i < size.getX(); i++) {
 			for (int j = 0; j < size.getY(); j++) {
-				final GameButton jb = new GameButton();
+				final GameButton jb = new GameButton(this);
 				room.addToCells(new Pair<>(j, i), jb);
 				this.add(jb);
 			}
@@ -41,6 +41,7 @@ public class GameArea extends JPanel {
 
 	/**
 	 * Method to remove the objects at given position
+	 * 
 	 * @param pos the position of the object
 	 */
 	private void clearGameObject(Pair<Integer, Integer> pos) {
@@ -49,6 +50,7 @@ public class GameArea extends JPanel {
 
 	/**
 	 * Method to change the player position
+	 * 
 	 * @param oldPos the old position of the player
 	 * @param newPos the new position of the player
 	 */

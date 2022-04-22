@@ -5,12 +5,15 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import utilis.ImageMethod;
+import utilis.Pair;
+
 /**
  * 
  * Class to manage the single button of the GameArea
@@ -20,10 +23,12 @@ public class GameButton extends JButton implements ActionListener {
 
 	private static final long serialVersionUID = 1384166202851332499L;
 	private Graphics2D g2;
+	private GameArea gameArea;
 	private JLabel sprite;
 	private JLabel strategyLabel;
-	
-	public GameButton() {
+
+	public GameButton(GameArea gameArea) {
+		this.gameArea = gameArea;
 		sprite = new JLabel("");
 		strategyLabel = new JLabel("");
 		this.add(strategyLabel);
@@ -39,7 +44,7 @@ public class GameButton extends JButton implements ActionListener {
 				(int) getSize().getHeight(), null);
 
 	}
-	
+
 	/**
 	 * @param object paints the image of the object
 	 */
@@ -47,10 +52,8 @@ public class GameButton extends JButton implements ActionListener {
 		sprite = new JLabel(ImageMethod.getImageIcon(object.getImagePath()));
 	}
 
-	
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-
 	}
 
 	/**
@@ -59,7 +62,7 @@ public class GameButton extends JButton implements ActionListener {
 	public JLabel getSprite() {
 		return sprite;
 	}
-	
+
 	/**
 	 * @param label change the label sprite
 	 */
