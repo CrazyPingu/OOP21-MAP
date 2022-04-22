@@ -31,7 +31,7 @@ public class TotalPanel extends JPanel {
 		fixSize(Constant.LABEL_WIDTH, Constant.TOP_HEIGHT, stats);
 		this.add(stats, new GbcDimension(2));
 
-		Action action = new Action();
+		ActionMenu action = new ActionMenu();
 		fixSize(Constant.WIDTH, Constant.ACTION_HEIGHT, action);
 		GbcDimension gbc = new GbcDimension(0, 1);
 		gbc.gridwidth = 3;
@@ -40,7 +40,7 @@ public class TotalPanel extends JPanel {
 
 	private void fixSize(int width, int height, Object o) {
 		if (contains(o, "ScrollableLog") || contains(o, "ScrollableStats") || contains(o, "GameArea")
-				|| contains(o, "Action")) {
+				|| contains(o, "ActionMenu")) {
 			((JComponent) o).setPreferredSize(new Dimension(width, height));
 			((JComponent) o).setMinimumSize(new Dimension(width, height));
 			((JComponent) o).setMaximumSize(new Dimension(width, height));
