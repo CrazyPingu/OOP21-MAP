@@ -30,9 +30,4 @@ public class ImageModifier {
 		return img.getScaledInstance(Constant.WIDTH, Constant.HEIGHT, Image.SCALE_DEFAULT);
 	}
 
-	// given an image and the size of the button / label it will fill the
-	public static final Image scaleStretch(Image img, Dimension dim) {
-		return img.getScaledInstance((int) dim.getHeight(), (int) dim.getWidth(), Image.SCALE_DEFAULT);
-	}
-
 }
