@@ -3,6 +3,7 @@ package logics.room.works;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import logics.artefact.Artefact;
 import logics.entity.Entity;
 import utilis.Pair;
@@ -16,7 +17,7 @@ public class RoomImpl implements Room {
 	private Pair<Integer, Integer> size;
 	private Pair<Integer, Integer> posPlayer;
 	private Map<Pair<Integer, Integer>, Entity> posEnemy;
-	private Map<JButton, Pair<Integer, Integer>> cells;
+	private Map<Pair<Integer, Integer>, Pair<JButton, JLabel>> cells;
 	private Map<Pair<Integer, Integer>, Artefact> spawnItems;
 
 	/**
@@ -66,8 +67,8 @@ public class RoomImpl implements Room {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void addToCells(Pair<Integer, Integer> pos, JButton button) {
-		this.cells.put(button, pos);
+	public void addToCells(Pair<Integer, Integer> pos, JButton button, JLabel label) {
+		this.cells.put(pos, new Pair<>(button, label));
 	}
 
 	/**

@@ -3,6 +3,7 @@ package logics.room.works;
 import java.util.Map;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 import logics.entity.Entity;
 import utilis.Pair;
@@ -33,8 +34,9 @@ public interface Room {
 	/**
 	 * @param pos    the position to add to the cells
 	 * @param button the button correlated to the position
+	 * @param label  the label that correspond to the button
 	 */
-	public void addToCells(Pair<Integer, Integer> pos, JButton button);
+	public void addToCells(Pair<Integer, Integer> pos, JButton button, JLabel label);
 
 	/**
 	 * @param newPosPlayer the new player position
