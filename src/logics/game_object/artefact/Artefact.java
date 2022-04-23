@@ -15,13 +15,23 @@ public abstract class Artefact implements GameObject {
 	private String name; 
 	private String texturePath; 
 	
-	
+	/**
+	 * 
+	 * @param pos represent the position of the artefact in the game grid 
+	 * @param name is the artefact name 
+	 * @param texturePath is the path were is possibnle to find the texture for the artefact
+	 */
 	public Artefact(Pair<Integer, Integer> pos, String name, String texturePath ) {
 		this.pos = pos;
 		this.name = name;
 		this.texturePath = texturePath; 
 	}
 
+
+	/**
+	 * 
+	 * @return the current position of the object
+	 */
 	public Pair<Integer, Integer> getPos(){
 		return this.pos; 
 	}
