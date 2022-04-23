@@ -1,9 +1,8 @@
-package logics.entity;
+package logics.game_object.entity;
 
 import java.util.ArrayList;
 import java.util.List;
 import logics.weapon.Weapon;
-import logics.artefact.Artefact;
 import logics.life.AdvancedLife;
 import logics.life.BasicLife;
 import logics.strategy.movement.Movement;
@@ -14,7 +13,6 @@ import logics.strategy.movement.Movement;
  *
  */
 public class Player extends EntityImpl {
-	private List<Artefact> artefact;
 	private int additionalDamage;
 
 	/**
@@ -26,7 +24,7 @@ public class Player extends EntityImpl {
 	 */
 	public Player(AdvancedLife health, Weapon weapon, Movement movement,  int actionNumber, String name) {
 		super(health, weapon, movement, actionNumber, name); 
-		this.artefact = new ArrayList<>();
+
 		this.additionalDamage = 0;
 	}
 

@@ -1,4 +1,4 @@
-package logics.entity;
+package logics.game_object.entity;
 
 import logics.life.BasicLife;
 import logics.strategy.movement.Movement;
