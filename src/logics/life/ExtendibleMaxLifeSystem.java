@@ -39,8 +39,8 @@ public class ExtendibleMaxLifeSystem implements LifeSystem, HealSystem {
 	 * @return the current maximum amounth of health the sistem can reach using the
 	 *         heal method
 	 */
-	public int getCurrentmaxHealth() {
-		return this.life.getMaxHealth();
+	public int getMaxHealthReachable() {
+		return this.maxHealthExtension;
 	}
 
 	@Override
