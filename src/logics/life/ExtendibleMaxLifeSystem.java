@@ -26,7 +26,7 @@ public class ExtendibleMaxLifeSystem implements LifeSystem, HealSystem {
 	 *                         than maxHealthExtension value that is specified in
 	 *                         the constructor
 	 */
-	public void setMaxLife(int lifeExtension) {
+	public void setMaxHealth(int lifeExtension) {
 		if (lifeExtension > 0 && (lifeExtension <= this.maxHealthReachable)) {
 			int newStartingLifeValue = this.life.getCurrentHealth() <= lifeExtension ? this.life.getCurrentHealth()
 					: lifeExtension;
