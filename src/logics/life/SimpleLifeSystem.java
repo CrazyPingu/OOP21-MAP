@@ -7,12 +7,14 @@ package logics.life;
  */
 public class SimpleLifeSystem implements LifeSystem {
 
-	private int health; 
-	
+	private int health;
+	private boolean isDead;
+
 	public SimpleLifeSystem(int health) {
-		this.health = health; 
+		this.health = health;
+		this.isDead = health > 0 ? false : true;
 	}
-	
+
 	@Override
 	public int getCurrentHealth() {
 		return this.health;
@@ -20,12 +22,15 @@ public class SimpleLifeSystem implements LifeSystem {
 
 	@Override
 	public void damage(int damageValue) {
-		this.health = (this.health - damageValue) < 0 ? 0 : this.health - damageValue;
+		if (damageValue > 0) {
+			this.health = (this.health - damageValue) < 0 ? 0 : this.health - damageValue;
+			this.isDead = !(this.health > 0);
+		}
 	}
 
 	@Override
 	public Boolean isDead() {
-		return !(this.health > 0);
+		return this.isDead;
 	}
 
 }
