@@ -3,20 +3,20 @@ package logics.life;
 public class ExtendibleMaxLifeSystem implements LifeSystem, HealSystem {
 
 	private HealLifeSystem life;
-	private int maxHealthExtension;
+	private int maxHealthReachable;
 
 	/**
 	 * 
 	 * @param startingLife       is the amount of health the system start with
 	 * @param maxHealth          the maximum amount of health that can be reached
 	 *                           using heal method
-	 * @param maxHealthExtension represent the maximum extension value for the
+	 * @param maxHealthReachable represent the maximum extension value for the
 	 *                           health
 	 */
-	public ExtendibleMaxLifeSystem(int startingLife, int maxHealth, int maxHealthExtension) {
-		maxHealth = maxHealth <= maxHealthExtension ? maxHealth : maxHealthExtension;
+	public ExtendibleMaxLifeSystem(int startingLife, int maxHealth, int maxHealthReachable) {
+		maxHealth = maxHealth <= maxHealthReachable ? maxHealth : maxHealthReachable;
 		this.life = new HealLifeSystem(startingLife, maxHealth);
-		this.maxHealthExtension = maxHealthExtension;
+		this.maxHealthReachable = maxHealthReachable;
 	}
 
 	/**
@@ -27,7 +27,7 @@ public class ExtendibleMaxLifeSystem implements LifeSystem, HealSystem {
 	 *                         the constructor
 	 */
 	public void extendMaxLife(int lifeExtension) {
-		if (lifeExtension > 0 && (lifeExtension <= this.maxHealthExtension)) {
+		if (lifeExtension > 0 && (lifeExtension <= this.maxHealthReachable)) {
 			int newStartingLifeValue = this.life.getCurrentHealth() <= lifeExtension ? this.life.getCurrentHealth()
 					: lifeExtension;
 			this.life = new HealLifeSystem(newStartingLifeValue, lifeExtension);
@@ -40,7 +40,7 @@ public class ExtendibleMaxLifeSystem implements LifeSystem, HealSystem {
 	 *         heal method
 	 */
 	public int getMaxHealthReachable() {
-		return this.maxHealthExtension;
+		return this.maxHealthReachable;
 	}
 
 	@Override
