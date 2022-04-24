@@ -19,6 +19,11 @@ public class HealLifeSystemTest {
 		HealLifeSystem life = new HealLifeSystem(this.HEALTH, this.MAX_HEALTH);
 		assertTrue(life.getCurrentHealth() == this.HEALTH);
 		assertTrue(life.getMaxHealth() == this.MAX_HEALTH);
+		
+		//test than the LifeSystem can't be created with a starting life value greater tha maxHealth value
+		life = new HealLifeSystem(this.MAX_HEALTH + 1, this.MAX_HEALTH);
+		assertTrue(life.getMaxHealth() == this.MAX_HEALTH);
+		
 	}
 
 	@Test
