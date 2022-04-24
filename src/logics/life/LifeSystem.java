@@ -6,22 +6,23 @@ package logics.life;
  *
  */
 public interface LifeSystem {
-	
+
 	/**
 	 * 
 	 * @return the current health
 	 */
-	public int getCurrentHealth(); 
-	
+	public int getCurrentHealth();
+
 	/**
 	 * 
-	 * @param damageValue represent the value to decrese from the current health 
+	 * @param damageValue represent the value to decrese from the current health.
+	 *                    Don't work with negative values
 	 */
-	public void damage(int damageValue); 
-	
+	public void damage(int damageValue);
+
 	/**
 	 * 
-	 * @return the life state of the entity (True = DEAD, FALSE = IN LIFE) 
+	 * @return the life state of the entity (True = DEAD, FALSE = IN LIFE)
 	 */
-	public Boolean isDead(); 
+	public Boolean isDead();
 }
