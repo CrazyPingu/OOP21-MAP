@@ -14,6 +14,7 @@ public class ExtendibleMaxLifeSystem implements LifeSystem, HealSystem {
 	 *                           health
 	 */
 	public ExtendibleMaxLifeSystem(int startingLife, int maxHealth, int maxHealthExtension) {
+		maxHealth = maxHealth <= maxHealthExtension ? maxHealth : maxHealthExtension;
 		this.life = new HealLifeSystem(startingLife, maxHealth);
 		this.maxHealthExtension = maxHealthExtension;
 	}
@@ -21,7 +22,9 @@ public class ExtendibleMaxLifeSystem implements LifeSystem, HealSystem {
 	/**
 	 * 
 	 * @param maxLifeExtension represent the new maximum amount of health the system
-	 *                         can reach
+	 *                         can reach. It has to be greater than zero and less
+	 *                         than maxHealthExtension value that is specified in
+	 *                         the constructor
 	 */
 	public void extendMaxLife(int lifeExtension) {
 		if (lifeExtension > 0 && (lifeExtension <= this.maxHealthExtension)) {
@@ -30,13 +33,14 @@ public class ExtendibleMaxLifeSystem implements LifeSystem, HealSystem {
 			this.life = new HealLifeSystem(newStartingLifeValue, lifeExtension);
 		}
 	}
-	
+
 	/**
 	 * 
-	 * @return the current maximum amounth of health the sistem can reach using the heal method
+	 * @return the current maximum amounth of health the sistem can reach using the
+	 *         heal method
 	 */
-	public int getCurrentmaxHealth() { 
-		return this.life.getMaxHealth(); 
+	public int getCurrentmaxHealth() {
+		return this.life.getMaxHealth();
 	}
 
 	@Override
