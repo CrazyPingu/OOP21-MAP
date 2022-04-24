@@ -7,11 +7,14 @@ public class HealLifeSystem implements LifeSystem, HealSystem {
 
 	/**
 	 * 
-	 * @param startingLife is the amount of health the system start with
+	 * @param startingLife is the amount of health the system start with. If greater
+	 *                     than maxHealth it will automatically replaced with
+	 *                     maxHealth value
 	 * @param maxHealth    the maximum amount of health that can be reached using
 	 *                     heal method
 	 */
 	public HealLifeSystem(int startingLife, int maxHealth) {
+		startingLife = startingLife <= maxHealth ? startingLife : maxHealth;
 		this.life = new SimpleLifeSystem(startingLife);
 		this.maxHealth = maxHealth;
 	}
