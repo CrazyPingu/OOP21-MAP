@@ -28,6 +28,8 @@ public class SimpleLifeSystemTest {
 	 */
 	public void damageTest() {
 		SimpleLifeSystem life = new SimpleLifeSystem(this.HEALTH);
+		life.damage(-this.DAMAGE); 		//test that damage don't work with negative value
+		assertTrue(life.getCurrentHealth() == this.HEALTH);
 		life.damage(this.DAMAGE);
 		assertTrue(life.getCurrentHealth() == this.HEALTH - this.DAMAGE);
 		life.damage(this.DAMAGE);
