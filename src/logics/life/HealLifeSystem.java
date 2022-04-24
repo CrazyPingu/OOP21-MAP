@@ -1,6 +1,6 @@
 package logics.life;
 
-public class HealLifeSystem implements LifeSystem {
+public class HealLifeSystem implements LifeSystem, HealSystem {
 
 	private SimpleLifeSystem life;
 	private int maxHealth;
@@ -16,12 +16,7 @@ public class HealLifeSystem implements LifeSystem {
 		this.maxHealth = maxHealth;
 	}
 
-	/**
-	 * 
-	 * @param healValue represent the amount of life to increase. The helth value
-	 *                  can't be greater than max health. Don't work with negative
-	 *                  values
-	 */
+	@Override
 	public void heal(int healValue) {
 		if (healValue > 0) {
 			int newHealthValue = (this.life.getCurrentHealth() + healValue) > maxHealth ? maxHealth
@@ -30,13 +25,9 @@ public class HealLifeSystem implements LifeSystem {
 		}
 	}
 
-	/**
-	 * 
-	 * @return the maximum amount of health that can be reached
-	 */
+	@Override
 	public int getMaxHealth() {
 		return this.maxHealth;
-
 	}
 
 	@Override
