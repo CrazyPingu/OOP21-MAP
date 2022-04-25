@@ -13,13 +13,19 @@ public interface MovingObject {
 
 	/**
 	 * 
-	 * @param pos the new object position
+	 * @param pos the new game object position
 	 */
 	public void setPos(Pair<Integer, Integer> pos);
+	
+	/**
+	 * 
+	 * @return the current game object position
+	 */
+	public Pair<Integer, Integer> getPos(); 
 
 	/**
 	 * 
-	 * @return the movement System of the object
+	 * @return the movement System of the game object
 	 */
 	public Movement getMovementSystem();
 }
