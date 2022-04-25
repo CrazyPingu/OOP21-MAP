@@ -22,7 +22,7 @@ public class SimpleLifeSystem implements LifeSystem {
 
 	@Override
 	public void damage(int damageValue) {
-		if (damageValue > 0) {
+		if (damageValue > 0 && !this.isDead) {
 			this.health = (this.health - damageValue) < 0 ? 0 : this.health - damageValue;
 			this.isDead = !(this.health > 0);
 		}
