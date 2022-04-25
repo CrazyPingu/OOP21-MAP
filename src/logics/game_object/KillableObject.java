@@ -14,6 +14,11 @@ public interface KillableObject {
 
 	/**
 	 * 
+	 * @return the current amounth of health
+	 */
+	public int getHealth(); 
+	/**
+	 * 
 	 * @return the life state of the entity (True = DEAD, FALSE = IN LIFE)
 	 */
 	public Boolean isDead();

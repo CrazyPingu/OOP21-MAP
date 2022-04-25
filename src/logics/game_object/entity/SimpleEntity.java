@@ -50,6 +50,11 @@ public class SimpleEntity implements MovingObject, WeponizedObject, KillableObje
 	}
 
 	@Override
+	public int getHealth() {
+		return life.getCurrentHealth();
+	}
+	
+	@Override
 	public Boolean isDead() {
 		return this.life.isDead();
 	}
@@ -82,5 +87,6 @@ public class SimpleEntity implements MovingObject, WeponizedObject, KillableObje
 	public String getImagePath() {
 		return this.imagePath;
 	}
+
 
 }
