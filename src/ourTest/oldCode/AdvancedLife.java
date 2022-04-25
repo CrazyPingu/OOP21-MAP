@@ -1,4 +1,4 @@
-package logics.life;
+package ourTest.oldCode;
 
 public interface AdvancedLife extends BasicLife {
 	/**
