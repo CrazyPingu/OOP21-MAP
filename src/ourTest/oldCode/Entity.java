@@ -1,4 +1,4 @@
-package logics.game_object.entity;
+package ourTest.oldCode;
 
 import logics.strategy.movement.Movement;
 import logics.weapon.Weapon;

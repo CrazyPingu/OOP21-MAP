@@ -4,8 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import logics.life.BasicLife;
-import logics.life.BasicLifeImpl;
+import ourTest.oldCode.BasicLife;
+import ourTest.oldCode.BasicLifeImpl;
 
 public class BasicLifeTest {
 	

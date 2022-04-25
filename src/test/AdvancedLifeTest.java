@@ -5,8 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import logics.life.AdvancedLife;
-import logics.life.AdvancedLifeImpl;
+import ourTest.oldCode.AdvancedLife;
+import ourTest.oldCode.AdvancedLifeImpl;
 
 public class AdvancedLifeTest {
 

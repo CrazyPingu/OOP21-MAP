@@ -1,4 +1,4 @@
-package logics.game_object.entity;
+package logics.game_object.entity.enemy;
 
 /**
  * 
