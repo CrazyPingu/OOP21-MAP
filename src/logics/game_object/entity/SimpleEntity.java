@@ -87,6 +87,11 @@ public class SimpleEntity implements MovingObject, WeponizedObject, KillableObje
 	public String getImagePath() {
 		return this.imagePath;
 	}
-
+	
+	public String toString() {
+		return "name = " + name + " " + 
+			   "health = " + this.life.getCurrentHealth() + " " +  
+			   "weapon damage = " + this.weapon.getDamage(); 
+	}
 
 }
