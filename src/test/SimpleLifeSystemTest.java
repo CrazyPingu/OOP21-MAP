@@ -4,10 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
-
 import logics.life.SimpleLifeSystem;
-import ourTest.oldCode.BasicLife;
-import ourTest.oldCode.BasicLifeImpl;
 
 public class SimpleLifeSystemTest {
 	final private int HEALTH = 9;
