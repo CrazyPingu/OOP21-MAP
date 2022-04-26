@@ -1,8 +1,11 @@
 package logics.room.works;
 
 import java.util.Map;
+
+import logics.artefact.Artefact;
 import logics.entity.Entity;
 import utilis.Pair;
+import view.game.central.GameButton;
 
 /**
  * 
@@ -26,16 +29,36 @@ public interface Room {
 	 *         their type.
 	 */
 	public Map<Pair<Integer, Integer>, Entity> getPosEnemy();
-	
-	
+
+	/**
+	 * @param pos    the position to add to the cells
+	 * @param button the button correlated to the position
+	 */
+	public void addToCells(Pair<Integer, Integer> pos, GameButton button);
+
 	/**
 	 * @param newPosPlayer the new player position
 	 */
 	public void updatePosPlayer(Pair<Integer, Integer> newPosPlayer);
-	
+
 	/**
-	 * @param currentPos : the current enemy's position
-	 * @param futurePos : the position that the enemy will have
+	 * @param currentPos the current enemy's position
+	 * @param futurePos  the position that the enemy will have
 	 */
 	public void updatePosEnemy(Pair<Integer, Integer> currentPos, Pair<Integer, Integer> futurePos);
+
+	/**
+	 * @param pos the position of the item to remove
+	 */
+	public void removeItem(Pair<Integer, Integer> pos);
+	
+	/**
+	 * @return the cells
+	 */
+	public Map<Pair<Integer, Integer>, GameButton> getCells();
+	
+	/**
+	 * @return the spawned items
+	 */
+	public Map<Pair<Integer, Integer>, Artefact> getSpawnItems();
 }

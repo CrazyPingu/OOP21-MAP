@@ -1,8 +1,11 @@
 package logics.room.works;
 
+import java.util.HashMap;
 import java.util.Map;
+import logics.artefact.Artefact;
 import logics.entity.Entity;
 import utilis.Pair;
+import view.game.central.GameButton;
 
 /**
  * 
@@ -13,17 +16,23 @@ public class RoomImpl implements Room {
 	private Pair<Integer, Integer> size;
 	private Pair<Integer, Integer> posPlayer;
 	private Map<Pair<Integer, Integer>, Entity> posEnemy;
+	private Map<Pair<Integer, Integer>, GameButton> cells;
+	private Map<Pair<Integer, Integer>, Artefact> spawnItems;
 
 	/**
-	 * @param size      : the size of the room.
-	 * @param posPlayer : the position of the player inside the room.
-	 * @param posEnemy  : the position of the enemy inside the room and their type.
+	 * 
+	 * @param size       the size of the room.
+	 * @param posPlayer  the position of the player inside the room.
+	 * @param posEnemy   the position of the enemy inside the room and their type.
+	 * @param spawnItems the map that contains all the items to spawn.
 	 */
 	public RoomImpl(Pair<Integer, Integer> size, Pair<Integer, Integer> posPlayer,
-			Map<Pair<Integer, Integer>, Entity> posEnemy) {
+			Map<Pair<Integer, Integer>, Entity> posEnemy, Map<Pair<Integer, Integer>, Artefact> spawnItems) {
 		this.size = size;
 		this.posPlayer = posPlayer;
 		this.posEnemy = posEnemy;
+		this.cells = new HashMap<>();
+		this.spawnItems = spawnItems;
 	}
 
 	/**
@@ -57,8 +66,39 @@ public class RoomImpl implements Room {
 	/**
 	 * {@inheritDoc}
 	 */
+	public void addToCells(Pair<Integer, Integer> pos, GameButton button) {
+		this.cells.put(pos, button);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
 	public void updatePosEnemy(Pair<Integer, Integer> currentPos, Pair<Integer, Integer> futurePos) {
 		posEnemy.put(futurePos, posEnemy.get(currentPos));
 		posEnemy.remove(currentPos);
 	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void removeItem(Pair<Integer, Integer> pos) {
+		spawnItems.remove(pos);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public Map<Pair<Integer, Integer>, GameButton> getCells() {
+		return cells;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public Map<Pair<Integer, Integer>, Artefact> getSpawnItems() {
+		return spawnItems;
+	}
+	
+	
+
 }
