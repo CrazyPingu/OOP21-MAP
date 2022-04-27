@@ -16,10 +16,5 @@ public interface Movement {
 	 * @return the selectable position calculated by an internal algoritm
 	 */
 	public List<Pair<Integer, Integer>> reachableCells(Pair<Integer, Integer> pos, Pair<Integer, Integer> size); 
-		
-	/**
-	 * 
-	 * @return the current number of action the entity can perform in a turn; 
-	 */
-	public int getActionNumber(); 
+	
 }
