@@ -10,19 +10,15 @@ public interface MovementFactory {
 
 	/**
 	 * 
-	 * @param actioNum represent the number of action the entity can perform in a
-	 *                 turn
 	 * @return a MovementImpl that allow an an entity to move only in the adiacents
 	 *         cells
 	 */
-	public MovementImpl stepMovement(int actioNum);
+	public MovementImpl stepMovement();
 
 	/**
 	 * 
-	 * @param actioNum represent the number of action the entity can perform in a
-	 *                 turn.
 	 * @return a MovementImpl that allow an entity to move in a "+" shape cells with
-	 *         a distance of 1 from his current position. 
+	 *         a distance of 1 from his current position.
 	 */
-	public MovementImpl runMovement(int actioNum);
+	public MovementImpl runMovement();
 }

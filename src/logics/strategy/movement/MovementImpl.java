@@ -7,22 +7,14 @@ import utilis.Pair;
 
 public class MovementImpl implements Movement {
 
-	private Strategy movementStrategy; 
-	private int numAction; 
-	
-	public MovementImpl(Strategy movementStrategy, int numAction) {
-		this.movementStrategy = movementStrategy; 
-		this.numAction = numAction; 
+	private Strategy movingStrategy;
+
+	public MovementImpl(Strategy movingStrategy) {
+		this.movingStrategy = movingStrategy;
 	}
-	
+
 	@Override
 	public List<Pair<Integer, Integer>> reachableCells(Pair<Integer, Integer> pos, Pair<Integer, Integer> size) {
-		return this.movementStrategy.execute(pos, size);
+		return this.movingStrategy.execute(pos, size);
 	}
-
-	@Override
-	public int getActionNumber() {
-		return this.numAction;
-	}
-
 }
