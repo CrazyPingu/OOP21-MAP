@@ -10,14 +10,16 @@ import logics.strategy.Strategy;
  */
 public class WeaponImpl implements Weapon {
 	private int damage;
+	private String name;
 	private Strategy shootingStrategy;
 
 	/**
 	 * @param damage is the damage that the weapon can inflict
 	 * @param shootingStrategy is the area within the weapon can reach
 	 */
-	public WeaponImpl(int damage, Strategy shootingStrategy) {
+	public WeaponImpl(int damage, String name, Strategy shootingStrategy) {
 		this.damage = damage;
+		this.name = name;
 		this.shootingStrategy = shootingStrategy;
 	}
 
@@ -26,6 +28,13 @@ public class WeaponImpl implements Weapon {
 	 */
 	public int getDamage() {
 		return this.damage;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public String getName() {
+		return this.name;
 	}
 
 	/**

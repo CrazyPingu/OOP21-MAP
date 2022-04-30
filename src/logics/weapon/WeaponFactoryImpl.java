@@ -20,35 +20,35 @@ public class WeaponFactoryImpl implements WeaponFactory {
 	 * {@inheritDoc}
 	 */
 	public Weapon createStick() {
-		return new WeaponImpl(STICK_DAMAGE, new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE));
+		return new WeaponImpl(STICK_DAMAGE, "stick", new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE));
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public Weapon createAx() {
-		return new WeaponImpl(AX_DAMAGE, new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE));
+		return new WeaponImpl(AX_DAMAGE, "ax", new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE));
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public Weapon createDagger() {
-		return new WeaponImpl(DAGGER_DAMAGE, new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE));
+		return new WeaponImpl(DAGGER_DAMAGE, "dagger", new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE));
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
 	public Weapon createTube() {
-		return new WeaponImpl(TUBE_DAMAGE, new AsteriskArea(VariableDistanceConstants.SINGLE_DISTANCE));
+		return new WeaponImpl(TUBE_DAMAGE, "tube", new AsteriskArea(VariableDistanceConstants.SINGLE_DISTANCE));
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
 	public Weapon createGun() {
-		return new WeaponImpl(GUN_DAMAGE, new AroundArea(VariableDistanceConstants.DOUBLE_DISTANCE));
+		return new WeaponImpl(GUN_DAMAGE, "gun", new AroundArea(VariableDistanceConstants.DOUBLE_DISTANCE));
 	}
 	
 }
