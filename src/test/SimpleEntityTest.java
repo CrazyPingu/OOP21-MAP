@@ -58,7 +58,11 @@ public class SimpleEntityTest {
 	 * test that the health value does not go below zero
 	 */
 	public void healthNotBelowZeroTest() {
-
+		this.life = new SimpleLifeSystem(HEALTH);
+		this.entity = new SimpleEntity(this.life, this.START_POS, this.weaponFactory.createAxe(),
+				this.movementFactory.stepMovement(), this.NAME, this.PATH);
+		this.entity.damage(this.entity.getHealth() + this.DAMAGE);
+		assertTrue(this.entity.getHealth() == 0);
 	}
 
 	@Test
@@ -66,6 +70,10 @@ public class SimpleEntityTest {
 	 * test the correct working of the isDead method
 	 */
 	public void isDeadTest() {
-
+		this.life = new SimpleLifeSystem(HEALTH);
+		this.entity = new SimpleEntity(this.life, this.START_POS, this.weaponFactory.createAxe(),
+				this.movementFactory.stepMovement(), this.NAME, this.PATH);
+		this.entity.damage(this.entity.getHealth() + this.DAMAGE);
+		assertTrue(this.entity.isDead()); 
 	}
 }
