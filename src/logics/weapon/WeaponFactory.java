@@ -12,9 +12,9 @@ public interface WeaponFactory {
 	 */
 	public Weapon createStick();
 	/**
-	 * @return a ax
+	 * @return a axe
 	 */
-	public Weapon createAx();
+	public Weapon createAxe();
 	/**
 	 * @return a dagger
 	 */

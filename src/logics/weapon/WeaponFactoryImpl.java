@@ -26,8 +26,8 @@ public class WeaponFactoryImpl implements WeaponFactory {
 	/**
 	 * {@inheritDoc}
 	 */
-	public Weapon createAx() {
-		return new WeaponImpl(AX_DAMAGE, "ax", new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE));
+	public Weapon createAxe() {
+		return new WeaponImpl(AX_DAMAGE, "axe", new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE));
 	}
 
 	/**
