@@ -1,6 +1,8 @@
 package logics.weapon;
 
-import logics.strategy.Strategy;
+import java.util.List;
+
+import utilis.Pair;
 
 /**
  * 
@@ -20,7 +22,7 @@ public interface Weapon {
 	 */
 	public String getName();
 	/**
-	 * @return the shooting strategy applied.
+	 * @return list of available cells to attack based on shooting strategy applied.
 	 */
-	public Strategy getShootingStrategy();
+	public List<Pair<Integer, Integer>> getAttackArea(Pair<Integer, Integer> pos, Pair<Integer, Integer> size);
 }
