@@ -45,8 +45,12 @@ public class SimpleEntityTest {
 	/*
 	 * test the proper operation of the method damage.
 	 */
-	public void damageTest() {
-
+	public void damageEntityTest() {
+		this.life = new SimpleLifeSystem(HEALTH);
+		this.entity = new SimpleEntity(this.life, this.START_POS, this.weaponFactory.createAxe(),
+				this.movementFactory.stepMovement(), this.NAME, this.PATH);
+		this.entity.damage(this.DAMAGE);
+		assertTrue(this.entity.getHealth() == this.HEALTH - this.DAMAGE);
 	}
 
 	@Test
