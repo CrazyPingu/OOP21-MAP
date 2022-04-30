@@ -6,7 +6,7 @@ import logics.game_object.MovingObject;
 import logics.game_object.WeponizedObject;
 import logics.life.LifeSystem;
 import logics.strategy.movement.Movement;
-import logics.weapon.Weapon;
+import logics.strategy.weapon.Weapon;
 import utilis.Pair;
 
 /**

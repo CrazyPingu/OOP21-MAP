@@ -1,4 +1,4 @@
-package logics.weapon;
+package logics.strategy.weapon;
 
 import java.util.List;
 
