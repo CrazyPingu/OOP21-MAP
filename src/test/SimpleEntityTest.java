@@ -2,9 +2,7 @@ package test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
 import org.junit.jupiter.api.Test;
-
 import logics.game_object.entity.SimpleEntity;
 import logics.life.LifeSystem;
 import logics.life.SimpleLifeSystem;
