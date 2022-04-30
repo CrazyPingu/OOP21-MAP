@@ -2,11 +2,12 @@ package logics.game_object.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import logics.weapon.Weapon;
+
 import ourTest.oldCode.AdvancedLife;
 import ourTest.oldCode.BasicLife;
 import ourTest.oldCode.EntityImpl;
 import logics.strategy.movement.Movement;
+import logics.strategy.weapon.Weapon;
 
 /**
  * 

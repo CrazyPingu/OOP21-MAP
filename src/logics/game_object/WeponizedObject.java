@@ -1,6 +1,6 @@
 package logics.game_object;
 
-import logics.weapon.Weapon;
+import logics.strategy.weapon.Weapon;
 
 /**
  * 
