@@ -1,5 +1,7 @@
 package logics.game_object.entity;
 
+import java.awt.Image;
+
 import logics.game_object.GameObject;
 import logics.game_object.KillableObject;
 import logics.game_object.MovingObject;
@@ -23,25 +25,26 @@ public class SimpleEntity implements MovingObject, WeponizedObject, KillableObje
 	private Weapon weapon;
 	private Movement movement;
 	private String name;
-	private String imagePath;
+	private Image textureImage;
 
 	/**
 	 * 
-	 * @param life      is the life system of the entity
-	 * @param pos       is the position of the entity
-	 * @param weapon    is the weapon the entity is holding
-	 * @param movement  is the movement sistem of the entity
-	 * @param name      the name of the entity
-	 * @param imagePath the path where to find the texture
+	 * @param life         is the life system of the entity
+	 * @param pos          is the position of the entity
+	 * @param weapon       is the weapon the entity is holding
+	 * @param movement     is the movement sistem of the entity
+	 * @param name         the name of the entity
+	 * @param textureImage the path where to find the texture. Texture references
+	 *                     can be found in utilis.texture
 	 */
 	public SimpleEntity(LifeSystem life, Pair<Integer, Integer> pos, Weapon weapon, Movement movement, String name,
-			String imagePath) {
+			Image textureImage) {
 		this.life = life;
 		this.pos = pos;
 		this.weapon = weapon;
 		this.movement = movement;
 		this.name = name;
-		this.imagePath = imagePath;
+		this.textureImage = textureImage;
 	}
 
 	@Override
@@ -53,7 +56,7 @@ public class SimpleEntity implements MovingObject, WeponizedObject, KillableObje
 	public int getHealth() {
 		return life.getCurrentHealth();
 	}
-	
+
 	@Override
 	public Boolean isDead() {
 		return this.life.isDead();
@@ -84,14 +87,13 @@ public class SimpleEntity implements MovingObject, WeponizedObject, KillableObje
 	}
 
 	@Override
-	public String getImagePath() {
-		return this.imagePath;
+	public Image getTextureImage() {
+		return this.textureImage;
 	}
-	
+
 	public String toString() {
-		return "name = " + name + " " + 
-			   "health = " + this.life.getCurrentHealth() + " " +  
-			   "weapon damage = " + this.weapon.getDamage(); 
+		return "name = " + name + " " + "health = " + this.life.getCurrentHealth() + " " + "weapon damage = "
+				+ this.weapon.getDamage();
 	}
 
 }
