@@ -1,5 +1,6 @@
 package logics.game_object;
 
+import java.awt.Image;
 import utilis.Pair;
 
 /**
@@ -9,23 +10,23 @@ import utilis.Pair;
  *
  */
 public interface GameObject {
-	
+
 	/**
 	 * 
 	 * @return the current position of the object
 	 */
 	public Pair<Integer, Integer> getPos();
-	
+
 	/**
 	 * 
 	 * @return the name of the GameObject
 	 */
-	public String getName(); 
-	
+	public String getName();
+
 	/**
 	 * 
-	 * @return the object's texture path
+	 * @return the object's texture image
 	 */
-	public String getImagePath(); 
+	public Image getTextureImage();
 
 }
