@@ -1,6 +1,9 @@
 package logics.weapon;
 
+import java.util.List;
+
 import logics.strategy.Strategy;
+import utilis.Pair;
 
 /**
  * 
@@ -10,14 +13,16 @@ import logics.strategy.Strategy;
  */
 public class WeaponImpl implements Weapon {
 	private int damage;
+	private String name;
 	private Strategy shootingStrategy;
 
 	/**
 	 * @param damage is the damage that the weapon can inflict
 	 * @param shootingStrategy is the area within the weapon can reach
 	 */
-	public WeaponImpl(int damage, Strategy shootingStrategy) {
+	public WeaponImpl(int damage, String name, Strategy shootingStrategy) {
 		this.damage = damage;
+		this.name = name;
 		this.shootingStrategy = shootingStrategy;
 	}
 
@@ -27,12 +32,19 @@ public class WeaponImpl implements Weapon {
 	public int getDamage() {
 		return this.damage;
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public String getName() {
+		return this.name;
+	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public Strategy getShootingStrategy() {
-		return shootingStrategy;
+	public List<Pair<Integer, Integer>> getAttackArea(Pair<Integer, Integer> pos, Pair<Integer, Integer> size) {
+		return this.shootingStrategy.execute(pos, size);
 	}
 
 }
