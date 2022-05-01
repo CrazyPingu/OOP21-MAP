@@ -32,6 +32,6 @@ public interface ArtefactUserObject {
 	 * 
 	 * @param maxHealthValue the new maximum amount of health
 	 */
-	public void extendMaxHealth(int maxHealthValue);
+	public void setMaxHealth(int maxHealthValue);
 
 }
