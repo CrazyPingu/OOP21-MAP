@@ -5,20 +5,23 @@ import utilis.Pair;
 public interface HealthArtefactFactory {
 	
 	/**
-	 * 
-	 * @return an artefact that heal a little who consume it
+	 *
+	 * @param pos is the artefact spawn position
+	 * @return an artefact that heal the subject 
 	 */
 	public Artefact littleHealArtefact(Pair<Integer, Integer> pos); 
 	
 	/**
-	 * 
-	 * @return an artefact that heal a lot who consume it
+	 *
+	 * @param pos is the artefact spawn position
+	 * @return an artefact that heal the subject
 	 */
 	public Artefact bigHealArtefact(Pair<Integer, Integer> pos); 
 	
 	/**
-	 * 
-	 * @return a life-extending artefact 
+	 *
+	 * @param pos is the artefact spawn position
+	 * @return an artefact that extend the subject's life
 	 */
 	public Artefact extendsLifeArtefact(Pair<Integer, Integer> pos);
 	
