@@ -1,33 +1,32 @@
 package logics.game_object.entity;
 
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
-
-import ourTest.oldCode.AdvancedLife;
-import ourTest.oldCode.BasicLife;
-import ourTest.oldCode.EntityImpl;
+import logics.game_object.ArtefactUserObject;
+import logics.game_object.GameObject;
+import logics.game_object.KillableObject;
+import logics.game_object.MovingObject;
+import logics.game_object.WeponizedObject;
 import logics.strategy.movement.Movement;
 import logics.strategy.weapon.Weapon;
+import utilis.Pair;
 
 /**
  * 
  * Create the player's entity based on a general entity.
  *
  */
-public class Player extends EntityImpl {
+public class Player extends SimpleEntity implements ArtefactUserObject {
 	private int additionalDamage;
 
-	/**
-	 * @param artefact         : the list of the artefact that the player is
-	 *                         currently holding.
-	 * @param additionalDamage : the additional damage that an artefact will add to
-	 *                         the base damage of the player's weapon.
-	 * @param name             : the name of the player.
-	 */
-	public Player(AdvancedLife health, Weapon weapon, Movement movement,  int actionNumber, String name) {
+	
+	public Player() {
 		super(health, weapon, movement, actionNumber, name); 
 
-		this.additionalDamage = 0;
 	}
 
+
+		
 }
+
