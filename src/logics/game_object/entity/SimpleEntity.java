@@ -34,8 +34,8 @@ public class SimpleEntity implements MovingObject, WeponizedObject, KillableObje
 	 * @param weapon       is the weapon the entity is holding
 	 * @param movement     is the movement sistem of the entity
 	 * @param name         the name of the entity
-	 * @param textureImage the path where to find the texture. Texture references
-	 *                     can be found in utilis.texture
+	 * @param textureImage the texture of the entity. Texture can be found in
+	 *                     utilis.texture
 	 */
 	public SimpleEntity(LifeSystem life, Pair<Integer, Integer> pos, Weapon weapon, Movement movement, String name,
 			Image textureImage) {
