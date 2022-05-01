@@ -22,11 +22,11 @@ public class ExtendibleMaxLifeSystem implements LifeSystem, HealSystem {
 	/**
 	 * 
 	 * @param lifeExtension represent the new maximum amount of health the system
-	 *                         can reach. It has to be greater than zero and less
-	 *                         than maxHealthExtension value. If the passed value is
-	 *                         greater than maxHealthExtension is automatically
-	 *                         reduced to maxHealthExtension value.
-	 *                         If is equal or less than 0 do nothing.
+	 *                      can reach. It has to be greater than zero and less than
+	 *                      maxHealthExtension value. If the passed value is greater
+	 *                      than maxHealthExtension is automatically reduced to
+	 *                      maxHealthExtension value. If is equal or less than 0 do
+	 *                      nothing.
 	 */
 	public void setMaxHealth(int lifeExtension) {
 		lifeExtension = lifeExtension <= maxHealthReachable ? lifeExtension : maxHealthReachable;
