@@ -33,5 +33,11 @@ public interface ArtefactUserObject {
 	 * @param maxHealthValue the new maximum amount of health
 	 */
 	public void setMaxHealth(int maxHealthValue);
+	
+	/**
+	 * 
+	 * @return the max health the entity can currently reach. The max health limit is specified in the constructor
+	 */
+	public int getMaxHealth(); 
 
 }
