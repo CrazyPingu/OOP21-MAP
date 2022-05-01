@@ -87,6 +87,11 @@ public class Player implements ArtefactUserObject, MovingObject, WeponizedObject
 	}
 
 	@Override
+	public int getMaxHealth() {
+		return this.life.getMaxHealth();
+	}
+
+	@Override
 	public Boolean isDead() {
 		return this.life.isDead();
 	}
@@ -110,7 +115,7 @@ public class Player implements ArtefactUserObject, MovingObject, WeponizedObject
 	public Movement getMovementSystem() {
 		return this.movement;
 	}
-	
+
 	public String toString() {
 		return "name = " + name + " " + "health = " + this.life.getCurrentHealth() + " " + "weapon damage = "
 				+ this.weapon.getDamage();
