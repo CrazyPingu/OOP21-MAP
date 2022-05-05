@@ -21,9 +21,9 @@ public class Stats extends TextAreaAppearance {
 	 */
 	
 	public void update(Player player) {
-		this.setText("ACTIONS LEFT: " + /* player.getActionNumberLeft() + */ "/" + player.getActionNumber()
-				+ "\nMAX HEALTH: +" + player.getMaxHealth()
-				+ "\nATK: +" + /* (player.getAdditionalDamage+player.getBaseDamage) + */
+		this.setText("ACTIONS LEFT: " + /* player.getActionNumberLeft() + */ "/" + /*player.getActionNumber()*/
+				+ "\nHP: " player.getHealth() + "/" + player.getMaxHealth()
+				+ "\nATK: +" + player.getWeapon().getDamage() + 
 				"");
 	}
 
