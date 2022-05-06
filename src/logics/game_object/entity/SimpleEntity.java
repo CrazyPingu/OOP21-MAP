@@ -14,8 +14,7 @@ import utilis.Pair;
 /**
  * 
  * Implements all the common method for a simple game object able to hold a
- * weapon, move and take damage. This class is used in enemy and player class to
- * avoid code repetition.
+ * weapon, move and take damage. This class is used for the enemy implementation.
  *
  */
 public class SimpleEntity implements MovingObject, WeaponizedObject, KillableObject, GameObject {
