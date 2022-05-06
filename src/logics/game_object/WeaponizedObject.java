@@ -7,7 +7,7 @@ import logics.strategy.weapon.Weapon;
  * Declare the method for the game_object that can hold a weapon
  *
  */
-public interface WeponizedObject {
+public interface WeaponizedObject {
 
 	/**
 	 * @return the weapon that the entity is holding.
