@@ -6,11 +6,11 @@ import utilis.ImageMethod;
 
 /**
  * 
- * Class that conteins references for the texture of artefacts.
+ * Class that contains references for the texture of artefacts.
  *
  */
 public class ArtefactTexture {
-	
+
 	/*
 	 * HEAL ARTEFACTS
 	 */
@@ -21,6 +21,11 @@ public class ArtefactTexture {
 	 * EXTENDING HEALTH ARTEFACT
 	 */
 	public static final Image HEALTH_EXTENDER = ImageMethod.getImage("artefact/health/Health_Extender.png");
+
+	/*
+	 * EXTEND ACTION NUMBER ARTEFACT
+	 */
+	public static final Image ACTION_NUMBER_INCREASER = ImageMethod.getImage("artefact/action_number/Action_Number_Increaser.png");
 
 	/*
 	 * WEAPON ARTEFACTS
