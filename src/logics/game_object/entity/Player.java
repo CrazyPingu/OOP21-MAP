@@ -14,7 +14,8 @@ import utilis.Pair;
 
 /**
  * 
- * Create the player's entity based on a general entity.
+ * Create the player's entity that can perform multiple action in a turn, can
+ * change is position, can use artefact, can take damage and can carry a weapon.
  *
  */
 public class Player implements multipleActionObject, ArtefactUserObject, MovingObject, WeaponizedObject, KillableObject,
@@ -35,7 +36,7 @@ public class Player implements multipleActionObject, ArtefactUserObject, MovingO
 	 * @param life         is the life system of the player
 	 * @param pos          is the position of the player
 	 * @param weapon       is the weapon the player is holding
-	 * @param movement     is the movement sistem of the player
+	 * @param movement     is the movement system of the player
 	 * @param name         the name of the player
 	 * @param textureImage the texture of the player. Texture can be found in
 	 *                     utilis.texture
