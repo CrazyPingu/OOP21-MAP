@@ -5,7 +5,7 @@ import logics.game_object.ArtefactUserObject;
 import logics.game_object.GameObject;
 import logics.game_object.KillableObject;
 import logics.game_object.MovingObject;
-import logics.game_object.WeponizedObject;
+import logics.game_object.WeaponizedObject;
 import logics.life.ExtendibleMaxLifeSystem;
 import logics.strategy.movement.Movement;
 import logics.strategy.weapon.Weapon;
@@ -16,7 +16,7 @@ import utilis.Pair;
  * Create the player's entity based on a general entity.
  *
  */
-public class Player implements ArtefactUserObject, MovingObject, WeponizedObject, KillableObject, GameObject {
+public class Player implements ArtefactUserObject, MovingObject, WeaponizedObject, KillableObject, GameObject {
 
 	private ExtendibleMaxLifeSystem life;
 	private Pair<Integer, Integer> pos;
