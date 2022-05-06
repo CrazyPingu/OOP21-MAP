@@ -6,6 +6,7 @@ import logics.game_object.GameObject;
 import logics.game_object.KillableObject;
 import logics.game_object.MovingObject;
 import logics.game_object.WeaponizedObject;
+import logics.game_object.multipleActionObject;
 import logics.life.ExtendibleMaxLifeSystem;
 import logics.strategy.movement.Movement;
 import logics.strategy.weapon.Weapon;
@@ -16,7 +17,10 @@ import utilis.Pair;
  * Create the player's entity based on a general entity.
  *
  */
-public class Player implements ArtefactUserObject, MovingObject, WeaponizedObject, KillableObject, GameObject {
+public class Player implements multipleActionObject, ArtefactUserObject, MovingObject, WeaponizedObject, KillableObject,
+		GameObject {
+
+	private final int INITIAL_ACTION_NUMBER = 0;
 
 	private ExtendibleMaxLifeSystem life;
 	private Pair<Integer, Integer> pos;
@@ -24,6 +28,7 @@ public class Player implements ArtefactUserObject, MovingObject, WeaponizedObjec
 	private Movement movement;
 	private String name;
 	private Image textureImage;
+	private int actionNumber;
 
 	/**
 	 * 
@@ -43,6 +48,7 @@ public class Player implements ArtefactUserObject, MovingObject, WeaponizedObjec
 		this.movement = movement;
 		this.name = name;
 		this.textureImage = textureImage;
+		this.actionNumber = this.INITIAL_ACTION_NUMBER;
 	}
 
 	@Override
@@ -116,9 +122,18 @@ public class Player implements ArtefactUserObject, MovingObject, WeaponizedObjec
 		return this.movement;
 	}
 
-	public String toString() {
-		return "name = " + name + " " + "health = " + this.life.getCurrentHealth() + " " + "weapon damage = "
-				+ this.weapon.getDamage();
+	@Override
+	public void increaseActionNumber() {
+		this.actionNumber++;
 	}
 
+	@Override
+	public int getNumberAction() {
+		return this.actionNumber;
+	}
+
+	public String toString() {
+		return " name = " + this.name + "\n health = " + this.getHealth() + "\n max health" + this.getMaxHealth()
+				+ "\n weapon damage = " + this.weapon.getDamage() + "\n number action = " + this.getNumberAction();
+	}
 }
