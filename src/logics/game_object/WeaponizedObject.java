@@ -4,7 +4,7 @@ import logics.strategy.weapon.Weapon;
 
 /**
  * 
- * Declare the method for the game_object that can hold a weapon
+ * Declare the method for the game object that can hold a weapon
  *
  */
 public interface WeaponizedObject {
