@@ -2,7 +2,7 @@ package logics.game_object.artefact;
 
 import utilis.Pair;
 
-public interface ActionNumberArteactFactory {
+public interface ActionNumberArtefactFactory {
 
 	/**
 	 *

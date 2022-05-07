@@ -4,7 +4,7 @@ import logics.game_object.ArtefactUserObject;
 import utilis.Pair;
 import utilis.texture.ArtefactTexture;
 
-public class ActionNumberArtefactFactoryImpl implements ActionNumberArteactFactory {
+public class ActionNumberArtefactFactoryImpl implements ActionNumberArtefactFactory {
 
 	@Override
 	public Artefact increaseActionNumberArtefact(Pair<Integer, Integer> pos) {
