@@ -5,7 +5,7 @@ import java.awt.Image;
 import logics.game_object.GameObject;
 import logics.game_object.KillableObject;
 import logics.game_object.MovingObject;
-import logics.game_object.WeponizedObject;
+import logics.game_object.WeaponizedObject;
 import logics.life.LifeSystem;
 import logics.strategy.movement.Movement;
 import logics.strategy.weapon.Weapon;
@@ -14,11 +14,10 @@ import utilis.Pair;
 /**
  * 
  * Implements all the common method for a simple game object able to hold a
- * weapon, move and take damage. This class is used in enemy and player class to
- * avoid code repetition.
+ * weapon, move and take damage. This class is used for the enemy implementation.
  *
  */
-public class SimpleEntity implements MovingObject, WeponizedObject, KillableObject, GameObject {
+public class SimpleEntity implements MovingObject, WeaponizedObject, KillableObject, GameObject {
 
 	private LifeSystem life;
 	private Pair<Integer, Integer> pos;

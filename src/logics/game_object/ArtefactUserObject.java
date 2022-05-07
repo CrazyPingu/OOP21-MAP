@@ -5,7 +5,8 @@ import logics.strategy.weapon.Weapon;
 
 /**
  * 
- * Declare the common method for the Object that can be used from an artefact excecute method. 
+ * Declare the common method for the Object that can be used from an artefact
+ * excecute method.
  *
  */
 public interface ArtefactUserObject {
@@ -24,7 +25,7 @@ public interface ArtefactUserObject {
 
 	/**
 	 * 
-	 * @param healValue the value of the heal 
+	 * @param healValue the value of the heal
 	 */
 	public void heal(int healValue);
 
@@ -33,11 +34,17 @@ public interface ArtefactUserObject {
 	 * @param maxHealthValue the new maximum amount of health
 	 */
 	public void setMaxHealth(int maxHealthValue);
-	
+
 	/**
 	 * 
-	 * @return the max health the entity can currently reach. The max health limit is specified in the constructor
+	 * @return the max health the entity can currently reach. The max health limit
+	 *         is specified in the constructor
 	 */
-	public int getMaxHealth(); 
+	public int getMaxHealth();
+
+	/**
+	 * increase the number of action the entity can perform in a turn
+	 */
+	public void increaseActionNumber();
 
 }
