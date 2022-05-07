@@ -6,7 +6,7 @@ import logics.game_object.GameObject;
 import logics.game_object.KillableObject;
 import logics.game_object.MovingObject;
 import logics.game_object.WeaponizedObject;
-import logics.game_object.multipleActionObject;
+import logics.game_object.MultipleActionObject;
 import logics.life.ExtendibleMaxLifeSystem;
 import logics.strategy.movement.Movement;
 import logics.strategy.weapon.Weapon;
@@ -18,7 +18,7 @@ import utilis.Pair;
  * change is position, can use artefact, can take damage and can carry a weapon.
  *
  */
-public class Player implements multipleActionObject, ArtefactUserObject, MovingObject, WeaponizedObject, KillableObject,
+public class Player implements MultipleActionObject, ArtefactUserObject, MovingObject, WeaponizedObject, KillableObject,
 		GameObject {
 
 	private final int INITIAL_ACTION_NUMBER = 0;

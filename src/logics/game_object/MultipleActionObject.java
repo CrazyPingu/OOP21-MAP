@@ -6,7 +6,7 @@ package logics.game_object;
  * a turns
  *
  */
-public interface multipleActionObject {
+public interface MultipleActionObject {
 
 	/**
 	 * 
