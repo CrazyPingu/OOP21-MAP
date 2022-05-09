@@ -23,7 +23,7 @@ public class ScrollPaneAppearance extends JScrollPane {
 		this.setScrollBar();
 		this.setOpaque(false);
 		this.getViewport().setOpaque(false);
-		this.setPreferredSize(new Dimension(Constant.WIDTH / 4, Constant.HEIGHT * 2 / 3));
+		this.setPreferredSize(new Dimension(Constant.LABEL_WIDTH, Constant.TOP_HEIGHT));
 		this.setBorder(border);
 	}
 
