@@ -1,9 +1,11 @@
 package logics.room.works;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import logics.artefact.Artefact;
-import logics.entity.Entity;
+import logics.game_object.artefact.Artefact;
+import logics.game_object.entity.Player;
+import logics.game_object.entity.SimpleEntity;
 import utilis.Pair;
 import view.game.central.GameButton;
 
@@ -14,25 +16,23 @@ import view.game.central.GameButton;
  */
 public class RoomImpl implements Room {
 	private Pair<Integer, Integer> size;
-	private Pair<Integer, Integer> posPlayer;
-	private Map<Pair<Integer, Integer>, Entity> posEnemy;
+	private Player player;
+	private List<SimpleEntity> enemy;
+	private List<Artefact> artefact;
 	private Map<Pair<Integer, Integer>, GameButton> cells;
-	private Map<Pair<Integer, Integer>, Artefact> spawnItems;
 
 	/**
-	 * 
 	 * @param size       the size of the room.
-	 * @param posPlayer  the position of the player inside the room.
-	 * @param posEnemy   the position of the enemy inside the room and their type.
+	 * @param player     the player of the game
+	 * @param enemy      the enemy of the game
 	 * @param spawnItems the map that contains all the items to spawn.
 	 */
-	public RoomImpl(Pair<Integer, Integer> size, Pair<Integer, Integer> posPlayer,
-			Map<Pair<Integer, Integer>, Entity> posEnemy, Map<Pair<Integer, Integer>, Artefact> spawnItems) {
+	public RoomImpl(Pair<Integer, Integer> size, Player player) {
 		this.size = size;
-		this.posPlayer = posPlayer;
-		this.posEnemy = posEnemy;
+		this.player = player;
+		this.enemy = enemy; //TODO
+		this.artefact = artefact;
 		this.cells = new HashMap<>();
-		this.spawnItems = spawnItems;
 	}
 
 	/**
@@ -45,44 +45,40 @@ public class RoomImpl implements Room {
 	/**
 	 * {@inheritDoc}
 	 */
-	public Pair<Integer, Integer> getPosPlayer() {
-		return posPlayer;
+	public Player getPlayer() {
+		return player;
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */
-	public Map<Pair<Integer, Integer>, Entity> getPosEnemy() {
-		return posEnemy;
+	public List<SimpleEntity> getEnemy() {
+		return enemy;
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */
 	public void updatePosPlayer(Pair<Integer, Integer> newPosPlayer) {
-		this.posPlayer = newPosPlayer;
+		this.player.setPos(newPosPlayer);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public void addToCells(Pair<Integer, Integer> pos, GameButton button) {
-		this.cells.put(pos, button);
+	public void updatePosEnemy(SimpleEntity enemy, Pair<Integer, Integer> newPos) {
+		this.enemy.forEach(x -> {
+			if (x.equals(enemy)) {
+				x.setPos(newPos);
+			}
+		});
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public void updatePosEnemy(Pair<Integer, Integer> currentPos, Pair<Integer, Integer> futurePos) {
-		posEnemy.put(futurePos, posEnemy.get(currentPos));
-		posEnemy.remove(currentPos);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public void removeItem(Pair<Integer, Integer> pos) {
-		spawnItems.remove(pos);
+	public void removeArtefact(Artefact artefact) {
+		this.artefact.remove(artefact);
 	}
 
 	/**
@@ -95,10 +91,8 @@ public class RoomImpl implements Room {
 	/**
 	 * {@inheritDoc}
 	 */
-	public Map<Pair<Integer, Integer>, Artefact> getSpawnItems() {
-		return spawnItems;
+	public List<Artefact> getSpawnItems() {
+		return this.artefact;
 	}
-	
-	
 
 }
