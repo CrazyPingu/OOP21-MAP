@@ -5,6 +5,7 @@ import java.util.List;
 
 import logics.game_object.GameObject;
 import logics.game_object.entity.Player;
+import utilis.Constant;
 import utilis.Pair;
 import view.game.central.GameButton;
 
@@ -43,14 +44,14 @@ public class RoomImpl implements Room {
 	 * {@inheritDoc}
 	 */
 	public void updateGameObjectPosition(Pair<Integer, Integer> oldPos, Pair<Integer, Integer> newPos) {
-		findGameObject(oldPos).setPos(newPos);
+		Constant.findGameObject(oldPos, this.gameObject).setPos(newPos);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public void removeGameObject(Pair<Integer, Integer> pos) {
-		this.gameObject.remove(findGameObject(pos));
+		this.gameObject.remove(Constant.findGameObject(pos, this.gameObject));
 	}
 
 	/**

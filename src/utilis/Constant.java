@@ -53,7 +53,7 @@ public class Constant {
 	 * @param gameObject the list to search out
 	 * @return the GameObject at that position
 	 */
-	private GameObject findGameObject(Pair<Integer, Integer> pos, List<GameObject> gameObject) {
+	public static GameObject findGameObject(Pair<Integer, Integer> pos, List<GameObject> gameObject) {
 		return gameObject.stream().filter(x -> x.getPos().equals(pos)).findFirst().get();
 	}
 
