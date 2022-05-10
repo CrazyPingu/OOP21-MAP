@@ -74,10 +74,6 @@ public class RoomImpl implements Room {
 		return this.gameObject;
 	}
 
-	private GameObject findGameObject(Pair<Integer, Integer> pos) {
-		return this.gameObject.stream().filter(x -> x.getPos().equals(pos)).findFirst().get();
-	}
-
 	@Override
 	public String toString() {
 		return "Room with :" + this.getGameObject().size() + "\nThe room's dimension is " + this.getSize();

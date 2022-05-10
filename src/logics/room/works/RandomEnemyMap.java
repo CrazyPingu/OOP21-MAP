@@ -1,17 +1,18 @@
 package logics.room.works;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-import logics.entity.EnemyFactoryImpl;
-import logics.entity.Entity;
+import logics.game_object.GameObject;
+import logics.game_object.entity.enemy.EnemyFactoryImpl;
 import utilis.Pair;
 /**
  * 
  * Class that is a random generated map that contains entity associated with Pair
  *
  */
-public class RandomEnemyMap extends HashMap<Pair<Integer, Integer>, Entity> {
+public class RandomEnemyMap extends ArrayList<GameObject> {
 
 	private static final long serialVersionUID = -1346040616337955961L;
 	private final int spawningRatio = 30;
@@ -22,13 +23,13 @@ public class RandomEnemyMap extends HashMap<Pair<Integer, Integer>, Entity> {
 	/**
 	 * {@inheritDoc}
 	 */
-	public RandomEnemyMap(Pair<Integer, Integer> cells) {
+	public RandomEnemyMap(Pair<Integer, Integer> size) {
 		Pair<Integer, Integer> zombieSpawn;
-		for (int i = 0; i < cells.getX() * cells.getY() / spawningRatio; i++) {
+		for (int i = 0; i < size.getX() * size.getY() / spawningRatio; i++) {
 			do {
 				zombieSpawn = new Pair<Integer, Integer>(
-						new Random().ints(forbiddenZombieSpawn, cells.getX()).findFirst().getAsInt(),
-						new Random().ints(0, cells.getY()).findFirst().getAsInt());
+						new Random().ints(forbiddenZombieSpawn, size.getX()).findFirst().getAsInt(),
+						new Random().ints(0, size.getY()).findFirst().getAsInt());
 			} while (!this.containsKey(zombieSpawn));
 			this.put(zombieSpawn, generateRandomEnemy());
 		}
@@ -38,11 +39,11 @@ public class RandomEnemyMap extends HashMap<Pair<Integer, Integer>, Entity> {
 	 * Function that call a random method of the enemyFactory
 	 * @return a random enemy
 	 */
-	private Entity generateRandomEnemy() {
+	private GameObject generateRandomEnemy() {
 		int random = (int) Math.random() * possibleZombieNumber;
-		Entity generatedEnemy = null;
+		GameObject generatedEnemy = null;
 		try {
-			generatedEnemy = (Entity) enemyFactory.getClass().getDeclaredMethods()[random].invoke(enemyFactory);
+			generatedEnemy = (GameObject) enemyFactory.getClass().getDeclaredMethods()[random].invoke(enemyFactory);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Error enemy generation");

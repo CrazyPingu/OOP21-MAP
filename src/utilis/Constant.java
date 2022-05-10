@@ -3,6 +3,9 @@ package utilis;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.util.List;
+
+import logics.game_object.GameObject;
 
 /**
  * 
@@ -43,6 +46,15 @@ public class Constant {
 	 */
 	public static final Font genericFont(String fontName, int fontStyle, int fontSize) {
 		return new Font(fontName, fontStyle, horizontalAspectRatio(fontSize));
+	}
+
+	/**
+	 * @param pos        the position of the GameObject to be found
+	 * @param gameObject the list to search out
+	 * @return the GameObject at that position
+	 */
+	private GameObject findGameObject(Pair<Integer, Integer> pos, List<GameObject> gameObject) {
+		return gameObject.stream().filter(x -> x.getPos().equals(pos)).findFirst().get();
 	}
 
 }
