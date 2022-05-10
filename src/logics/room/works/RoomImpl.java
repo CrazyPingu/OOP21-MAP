@@ -31,7 +31,7 @@ public class RoomImpl implements Room {
 		player.setPos(newPosPlayer);
 		this.gameObjectList.add(player);
 		this.gameObjectList.addAll(new RandomEnemyList(size, this.gameObjectList));
-		// add enemy and artefact
+		this.gameObjectList.addAll(new RandomArtefactList(size, gameObjectList));
 	}
 
 	/**

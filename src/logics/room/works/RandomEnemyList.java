@@ -21,7 +21,8 @@ public class RandomEnemyList extends ArrayList<GameObject> {
 	private final int possibleZombieNumber = enemyFactory.getClass().getDeclaredMethods().length;
 
 	/**
-	 * {@inheritDoc}
+	 * @param size           the size of the room
+	 * @param gameObjectList the GameObject that have been already added
 	 */
 	public RandomEnemyList(Pair<Integer, Integer> size, List<GameObject> gameObjectList) {
 		Pair<Integer, Integer> zombieSpawn;
