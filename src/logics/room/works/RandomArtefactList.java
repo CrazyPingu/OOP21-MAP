@@ -1,7 +1,6 @@
 package logics.room.works;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,9 +34,22 @@ public class RandomArtefactList extends ArrayList<GameObject> {
 				artefactPos = new Pair<Integer, Integer>(new Random().ints(0, size.getX()).findFirst().getAsInt(),
 						new Random().ints(0, size.getY()).findFirst().getAsInt());
 			} while (Constant.findGameObject(artefactPos, this) != null);
-			Object randomFactory = generateRandomArtefactFactory();
+			generateRandomArtefact(generateRandomArtefactFactory(), artefactPos, factoryOfArtefact);
 		}
+	}
 
+	private void generateRandomArtefact(Object artefactFactory, Pair<Integer, Integer> pos, Map<Object, Integer> factoryOfArtefact2) {
+		int random = (int) Math.random() * factoryOfArtefact2.get(artefactFactory);
+		GameObject generatedArtefact = null;
+		try {
+			generatedArtefact = (GameObject) artefactFactory.getClass().getDeclaredMethods()[random].invoke(artefactFactory,
+					pos);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Error artefact generation");
+		}
+		this.add(generatedArtefact);
+		
 	}
 
 	private Object generateRandomArtefactFactory() {
