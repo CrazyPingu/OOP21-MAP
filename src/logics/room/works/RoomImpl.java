@@ -17,7 +17,7 @@ import view.game.central.GameButton;
 public class RoomImpl implements Room {
 	private Pair<Integer, Integer> size;
 	private List<GameButton> cells;
-	private List<GameObject> gameObject;
+	private List<GameObject> gameObjectList;
 
 	/**
 	 * @param size         the size of the room.
@@ -27,9 +27,10 @@ public class RoomImpl implements Room {
 	public RoomImpl(Pair<Integer, Integer> size, Player player, Pair<Integer, Integer> newPosPlayer) {
 		this.size = size;
 		this.cells = new ArrayList<>();
-		this.gameObject = new ArrayList<>();
+		this.gameObjectList = new ArrayList<>();
 		player.setPos(newPosPlayer);
-		this.gameObject.add(player);
+		this.gameObjectList.add(player);
+		this.gameObjectList.addAll(new RandomEnemyList(size));
 		// add enemy and artefact
 	}
 
@@ -44,14 +45,14 @@ public class RoomImpl implements Room {
 	 * {@inheritDoc}
 	 */
 	public void updateGameObjectPosition(Pair<Integer, Integer> oldPos, Pair<Integer, Integer> newPos) {
-		Constant.findGameObject(oldPos, this.gameObject).setPos(newPos);
+		Constant.findGameObject(oldPos, this.gameObjectList).setPos(newPos);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public void removeGameObject(Pair<Integer, Integer> pos) {
-		this.gameObject.remove(Constant.findGameObject(pos, this.gameObject));
+		this.gameObjectList.remove(Constant.findGameObject(pos, this.gameObjectList));
 	}
 
 	/**
@@ -72,7 +73,7 @@ public class RoomImpl implements Room {
 	 * {@inheritDoc}
 	 */
 	public List<GameObject> getGameObject() {
-		return this.gameObject;
+		return this.gameObjectList;
 	}
 
 	@Override
