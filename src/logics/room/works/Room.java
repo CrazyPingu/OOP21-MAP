@@ -1,9 +1,8 @@
 package logics.room.works;
 
-import java.util.Map;
+import java.util.List;
 
-import logics.artefact.Artefact;
-import logics.entity.Entity;
+import logics.game_object.GameObject;
 import utilis.Pair;
 import view.game.central.GameButton;
 
@@ -15,50 +14,34 @@ import view.game.central.GameButton;
 public interface Room {
 
 	/**
+	 * @param button the button that will be added to the grid
+	 */
+	public void addButtonToCells(GameButton button);
+
+	/**
+	 * @param currentPos the current game object position
+	 * @param futurePos  the position that the game object will have
+	 */
+	public void updateGameObjectPosition(Pair<Integer, Integer> oldPos, Pair<Integer, Integer> newPos);
+
+	/**
+	 * @param pos the position of the game object to remove from the game
+	 */
+	public void removeGameObject(Pair<Integer, Integer> pos);
+
+	/**
+	 * @return the cells
+	 */
+	public List<GameButton> getCells();
+
+	/**
 	 * @return a Pair<> that represent the size of the room.
 	 */
 	public Pair<Integer, Integer> getSize();
 
 	/**
-	 * @return a Pair<> that represent the position of the player.
+	 * @return a List<GameObject> that contains all the GameObject (like the
+	 *         artefact, the enemy and the player)
 	 */
-	public Pair<Integer, Integer> getPosPlayer();
-
-	/**
-	 * @return a Map<Pair<>, Entity> that represent the position of each enemy and
-	 *         their type.
-	 */
-	public Map<Pair<Integer, Integer>, Entity> getPosEnemy();
-
-	/**
-	 * @param pos    the position to add to the cells
-	 * @param button the button correlated to the position
-	 */
-	public void addToCells(Pair<Integer, Integer> pos, GameButton button);
-
-	/**
-	 * @param newPosPlayer the new player position
-	 */
-	public void updatePosPlayer(Pair<Integer, Integer> newPosPlayer);
-
-	/**
-	 * @param currentPos the current enemy's position
-	 * @param futurePos  the position that the enemy will have
-	 */
-	public void updatePosEnemy(Pair<Integer, Integer> currentPos, Pair<Integer, Integer> futurePos);
-
-	/**
-	 * @param pos the position of the item to remove
-	 */
-	public void removeItem(Pair<Integer, Integer> pos);
-	
-	/**
-	 * @return the cells
-	 */
-	public Map<Pair<Integer, Integer>, GameButton> getCells();
-	
-	/**
-	 * @return the spawned items
-	 */
-	public Map<Pair<Integer, Integer>, Artefact> getSpawnItems();
+	public List<GameObject> getGameObject();
 }
