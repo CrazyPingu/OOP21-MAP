@@ -49,12 +49,17 @@ public class Constant {
 	}
 
 	/**
-	 * @param pos        the position of the GameObject to be found
-	 * @param gameObject the list to search out
+	 * @param pos            the position of the GameObject to be found
+	 * @param gameObjectList the list to search out
 	 * @return the GameObject at that position
 	 */
-	public static GameObject findGameObject(Pair<Integer, Integer> pos, List<GameObject> gameObject) {
-		return gameObject.stream().filter(x -> x.getPos().equals(pos)).findFirst().get();
+	public static GameObject findGameObject(Pair<Integer, Integer> pos, List<GameObject> gameObjectList) {
+		for (var x : gameObjectList) {
+			if (x.getPos().equals(pos)) {
+				return x;
+			}
+		}
+		return null;
 	}
 
 }
