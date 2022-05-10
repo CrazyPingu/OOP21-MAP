@@ -1,6 +1,7 @@
 package logics.room.works;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import logics.game_object.GameObject;
@@ -22,14 +23,15 @@ public class RandomEnemyList extends ArrayList<GameObject> {
 	/**
 	 * {@inheritDoc}
 	 */
-	public RandomEnemyList(Pair<Integer, Integer> size) {
+	public RandomEnemyList(Pair<Integer, Integer> size, List<GameObject> gameObjectList) {
 		Pair<Integer, Integer> zombieSpawn;
 		for (int i = 0; i < size.getX() * size.getY() / Constant.SPAWNING_RATIO; i++) {
 			do {
 				zombieSpawn = new Pair<Integer, Integer>(
 						new Random().ints(Constant.FORBIDDEN_ZOMBIE_SPAWN, size.getX()).findFirst().getAsInt(),
 						new Random().ints(0, size.getY()).findFirst().getAsInt());
-			} while (Constant.findGameObject(zombieSpawn, this) != null);
+			} while (Constant.findGameObject(zombieSpawn, this) != null
+					&& Constant.findGameObject(zombieSpawn, gameObjectList) != null);
 			this.add(generateRandomEnemy(zombieSpawn));
 		}
 	}

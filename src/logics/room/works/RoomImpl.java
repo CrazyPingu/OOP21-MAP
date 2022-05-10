@@ -27,10 +27,10 @@ public class RoomImpl implements Room {
 	public RoomImpl(Pair<Integer, Integer> size, Player player, Pair<Integer, Integer> newPosPlayer) {
 		this.size = size;
 		this.cells = new ArrayList<>();
-		this.gameObjectList = new ArrayList<>();
+		this.gameObjectList = new ArrayList<GameObject>();
 		player.setPos(newPosPlayer);
 		this.gameObjectList.add(player);
-		this.gameObjectList.addAll(new RandomEnemyList(size));
+		this.gameObjectList.addAll(new RandomEnemyList(size, this.gameObjectList));
 		// add enemy and artefact
 	}
 
