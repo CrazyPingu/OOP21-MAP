@@ -1,6 +1,6 @@
 package view.game.logStats;
 
-import logics.entity.Player;
+import logics.game_object.entity.Player;
 
 /**
  *
