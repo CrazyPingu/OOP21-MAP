@@ -12,5 +12,5 @@ public interface MultipleActionObject {
 	 * 
 	 * @return the number of action the object can perform in a turn
 	 */
-	public int getNumberAction();
+	public int getActionNumber();
 }
