@@ -13,6 +13,7 @@ import logics.game_object.artefact.MovementArtefactFactoryImp;
 import logics.strategy.weapon.WeaponFactoryImpl;
 import utilis.Constant;
 import utilis.Pair;
+import utilis.RoomConstant;
 
 public class RandomArtefactList extends ArrayList<GameObject> {
 
@@ -32,7 +33,7 @@ public class RandomArtefactList extends ArrayList<GameObject> {
 		factoryOfArtefact.put(new MovementArtefactFactoryImp(),
 				new MovementArtefactFactoryImp().getClass().getDeclaredMethods().length);
 		Pair<Integer, Integer> artefactPos;
-		for (int i = 0; i < size.getX() * size.getY() / Constant.SPAWNING_RATIO; i++) {
+		for (int i = 0; i < size.getX() * size.getY() / RoomConstant.SPAWNING_RATIO; i++) {
 			do {
 				artefactPos = new Pair<Integer, Integer>(new Random().ints(0, size.getX()).findFirst().getAsInt(),
 						new Random().ints(0, size.getY()).findFirst().getAsInt());

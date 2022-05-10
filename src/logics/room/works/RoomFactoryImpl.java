@@ -18,13 +18,7 @@ public class RoomFactoryImpl implements RoomFactory {
 
 	
 	private Player player;
-	
-	private final int maxX = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(Constant.GAME_WIDTH / 15);
-	private final int maxY = Constant.TOP_HEIGHT / Constant.verticalAspectRatio(Constant.TOP_HEIGHT / 10);
 	private final Pair<Integer, Integer> maxSize = new Pair<Integer, Integer>(maxX, maxY);
-
-	private final int minX = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(Constant.GAME_WIDTH / 6);
-	private final int minY = Constant.TOP_HEIGHT / Constant.verticalAspectRatio(Constant.TOP_HEIGHT / 5);
 	private final Pair<Integer, Integer> minSize = new Pair<Integer, Integer>(minX, minY);
 
 	public RoomFactoryImpl(Player player) {

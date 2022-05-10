@@ -8,6 +8,7 @@ import logics.game_object.GameObject;
 import logics.game_object.entity.enemy.EnemyFactoryImpl;
 import utilis.Constant;
 import utilis.Pair;
+import utilis.RoomConstant;
 
 /**
  * 
@@ -26,10 +27,10 @@ public class RandomEnemyList extends ArrayList<GameObject> {
 	 */
 	public RandomEnemyList(Pair<Integer, Integer> size, List<GameObject> gameObjectList) {
 		Pair<Integer, Integer> zombieSpawn;
-		for (int i = 0; i < size.getX() * size.getY() / Constant.SPAWNING_RATIO; i++) {
+		for (int i = 0; i < size.getX() * size.getY() / RoomConstant.SPAWNING_RATIO; i++) {
 			do {
 				zombieSpawn = new Pair<Integer, Integer>(
-						new Random().ints(Constant.FORBIDDEN_ZOMBIE_SPAWN, size.getX()).findFirst().getAsInt(),
+						new Random().ints(RoomConstant.FORBIDDEN_ZOMBIE_SPAWN, size.getX()).findFirst().getAsInt(),
 						new Random().ints(0, size.getY()).findFirst().getAsInt());
 			} while (Constant.findGameObject(zombieSpawn, this) != null
 					&& Constant.findGameObject(zombieSpawn, gameObjectList) != null);
