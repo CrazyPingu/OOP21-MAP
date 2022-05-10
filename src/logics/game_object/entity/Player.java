@@ -129,12 +129,12 @@ public class Player implements MultipleActionObject, ArtefactUserObject, MovingO
 	}
 
 	@Override
-	public int getNumberAction() {
+	public int getActionNumber() {
 		return this.actionNumber;
 	}
 
 	public String toString() {
 		return " name = " + this.name + "\n health = " + this.getHealth() + "\n max health" + this.getMaxHealth()
-				+ "\n weapon damage = " + this.weapon.getDamage() + "\n number action = " + this.getNumberAction();
+				+ "\n weapon damage = " + this.weapon.getDamage() + "\n number action = " + this.getActionNumber();
 	}
 }
