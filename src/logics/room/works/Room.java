@@ -21,12 +21,19 @@ public interface Room {
 	public boolean playerOnDoor();
 
 	/**
-	 * Method that check if the player is on an artefact
+	 * Method that check if the player is on an artefact and return the artefact
 	 * 
 	 * @return an Artefact if the player is on it, and remove it from the list of
 	 *         artefact, else null
 	 */
-	public Artefact playerOnArtefact();
+	public Artefact playerGetArtefact();
+
+	/**
+	 * Method that check if the player is on an artefact
+	 * 
+	 * @return true if the player is on a artefact
+	 */
+	public boolean playerOnArtefact();
 
 	/**
 	 * @param button the button that will be added to the grid

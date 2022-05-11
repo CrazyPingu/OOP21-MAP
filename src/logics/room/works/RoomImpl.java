@@ -48,12 +48,18 @@ public class RoomImpl implements Room {
 	/**
 	 * {@inheritDoc}
 	 */
-	public Artefact playerOnArtefact() {
-		Artefact artefact = RoomConstant.searchArtefact(this.player.getPos(), artefactList);
-		if (artefact != null) {
+	public Artefact playerGetArtefact() {
+		if (playerOnArtefact()) {
 			this.removeObject(player.getPos());
 		}
-		return artefact;
+		return RoomConstant.searchArtefact(this.player.getPos(), artefactList);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public boolean playerOnArtefact() {
+		return RoomConstant.searchArtefact(this.player.getPos(), artefactList) != null;
 	}
 
 	/**
