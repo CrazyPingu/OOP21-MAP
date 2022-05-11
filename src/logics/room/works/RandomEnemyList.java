@@ -3,6 +3,7 @@ package logics.room.works;
 import java.util.ArrayList;
 import java.util.Random;
 
+import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEntity;
 import logics.game_object.entity.enemy.EnemyFactoryImpl;
 import utilis.Pair;
@@ -22,14 +23,14 @@ public class RandomEnemyList extends ArrayList<SimpleEntity> {
 	/**
 	 * @param size the size of the room
 	 */
-	public RandomEnemyList(Pair<Integer, Integer> size) {
+	public RandomEnemyList(Pair<Integer, Integer> size, Player player) {
 		Pair<Integer, Integer> zombieSpawn;
 		for (int i = 0; i < size.getX() * size.getY() / RoomConstant.SPAWNING_RATIO; i++) {
 			do {
 				zombieSpawn = new Pair<Integer, Integer>(
 						new Random().ints(RoomConstant.FORBIDDEN_ZOMBIE_SPAWN, size.getX()).findFirst().getAsInt(),
 						new Random().ints(0, size.getY()).findFirst().getAsInt());
-			} while (RoomConstant.searchEnemy(zombieSpawn, this) != null);
+			} while (RoomConstant.cellsOccupated(this, null, player, zombieSpawn));
 			this.add(generateRandomEnemy(zombieSpawn));
 		}
 	}
@@ -51,6 +52,5 @@ public class RandomEnemyList extends ArrayList<SimpleEntity> {
 		}
 		return generatedEnemy;
 	}
-
 
 }

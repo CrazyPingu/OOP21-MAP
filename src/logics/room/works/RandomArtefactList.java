@@ -10,6 +10,8 @@ import logics.game_object.artefact.ActionNumberArtefactFactoryImpl;
 import logics.game_object.artefact.Artefact;
 import logics.game_object.artefact.HealthArtefactFactoryImpl;
 import logics.game_object.artefact.MovementArtefactFactoryImp;
+import logics.game_object.entity.Player;
+import logics.game_object.entity.SimpleEntity;
 import logics.strategy.weapon.WeaponFactoryImpl;
 import utilis.Pair;
 import utilis.RoomConstant;
@@ -27,7 +29,7 @@ public class RandomArtefactList extends ArrayList<Artefact> {
 	/**
 	 * @param size the size of the room
 	 */
-	public RandomArtefactList(Pair<Integer, Integer> size) {
+	public RandomArtefactList(Pair<Integer, Integer> size, List<SimpleEntity> enemyList,Player player) {
 		factoryOfArtefact.put(new WeaponFactoryImpl(), new WeaponFactoryImpl().getClass().getDeclaredMethods().length);
 		factoryOfArtefact.put(new HealthArtefactFactoryImpl(), new HealthArtefactFactoryImpl().getClass().getDeclaredMethods().length);
 		factoryOfArtefact.put(new ActionNumberArtefactFactoryImpl(),new ActionNumberArtefactFactoryImpl().getClass().getDeclaredMethods().length);
@@ -37,7 +39,7 @@ public class RandomArtefactList extends ArrayList<Artefact> {
 			do {
 				artefactPos = new Pair<Integer, Integer>(new Random().ints(0, size.getX()).findFirst().getAsInt(),
 						new Random().ints(0, size.getY()).findFirst().getAsInt());
-			} while (RoomConstant.searchArtefact(artefactPos, this) != null);
+			} while (RoomConstant.cellsOccupated(enemyList, this, player, artefactPos));
 			generateRandomArtefact(generateRandomArtefactFactory(), artefactPos);
 		}
 	}
@@ -69,6 +71,5 @@ public class RandomArtefactList extends ArrayList<Artefact> {
 		Object randomKey = keys.get(new Random().nextInt(keys.size()));
 		return factoryOfArtefact.get(randomKey);
 	}
-
 	
 }

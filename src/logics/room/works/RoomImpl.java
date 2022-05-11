@@ -31,8 +31,8 @@ public class RoomImpl implements Room {
 		this.size = size;
 		this.player = player;
 		this.cells = new ArrayList<>();
-		this.enemyList = new RandomEnemyList(size);
-		this.artefactList = new RandomArtefactList(size);
+		this.enemyList = new RandomEnemyList(size, player);
+		this.artefactList = new RandomArtefactList(size, enemyList, player);
 		player.setPos(newPosPlayer);
 	}
 
@@ -58,11 +58,11 @@ public class RoomImpl implements Room {
 	 * {@inheritDoc}
 	 */
 	public void removeObject(Pair<Integer, Integer> pos) {
-		if(RoomConstant.searchEnemy(pos, enemyList) != null) {
+		if (RoomConstant.searchEnemy(pos, enemyList) != null) {
 			enemyList.remove(RoomConstant.searchEnemy(pos, enemyList));
-		}else if(RoomConstant.searchArtefact(pos, artefactList) != null){
+		} else if (RoomConstant.searchArtefact(pos, artefactList) != null) {
 			artefactList.remove(RoomConstant.searchArtefact(pos, artefactList));
-		}else if(player.getPos().equals(pos)){
+		} else if (player.getPos().equals(pos)) {
 			player = null;
 		}
 	}
