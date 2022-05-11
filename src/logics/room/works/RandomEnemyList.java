@@ -11,7 +11,7 @@ import utilis.RoomConstant;
 
 /**
  * 
- * Class that is a random generated List that contains GameObject
+ * Class that is a random generated List that contains SimpleEntity
  *
  */
 public class RandomEnemyList extends ArrayList<SimpleEntity> {
@@ -21,8 +21,7 @@ public class RandomEnemyList extends ArrayList<SimpleEntity> {
 	private final int possibleZombieNumber = enemyFactory.getClass().getDeclaredMethods().length;
 
 	/**
-	 * @param size           the size of the room
-	 * @param gameObjectList the GameObject that have been already added
+	 * @param size the size of the room
 	 */
 	public RandomEnemyList(Pair<Integer, Integer> size) {
 		Pair<Integer, Integer> zombieSpawn;
