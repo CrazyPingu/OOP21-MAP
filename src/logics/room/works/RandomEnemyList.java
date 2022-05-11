@@ -1,7 +1,6 @@
 package logics.room.works;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import logics.game_object.entity.SimpleEntity;
@@ -30,7 +29,7 @@ public class RandomEnemyList extends ArrayList<SimpleEntity> {
 				zombieSpawn = new Pair<Integer, Integer>(
 						new Random().ints(RoomConstant.FORBIDDEN_ZOMBIE_SPAWN, size.getX()).findFirst().getAsInt(),
 						new Random().ints(0, size.getY()).findFirst().getAsInt());
-			} while (searchEnemy(zombieSpawn, this));
+			} while (RoomConstant.searchEnemy(zombieSpawn, this) != null);
 			this.add(generateRandomEnemy(zombieSpawn));
 		}
 	}
@@ -53,12 +52,5 @@ public class RandomEnemyList extends ArrayList<SimpleEntity> {
 		return generatedEnemy;
 	}
 
-	private boolean searchEnemy(Pair<Integer, Integer> pos, List<SimpleEntity> list) {
-		for (var x : list) {
-			if (x.getPos().equals(pos)) {
-				return true;
-			}
-		}
-		return false;
-	}
+
 }

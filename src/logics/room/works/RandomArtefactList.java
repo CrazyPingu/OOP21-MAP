@@ -37,7 +37,7 @@ public class RandomArtefactList extends ArrayList<Artefact> {
 			do {
 				artefactPos = new Pair<Integer, Integer>(new Random().ints(0, size.getX()).findFirst().getAsInt(),
 						new Random().ints(0, size.getY()).findFirst().getAsInt());
-			} while (searchArtefact(artefactPos, this));
+			} while (RoomConstant.searchArtefact(artefactPos, this) != null);
 			generateRandomArtefact(generateRandomArtefactFactory(), artefactPos);
 		}
 	}
@@ -70,12 +70,5 @@ public class RandomArtefactList extends ArrayList<Artefact> {
 		return factoryOfArtefact.get(randomKey);
 	}
 
-	private boolean searchArtefact(Pair<Integer, Integer> pos, List<Artefact> list) {
-		for (var x : list) {
-			if (x.getPos().equals(pos)) {
-				return true;
-			}
-		}
-		return false;
-	}
+	
 }

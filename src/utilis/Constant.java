@@ -47,19 +47,4 @@ public class Constant {
 	public static final Font genericFont(String fontName, int fontStyle, int fontSize) {
 		return new Font(fontName, fontStyle, horizontalAspectRatio(fontSize));
 	}
-
-	/**
-	 * @param pos            the position of the GameObject to be found
-	 * @param gameObjectList the list to search out
-	 * @return the GameObject at that position
-	 */
-	public static GameObject findGameObject(Pair<Integer, Integer> pos, List<GameObject> gameObjectList) {
-		for (var x : gameObjectList) {
-			if (x.getPos().equals(pos)) {
-				return x;
-			}
-		}
-		return null;
-	}
-
 }
