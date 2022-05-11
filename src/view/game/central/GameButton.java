@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import logics.game_object.GameObject;
 import utilis.ImageMethod;
 import utilis.Pair;
 
@@ -26,8 +27,10 @@ public class GameButton extends JButton implements ActionListener {
 	private GameArea gameArea;
 	private JLabel sprite;
 	private JLabel strategyLabel;
+	private Pair<Integer, Integer> pos;
 
-	public GameButton(GameArea gameArea) {
+	public GameButton(GameArea gameArea, Pair<Integer, Integer> pos) {
+		this.pos = pos;
 		this.gameArea = gameArea;
 		sprite = new JLabel("");
 		strategyLabel = new JLabel("");
@@ -68,6 +71,12 @@ public class GameButton extends JButton implements ActionListener {
 	 */
 	public void setSprite(JLabel label) {
 		this.sprite = label;
+	}
+	/**
+	 * @return the pos of the button in the room
+	 */
+	public Pair<Integer, Integer> getPos(){
+		return this.pos;
 	}
 
 }

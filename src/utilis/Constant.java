@@ -3,6 +3,9 @@ package utilis;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.util.List;
+
+import logics.game_object.GameObject;
 
 /**
  * 
@@ -44,5 +47,4 @@ public class Constant {
 	public static final Font genericFont(String fontName, int fontStyle, int fontSize) {
 		return new Font(fontName, fontStyle, horizontalAspectRatio(fontSize));
 	}
-
 }
