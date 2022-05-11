@@ -21,6 +21,14 @@ public interface Room {
 	public boolean playerOnDoor();
 
 	/**
+	 * Method that check if the player is on an artefact
+	 * 
+	 * @return an Artefact if the player is on it, and remove it from the list of
+	 *         artefact, else null
+	 */
+	public Artefact playerOnArtefact();
+
+	/**
 	 * @param button the button that will be added to the grid
 	 */
 	public void addButtonToCells(GameButton button);

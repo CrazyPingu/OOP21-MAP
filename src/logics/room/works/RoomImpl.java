@@ -38,14 +38,24 @@ public class RoomImpl implements Room {
 		player.setPos(newPosPlayer);
 	}
 
-	
 	/**
 	 * {@inheritDoc}
 	 */
 	public boolean playerOnDoor() {
 		return this.door.contains(this.player.getPos());
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public Artefact playerOnArtefact() {
+		Artefact artefact = RoomConstant.searchArtefact(this.player.getPos(), artefactList);
+		if (artefact != null) {
+			this.removeObject(player.getPos());
+		}
+		return artefact;
+	}
+
 	/**
 	 * Method that generate the door in the last x position, with the middle y
 	 * 
@@ -133,6 +143,5 @@ public class RoomImpl implements Room {
 	public List<Pair<Integer, Integer>> getDoor() {
 		return this.door;
 	}
-
 
 }
