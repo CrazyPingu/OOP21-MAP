@@ -21,6 +21,7 @@ public class RoomImpl implements Room {
 	private List<SimpleEntity> enemyList;
 	private List<Artefact> artefactList;
 	private Player player;
+	private List<Pair<Integer, Integer>> door;
 
 	/**
 	 * @param size         the size of the room.
@@ -31,9 +32,25 @@ public class RoomImpl implements Room {
 		this.size = size;
 		this.player = player;
 		this.cells = new ArrayList<>();
+		this.door = generateDoor(size);
 		this.enemyList = new RandomEnemyList(size, player);
 		this.artefactList = new RandomArtefactList(size, enemyList, player);
 		player.setPos(newPosPlayer);
+	}
+
+	/**
+	 * Method that generate the door in the last x position, with the middle y
+	 * 
+	 * @param size the size of the room
+	 * @return a List with the cell of the door
+	 */
+	private List<Pair<Integer, Integer>> generateDoor(Pair<Integer, Integer> size) {
+		List<Pair<Integer, Integer>> tmp = new ArrayList<>();
+		tmp.add(new Pair<Integer, Integer>(size.getX() - 1, size.getY() / 2));
+		if (size.getY() % 2 == 0) {
+			tmp.add(new Pair<Integer, Integer>(size.getX() - 1, (size.getY() / 2) + 1));
+		}
+		return tmp;
 	}
 
 	/**
@@ -100,5 +117,12 @@ public class RoomImpl implements Room {
 	 */
 	public Player getPlayer() {
 		return this.player;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public List<Pair<Integer, Integer>> getDoor() {
+		return this.door;
 	}
 }

@@ -55,4 +55,9 @@ public interface Room {
 	 * @return the player of the game
 	 */
 	public Player getPlayer();
+	
+	/**
+	 * @return the door
+	 */
+	public List<Pair<Integer, Integer>> getDoor();
 }
