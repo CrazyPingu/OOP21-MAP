@@ -3,11 +3,11 @@ package logics.room.works;
 import java.util.ArrayList;
 import java.util.List;
 
-import logics.game_object.GameObject;
-import logics.game_object.MovingObject;
+import logics.game_object.artefact.Artefact;
 import logics.game_object.entity.Player;
-import utilis.Constant;
+import logics.game_object.entity.SimpleEntity;
 import utilis.Pair;
+import utilis.RoomConstant;
 import view.game.central.GameButton;
 
 /**
@@ -18,7 +18,9 @@ import view.game.central.GameButton;
 public class RoomImpl implements Room {
 	private Pair<Integer, Integer> size;
 	private List<GameButton> cells;
-	private List<GameObject> gameObjectList;
+	private List<SimpleEntity> enemyList;
+	private List<Artefact> artefactList;
+	private Player player;
 
 	/**
 	 * @param size         the size of the room.
@@ -27,12 +29,11 @@ public class RoomImpl implements Room {
 	 */
 	public RoomImpl(Pair<Integer, Integer> size, Player player, Pair<Integer, Integer> newPosPlayer) {
 		this.size = size;
+		this.player = player;
 		this.cells = new ArrayList<>();
-		this.gameObjectList = new ArrayList<GameObject>();
+		this.enemyList = new RandomEnemyList(size);
+		this.artefactList = new RandomArtefactList(size);
 		player.setPos(newPosPlayer);
-		this.gameObjectList.add(player);
-		this.gameObjectList.addAll(new RandomEnemyList(size, this.gameObjectList));
-		this.gameObjectList.addAll(new RandomArtefactList(size, gameObjectList));
 	}
 
 	/**
@@ -45,17 +46,25 @@ public class RoomImpl implements Room {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void updateGameObjectPosition(Pair<Integer, Integer> oldPos, Pair<Integer, Integer> newPos) {
-		MovingObject gameobj = (MovingObject) Constant.findGameObject(oldPos, this.gameObjectList);
-		gameobj.setPos(newPos);
-		
+	public void updatePosition(Pair<Integer, Integer> oldPos, Pair<Integer, Integer> newPos) {
+		if (RoomConstant.searchEnemy(oldPos, enemyList) != null) {
+			RoomConstant.searchEnemy(oldPos, enemyList).setPos(newPos);
+		} else {
+			this.player.setPos(newPos);
+		}
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public void removeGameObject(Pair<Integer, Integer> pos) {
-		this.gameObjectList.remove(Constant.findGameObject(pos, this.gameObjectList));
+	public void removeObject(Pair<Integer, Integer> pos) {
+		if(RoomConstant.searchEnemy(pos, enemyList) != null) {
+			enemyList.remove(RoomConstant.searchEnemy(pos, enemyList));
+		}else if(RoomConstant.searchArtefact(pos, artefactList) != null){
+			artefactList.remove(RoomConstant.searchArtefact(pos, artefactList));
+		}else if(player.getPos().equals(pos)){
+			player = null;
+		}
 	}
 
 	/**
@@ -75,12 +84,21 @@ public class RoomImpl implements Room {
 	/**
 	 * {@inheritDoc}
 	 */
-	public List<GameObject> getGameObject() {
-		return this.gameObjectList;
+	public List<SimpleEntity> getEnemyList() {
+		return this.enemyList;
 	}
 
-	@Override
-	public String toString() {
-		return "Room with :" + this.getGameObject().size() + "\nThe room's dimension is " + this.getSize();
+	/**
+	 * {@inheritDoc}
+	 */
+	public List<Artefact> getArtefactList() {
+		return this.artefactList;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public Player getPlayer() {
+		return this.player;
 	}
 }
