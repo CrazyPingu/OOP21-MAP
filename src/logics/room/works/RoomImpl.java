@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import logics.game_object.GameObject;
+import logics.game_object.MovingObject;
 import logics.game_object.entity.Player;
 import utilis.Constant;
 import utilis.Pair;
@@ -45,7 +46,9 @@ public class RoomImpl implements Room {
 	 * {@inheritDoc}
 	 */
 	public void updateGameObjectPosition(Pair<Integer, Integer> oldPos, Pair<Integer, Integer> newPos) {
-		Constant.findGameObject(oldPos, this.gameObjectList).setPos(newPos);
+		MovingObject gameobj = (MovingObject) Constant.findGameObject(oldPos, this.gameObjectList);
+		gameobj.setPos(newPos);
+		
 	}
 
 	/**
