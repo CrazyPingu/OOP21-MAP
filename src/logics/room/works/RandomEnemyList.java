@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import logics.game_object.GameObject;
+import logics.game_object.entity.SimpleEntity;
 import logics.game_object.entity.enemy.EnemyFactoryImpl;
-import utilis.Constant;
 import utilis.Pair;
 import utilis.RoomConstant;
 
@@ -15,7 +14,7 @@ import utilis.RoomConstant;
  * Class that is a random generated List that contains GameObject
  *
  */
-public class RandomEnemyList extends ArrayList<GameObject> {
+public class RandomEnemyList extends ArrayList<SimpleEntity> {
 
 	private static final long serialVersionUID = -1346040616337955961L;
 	private final EnemyFactoryImpl enemyFactory = new EnemyFactoryImpl();
@@ -25,15 +24,14 @@ public class RandomEnemyList extends ArrayList<GameObject> {
 	 * @param size           the size of the room
 	 * @param gameObjectList the GameObject that have been already added
 	 */
-	public RandomEnemyList(Pair<Integer, Integer> size, List<GameObject> gameObjectList) {
+	public RandomEnemyList(Pair<Integer, Integer> size) {
 		Pair<Integer, Integer> zombieSpawn;
 		for (int i = 0; i < size.getX() * size.getY() / RoomConstant.SPAWNING_RATIO; i++) {
 			do {
 				zombieSpawn = new Pair<Integer, Integer>(
 						new Random().ints(RoomConstant.FORBIDDEN_ZOMBIE_SPAWN, size.getX()).findFirst().getAsInt(),
 						new Random().ints(0, size.getY()).findFirst().getAsInt());
-			} while (Constant.findGameObject(zombieSpawn, this) != null
-					&& Constant.findGameObject(zombieSpawn, gameObjectList) != null);
+			} while (searchEnemy(zombieSpawn, this));
 			this.add(generateRandomEnemy(zombieSpawn));
 		}
 	}
@@ -43,11 +41,11 @@ public class RandomEnemyList extends ArrayList<GameObject> {
 	 * 
 	 * @return a random enemy
 	 */
-	private GameObject generateRandomEnemy(Pair<Integer, Integer> pos) {
+	private SimpleEntity generateRandomEnemy(Pair<Integer, Integer> pos) {
 		int random = (int) Math.random() * possibleZombieNumber;
-		GameObject generatedEnemy = null;
+		SimpleEntity generatedEnemy = null;
 		try {
-			generatedEnemy = (GameObject) enemyFactory.getClass().getDeclaredMethods()[random].invoke(enemyFactory,
+			generatedEnemy = (SimpleEntity) enemyFactory.getClass().getDeclaredMethods()[random].invoke(enemyFactory,
 					pos);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -56,4 +54,12 @@ public class RandomEnemyList extends ArrayList<GameObject> {
 		return generatedEnemy;
 	}
 
+	private boolean searchEnemy(Pair<Integer, Integer> pos, List<SimpleEntity> list) {
+		for (var x : list) {
+			if (x.getPos().equals(pos)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
