@@ -4,6 +4,7 @@ import java.util.List;
 
 import logics.game_object.GameObject;
 import logics.game_object.artefact.Artefact;
+import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEntity;
 
 public class RoomConstant {
@@ -57,5 +58,19 @@ public class RoomConstant {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * @param enemyList    the list of the enemy
+	 * @param artefactList the list of the artefact
+	 * @param player       the player
+	 * @param pos          the position to check
+	 * @return true if an enemy, the player or a artefact is in that position, else
+	 *         false
+	 */
+	public static boolean cellsOccupated(List<SimpleEntity> enemyList, List<Artefact> artefactList, Player player,
+			Pair<Integer, Integer> pos) {
+		return player.getPos().equals(pos) || searchEnemy(pos, enemyList) != null
+				|| searchArtefact(pos, artefactList) != null;
 	}
 }
