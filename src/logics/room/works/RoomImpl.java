@@ -38,6 +38,14 @@ public class RoomImpl implements Room {
 		player.setPos(newPosPlayer);
 	}
 
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public boolean playerOnDoor() {
+		return this.door.contains(this.player.getPos());
+	}
+	
 	/**
 	 * Method that generate the door in the last x position, with the middle y
 	 * 
@@ -66,7 +74,7 @@ public class RoomImpl implements Room {
 	public void updatePosition(Pair<Integer, Integer> oldPos, Pair<Integer, Integer> newPos) {
 		if (RoomConstant.searchEnemy(oldPos, enemyList) != null) {
 			RoomConstant.searchEnemy(oldPos, enemyList).setPos(newPos);
-		} else {
+		} else if (this.player.getPos().equals(oldPos)) {
 			this.player.setPos(newPos);
 		}
 	}
@@ -125,4 +133,6 @@ public class RoomImpl implements Room {
 	public List<Pair<Integer, Integer>> getDoor() {
 		return this.door;
 	}
+
+
 }

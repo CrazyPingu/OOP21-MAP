@@ -16,6 +16,11 @@ import view.game.central.GameButton;
 public interface Room {
 
 	/**
+	 * @return true if the player is on the door, else false
+	 */
+	public boolean playerOnDoor();
+
+	/**
 	 * @param button the button that will be added to the grid
 	 */
 	public void addButtonToCells(GameButton button);
@@ -55,7 +60,7 @@ public interface Room {
 	 * @return the player of the game
 	 */
 	public Player getPlayer();
-	
+
 	/**
 	 * @return the door
 	 */
