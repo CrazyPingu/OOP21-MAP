@@ -1,8 +1,14 @@
 package controller;
 
+import logics.room.works.Room;
+import view.game.TotalPanel;
+
 public class ActionMenuController {
 
-    public ActionMenuController() {
+    
+    
+    
+    public ActionMenuController(Room room, TotalPanel totalpanel, int currentActionNumer,int typeOfActionFlag) {
         
     }
     
