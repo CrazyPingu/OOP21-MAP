@@ -29,13 +29,13 @@ public class RoomImpl implements Room {
 	 * @param newPosPlayer the new position of the player
 	 */
 	public RoomImpl(Pair<Integer, Integer> size, Player player, Pair<Integer, Integer> newPosPlayer) {
+		player.setPos(newPosPlayer);
 		this.size = size;
 		this.player = player;
 		this.cells = new ArrayList<>();
 		this.door = generateDoor(size);
 		this.enemyList = new RandomEnemyList(size, player);
 		this.artefactList = new RandomArtefactList(size, enemyList, player);
-		player.setPos(newPosPlayer);
 	}
 
 	/**
