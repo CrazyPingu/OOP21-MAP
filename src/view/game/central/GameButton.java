@@ -1,5 +1,6 @@
 package view.game.central;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +12,6 @@ import javax.swing.JLabel;
 import logics.game_object.GameObject;
 import utilities.ImageMethod;
 import utilities.ImageModifier;
-import utilities.Pair;
 
 /**
  * 
@@ -23,10 +23,14 @@ public class GameButton extends JButton implements ActionListener {
 	private static final long serialVersionUID = 1384166202851332499L;
 	private JLabel sprite;
 	private JLabel strategyLabel;
+	private Dimension buttonDimension;
 
-	public GameButton() {
-		sprite = new JLabel("");
-		strategyLabel = new JLabel("");
+	public GameButton(Dimension buttonDimension) {
+		this.buttonDimension = buttonDimension;
+		this.setEnabled(false);
+		sprite = new JLabel();
+		strategyLabel = new JLabel();
+		strategyLabel.setHorizontalAlignment(JLabel.CENTER);
 		this.add(strategyLabel);
 		this.addActionListener(this);
 		strategyLabel.add(sprite);
@@ -44,7 +48,7 @@ public class GameButton extends JButton implements ActionListener {
 	 * @param object paints the image of the object
 	 */
 	public void drawGameObject(GameObject object) {
-		sprite = new JLabel(new ImageIcon(object.getTextureImage()));
+		strategyLabel.setIcon(new ImageIcon(ImageModifier.scaleMaintainingAspectRatio(object.getTextureImage(), buttonDimension)));
 	}
 
 	public void actionPerformed(ActionEvent e) {
