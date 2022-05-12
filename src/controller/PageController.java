@@ -17,5 +17,21 @@ public class PageController {
     public void showLoadingScreen() {
         
     }
+    
+    public void showGame() {
+        
+    }
+    
+    public void showPauseMenu() {
+        
+    }
+    
+    public void showLostGame() {
+        
+    }
+    
+    public void showWinGame() {
+        
+    }
 
 }
