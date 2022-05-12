@@ -4,7 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import java.awt.Image;
 import org.junit.jupiter.api.Test;
-import logics.game_object.entity.SimpleEntity;
+import logics.game_object.entity.SimpleEnemy;
 import logics.life.LifeSystem;
 import logics.life.SimpleLifeSystem;
 import logics.strategy.movement.MovementFactory;
@@ -29,7 +29,7 @@ public class SimpleEntityTest {
 	private MovementFactory movementFactory = new MovementFactoryImpl();
 	private WeaponFactory weaponFactory = new WeaponFactoryImpl();
 	private LifeSystem life;
-	private SimpleEntity entity;
+	private SimpleEnemy entity;
 
 	@Test
 	/*
@@ -37,7 +37,7 @@ public class SimpleEntityTest {
 	 */
 	public void SimpleEntityCreationTest() {
 		this.life = new SimpleLifeSystem(HEALTH);
-		this.entity = new SimpleEntity(this.life, this.START_POS, this.weaponFactory.createAxe(),
+		this.entity = new SimpleEnemy(this.life, this.START_POS, this.weaponFactory.createAxe(),
 				this.movementFactory.stepMovement(), this.NAME, this.texture);
 		assertTrue(this.entity.getHealth() == this.HEALTH);
 		assertTrue(this.entity.getPos().equals(this.START_POS));
@@ -51,7 +51,7 @@ public class SimpleEntityTest {
 	 */
 	public void damageEntityTest() {
 		this.life = new SimpleLifeSystem(HEALTH);
-		this.entity = new SimpleEntity(this.life, this.START_POS, this.weaponFactory.createAxe(),
+		this.entity = new SimpleEnemy(this.life, this.START_POS, this.weaponFactory.createAxe(),
 				this.movementFactory.stepMovement(), this.NAME, this.texture);
 		this.entity.damage(this.DAMAGE);
 		assertTrue(this.entity.getHealth() == this.HEALTH - this.DAMAGE);
@@ -63,7 +63,7 @@ public class SimpleEntityTest {
 	 */
 	public void healthNotBelowZeroTest() {
 		this.life = new SimpleLifeSystem(HEALTH);
-		this.entity = new SimpleEntity(this.life, this.START_POS, this.weaponFactory.createAxe(),
+		this.entity = new SimpleEnemy(this.life, this.START_POS, this.weaponFactory.createAxe(),
 				this.movementFactory.stepMovement(), this.NAME, this.texture);
 		this.entity.damage(this.entity.getHealth() + this.DAMAGE);
 		assertTrue(this.entity.getHealth() == 0);
@@ -75,7 +75,7 @@ public class SimpleEntityTest {
 	 */
 	public void isDeadTest() {
 		this.life = new SimpleLifeSystem(HEALTH);
-		this.entity = new SimpleEntity(this.life, this.START_POS, this.weaponFactory.createAxe(),
+		this.entity = new SimpleEnemy(this.life, this.START_POS, this.weaponFactory.createAxe(),
 				this.movementFactory.stepMovement(), this.NAME, this.texture);
 		this.entity.damage(this.entity.getHealth() + this.DAMAGE);
 		assertTrue(this.entity.isDead());

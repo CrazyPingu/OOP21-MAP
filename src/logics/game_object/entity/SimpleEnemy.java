@@ -17,7 +17,7 @@ import utilis.Pair;
  * weapon, move and take damage. This class is used for the enemy implementation.
  *
  */
-public class SimpleEntity implements MovingObject, WeaponizedObject, KillableObject, GameObject {
+public class SimpleEnemy implements MovingObject, WeaponizedObject, KillableObject, GameObject {
 
 	private LifeSystem life;
 	private Pair<Integer, Integer> pos;
@@ -36,7 +36,7 @@ public class SimpleEntity implements MovingObject, WeaponizedObject, KillableObj
 	 * @param textureImage the texture of the entity. Texture can be found in
 	 *                     utilis.texture
 	 */
-	public SimpleEntity(LifeSystem life, Pair<Integer, Integer> pos, Weapon weapon, Movement movement, String name,
+	public SimpleEnemy(LifeSystem life, Pair<Integer, Integer> pos, Weapon weapon, Movement movement, String name,
 			Image textureImage) {
 		this.life = life;
 		this.pos = pos;
