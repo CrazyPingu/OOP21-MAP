@@ -6,8 +6,8 @@ import java.util.List;
 import javax.management.ConstructorParameters;
 
 import logics.strategy.Strategy;
-import utilis.Pair;
-import utilis.PosInGrid;
+import utilities.Pair;
+import utilities.PosInGrid;
 
 /**
  * 

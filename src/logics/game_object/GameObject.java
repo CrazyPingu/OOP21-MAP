@@ -1,7 +1,8 @@
 package logics.game_object;
 
 import java.awt.Image;
-import utilis.Pair;
+
+import utilities.Pair;
 
 /**
  * 

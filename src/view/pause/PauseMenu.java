@@ -6,10 +6,11 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import utilis.Constant;
-import utilis.GbcDimension;
-import utilis.ImageMethod;
-import utilis.ImageModifier;
+
+import utilities.Constant;
+import utilities.GbcDimension;
+import utilities.ImageMethod;
+import utilities.ImageModifier;
 import view.frame.BasicFrame;
 import view.pause.action.MainMenuAction;
 import view.pause.action.QuitAction;

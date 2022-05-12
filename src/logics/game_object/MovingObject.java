@@ -1,7 +1,7 @@
 package logics.game_object;
 
 import logics.strategy.movement.Movement;
-import utilis.Pair;
+import utilities.Pair;
 
 /**
  * 

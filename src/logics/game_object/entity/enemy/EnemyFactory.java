@@ -1,7 +1,7 @@
 package logics.game_object.entity.enemy;
 
 import logics.game_object.entity.SimpleEnemy;
-import utilis.Pair;
+import utilities.Pair;
 
 /**
  * 

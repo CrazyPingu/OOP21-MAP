@@ -13,8 +13,8 @@ import logics.game_object.artefact.MovementArtefactFactoryImp;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import logics.strategy.weapon.WeaponFactoryImpl;
-import utilis.Pair;
-import utilis.RoomConstant;
+import utilities.Pair;
+import utilities.RoomConstant;
 
 /**
  * 

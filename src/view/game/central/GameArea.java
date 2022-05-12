@@ -4,8 +4,8 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import logics.room.works.Room;
-import utilis.ImageMethod;
-import utilis.Pair;
+import utilities.ImageMethod;
+import utilities.Pair;
 
 /**
  * 

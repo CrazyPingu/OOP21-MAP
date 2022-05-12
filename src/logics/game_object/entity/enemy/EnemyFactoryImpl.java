@@ -4,8 +4,8 @@ import logics.game_object.entity.SimpleEnemy;
 import logics.life.SimpleLifeSystem;
 import logics.strategy.movement.MovementFactoryImpl;
 import logics.strategy.weapon.WeaponFactoryImpl;
-import utilis.Pair;
 import utilis.texture.EntityTexture;
+import utilities.Pair;
 
 /**
  * 

@@ -6,8 +6,8 @@ import logics.game_object.entity.Player;
 import logics.room.type.BigRoom;
 import logics.room.type.RandomRoom;
 import logics.room.type.SmallRoom;
-import utilis.Pair;
-import utilis.RoomConstant;
+import utilities.Pair;
+import utilities.RoomConstant;
 
 /**
  * 
