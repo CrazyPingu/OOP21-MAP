@@ -48,7 +48,8 @@ public class RandomEnemyList extends ArrayList<SimpleEnemy> {
 					pos);
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("Error enemy generation");
+			System.out.println("Error enemy generation at the position " + pos);
+			System.exit(0);
 		}
 		return generatedEnemy;
 	}
