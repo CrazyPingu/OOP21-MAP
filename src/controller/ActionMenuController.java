@@ -32,8 +32,14 @@ public class ActionMenuController {
         
     }
     
-    public void setTypeOfActionFlag() {
+    public void setTypeOfActionFlag(int TypeOfActionFlag) {
+        switch(TypeOfActionFlag) {
         
+        }
+          
     }
     
+    public enum TypeOfActionFlag{
+        ATTACK, MOVE
+     }
 }
