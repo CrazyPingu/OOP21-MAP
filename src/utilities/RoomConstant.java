@@ -1,11 +1,11 @@
-package utilis;
+package utilities;
 
 import java.util.List;
 
 import logics.game_object.GameObject;
 import logics.game_object.artefact.Artefact;
 import logics.game_object.entity.Player;
-import logics.game_object.entity.SimpleEntity;
+import logics.game_object.entity.SimpleEnemy;
 
 public class RoomConstant {
 
@@ -51,7 +51,7 @@ public class RoomConstant {
 	 * @param list the list of SimpleEntity to search out
 	 * @return the SimpleEntity if found, else null
 	 */
-	public static SimpleEntity searchEnemy(Pair<Integer, Integer> pos, List<SimpleEntity> list) {
+	public static SimpleEnemy searchEnemy(Pair<Integer, Integer> pos, List<SimpleEnemy> list) {
 		for (var x : list) {
 			if (x.getPos().equals(pos)) {
 				return x;
@@ -68,7 +68,7 @@ public class RoomConstant {
 	 * @return true if an enemy, the player or a artefact is in that position, else
 	 *         false
 	 */
-	public static boolean cellsOccupated(List<SimpleEntity> enemyList, List<Artefact> artefactList, Player player,
+	public static boolean cellsOccupated(List<SimpleEnemy> enemyList, List<Artefact> artefactList, Player player,
 			Pair<Integer, Integer> pos) {
 		return player.getPos().equals(pos) || searchEnemy(pos, enemyList) != null
 				|| searchArtefact(pos, artefactList) != null;

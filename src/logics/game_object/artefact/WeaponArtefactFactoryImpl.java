@@ -3,8 +3,8 @@ package logics.game_object.artefact;
 import logics.game_object.ArtefactUserObject;
 import logics.strategy.weapon.WeaponFactory;
 import logics.strategy.weapon.WeaponFactoryImpl;
-import utilis.Pair;
 import utilis.texture.ArtefactTexture;
+import utilities.Pair;
 
 public class WeaponArtefactFactoryImpl implements WeaponArtefactFactory {
 

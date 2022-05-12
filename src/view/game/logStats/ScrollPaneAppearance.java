@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-import utilis.Constant;
+import utilities.Constant;
 
 public class ScrollPaneAppearance extends JScrollPane {
 

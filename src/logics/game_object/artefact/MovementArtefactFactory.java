@@ -1,6 +1,6 @@
 package logics.game_object.artefact;
 
-import utilis.Pair;
+import utilities.Pair;
 
 public interface MovementArtefactFactory {
 	

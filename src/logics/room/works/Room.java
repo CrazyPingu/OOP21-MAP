@@ -4,8 +4,8 @@ import java.util.List;
 
 import logics.game_object.artefact.Artefact;
 import logics.game_object.entity.Player;
-import logics.game_object.entity.SimpleEntity;
-import utilis.Pair;
+import logics.game_object.entity.SimpleEnemy;
+import utilities.Pair;
 import view.game.central.GameButton;
 
 /**
@@ -64,7 +64,7 @@ public interface Room {
 	/**
 	 * @return a List<SimpleEntity> that contains all the SimpleEntity (the enemy)
 	 */
-	public List<SimpleEntity> getEnemyList();
+	public List<SimpleEnemy> getEnemyList();
 
 	/**
 	 * @return a List<Artefact> that contains all the artefact in the room

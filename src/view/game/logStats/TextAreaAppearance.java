@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import utilis.Constant;
+import utilities.Constant;
 
 /**
  * 

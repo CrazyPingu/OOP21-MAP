@@ -5,9 +5,9 @@ import java.util.List;
 
 import logics.game_object.artefact.Artefact;
 import logics.game_object.entity.Player;
-import logics.game_object.entity.SimpleEntity;
-import utilis.Pair;
-import utilis.RoomConstant;
+import logics.game_object.entity.SimpleEnemy;
+import utilities.Pair;
+import utilities.RoomConstant;
 import view.game.central.GameButton;
 
 /**
@@ -18,7 +18,7 @@ import view.game.central.GameButton;
 public class RoomImpl implements Room {
 	private Pair<Integer, Integer> size;
 	private List<GameButton> cells;
-	private List<SimpleEntity> enemyList;
+	private List<SimpleEnemy> enemyList;
 	private List<Artefact> artefactList;
 	private Player player;
 	private List<Pair<Integer, Integer>> door;
@@ -125,7 +125,7 @@ public class RoomImpl implements Room {
 	/**
 	 * {@inheritDoc}
 	 */
-	public List<SimpleEntity> getEnemyList() {
+	public List<SimpleEnemy> getEnemyList() {
 		return this.enemyList;
 	}
 

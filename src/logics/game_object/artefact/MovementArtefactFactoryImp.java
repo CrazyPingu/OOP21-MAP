@@ -3,8 +3,8 @@ package logics.game_object.artefact;
 import logics.game_object.ArtefactUserObject;
 import logics.strategy.movement.MovementFactory;
 import logics.strategy.movement.MovementFactoryImpl;
-import utilis.Pair;
 import utilis.texture.ArtefactTexture;
+import utilities.Pair;
 
 public class MovementArtefactFactoryImp implements MovementArtefactFactory {
 

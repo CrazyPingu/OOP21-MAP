@@ -10,7 +10,7 @@ import logics.game_object.MultipleActionObject;
 import logics.life.ExtendibleMaxLifeSystem;
 import logics.strategy.movement.Movement;
 import logics.strategy.weapon.Weapon;
-import utilis.Pair;
+import utilities.Pair;
 
 /**
  * 

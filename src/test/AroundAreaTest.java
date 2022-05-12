@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 import logics.strategy.Strategy;
 import logics.strategy.concrete_strategies.CrossArea;
 import logics.strategy.concrete_strategies.VariableDistanceConstants;
+import utilities.Pair;
 import logics.strategy.concrete_strategies.AroundArea;
-import utilis.Pair;
 
 public class AroundAreaTest {
 	

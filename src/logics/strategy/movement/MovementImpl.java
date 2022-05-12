@@ -3,7 +3,7 @@ package logics.strategy.movement;
 import java.util.List;
 
 import logics.strategy.Strategy;
-import utilis.Pair;
+import utilities.Pair;
 
 public class MovementImpl implements Movement {
 
