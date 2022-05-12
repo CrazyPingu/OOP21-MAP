@@ -23,10 +23,8 @@ public class GameButton extends JButton implements ActionListener {
 	private static final long serialVersionUID = 1384166202851332499L;
 	private JLabel sprite;
 	private JLabel strategyLabel;
-	private Pair<Integer, Integer> pos;
 
-	public GameButton(Pair<Integer, Integer> pos) {
-		this.pos = pos;
+	public GameButton() {
 		sprite = new JLabel("");
 		strategyLabel = new JLabel("");
 		this.add(strategyLabel);
@@ -69,14 +67,4 @@ public class GameButton extends JButton implements ActionListener {
 	public void setSprite(JLabel label) {
 		this.sprite = label;
 	}
-
-	/**
-	 * @return the pos of the button in the room
-	 */
-	public Pair<Integer, Integer> getPos() {
-		return this.pos;
-	}
-	
-	
-
 }
