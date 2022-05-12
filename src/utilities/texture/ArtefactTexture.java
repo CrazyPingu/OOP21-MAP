@@ -1,4 +1,4 @@
-package utilis.texture;
+package utilities.texture;
 
 import java.awt.Image;
 
