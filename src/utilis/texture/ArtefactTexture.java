@@ -2,7 +2,7 @@ package utilis.texture;
 
 import java.awt.Image;
 
-import utilis.ImageMethod;
+import utilities.ImageMethod;
 
 /**
  * 

@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import logics.game_object.entity.Player;
-import logics.game_object.entity.SimpleEntity;
+import logics.game_object.entity.SimpleEnemy;
 import logics.game_object.entity.enemy.EnemyFactoryImpl;
-import utilis.Pair;
-import utilis.RoomConstant;
+import utilities.Pair;
+import utilities.RoomConstant;
 
 /**
  * 
  * Class that is a random generated List that contains SimpleEntity
  *
  */
-public class RandomEnemyList extends ArrayList<SimpleEntity> {
+public class RandomEnemyList extends ArrayList<SimpleEnemy> {
 
 	private static final long serialVersionUID = -1346040616337955961L;
 	private final EnemyFactoryImpl enemyFactory = new EnemyFactoryImpl();
@@ -40,11 +40,11 @@ public class RandomEnemyList extends ArrayList<SimpleEntity> {
 	 * 
 	 * @return a random enemy
 	 */
-	private SimpleEntity generateRandomEnemy(Pair<Integer, Integer> pos) {
+	private SimpleEnemy generateRandomEnemy(Pair<Integer, Integer> pos) {
 		int random = (int) Math.random() * possibleZombieNumber;
-		SimpleEntity generatedEnemy = null;
+		SimpleEnemy generatedEnemy = null;
 		try {
-			generatedEnemy = (SimpleEntity) enemyFactory.getClass().getDeclaredMethods()[random].invoke(enemyFactory,
+			generatedEnemy = (SimpleEnemy) enemyFactory.getClass().getDeclaredMethods()[random].invoke(enemyFactory,
 					pos);
 		} catch (Exception e) {
 			e.printStackTrace();

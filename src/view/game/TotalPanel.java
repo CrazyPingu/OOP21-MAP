@@ -7,8 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import logics.entity.Player;
 import logics.room.works.Room;
-import utilis.Constant;
-import utilis.GbcDimension;
+import utilities.Constant;
+import utilities.GbcDimension;
 import view.game.central.GameArea;
 
 public class TotalPanel extends JPanel {
