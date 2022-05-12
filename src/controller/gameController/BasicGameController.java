@@ -21,7 +21,7 @@ public class BasicGameController extends GameController {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void enemyTurn() {
+	public void enemyTurn(ActionMenuController actionMenuController) {
 		// TODO Auto-generated method stub
 		
 	}
