@@ -41,7 +41,7 @@ public class RandomEnemyList extends ArrayList<SimpleEnemy> {
 	 * @return a random enemy
 	 */
 	private SimpleEnemy generateRandomEnemy(Pair<Integer, Integer> pos) {
-		int random = (int) Math.random() * possibleZombieNumber;
+		int random = new Random().ints(0, possibleZombieNumber).findAny().getAsInt();
 		SimpleEnemy generatedEnemy = null;
 		try {
 			generatedEnemy = (SimpleEnemy) enemyFactory.getClass().getDeclaredMethods()[random].invoke(enemyFactory,
