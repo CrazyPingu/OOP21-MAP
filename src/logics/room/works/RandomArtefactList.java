@@ -10,6 +10,7 @@ import logics.game_object.artefact.ActionNumberArtefactFactoryImpl;
 import logics.game_object.artefact.Artefact;
 import logics.game_object.artefact.HealthArtefactFactoryImpl;
 import logics.game_object.artefact.MovementArtefactFactoryImp;
+import logics.game_object.artefact.WeaponArtefactFactoryImpl;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import logics.strategy.weapon.WeaponFactoryImpl;
@@ -30,7 +31,7 @@ public class RandomArtefactList extends ArrayList<Artefact> {
 	 * @param size the size of the room
 	 */
 	public RandomArtefactList(Pair<Integer, Integer> size, List<SimpleEnemy> enemyList,Player player) {
-		factoryOfArtefact.put(new WeaponFactoryImpl(), new WeaponFactoryImpl().getClass().getDeclaredMethods().length);
+		factoryOfArtefact.put(new WeaponArtefactFactoryImpl(), new WeaponFactoryImpl().getClass().getDeclaredMethods().length);
 		factoryOfArtefact.put(new HealthArtefactFactoryImpl(), new HealthArtefactFactoryImpl().getClass().getDeclaredMethods().length);
 		factoryOfArtefact.put(new ActionNumberArtefactFactoryImpl(),new ActionNumberArtefactFactoryImpl().getClass().getDeclaredMethods().length);
 		factoryOfArtefact.put(new MovementArtefactFactoryImp(), new MovementArtefactFactoryImp().getClass().getDeclaredMethods().length);
@@ -68,8 +69,7 @@ public class RandomArtefactList extends ArrayList<Artefact> {
 	 */
 	private Object generateRandomArtefactFactory() {
 		List<Object> keys = new ArrayList<Object>(factoryOfArtefact.keySet());
-		Object randomKey = keys.get(new Random().nextInt(keys.size()));
-		return factoryOfArtefact.get(randomKey);
+		Object obj = keys.get(new Random().nextInt(keys.size()));
+		return obj;
 	}
-	
 }
