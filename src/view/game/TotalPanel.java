@@ -2,14 +2,17 @@ package view.game;
 
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
+
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import logics.entity.Player;
+
+import logics.game_object.entity.Player;
 import logics.room.works.Room;
 import utilities.Constant;
 import utilities.GbcDimension;
 import view.game.central.GameArea;
+import view.game.logStats.ScrollableLog;
+import view.game.logStats.ScrollableStats;
 
 public class TotalPanel extends JPanel {
 
