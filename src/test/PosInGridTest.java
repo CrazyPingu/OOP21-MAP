@@ -3,8 +3,9 @@ package test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
-import utilis.Pair;
-import utilis.PosInGrid;
+
+import utilities.Pair;
+import utilities.PosInGrid;
 
 public class PosInGridTest {
 

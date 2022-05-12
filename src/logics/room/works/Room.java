@@ -5,7 +5,7 @@ import java.util.List;
 import logics.game_object.artefact.Artefact;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
-import utilis.Pair;
+import utilities.Pair;
 import view.game.central.GameButton;
 
 /**

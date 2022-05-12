@@ -6,8 +6,8 @@ import java.util.List;
 import logics.game_object.artefact.Artefact;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
-import utilis.Pair;
-import utilis.RoomConstant;
+import utilities.Pair;
+import utilities.RoomConstant;
 import view.game.central.GameButton;
 
 /**

@@ -11,7 +11,7 @@ import logics.strategy.movement.MovementFactory;
 import logics.strategy.movement.MovementFactoryImpl;
 import logics.strategy.weapon.WeaponFactory;
 import logics.strategy.weapon.WeaponFactoryImpl;
-import utilis.Pair;
+import utilities.Pair;
 
 public class PlayerTest {
 	final private int HEALTH = 9;

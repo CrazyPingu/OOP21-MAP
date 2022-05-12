@@ -3,7 +3,7 @@ package logics.strategy.weapon;
 import java.util.List;
 
 import logics.strategy.Strategy;
-import utilis.Pair;
+import utilities.Pair;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package utilis;
+package utilities;
 
 public class Pair<X,Y> {
 	

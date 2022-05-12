@@ -10,10 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
-import utilis.Constant;
-import utilis.GbcDimension;
-import utilis.ImageMethod;
-import utilis.ImageModifier;
+
+import utilities.Constant;
+import utilities.GbcDimension;
+import utilities.ImageMethod;
+import utilities.ImageModifier;
 import view.frame.BasicFrame;
 
 /**

@@ -1,8 +1,8 @@
 package logics.game_object.artefact;
 
 import logics.game_object.ArtefactUserObject;
-import utilis.Pair;
 import utilis.texture.ArtefactTexture;
+import utilities.Pair;
 
 public class HealthArtefactFactoryImpl implements HealthArtefactFactory {
 

@@ -2,7 +2,7 @@ package logics.strategy.movement;
 
 import java.util.List;
 
-import utilis.Pair;
+import utilities.Pair;
 
 /**
  * 

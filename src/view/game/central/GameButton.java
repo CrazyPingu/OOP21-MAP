@@ -12,8 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import logics.game_object.GameObject;
-import utilis.ImageMethod;
-import utilis.Pair;
+import utilities.ImageMethod;
+import utilities.Pair;
 
 /**
  * 

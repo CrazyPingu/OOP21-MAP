@@ -8,7 +8,7 @@ import java.util.List;
 import logics.strategy.Strategy;
 import logics.strategy.concrete_strategies.AsteriskArea;
 import logics.strategy.concrete_strategies.VariableDistanceConstants;
-import utilis.Pair;
+import utilities.Pair;
 
 /**
  * 

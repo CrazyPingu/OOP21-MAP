@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import logics.strategy.Strategy;
 import logics.strategy.concrete_strategies.CrossArea;
 import logics.strategy.concrete_strategies.VariableDistanceConstants;
-import utilis.Pair;
+import utilities.Pair;
 
 public class CrossAreaTest {
 	private final Pair<Integer, Integer> size = new Pair<>(7, 6);

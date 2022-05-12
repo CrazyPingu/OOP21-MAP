@@ -1,4 +1,4 @@
-package utilis;
+package utilities;
 
 import java.util.List;
 

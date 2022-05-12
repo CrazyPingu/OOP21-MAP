@@ -9,7 +9,7 @@ import logics.game_object.WeaponizedObject;
 import logics.life.LifeSystem;
 import logics.strategy.movement.Movement;
 import logics.strategy.weapon.Weapon;
-import utilis.Pair;
+import utilities.Pair;
 
 /**
  * 

@@ -6,8 +6,8 @@ import java.util.Random;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import logics.game_object.entity.enemy.EnemyFactoryImpl;
-import utilis.Pair;
-import utilis.RoomConstant;
+import utilities.Pair;
+import utilities.RoomConstant;
 
 /**
  * 

@@ -4,7 +4,7 @@ import java.awt.Image;
 
 import logics.game_object.ArtefactUserObject;
 import logics.game_object.GameObject;
-import utilis.Pair;
+import utilities.Pair;
 
 /**
  * 
