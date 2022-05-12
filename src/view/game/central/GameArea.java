@@ -32,7 +32,7 @@ public class GameArea extends JPanel {
 	private void placeCells() {
 		for (int i = 0; i < size.getX(); i++) {
 			for (int j = 0; j < size.getY(); j++) {
-				final GameButton jb = new GameButton(this, new Pair<Integer, Integer>(j, i));
+				final GameButton jb = new GameButton(new Pair<Integer, Integer>(j, i));
 				room.addButtonToCells(jb);
 				this.add(jb);
 			}

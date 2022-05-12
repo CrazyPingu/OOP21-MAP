@@ -53,7 +53,12 @@ public class GameButton extends JButton implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		/*
+		 * TODO Auto-generated method stub 
+		 * Pass gameAreaController, and check flag if is
+		 * moving or attacking
+		 */
+
 	}
 
 	/**
@@ -69,10 +74,11 @@ public class GameButton extends JButton implements ActionListener {
 	public void setSprite(JLabel label) {
 		this.sprite = label;
 	}
+
 	/**
 	 * @return the pos of the button in the room
 	 */
-	public Pair<Integer, Integer> getPos(){
+	public Pair<Integer, Integer> getPos() {
 		return this.pos;
 	}
 
