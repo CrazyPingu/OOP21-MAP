@@ -22,7 +22,7 @@ import view.frame.BasicFrame;
  * JPanel that contain the loading screen
  *
  */
-public class LoadingScreenImpl extends JPanel implements LoadingScreen , Runnable{
+public class LoadingScreenImpl extends JPanel implements LoadingScreen, Runnable {
 
 	private static final long serialVersionUID = 8291207301630291996L;
 	JProgressBar progressBar = new JProgressBar();
@@ -46,7 +46,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen , Runnabl
 	 * {@inheritDoc}
 	 */
 	public void addImage(String fileName) {
-		Image image = ImageModifier.scale(ImageMethod.getImage("loadingScreen/" + fileName),
+		Image image = ImageModifier.scaleWithDimension(ImageMethod.getImage("loadingScreen/" + fileName),
 				new Dimension(Constant.WIDTH / 2, Constant.HEIGHT / 2));
 		add(new JLabel(new ImageIcon(image)), new GbcDimension(0, 0, 0, Constant.verticalAspectRatio(80)));
 	}
