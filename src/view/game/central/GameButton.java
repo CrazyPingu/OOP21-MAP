@@ -2,10 +2,8 @@ package view.game.central;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -52,7 +50,7 @@ public class GameButton extends JButton implements ActionListener {
 	 * @param object paints the image of the object
 	 */
 	public void drawGameObject(GameObject object) {
-		sprite = new JLabel(ImageMethod.getImageIcon(object.getImagePath()));
+		sprite = new JLabel(new ImageIcon(object.getTextureImage()));
 	}
 
 	public void actionPerformed(ActionEvent e) {
