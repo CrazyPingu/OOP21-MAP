@@ -51,7 +51,7 @@ public class RandomArtefactList extends ArrayList<Artefact> {
 	 * @param pos             the position of the artefact generated
 	 */
 	private void generateRandomArtefact(Object artefactFactory, Pair<Integer, Integer> pos) {
-		int random = (int) Math.random() * factoryOfArtefact.get(artefactFactory);
+		int random = new Random().ints(0, factoryOfArtefact.get(artefactFactory)).findAny().getAsInt();
 		Artefact generatedArtefact = null;
 		try {
 			generatedArtefact = (Artefact) artefactFactory.getClass().getDeclaredMethods()[random]
