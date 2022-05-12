@@ -1,7 +1,9 @@
 package logics.room.works;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import logics.game_object.artefact.Artefact;
 import logics.game_object.entity.Player;
@@ -17,7 +19,7 @@ import view.game.central.GameButton;
  */
 public class RoomImpl implements Room {
 	private Pair<Integer, Integer> size;
-	private List<GameButton> cells;
+	private Map<Pair<Integer, Integer>, GameButton> cells;
 	private List<SimpleEnemy> enemyList;
 	private List<Artefact> artefactList;
 	private Player player;
@@ -32,7 +34,7 @@ public class RoomImpl implements Room {
 		player.setPos(newPosPlayer);
 		this.size = size;
 		this.player = player;
-		this.cells = new ArrayList<>();
+		this.cells = new HashMap<>();
 		this.door = generateDoor(size);
 		this.enemyList = new RandomEnemyList(size, player);
 		this.artefactList = new RandomArtefactList(size, enemyList, player);
@@ -80,8 +82,8 @@ public class RoomImpl implements Room {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void addButtonToCells(GameButton button) {
-		this.cells.add(button);
+	public void addButtonToCells(Pair<Integer, Integer> pos, GameButton button) {
+		this.cells.put(pos, button);
 	}
 
 	/**
@@ -111,7 +113,7 @@ public class RoomImpl implements Room {
 	/**
 	 * {@inheritDoc}
 	 */
-	public List<GameButton> getCells() {
+	public Map<Pair<Integer, Integer>, GameButton> getCells() {
 		return this.cells;
 	}
 
