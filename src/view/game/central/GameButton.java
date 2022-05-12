@@ -1,7 +1,6 @@
 package view.game.central;
 
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,6 +10,7 @@ import javax.swing.JLabel;
 
 import logics.game_object.GameObject;
 import utilities.ImageMethod;
+import utilities.ImageModifier;
 import utilities.Pair;
 
 /**
@@ -21,7 +21,6 @@ import utilities.Pair;
 public class GameButton extends JButton implements ActionListener {
 
 	private static final long serialVersionUID = 1384166202851332499L;
-	private Graphics2D g2;
 	private JLabel sprite;
 	private JLabel strategyLabel;
 	private Pair<Integer, Integer> pos;
@@ -39,10 +38,8 @@ public class GameButton extends JButton implements ActionListener {
 	 * Method to draw the background of the GameButton
 	 */
 	protected void paintComponent(Graphics g) {
-		g2 = (Graphics2D) g;
-		g2.drawImage(ImageMethod.getImage("room/Button.png"), 0, 0, (int) getSize().getWidth(),
-				(int) getSize().getHeight(), null);
-
+		g.drawImage(ImageModifier.scaleWithDimension(ImageMethod.getImage("room/Button.png"), this.getSize()), 0, 0,
+				null);
 	}
 
 	/**
@@ -54,11 +51,9 @@ public class GameButton extends JButton implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		/*
-		 * TODO Auto-generated method stub 
-		 * Pass gameAreaController, and check flag if is
+		 * TODO Auto-generated method stub Pass gameAreaController, and check flag if is
 		 * moving or attacking
 		 */
-
 	}
 
 	/**
@@ -81,5 +76,7 @@ public class GameButton extends JButton implements ActionListener {
 	public Pair<Integer, Integer> getPos() {
 		return this.pos;
 	}
+	
+	
 
 }
