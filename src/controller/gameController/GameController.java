@@ -41,16 +41,12 @@ public abstract class GameController {
     /**
      * start a new Player Turn.
      */
-    public void playerTurn() {
-
-    }
+    public abstract void playerTurn();
 
     /**
      * start a new Enemy Turn.
      */
-    public void enemyTurn() {
-
-    }
+    public abstract void enemyTurn();
 
     /**
      * close the Game.
