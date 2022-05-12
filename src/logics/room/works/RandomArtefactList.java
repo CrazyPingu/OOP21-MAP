@@ -11,7 +11,7 @@ import logics.game_object.artefact.Artefact;
 import logics.game_object.artefact.HealthArtefactFactoryImpl;
 import logics.game_object.artefact.MovementArtefactFactoryImp;
 import logics.game_object.entity.Player;
-import logics.game_object.entity.SimpleEntity;
+import logics.game_object.entity.SimpleEnemy;
 import logics.strategy.weapon.WeaponFactoryImpl;
 import utilis.Pair;
 import utilis.RoomConstant;
@@ -29,7 +29,7 @@ public class RandomArtefactList extends ArrayList<Artefact> {
 	/**
 	 * @param size the size of the room
 	 */
-	public RandomArtefactList(Pair<Integer, Integer> size, List<SimpleEntity> enemyList,Player player) {
+	public RandomArtefactList(Pair<Integer, Integer> size, List<SimpleEnemy> enemyList,Player player) {
 		factoryOfArtefact.put(new WeaponFactoryImpl(), new WeaponFactoryImpl().getClass().getDeclaredMethods().length);
 		factoryOfArtefact.put(new HealthArtefactFactoryImpl(), new HealthArtefactFactoryImpl().getClass().getDeclaredMethods().length);
 		factoryOfArtefact.put(new ActionNumberArtefactFactoryImpl(),new ActionNumberArtefactFactoryImpl().getClass().getDeclaredMethods().length);
