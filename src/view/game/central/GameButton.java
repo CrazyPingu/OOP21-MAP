@@ -22,17 +22,16 @@ public class GameButton extends JButton implements ActionListener {
 
 	private static final long serialVersionUID = 1384166202851332499L;
 	private Graphics2D g2;
-	private GameArea gameArea;
 	private JLabel sprite;
 	private JLabel strategyLabel;
 	private Pair<Integer, Integer> pos;
 
-	public GameButton(GameArea gameArea, Pair<Integer, Integer> pos) {
+	public GameButton(Pair<Integer, Integer> pos) {
 		this.pos = pos;
-		this.gameArea = gameArea;
 		sprite = new JLabel("");
 		strategyLabel = new JLabel("");
 		this.add(strategyLabel);
+		this.addActionListener(this);
 		strategyLabel.add(sprite);
 	}
 
