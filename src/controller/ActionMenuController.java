@@ -5,28 +5,33 @@ import view.game.TotalPanel;
 
 public class ActionMenuController {
 
-    public ActionMenuController(Room room, TotalPanel totalpanel, int currentActionNumer, ActionFlag typeOfActionFlag) {
+    private int currentActionNumber;
 
+    public ActionMenuController(Room room, TotalPanel totalpanel, int currentActionNumber,
+            ActionFlag typeOfActionFlag) {
+        this.setInitialActionNumber(currentActionNumber);
     }
 
-    public void setInitialActionNumber() {
-
+    public void setInitialActionNumber(int currentActionNumber) {
+        this.currentActionNumber = currentActionNumber;
     }
 
-    public void decreaseAction() {
-
+    private void decreaseAction() {
+        this.currentActionNumber--;
     }
 
     public void attack() {
-
+        this.totalPanel.getGameArea();
+        this.decreaseAction();
     }
 
     public void move() {
 
+        this.decreaseAction();
     }
 
     public void skip() {
-
+        this.decreaseAction();
     }
 
     /**
