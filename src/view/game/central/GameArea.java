@@ -30,7 +30,7 @@ public class GameArea extends JPanel {
 		this.size = room.getSize();
 		buttonDimension = new Dimension(Constant.GAME_WIDTH / size.getX(), Constant.TOP_HEIGHT / size.getY());
 		this.setOpaque(false);
-		this.setLayout(new GridLayout(size.getX(), size.getY()));
+		this.setLayout(new GridLayout(size.getY(), size.getX()));
 		this.placeCells();
 		this.initializeSprite(room);
 	}
@@ -49,10 +49,10 @@ public class GameArea extends JPanel {
 	 * cells
 	 */
 	private void placeCells() {
-		for (int i = 0; i < size.getX(); i++) {
-			for (int j = 0; j < size.getY(); j++) {
+		for (int i = 0; i < size.getY(); i++) {
+			for (int j = 0; j < size.getX(); j++) {
 				final GameButton jb = new GameButton(buttonDimension);
-				room.addButtonToCells(new Pair<Integer, Integer>(i, j), jb);
+				room.addButtonToCells(new Pair<Integer, Integer>(j, i), jb);
 				this.add(jb);
 			}
 		}
