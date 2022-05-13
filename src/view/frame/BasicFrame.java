@@ -24,7 +24,7 @@ public class BasicFrame extends JFrame {
 	public BasicFrame() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setUndecorated(true);
-		Constant.device.setFullScreenWindow(this);
+		Constant.SCREEN.setFullScreenWindow(this);
 		cardLayout = new CardLayout();
 		panel = new JPanel(cardLayout);
 		panel.setBackground(Color.black);
