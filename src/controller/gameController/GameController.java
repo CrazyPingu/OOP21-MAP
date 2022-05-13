@@ -1,6 +1,18 @@
 package controller.gameController;
 
 import controller.ActionMenuController;
+import controller.GameAreaController;
+import controller.RandomRoomGenerator;
+import logics.game_object.entity.Player;
+import logics.life.ExtendibleMaxLifeSystem;
+import logics.room.works.Room;
+import logics.strategy.concrete_strategies.AroundArea;
+import logics.strategy.movement.MovementFactory;
+import logics.strategy.movement.MovementFactoryImpl;
+import logics.strategy.weapon.WeaponFactoryImpl;
+import utilis.texture.EntityTexture;
+import utilities.Pair;
+import view.game.TotalPanel;
 
 /**
  * 
@@ -9,13 +21,14 @@ import controller.ActionMenuController;
  */
 public abstract class GameController {
 
-    ActionMenuController actionMenuController;
-    GameAreaController gameAreaController;
+    private ActionMenuController actionMenuController;
+    private GameAreaController gameAreaController;
+    private TotalPanel totalPanel;
 
     public GameController() {
 
         this.actionMenuController = new ActionMenuController();
-        this.gameAreaController = new GameAreaController();
+        this.gameAreaController = new GameAreaController(actionMenuController, null, null, null);
 
     }
 
@@ -23,7 +36,14 @@ public abstract class GameController {
      * setup the first Game.
      */
     public void startGame() {
+        WeaponFactoryImpl wf = new WeaponFactoryImpl();
+        MovementFactoryImpl mf = new MovementFactoryImpl();
+        Player player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), new Pair<>(3, 3), wf.createAxe(),
+                mf.stepMovement(), "Marcello", EntityTexture.PLAYER);
+        Room randomRoom = new RandomRoomGenerator().generateRoom(player);
 
+        TotalPanel panel = new TotalPanel();
+        this.totalPanel = panel;
     }
 
     /**

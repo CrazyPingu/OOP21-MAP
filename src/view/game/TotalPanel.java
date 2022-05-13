@@ -2,14 +2,17 @@ package view.game;
 
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
+
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import logics.entity.Player;
+
+import logics.game_object.entity.Player;
 import logics.room.works.Room;
 import utilities.Constant;
 import utilities.GbcDimension;
 import view.game.central.GameArea;
+import view.game.logStats.ScrollableLog;
+import view.game.logStats.ScrollableStats;
 
 public class TotalPanel extends JPanel {
 
@@ -38,16 +41,10 @@ public class TotalPanel extends JPanel {
 		this.add(action, gbc);
 	}
 
-	private void fixSize(int width, int height, Object o) {
-		if (contains(o, "ScrollableLog") || contains(o, "ScrollableStats") || contains(o, "GameArea")
-				|| contains(o, "ActionMenu")) {
-			((JComponent) o).setPreferredSize(new Dimension(width, height));
-			((JComponent) o).setMinimumSize(new Dimension(width, height));
-			((JComponent) o).setMaximumSize(new Dimension(width, height));
-		}
-	}
+	private void fixSize(int width, int height, JComponent jComponent) {
+		jComponent.setPreferredSize(new Dimension(width, height));
+		jComponent.setMinimumSize(new Dimension(width, height));
+		jComponent.setMaximumSize(new Dimension(width, height));
 
-	private boolean contains(Object o, String classToCheck) {
-		return o.getClass().toString().contains(classToCheck);
 	}
 }
