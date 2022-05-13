@@ -30,10 +30,9 @@ public class GameButton extends JButton implements ActionListener {
 		this.setEnabled(false);
 		sprite = new JLabel();
 		strategyLabel = new JLabel();
-		strategyLabel.setHorizontalAlignment(JLabel.CENTER);
-		this.add(strategyLabel);
 		this.addActionListener(this);
-		strategyLabel.add(sprite);
+		this.add(sprite);
+		this.add(strategyLabel);
 	}
 
 	/**
@@ -48,7 +47,8 @@ public class GameButton extends JButton implements ActionListener {
 	 * @param object paints the image of the object
 	 */
 	public void drawGameObject(GameObject object) {
-		strategyLabel.setIcon(new ImageIcon(ImageModifier.scaleMaintainingAspectRatio(object.getTextureImage(), buttonDimension)));
+		sprite.setIcon(
+				new ImageIcon(ImageModifier.scaleMaintainingAspectRatio(object.getTextureImage(), buttonDimension)));
 	}
 
 	public void actionPerformed(ActionEvent e) {
