@@ -1,6 +1,7 @@
 package logics.room.works;
 
 import java.util.List;
+import java.util.Map;
 
 import logics.game_object.artefact.Artefact;
 import logics.game_object.entity.Player;
@@ -37,8 +38,9 @@ public interface Room {
 
 	/**
 	 * @param button the button that will be added to the grid
+	 * @param pos    the position of the button in the grid
 	 */
-	public void addButtonToCells(GameButton button);
+	public void addButtonToCells(Pair<Integer, Integer> pos, GameButton button);
 
 	/**
 	 * @param currentPos the current game object position
@@ -54,7 +56,7 @@ public interface Room {
 	/**
 	 * @return the cells
 	 */
-	public List<GameButton> getCells();
+	public Map<Pair<Integer, Integer>, GameButton> getCells();
 
 	/**
 	 * @return a Pair<> that represent the size of the room.

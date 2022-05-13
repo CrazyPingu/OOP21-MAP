@@ -1,4 +1,4 @@
-package utilis.texture;
+package utilities.texture;
 
 import java.awt.Image;
 
@@ -23,11 +23,6 @@ public class ArtefactTexture {
 	public static final Image HEALTH_EXTENDER = ImageMethod.getImage("artefact/health/Health_Extender.png");
 
 	/*
-	 * EXTEND ACTION NUMBER ARTEFACT
-	 */
-	public static final Image ACTION_NUMBER_INCREASER = ImageMethod.getImage("artefact/action_number/Action_Number_Increaser.png");
-
-	/*
 	 * WEAPON ARTEFACTS
 	 */
 	public static final Image STRICK = ImageMethod.getImage("artefact/weapon/Stick.png");
@@ -41,5 +36,10 @@ public class ArtefactTexture {
 	 */
 	public static final Image STEP = ImageMethod.getImage("artefact/movement/Step.png");
 	public static final Image RUN = ImageMethod.getImage("artefact/movement/run.png");
+
+	/*
+	 * EXTEND ACTION NUMBER ARTEFACT
+	 */
+	public static final Image ACTION_NUMBER_INCREASER = ImageMethod.getImage("artefact/movement/Action_Number_Increaser.png");
 
 }

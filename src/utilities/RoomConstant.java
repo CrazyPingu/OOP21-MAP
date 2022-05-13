@@ -24,9 +24,11 @@ public class RoomConstant {
 	 * @return the gameObject if found, else null
 	 */
 	public static GameObject findGameObject(Pair<Integer, Integer> pos, List<GameObject> gameObjectList) {
-		for (var x : gameObjectList) {
-			if (x.getPos().equals(pos)) {
-				return x;
+		if (gameObjectList != null && !gameObjectList.isEmpty()) {
+			for (var x : gameObjectList) {
+				if (x.getPos().equals(pos)) {
+					return x;
+				}
 			}
 		}
 		return null;
@@ -37,10 +39,12 @@ public class RoomConstant {
 	 * @param list the list of artefact to search out
 	 * @return the artefact if found, else null
 	 */
-	public static Artefact searchArtefact(Pair<Integer, Integer> pos, List<Artefact> list) {
-		for (var x : list) {
-			if (x.getPos().equals(pos)) {
-				return x;
+	public static Artefact searchArtefact(Pair<Integer, Integer> pos, List<Artefact> artefactList) {
+		if (artefactList != null && !artefactList.isEmpty()) {
+			for (var x : artefactList) {
+				if (x.getPos().equals(pos)) {
+					return x;
+				}
 			}
 		}
 		return null;
@@ -51,10 +55,12 @@ public class RoomConstant {
 	 * @param list the list of SimpleEntity to search out
 	 * @return the SimpleEntity if found, else null
 	 */
-	public static SimpleEnemy searchEnemy(Pair<Integer, Integer> pos, List<SimpleEnemy> list) {
-		for (var x : list) {
-			if (x.getPos().equals(pos)) {
-				return x;
+	public static SimpleEnemy searchEnemy(Pair<Integer, Integer> pos, List<SimpleEnemy> enemyList) {
+		if (enemyList != null && !enemyList.isEmpty()) {
+			for (var x : enemyList) {
+				if (x.getPos().equals(pos)) {
+					return x;
+				}
 			}
 		}
 		return null;
