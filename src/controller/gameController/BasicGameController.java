@@ -1,5 +1,7 @@
 package controller.gameController;
 
+import controller.ActionMenuController;
+
 /**
  * 
  * Concrete class that implements a basic type of game.
