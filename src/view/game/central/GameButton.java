@@ -2,9 +2,12 @@ package view.game.central;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -26,6 +29,7 @@ public class GameButton extends JButton implements ActionListener {
 	private Dimension buttonDimension;
 
 	public GameButton(Dimension buttonDimension) {
+		this.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		this.buttonDimension = buttonDimension;
 		this.setEnabled(false);
 		sprite = new JLabel();
@@ -48,7 +52,7 @@ public class GameButton extends JButton implements ActionListener {
 	 */
 	public void drawGameObject(GameObject object) {
 		sprite.setIcon(
-				new ImageIcon(ImageModifier.scaleMaintainingAspectRatio(object.getTextureImage(), buttonDimension)));
+				new ImageIcon(ImageModifier.scaleWithDimension(object.getTextureImage(), buttonDimension)));
 	}
 
 	public void actionPerformed(ActionEvent e) {
