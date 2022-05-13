@@ -41,10 +41,10 @@ public class TotalPanel extends JPanel {
 		this.add(action, gbc);
 	}
 
-	private void fixSize(int width, int height, JComponent o) {
-		o.setPreferredSize(new Dimension(width, height));
-		o.setMinimumSize(new Dimension(width, height));
-		o.setMaximumSize(new Dimension(width, height));
+	private void fixSize(int width, int height, JComponent jComponent) {
+		jComponent.setPreferredSize(new Dimension(width, height));
+		jComponent.setMinimumSize(new Dimension(width, height));
+		jComponent.setMaximumSize(new Dimension(width, height));
 
 	}
 }
