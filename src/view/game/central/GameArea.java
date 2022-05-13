@@ -28,7 +28,7 @@ public class GameArea extends JPanel {
 	public GameArea(Room room) {
 		this.room = room;
 		this.size = room.getSize();
-		buttonDimension = new Dimension(Constant.GAME_WIDTH / size.getX(), Constant.TOP_HEIGHT / size.getY());
+		this.buttonDimension = new Dimension(Constant.GAME_WIDTH / size.getX(), Constant.TOP_HEIGHT / size.getY());
 		this.setOpaque(false);
 		this.setLayout(new GridLayout(size.getY(), size.getX()));
 		this.placeCells();
@@ -94,5 +94,12 @@ public class GameArea extends JPanel {
 		if (player != null) {
 			this.room.getCells().get(player.getPos()).drawGameObject(player);
 		}
+	}
+	
+	/**
+	 * @return the room of the game
+	 */
+	public Room getRoom() {
+		return room;
 	}
 }
