@@ -2,10 +2,8 @@ package utilities;
 
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Toolkit;
-import java.util.List;
-
-import logics.game_object.GameObject;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 
 /**
  * 
@@ -14,8 +12,9 @@ import logics.game_object.GameObject;
  */
 public class Constant {
 
-	public static final int WIDTH = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-	public static final int HEIGHT = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+	public static GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+	public static final int WIDTH = device.getDisplayMode().getWidth();
+	public static final int HEIGHT = device.getDisplayMode().getHeight();
 	public static final int TOP_HEIGHT = 3 * HEIGHT / 4;
 	public static final int ACTION_HEIGHT = HEIGHT / 4;
 	public static final int GAME_WIDTH = 11 * WIDTH / 17;
