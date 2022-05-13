@@ -41,16 +41,10 @@ public class TotalPanel extends JPanel {
 		this.add(action, gbc);
 	}
 
-	private void fixSize(int width, int height, Object o) {
-		if (contains(o, "ScrollableLog") || contains(o, "ScrollableStats") || contains(o, "GameArea")
-				|| contains(o, "ActionMenu")) {
-			((JComponent) o).setPreferredSize(new Dimension(width, height));
-			((JComponent) o).setMinimumSize(new Dimension(width, height));
-			((JComponent) o).setMaximumSize(new Dimension(width, height));
-		}
-	}
+	private void fixSize(int width, int height, JComponent o) {
+		o.setPreferredSize(new Dimension(width, height));
+		o.setMinimumSize(new Dimension(width, height));
+		o.setMaximumSize(new Dimension(width, height));
 
-	private boolean contains(Object o, String classToCheck) {
-		return o.getClass().toString().contains(classToCheck);
 	}
 }
