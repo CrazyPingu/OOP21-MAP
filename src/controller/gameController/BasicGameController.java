@@ -14,7 +14,9 @@ public class BasicGameController extends GameController {
 	 */
 	@Override
 	public void playerTurn(ActionMenuController actionMenuController) {
-
+		int currentAction;
+		actionMenuController.setInitialActionNumber(actionMenuController.getGameArea().getRoom().getPlayer().getActionNumber());
+		while (currentAction>0);
 	}
 
 	/**
