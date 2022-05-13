@@ -45,13 +45,14 @@ public class GameArea extends JPanel {
 	}
 
 	/**
-	 * Method to place the GameButton inside the GameArea and add them in the room cells
+	 * Method to place the GameButton inside the GameArea and add them in the room
+	 * cells
 	 */
 	private void placeCells() {
 		for (int i = 0; i < size.getX(); i++) {
 			for (int j = 0; j < size.getY(); j++) {
 				final GameButton jb = new GameButton(buttonDimension);
-				room.addButtonToCells(new Pair<Integer, Integer>(j, i), jb);
+				room.addButtonToCells(new Pair<Integer, Integer>(i, j), jb);
 				this.add(jb);
 			}
 		}
@@ -63,8 +64,10 @@ public class GameArea extends JPanel {
 	 * @param enemyList the list of SimpleEnemy to draw
 	 */
 	private void drawEnemyFromList(List<SimpleEnemy> enemyList) {
-		for (SimpleEnemy enemy : enemyList) {
-			this.room.getCells().get(enemy.getPos()).drawGameObject(enemy);
+		if (enemyList != null && !enemyList.isEmpty()) {
+			for (SimpleEnemy enemy : enemyList) {
+				this.room.getCells().get(enemy.getPos()).drawGameObject(enemy);
+			}
 		}
 	}
 
@@ -74,9 +77,12 @@ public class GameArea extends JPanel {
 	 * @param artefactList the list of Artefact to draw
 	 */
 	private void drawArtefactFromList(List<Artefact> artefactList) {
-		for (Artefact artefact : artefactList) {
-			this.room.getCells().get(artefact.getPos()).drawGameObject(artefact);
+		if (artefactList != null && !artefactList.isEmpty()) {
+			for (Artefact artefact : artefactList) {
+				this.room.getCells().get(artefact.getPos()).drawGameObject(artefact);
+			}
 		}
+
 	}
 
 	/**
@@ -85,6 +91,8 @@ public class GameArea extends JPanel {
 	 * @param player the player to draw
 	 */
 	private void drawPlayer(Player player) {
-		this.room.getCells().get(player.getPos()).drawGameObject(player);
+		if (player != null) {
+			this.room.getCells().get(player.getPos()).drawGameObject(player);
+		}
 	}
 }
