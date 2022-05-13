@@ -6,13 +6,13 @@ import view.game.TotalPanel;
 public class ActionMenuController {
 
     private int currentActionNumber;
+    private TotalPanel totalPanel;
 
-    public ActionMenuController(Room room, TotalPanel totalpanel, int currentActionNumber,
-            ActionFlag typeOfActionFlag) {
-        this.setInitialActionNumber(currentActionNumber);
+    public ActionMenuController(TotalPanel totalpanel) {
+        this.totalPanel = totalpanel;
     }
 
-    public void setInitialActionNumber(int currentActionNumber) {
+    public void setActionNumber(int currentActionNumber) {
         this.currentActionNumber = currentActionNumber;
     }
 

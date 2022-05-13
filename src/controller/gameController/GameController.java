@@ -1,6 +1,7 @@
 package controller.gameController;
 
 import controller.ActionMenuController;
+import controller.GameAreaController;
 
 /**
  * 
@@ -14,8 +15,8 @@ public abstract class GameController {
 
     public GameController() {
 
-        this.actionMenuController = new ActionMenuController();
-        this.gameAreaController = new GameAreaController();
+        this.actionMenuController = new ActionMenuController(null, null, 0, null);
+        this.gameAreaController = new GameAreaController(actionMenuController, null, null, null);
 
     }
 
