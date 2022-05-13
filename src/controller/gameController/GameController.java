@@ -1,5 +1,7 @@
 package controller.gameController;
 
+import controller.ActionMenuController;
+
 /**
  * 
  * Manage Game Loop methods
@@ -39,8 +41,10 @@ public abstract class GameController {
     }
 
     /**
-     * start a new Player Turn.
+     * 
+     * @param actionMenuController
      */
+
     public abstract void playerTurn(ActionMenuController actionMenuController);
 
     /**
