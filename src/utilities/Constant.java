@@ -12,9 +12,9 @@ import java.awt.GraphicsEnvironment;
  */
 public class Constant {
 
-	public static GraphicsDevice device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-	public static final int WIDTH = device.getDisplayMode().getWidth();
-	public static final int HEIGHT = device.getDisplayMode().getHeight();
+	public static final GraphicsDevice SCREEN = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+	public static final int WIDTH = SCREEN.getDisplayMode().getWidth();
+	public static final int HEIGHT = SCREEN.getDisplayMode().getHeight();
 	public static final int TOP_HEIGHT = 3 * HEIGHT / 4;
 	public static final int ACTION_HEIGHT = HEIGHT / 4;
 	public static final int GAME_WIDTH = 11 * WIDTH / 17;
