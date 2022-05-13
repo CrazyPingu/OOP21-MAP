@@ -26,13 +26,25 @@ public class GameArea extends JPanel {
 	private Dimension buttonDimension;
 
 	public GameArea(Room room) {
+		this.setOpaque(false);
+		this.changeRoom(room);
+	}
+
+	/**
+	 * Method that given a room it will place it on the GameArea, removing the last
+	 * one
+	 * 
+	 * @param room the room to replace the older one
+	 */
+	public void changeRoom(Room room) {
 		this.room = room;
 		this.size = room.getSize();
-		this.buttonDimension = new Dimension(Constant.GAME_WIDTH / size.getX(), Constant.TOP_HEIGHT / size.getY());
-		this.setOpaque(false);
 		this.setLayout(new GridLayout(size.getY(), size.getX()));
+		this.removeAll();
+		this.buttonDimension = new Dimension(Constant.GAME_WIDTH / size.getX(), Constant.TOP_HEIGHT / size.getY());
 		this.placeCells();
 		this.initializeSprite(room);
+		repaint();
 	}
 
 	/**
@@ -95,11 +107,12 @@ public class GameArea extends JPanel {
 			this.room.getCells().get(player.getPos()).drawGameObject(player);
 		}
 	}
-	
+
 	/**
 	 * @return the room of the game
 	 */
 	public Room getRoom() {
 		return room;
 	}
+
 }
