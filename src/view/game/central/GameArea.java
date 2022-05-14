@@ -57,9 +57,14 @@ public class GameArea extends JPanel {
 		this.drawDoor(room.getDoor());
 	}
 
+	/**
+	 * Method that given the position of the door it draws it
+	 * 
+	 * @param door the position of the door
+	 */
 	private void drawDoor(List<Pair<Integer, Integer>> door) {
-		for(var x : this.room.getCells().entrySet()) {
-			if(door.contains(x.getKey())) {
+		for (var x : this.room.getCells().entrySet()) {
+			if (door.contains(x.getKey())) {
 				x.getValue().drawDoor();
 			}
 		}
