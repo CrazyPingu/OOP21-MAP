@@ -74,7 +74,7 @@ public class RoomImpl implements Room {
 		List<Pair<Integer, Integer>> tmp = new ArrayList<>();
 		tmp.add(new Pair<Integer, Integer>(size.getX() - 1, size.getY() / 2));
 		if (size.getY() % 2 == 0) {
-			tmp.add(new Pair<Integer, Integer>(size.getX() - 1, (size.getY() / 2) + 1));
+			tmp.add(new Pair<Integer, Integer>(size.getX() - 1, (size.getY() / 2) - 1));
 		}
 		return tmp;
 	}
