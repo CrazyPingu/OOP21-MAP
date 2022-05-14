@@ -24,7 +24,7 @@ public class EnemyAIImpl implements EnemyAI {
 	 * {@inheritDoc}
 	 */
 	public void attack(SimpleEnemy enemy, Player player) {
-		// TODO Auto-generated method stub
+		player.damage(enemy.getWeapon().getDamage());
 	}
 
 	/**
