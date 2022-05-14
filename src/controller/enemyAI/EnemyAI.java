@@ -3,6 +3,7 @@ package controller.enemyAI;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import utilities.Pair;
+import view.game.central.GameArea;
 
 /**
  * 
@@ -14,7 +15,7 @@ public interface EnemyAI {
 	/**
 	 * enemy automated movement
 	 */
-	public void move(SimpleEnemy enemy, Player player, Pair<Integer,Integer> roomSize);
+	public void move(SimpleEnemy enemy, Player player, Pair<Integer,Integer> roomSize, GameArea gameArea);
 	
 	/**
 	 * enemy automated attack

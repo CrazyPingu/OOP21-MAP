@@ -1,10 +1,13 @@
 package controller.enemyAI;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import utilities.Pair;
+import view.game.central.GameArea;
 
 /**
  * 
@@ -16,11 +19,22 @@ public class EnemyAIImpl implements EnemyAI {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void move(SimpleEnemy enemy, Player player, Pair<Integer,Integer> roomSize) {
+	public void move(SimpleEnemy enemy, Player player, Pair<Integer,Integer> roomSize, GameArea gameArea) {
 		List<Pair<Integer,Integer>> enemyReachableArea = enemy.getMovementSystem().reachableCells(enemy.getPos(), roomSize);
+		List<Float> distances = new ArrayList<Float>();
+		int newX=enemyReachableArea.get(0).getX(), newY=enemyReachableArea.get(0).getY();
+		float distance;
 		
-		//cella della reachable area + vicina al player
+		for (Pair<Integer,Integer> cell : enemyReachableArea) {			
+			distances.add((float) ((cell.getX()-player.getPos().getX())/(cell.getX()-player.getPos().getY())));
+		}
+		
+		Collections.sort(distances);
+        distances.get(0);
+		
+		gameArea.moveGameObject(enemy.getPos(),new Pair<>(newX,newY));
 	}
+	
 
 	/**
 	 * {@inheritDoc}
