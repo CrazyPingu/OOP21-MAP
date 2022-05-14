@@ -54,6 +54,15 @@ public class GameArea extends JPanel {
 		this.drawEnemyFromList(this.room.getEnemyList());
 		this.drawArtefactFromList(this.room.getArtefactList());
 		this.drawPlayer(room.getPlayer());
+		this.drawDoor(room.getDoor());
+	}
+
+	private void drawDoor(List<Pair<Integer, Integer>> door) {
+		for(var x : this.room.getCells().entrySet()) {
+			if(door.contains(x.getKey())) {
+				x.getValue().drawDoor();
+			}
+		}
 	}
 
 	/**

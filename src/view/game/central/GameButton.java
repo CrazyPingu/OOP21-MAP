@@ -54,6 +54,11 @@ public class GameButton extends JButton implements ActionListener {
 		sprite.setIcon(
 				new ImageIcon(ImageModifier.scaleWithDimension(object.getTextureImage(), buttonDimension)));
 	}
+	
+	public void drawDoor() {
+		sprite.setIcon(
+				new ImageIcon(ImageModifier.scaleWithDimension(ImageMethod.getImage("room/door.png"), buttonDimension)));
+	}
 
 	public void actionPerformed(ActionEvent e) {
 		/*
