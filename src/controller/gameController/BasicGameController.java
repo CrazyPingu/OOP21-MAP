@@ -1,8 +1,12 @@
 package controller.gameController;
 
+import java.util.List;
+
 import controller.ActionMenuController;
 import controller.enemyAI.EnemyAIImpl;
+import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
+import utilities.Pair;
 
 /**
  * 
@@ -19,7 +23,8 @@ public class BasicGameController extends GameController {
 	@Override
 	public void playerTurn(ActionMenuController actionMenuController) {
 		int currentAction;
-		actionMenuController.setInitialActionNumber(actionMenuController.getGameArea().getRoom().getPlayer().getActionNumber());
+		Player player = this.getTotalPanel().getGameArea().getRoom().getPlayer();
+		actionMenuController.setInitialActionNumber(player.getActionNumber());
 		while (currentAction>0);
 	}
 
@@ -29,9 +34,12 @@ public class BasicGameController extends GameController {
 	@Override
 	public void enemyTurn(ActionMenuController actionMenuController) {
 		List<SimpleEnemy> allEnemyList = actionMenuController.getGameArea().getRoom().getEnemyList();
+		Player player = this.getTotalPanel().getGameArea().getRoom().getPlayer();
+		Pair<Integer,Integer> roomSize = this.getTotalPanel().getGameArea().getRoom().getSize();
+		
 		for (SimpleEnemy enemy : allEnemyList) {
-			if (this.enemyAI.isPlayerInAttackArea())
-				this.enemyAI.attack();
+			if (this.enemyAI.isPlayerInAttackArea(enemy, player))
+				this.enemyAI.attack(enemy, player, roomSize);
 			else
 				this.enemyAI.move();
 			Thread.sleep(1000);
