@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import logics.game_object.artefact.Artefact;
@@ -11,7 +12,9 @@ import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import logics.room.works.Room;
 import utilities.Constant;
+import utilities.ImageMethod;
 import utilities.Pair;
+import utilities.RoomConstant;
 
 /**
  * 
@@ -139,6 +142,22 @@ public class GameArea extends JPanel {
 		this.room.getCells().get(oldPos).removeSprite();
 		this.room.updatePosition(oldPos, newPos);
 		this.room.getCells().get(newPos).drawGameObject(room.getPlayer());
+	}
+
+	/**
+	 * @param pos  the list of position to highlight
+	 * @param flag the flag that will say which action the player is doing
+	 */
+	public void highlightCells(List<Pair<Integer, Integer>> pos, ActionFlag flag) {
+		ImageIcon image = null;
+		if (flag.equals(ActionFlag.ATTACK)) {
+			image = RoomConstant.ATTACK_HIGHLIGHT;
+		} else if (flag.equals(ActionFlag.MOVE)) {
+			image = RoomConstant.MOVE_HIGHLIGHT;
+		}
+		for (var x : pos) {
+			this.room.getCells().get(x).highlightCell(image);
+		}
 	}
 
 }
