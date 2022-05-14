@@ -149,14 +149,16 @@ public class GameArea extends JPanel {
 	 * @param flag the flag that will say which action the player is doing
 	 */
 	public void highlightCells(List<Pair<Integer, Integer>> pos, ActionFlag flag) {
-		ImageIcon image = null;
-		if (flag.equals(ActionFlag.ATTACK)) {
-			image = RoomConstant.ATTACK_HIGHLIGHT;
-		} else if (flag.equals(ActionFlag.MOVE)) {
-			image = RoomConstant.MOVE_HIGHLIGHT;
-		}
-		for (var x : pos) {
-			this.room.getCells().get(x).highlightCell(image);
+		if (pos != null && !pos.isEmpty() && flag != null) {
+			ImageIcon image = null;
+			if (flag.equals(ActionFlag.ATTACK)) {
+				image = RoomConstant.ATTACK_HIGHLIGHT;
+			} else if (flag.equals(ActionFlag.MOVE)) {
+				image = RoomConstant.MOVE_HIGHLIGHT;
+			}
+			for (var x : pos) {
+				this.room.getCells().get(x).highlightCell(image);
+			}
 		}
 	}
 
