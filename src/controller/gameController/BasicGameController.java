@@ -30,7 +30,11 @@ public class BasicGameController extends GameController {
 	public void enemyTurn(ActionMenuController actionMenuController) {
 		List<SimpleEnemy> allEnemyList = actionMenuController.getGameArea().getRoom().getEnemyList();
 		for (SimpleEnemy enemy : allEnemyList) {
-			
+			if (this.enemyAI.isPlayerInAttackArea())
+				this.enemyAI.attack();
+			else
+				this.enemyAI.move();
+			Thread.sleep(1000);
 		}
 	}
 
