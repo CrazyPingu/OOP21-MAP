@@ -31,8 +31,8 @@ public class EnemyAIImpl implements EnemyAI {
 	 * {@inheritDoc}
 	 */
 	public boolean isPlayerInAttackArea(SimpleEnemy enemy, Player player, Pair<Integer,Integer> roomSize) {
-		// TODO Auto-generated method stub
-		return false;
+		List<Pair<Integer,Integer>> attackableArea = enemy.getWeapon().getAttackArea(enemy.getPos(), roomSize);
+		return (attackableArea.contains(player.getPos()));
 	}
 	
 }
