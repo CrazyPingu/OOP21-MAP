@@ -1,5 +1,6 @@
 package view.game;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
 
@@ -25,18 +26,20 @@ public class TotalPanel extends JPanel {
 	public TotalPanel(Room room, Player player) {
 		this.setLayout(new GridBagLayout());
 		this.setOpaque(false);
-		log = new ScrollableLog();
-		fixSize(Constant.LABEL_WIDTH, Constant.TOP_HEIGHT, log);
-		this.add(log, new GbcDimension(0, 0));
+		this.setBackground(Color.black);
+
+		stats = new ScrollableStats(player);
+		fixSize(Constant.LABEL_WIDTH, Constant.TOP_HEIGHT, stats);
+		this.add(stats, new GbcDimension(0));
 
 		gameArea = new GameArea(room);
 		System.out.println(gameArea.getClass());
 		fixSize(Constant.GAME_WIDTH, Constant.TOP_HEIGHT, gameArea);
 		this.add(gameArea, new GbcDimension(1));
 
-		stats = new ScrollableStats(player);
-		fixSize(Constant.LABEL_WIDTH, Constant.TOP_HEIGHT, stats);
-		this.add(stats, new GbcDimension(2));
+		log = new ScrollableLog();
+		fixSize(Constant.LABEL_WIDTH, Constant.TOP_HEIGHT, log);
+		this.add(log, new GbcDimension(2));
 
 		actionMenu = new ActionMenu();
 		fixSize(Constant.WIDTH, Constant.ACTION_HEIGHT, actionMenu);
