@@ -1,6 +1,8 @@
 package controller.gameController;
 
 import controller.ActionMenuController;
+import controller.enemyAI.EnemyAIImpl;
+import logics.game_object.entity.SimpleEnemy;
 
 /**
  * 
@@ -8,6 +10,8 @@ import controller.ActionMenuController;
  *
  */
 public class BasicGameController extends GameController {
+	
+	EnemyAIImpl enemyAI = new EnemyAIImpl();
 
 	/**
 	 * {@inheritDoc}
@@ -24,7 +28,10 @@ public class BasicGameController extends GameController {
 	 */
 	@Override
 	public void enemyTurn(ActionMenuController actionMenuController) {
-		
+		List<SimpleEnemy> allEnemyList = actionMenuController.getGameArea().getRoom().getEnemyList();
+		for (SimpleEnemy enemy : allEnemyList) {
+			
+		}
 	}
 
 }
