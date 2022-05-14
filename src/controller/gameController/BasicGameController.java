@@ -24,7 +24,7 @@ public class BasicGameController extends GameController {
 	public void playerTurn(ActionMenuController actionMenuController) {
 		int currentAction;
 		Player player = this.getTotalPanel().getGameArea().getRoom().getPlayer();
-		actionMenuController.setInitialActionNumber(player.getActionNumber());
+		actionMenuController.setActionNumber(player.getActionNumber());
 		while (currentAction>0);
 	}
 
