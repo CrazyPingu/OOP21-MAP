@@ -63,4 +63,16 @@ public class EnemyAITest {
 		this.enemyAI.move(enemy, player, roomSize, null);
 		assertEquals(expectedResult, this.enemy.getPos());
 	}
+	
+	@org.junit.Test
+	/**
+	 * testing of enemy's moving area with enemy and player with the same X coordinate
+	 */
+	public void playerAlignedY() {
+		this.player.setPos(new Pair<>(5,3));
+		
+		this.expectedResult = new Pair<>(5,2);
+		this.enemyAI.move(enemy, player, roomSize, null);
+		assertEquals(expectedResult, this.enemy.getPos());
+	}
 }
