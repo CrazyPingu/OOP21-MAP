@@ -74,4 +74,13 @@ public class GameButton extends JButton implements ActionListener {
 		this.sprite.setIcon(null);
 		repaint();
 	}
+
+	/**
+	 * Method that highlight the background with the passed image
+	 * 
+	 * @param image the image to place on background
+	 */
+	public void highlightCell(ImageIcon image) {
+		this.strategyLabel.setIcon(image);
+	}
 }
