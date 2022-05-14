@@ -2,8 +2,6 @@ package test;
 
 import static org.junit.Assert.*;
 
-import java.util.List;
-
 import controller.enemyAI.EnemyAIImpl;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
