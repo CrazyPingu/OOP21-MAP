@@ -36,8 +36,8 @@ public class RoomImpl implements Room {
 		this.player = player;
 		this.cells = new HashMap<>();
 		this.door = generateDoor(size);
-		this.enemyList = new RandomEnemyList(size, player);
-		this.artefactList = new RandomArtefactList(size, enemyList, player);
+		this.enemyList = new RandomEnemyList(size, player, door);
+		this.artefactList = new RandomArtefactList(size, enemyList, player, door);
 	}
 
 	/**
