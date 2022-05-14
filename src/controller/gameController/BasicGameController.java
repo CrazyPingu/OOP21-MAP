@@ -41,7 +41,7 @@ public class BasicGameController extends GameController {
 			if (this.enemyAI.isPlayerInAttackArea(enemy, player))
 				this.enemyAI.attack(enemy, player, roomSize);
 			else
-				this.enemyAI.move();
+				this.enemyAI.move(enemy, player, roomSize);
 			Thread.sleep(1000);
 		}
 	}

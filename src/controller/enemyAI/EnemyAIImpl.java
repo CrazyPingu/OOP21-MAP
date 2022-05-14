@@ -16,8 +16,10 @@ public class EnemyAIImpl implements EnemyAI {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void move(SimpleEnemy enemy) {
-		// TODO Auto-generated method stub
+	public void move(SimpleEnemy enemy, Player player, Pair<Integer,Integer> roomSize) {
+		List<Pair<Integer,Integer>> enemyReachableArea = enemy.getMovementSystem().reachableCells(enemy.getPos(), roomSize);
+		
+		//cella della reachable area + vicina al player
 	}
 
 	/**

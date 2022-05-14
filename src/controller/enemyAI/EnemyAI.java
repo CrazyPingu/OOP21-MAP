@@ -14,7 +14,7 @@ public interface EnemyAI {
 	/**
 	 * enemy automated movement
 	 */
-	public void move(SimpleEnemy enemy);
+	public void move(SimpleEnemy enemy, Player player, Pair<Integer,Integer> roomSize);
 	
 	/**
 	 * enemy automated attack
