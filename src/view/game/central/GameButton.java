@@ -2,12 +2,9 @@ package view.game.central;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -51,13 +48,16 @@ public class GameButton extends JButton implements ActionListener {
 	 * @param object paints the image of the object
 	 */
 	public void drawGameObject(GameObject object) {
-		sprite.setIcon(
-				new ImageIcon(ImageModifier.scaleWithDimension(object.getTextureImage(), buttonDimension)));
+		sprite.setIcon(new ImageIcon(ImageModifier.scaleWithDimension(object.getTextureImage(), buttonDimension)));
 	}
-	
+
+	/**
+	 * Method to draw the door
+	 */
 	public void drawDoor() {
-		sprite.setIcon(
-				new ImageIcon(ImageModifier.scaleWithDimension(ImageMethod.getImage("room/door.png"), buttonDimension)));
+		sprite.setIcon(new ImageIcon(
+				ImageModifier.scaleWithDimension(ImageMethod.getImage("room/door.png"), buttonDimension)));
+		repaint();
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -68,16 +68,10 @@ public class GameButton extends JButton implements ActionListener {
 	}
 
 	/**
-	 * @return the label sprite
+	 * Method to remove the sprite from a GameButton
 	 */
-	public JLabel getSprite() {
-		return sprite;
-	}
-
-	/**
-	 * @param label change the label sprite
-	 */
-	public void setSprite(JLabel label) {
-		this.sprite = label;
+	public void removeSprite() {
+		this.sprite.setIcon(null);
+		repaint();
 	}
 }

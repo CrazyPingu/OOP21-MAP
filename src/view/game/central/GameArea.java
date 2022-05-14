@@ -43,18 +43,18 @@ public class GameArea extends JPanel {
 		this.removeAll();
 		this.buttonDimension = new Dimension(Constant.GAME_WIDTH / size.getX(), Constant.TOP_HEIGHT / size.getY());
 		this.placeCells();
-		this.initializeSprite(room);
+		this.initializeSprite();
 		repaint();
 	}
 
 	/**
 	 * Method that, given the room it initialize the game sprite
 	 */
-	private void initializeSprite(Room room) {
+	private void initializeSprite() {
 		this.drawEnemyFromList(this.room.getEnemyList());
 		this.drawArtefactFromList(this.room.getArtefactList());
-		this.drawPlayer(room.getPlayer());
-		this.drawDoor(room.getDoor());
+		this.drawPlayer(this.room.getPlayer());
+		this.drawDoor(this.room.getDoor());
 	}
 
 	/**
@@ -127,6 +127,18 @@ public class GameArea extends JPanel {
 	 */
 	public Room getRoom() {
 		return room;
+	}
+
+	/**
+	 * Method to move game object around the GameArea
+	 * 
+	 * @param oldPos the actual position of the GameObject
+	 * @param newPos the position that the GameObject will go on
+	 */
+	public void moveGameObject(Pair<Integer, Integer> oldPos, Pair<Integer, Integer> newPos) {
+		this.room.getCells().get(oldPos).removeSprite();
+		this.room.updatePosition(oldPos, newPos);
+		this.room.getCells().get(newPos).drawGameObject(room.getPlayer());
 	}
 
 }
