@@ -139,9 +139,11 @@ public class GameArea extends JPanel {
 	 * @param newPos the position that the GameObject will go on
 	 */
 	public void moveGameObject(Pair<Integer, Integer> oldPos, Pair<Integer, Integer> newPos) {
-		this.room.getCells().get(oldPos).removeSprite();
-		this.room.updatePosition(oldPos, newPos);
-		this.room.getCells().get(newPos).drawGameObject(room.getPlayer());
+		if (oldPos != null && newPos != null) {
+			this.room.getCells().get(oldPos).removeSprite();
+			this.room.updatePosition(oldPos, newPos);
+			this.room.getCells().get(newPos).drawGameObject(room.getPlayer());
+		}
 	}
 
 	/**
