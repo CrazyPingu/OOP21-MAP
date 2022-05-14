@@ -83,4 +83,11 @@ public class GameButton extends JButton implements ActionListener {
 	public void highlightCell(ImageIcon image) {
 		this.strategyLabel.setIcon(image);
 	}
+
+	/**
+	 * Method that remove the highlight from the cell
+	 */
+	public void removeHighlight() {
+		this.strategyLabel.setIcon(null);
+	}
 }
