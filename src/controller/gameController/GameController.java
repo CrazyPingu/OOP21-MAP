@@ -27,7 +27,7 @@ public abstract class GameController {
 
     public GameController() {
 
-        this.actionMenuController = new ActionMenuController();
+        this.actionMenuController = new ActionMenuController(totalPanel);
         this.gameAreaController = new GameAreaController(actionMenuController, null, null, null);
 
     }
@@ -43,7 +43,7 @@ public abstract class GameController {
         Room randomRoom = new RandomRoomGenerator().generateRoom(player);
 
         TotalPanel panel = new TotalPanel();
-        this.totalPanel = panel;
+        //this.totalPanel = panel;
     }
 
     /**
@@ -60,6 +60,14 @@ public abstract class GameController {
 
     }
 
+    
+    
+    public TotalPanel getTotalPanel(TotalPanel panel) {
+        return this.totalPanel;
+        
+    }
+    
+    
     /**
      * 
      * @param actionMenuController
