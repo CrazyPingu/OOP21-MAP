@@ -30,7 +30,7 @@ public class RandomArtefactList extends ArrayList<Artefact> {
 	/**
 	 * @param size the size of the room
 	 */
-	public RandomArtefactList(Pair<Integer, Integer> size, List<SimpleEnemy> enemyList,Player player) {
+	public RandomArtefactList(Pair<Integer, Integer> size, List<SimpleEnemy> enemyList,Player player, List<Pair<Integer, Integer>> door) {
 		factoryOfArtefact.put(new WeaponArtefactFactoryImpl(), new WeaponFactoryImpl().getClass().getDeclaredMethods().length);
 		factoryOfArtefact.put(new HealthArtefactFactoryImpl(), new HealthArtefactFactoryImpl().getClass().getDeclaredMethods().length);
 		factoryOfArtefact.put(new ActionNumberArtefactFactoryImpl(),new ActionNumberArtefactFactoryImpl().getClass().getDeclaredMethods().length);
@@ -40,7 +40,7 @@ public class RandomArtefactList extends ArrayList<Artefact> {
 			do {
 				artefactPos = new Pair<Integer, Integer>(new Random().ints(0, size.getX()).findFirst().getAsInt(),
 						new Random().ints(0, size.getY()).findFirst().getAsInt());
-			} while (RoomConstant.cellsOccupated(enemyList, this, player, artefactPos));
+			} while (RoomConstant.cellsOccupated(enemyList, this, player, artefactPos) || door.contains(artefactPos));
 			generateRandomArtefact(generateRandomArtefactFactory(), artefactPos);
 		}
 	}
