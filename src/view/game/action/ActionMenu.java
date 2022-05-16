@@ -1,14 +1,13 @@
 package view.game.action;
 
 import java.awt.GridBagLayout;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import controller.ActionMenuController;
 import controller.PageController;
 import utilities.Constant;
 import utilities.GbcDimension;
-import view.MenuButtonsAppearance;
+import view.MenuButton;
 import view.game.action.ButtonsAction.AttackAction;
 import view.game.action.ButtonsAction.MoveAction;
 import view.game.action.ButtonsAction.PauseAction;
@@ -25,14 +24,10 @@ public class ActionMenu extends JPanel {
      */
     public ActionMenu(PageController controller, ActionMenuController menucontroller) {
 
-        JButton attack = new JButton("Attack");
-        JButton move = new JButton("Move");
-        JButton skip = new JButton("Skip");
-        JButton pause = new JButton("Pause");
-        MenuButtonsAppearance.SetMenuButtonsAppearance(attack);
-        MenuButtonsAppearance.SetMenuButtonsAppearance(move);
-        MenuButtonsAppearance.SetMenuButtonsAppearance(skip);
-        MenuButtonsAppearance.SetMenuButtonsAppearance(pause);
+        MenuButton attack = new MenuButton("Attack");
+        MenuButton move = new MenuButton("Move");
+        MenuButton skip = new MenuButton("Skip");
+        MenuButton pause = new MenuButton("Pause");
         attack.addActionListener(new AttackAction(menucontroller));
         move.addActionListener(new MoveAction(menucontroller));
         skip.addActionListener(new SkipAction(menucontroller));

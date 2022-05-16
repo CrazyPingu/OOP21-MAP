@@ -1,8 +1,11 @@
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import view.game.TotalPanel;
 
-public class ActionMenuController {
+public class ActionMenuController implements ActionListener {
 
     private int currentActionNumber;
     private TotalPanel totalPanel;
@@ -76,6 +79,10 @@ public class ActionMenuController {
         } else if (actionFlag.equals(ActionFlag.MOVE)) {
             move();
         }
+
+    }
+
+    public void actionPerformed(ActionEvent e) {
 
     }
 }
