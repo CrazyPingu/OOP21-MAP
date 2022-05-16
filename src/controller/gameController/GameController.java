@@ -31,7 +31,7 @@ public abstract class GameController {
         this.gameAreaController = new GameAreaController(actionMenuController, null, null, null);
 
     }
-
+s
     /**
      * setup the first Game.
      */
@@ -42,7 +42,7 @@ public abstract class GameController {
                 mf.stepMovement(), "Marcello", EntityTexture.PLAYER);
         Room randomRoom = new RandomRoomGenerator().generateRoom(player);
 
-        TotalPanel panel = new TotalPanel();
+        TotalPanel panel = new TotalPanel(randomRoom, player);
         //this.totalPanel = panel;
     }
 
@@ -50,13 +50,14 @@ public abstract class GameController {
      * create a new Game.
      */
     public void newGame() {
-
+        startGame();
     }
 
     /**
      * create a new Room.
      */
     public void newRoom() {
+        Room randomRoom = new RandomRoomGenerator().generateRoom(player);
 
     }
 
