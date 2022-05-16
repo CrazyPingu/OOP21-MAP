@@ -23,7 +23,7 @@ public class BasicGameController extends GameController {
 	 */
 	@Override
 	public void playerTurn(ActionMenuController actionMenuController) {
-		int currentAction;
+		int currentAction = actionMenuController.getCurrentActionNumber();
 		Player player = this.getTotalPanel().getGameArea().getRoom().getPlayer();
 		actionMenuController.setActionNumber(player.getActionNumber());
 		while (currentAction>0);
@@ -33,18 +33,23 @@ public class BasicGameController extends GameController {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void enemyTurn(ActionMenuController actionMenuController) {
-		List<SimpleEnemy> allEnemyList = actionMenuController.getGameArea().getRoom().getEnemyList();
+	public void enemyTurn() {
+		List<SimpleEnemy> allEnemyList =  this.getTotalPanel().getGameArea().getRoom().getEnemyList();
 		Player player = this.getTotalPanel().getGameArea().getRoom().getPlayer();
 		GameArea gameArea = this.getTotalPanel().getGameArea();
 		Pair<Integer,Integer> roomSize = this.getTotalPanel().getGameArea().getRoom().getSize();
 		
 		for (SimpleEnemy enemy : allEnemyList) {
-			if (this.enemyAI.isPlayerInAttackArea(enemy, player))
-				this.enemyAI.attack(enemy, player, roomSize);
+			if (this.enemyAI.isPlayerInAttackArea(enemy, player, roomSize))
+				this.enemyAI.attack(enemy, player);
 			else
 				this.enemyAI.move(enemy, player, roomSize, gameArea);
-			Thread.sleep(1000);
+			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
