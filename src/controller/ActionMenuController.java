@@ -3,6 +3,8 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+
 import view.game.TotalPanel;
 
 public class ActionMenuController implements ActionListener {
@@ -83,6 +85,13 @@ public class ActionMenuController implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-
+        JButton source = (JButton) e.getSource();
+        if (source.getText().equals("Attack")) {
+            attack();
+        }else if (source.getText().equals("Move")) {
+            move();
+        }else if (source.getText().equals("Skip")) {
+            skip();
+        }
     }
 }
