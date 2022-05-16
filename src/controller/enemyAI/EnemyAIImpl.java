@@ -40,6 +40,9 @@ public class EnemyAIImpl implements EnemyAI {
 	 */
 	public void attack(SimpleEnemy enemy, Player player) {
 		player.damage(enemy.getWeapon().getDamage());
+		if(player.isDead()){
+            // TODO lost game/main menu & player stats update
+        }
 	}
 
 	/**
