@@ -32,7 +32,7 @@ public abstract class GameController {
         this.gameAreaController = new GameAreaController(actionMenuController, null, null, null);
 
     }
-s
+    
     /**
      * setup the first Game.
      */
