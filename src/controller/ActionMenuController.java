@@ -34,7 +34,7 @@ public class ActionMenuController {
         this.decreaseAction();
     }
     
-    public int getcurrentActionNumber() {
+    public int getCurrentActionNumber() {
         return this.currentActionNumber;
     }
 
