@@ -1,6 +1,5 @@
 package controller;
 
-import logics.room.works.Room;
 import view.game.TotalPanel;
 
 public class ActionMenuController {
@@ -8,32 +7,60 @@ public class ActionMenuController {
     private int currentActionNumber;
     private TotalPanel totalPanel;
 
+    /**
+     * 
+     * @param totalpanel : panel that contains all the game screen
+     */
     public ActionMenuController(TotalPanel totalpanel) {
         this.totalPanel = totalpanel;
     }
 
+    /**
+     * 
+     * @param currentActionNumber : the current number of action available
+     * 
+     *                            Set the number of action available by the player
+     */
     public void setActionNumber(int currentActionNumber) {
         this.currentActionNumber = currentActionNumber;
     }
+
+    /**
+     * Decrease the number of action available by the player
+     */
 
     private void decreaseAction() {
         this.currentActionNumber--;
     }
 
+    /**
+     * Attack in a chosen cell by the user
+     */
     public void attack() {
-        this.totalPanel.getGameArea();
+        this.totalPanel.getGameArea().moveGameObject(null, null);
         this.decreaseAction();
     }
 
+    /**
+     * Move the player to a new position
+     */
     public void move() {
-
+        this.totalPanel.getGameArea().moveGameObject(null, null);
+        ;
         this.decreaseAction();
     }
 
+    /**
+     * Skip to the next turn
+     */
     public void skip() {
         this.decreaseAction();
     }
-    
+
+    /**
+     * 
+     * @return the number of action available by the player
+     */
     public int getCurrentActionNumber() {
         return this.currentActionNumber;
     }
