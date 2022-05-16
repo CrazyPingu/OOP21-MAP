@@ -6,6 +6,7 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import utilities.Constant;
+import utilities.GbcDimension;
 import view.MenuButtonsAppearance;
 
 public class ActionMenu extends JPanel {
@@ -23,18 +24,9 @@ public class ActionMenu extends JPanel {
         MenuButtonsAppearance.SetMenuButtonsAppearance(skip);
         MenuButtonsAppearance.SetMenuButtonsAppearance(pause);
         this.setLayout(new GridBagLayout());
-        this.add(attack, setButtonPosition(0, 30, 30));
-//      this.add(move, setButtonPosition(1, 30, 30));
-//      this.add(skip, setButtonPosition(2, 30, 30));
-//      this.add(pause, setButtonPosition(3, 30, 30));
-    }
-
-    private GridBagConstraints setButtonPosition(int gridx, int leftPad, int rightPad) {
-        GridBagConstraints a = new GridBagConstraints();
-        leftPad = Constant.verticalAspectRatio(leftPad);
-        rightPad = Constant.verticalAspectRatio(rightPad);
-        a.gridx = gridx;
-        a.insets = new Insets(0, leftPad, 0, rightPad);
-        return a;
+        this.add(attack, new GbcDimension(0,0,0,0,GbcDimension.createInsets(0, 30, 0, 30)));
+        this.add(move, new GbcDimension(1,0,0,0,GbcDimension.createInsets(0, 30, 0, 30)));
+        this.add(skip, new GbcDimension(2,0,0,0,GbcDimension.createInsets(0, 30, 0, 30)));
+        this.add(pause, new GbcDimension(3,0,0,0,GbcDimension.createInsets(0, 30, 0, 30)));
     }
 }
