@@ -17,7 +17,7 @@ import utilities.RoomConstant;
 public class RoomFactoryImpl implements RoomFactory {
 
 	private Player player;
-	private final Pair<Integer, Integer> maxSize = new Pair<Integer, Integer>(RoomConstant.MAX_X, RoomConstant.MAX_X);
+	private final Pair<Integer, Integer> maxSize = new Pair<Integer, Integer>(RoomConstant.MAX_X, RoomConstant.MAX_Y);
 	private final Pair<Integer, Integer> minSize = new Pair<Integer, Integer>(RoomConstant.MIN_X, RoomConstant.MIN_Y);
 
 	public RoomFactoryImpl(Player player) {

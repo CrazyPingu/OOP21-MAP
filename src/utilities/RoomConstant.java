@@ -2,6 +2,8 @@ package utilities;
 
 import java.util.List;
 
+import javax.swing.ImageIcon;
+
 import logics.game_object.GameObject;
 import logics.game_object.artefact.Artefact;
 import logics.game_object.entity.Player;
@@ -12,11 +14,14 @@ public class RoomConstant {
 	public static final int SPAWNING_RATIO = 30;
 	public static final int FORBIDDEN_ZOMBIE_SPAWN = 3;
 
-	public static final int MAX_X = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(Constant.GAME_WIDTH / 15);
+	public static final int MAX_X = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(Constant.GAME_WIDTH / 20);
 	public static final int MAX_Y = Constant.TOP_HEIGHT / Constant.verticalAspectRatio(Constant.TOP_HEIGHT / 10);
 
-	public static final int MIN_X = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(Constant.GAME_WIDTH / 6);
-	public static final int MIN_Y = Constant.TOP_HEIGHT / Constant.verticalAspectRatio(Constant.TOP_HEIGHT / 5);
+	public static final int MIN_X = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(Constant.GAME_WIDTH / 12);
+	public static final int MIN_Y = Constant.TOP_HEIGHT / Constant.verticalAspectRatio(Constant.TOP_HEIGHT / 7);
+
+	public static final ImageIcon ATTACK_HIGHLIGHT = ImageMethod.getImageIcon("room/RedBall.png");
+	public static final ImageIcon MOVE_HIGHLIGHT = ImageMethod.getImageIcon("room/BlueBall.png");
 
 	/**
 	 * @param pos            the position of the GameObject to be found

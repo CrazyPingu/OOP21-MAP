@@ -24,10 +24,11 @@ public abstract class GameController {
     private ActionMenuController actionMenuController;
     private GameAreaController gameAreaController;
     private TotalPanel totalPanel;
+    private Player player;
 
     public GameController() {
 
-        this.actionMenuController = new ActionMenuController();
+        this.actionMenuController = new ActionMenuController(totalPanel);
         this.gameAreaController = new GameAreaController(actionMenuController, null, null, null);
 
     }
@@ -38,25 +39,31 @@ public abstract class GameController {
     public void startGame() {
         WeaponFactoryImpl wf = new WeaponFactoryImpl();
         MovementFactoryImpl mf = new MovementFactoryImpl();
-        Player player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), new Pair<>(3, 3), wf.createAxe(),
-                mf.stepMovement(), "Marcello", EntityTexture.PLAYER);
+        player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), new Pair<>(3, 3), wf.createAxe(), mf.stepMovement(),
+                "Marcello", EntityTexture.PLAYER);
         Room randomRoom = new RandomRoomGenerator().generateRoom(player);
 
-        TotalPanel panel = new TotalPanel();
-        this.totalPanel = panel;
+        TotalPanel panel = new TotalPanel(randomRoom, player);
+        // this.totalPanel = panel;
     }
 
     /**
      * create a new Game.
      */
     public void newGame() {
-
+        startGame();
     }
 
     /**
      * create a new Room.
      */
     public void newRoom() {
+        Room randomRoom = new RandomRoomGenerator().generateRoom(player);
+
+    }
+
+    public TotalPanel getTotalPanel(TotalPanel panel) {
+        return this.totalPanel;
 
     }
 

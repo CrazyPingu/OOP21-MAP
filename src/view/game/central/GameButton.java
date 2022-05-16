@@ -26,14 +26,14 @@ public class GameButton extends JButton implements ActionListener {
 	private Dimension buttonDimension;
 
 	public GameButton(Dimension buttonDimension) {
+		this.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		this.buttonDimension = buttonDimension;
 		this.setEnabled(false);
 		sprite = new JLabel();
 		strategyLabel = new JLabel();
-		strategyLabel.setHorizontalAlignment(JLabel.CENTER);
-		this.add(strategyLabel);
 		this.addActionListener(this);
-		strategyLabel.add(sprite);
+		this.add(sprite);
+		this.add(strategyLabel);
 	}
 
 	/**
@@ -48,7 +48,16 @@ public class GameButton extends JButton implements ActionListener {
 	 * @param object paints the image of the object
 	 */
 	public void drawGameObject(GameObject object) {
-		strategyLabel.setIcon(new ImageIcon(ImageModifier.scaleMaintainingAspectRatio(object.getTextureImage(), buttonDimension)));
+		sprite.setIcon(new ImageIcon(ImageModifier.scaleWithDimension(object.getTextureImage(), buttonDimension)));
+	}
+
+	/**
+	 * Method to draw the door
+	 */
+	public void drawDoor() {
+		sprite.setIcon(new ImageIcon(
+				ImageModifier.scaleWithDimension(ImageMethod.getImage("room/door.png"), buttonDimension)));
+		repaint();
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -59,16 +68,26 @@ public class GameButton extends JButton implements ActionListener {
 	}
 
 	/**
-	 * @return the label sprite
+	 * Method to remove the sprite from a GameButton
 	 */
-	public JLabel getSprite() {
-		return sprite;
+	public void removeSprite() {
+		this.sprite.setIcon(null);
+		repaint();
 	}
 
 	/**
-	 * @param label change the label sprite
+	 * Method that highlight the background with the passed image
+	 * 
+	 * @param image the image to place on background
 	 */
-	public void setSprite(JLabel label) {
-		this.sprite = label;
+	public void highlightCell(ImageIcon image) {
+		this.strategyLabel.setIcon(image);
+	}
+
+	/**
+	 * Method that remove the highlight from the cell
+	 */
+	public void removeHighlight() {
+		this.strategyLabel.setIcon(null);
 	}
 }
