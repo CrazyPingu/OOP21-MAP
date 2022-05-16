@@ -6,11 +6,9 @@ import controller.RandomRoomGenerator;
 import logics.game_object.entity.Player;
 import logics.life.ExtendibleMaxLifeSystem;
 import logics.room.works.Room;
-import logics.strategy.concrete_strategies.AroundArea;
-import logics.strategy.movement.MovementFactory;
 import logics.strategy.movement.MovementFactoryImpl;
 import logics.strategy.weapon.WeaponFactoryImpl;
-import utilis.texture.EntityTexture;
+import utilities.texture.EntityTexture;
 import utilities.Pair;
 import view.game.TotalPanel;
 
@@ -52,14 +50,6 @@ public abstract class GameController {
      */
     public void newGame() {
         startGame();
-    }
-
-    /**
-     * create a new Room.
-     */
-    public void newRoom() {
-        Room randomRoom = new RandomRoomGenerator().generateRoom(player);
-
     }
 
     public TotalPanel getTotalPanel() {
