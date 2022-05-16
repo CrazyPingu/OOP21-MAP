@@ -5,16 +5,22 @@ import java.awt.event.ActionListener;
 
 import controller.PageController;
 
-public class PauseAction implements ActionListener{
+public class PauseAction implements ActionListener {
     PageController controller;
-    
+
+    /**
+     * 
+     * @param controller : the PageController
+     */
     public PauseAction(PageController controller) {
         this.controller = controller;
     }
-    
-    
-public void actionPerformed(ActionEvent e) {
-    controller.showPauseMenu();
-}
+
+    /**
+     * Call showPauseMenu method in PageController
+     */
+    public void actionPerformed(ActionEvent e) {
+        controller.showPauseMenu();
+    }
 
 }

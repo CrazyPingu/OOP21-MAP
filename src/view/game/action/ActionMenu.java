@@ -4,6 +4,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import controller.ActionMenuController;
 import controller.PageController;
 import utilities.Constant;
 import utilities.GbcDimension;
@@ -17,7 +18,12 @@ public class ActionMenu extends JPanel {
 
     private static final long serialVersionUID = -4962314493991930765L;
 
-    public ActionMenu(PageController controller) {
+    /**
+     * 
+     * @param controller     : the PageController
+     * @param menucontroller : the ActionMenuController
+     */
+    public ActionMenu(PageController controller, ActionMenuController menucontroller) {
 
         JButton attack = new JButton("Attack");
         JButton move = new JButton("Move");
@@ -27,10 +33,10 @@ public class ActionMenu extends JPanel {
         MenuButtonsAppearance.SetMenuButtonsAppearance(move);
         MenuButtonsAppearance.SetMenuButtonsAppearance(skip);
         MenuButtonsAppearance.SetMenuButtonsAppearance(pause);
-        attack.addActionListener(new AttackAction(controller));
-        move.addActionListener(new MoveAction());
-        skip.addActionListener(new SkipAction());
-        pause.addActionListener(new PauseAction());
+        attack.addActionListener(new AttackAction(menucontroller));
+        move.addActionListener(new MoveAction(menucontroller));
+        skip.addActionListener(new SkipAction(menucontroller));
+        pause.addActionListener(new PauseAction(controller));
         this.setLayout(new GridBagLayout());
         this.add(attack, new GbcDimension(0, 0, Constant.horizontalAspectRatio(350), Constant.verticalAspectRatio(150),
                 GbcDimension.createInsets(0, 30, 0, 30)));
