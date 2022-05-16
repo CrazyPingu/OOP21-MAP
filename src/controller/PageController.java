@@ -8,6 +8,7 @@ import view.pause.PauseMenu;
 
 public class PageController {
     
+    BasicFrame frame;
     Room room;
     
     public PageController(BasicFrame frame) {
@@ -44,7 +45,7 @@ public class PageController {
         frame.showInFrame("Game");
     }
     
-    public static void showPauseMenu() {
+    public void showPauseMenu() {
         frame.showInFrame("PauseMenu");
     }
     
