@@ -1,11 +1,9 @@
 package view.game.central;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,7 +11,7 @@ import javax.swing.JLabel;
 
 import logics.game_object.GameObject;
 import utilities.ImageMethod;
-import utilities.Pair;
+import utilities.ImageModifier;
 
 /**
  * 
@@ -23,60 +21,73 @@ import utilities.Pair;
 public class GameButton extends JButton implements ActionListener {
 
 	private static final long serialVersionUID = 1384166202851332499L;
-	private Graphics2D g2;
-	private GameArea gameArea;
 	private JLabel sprite;
 	private JLabel strategyLabel;
-	private Pair<Integer, Integer> pos;
+	private Dimension buttonDimension;
 
-	public GameButton(GameArea gameArea, Pair<Integer, Integer> pos) {
-		this.pos = pos;
-		this.gameArea = gameArea;
-		sprite = new JLabel("");
-		strategyLabel = new JLabel("");
+	public GameButton(Dimension buttonDimension) {
+		this.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		this.buttonDimension = buttonDimension;
+		this.setEnabled(false);
+		sprite = new JLabel();
+		strategyLabel = new JLabel();
+		this.addActionListener(this);
+		this.add(sprite);
 		this.add(strategyLabel);
-		strategyLabel.add(sprite);
 	}
 
 	/**
 	 * Method to draw the background of the GameButton
 	 */
 	protected void paintComponent(Graphics g) {
-		g2 = (Graphics2D) g;
-		g2.drawImage(ImageMethod.getImage("room/Button.png"), 0, 0, (int) getSize().getWidth(),
-				(int) getSize().getHeight(), null);
-
+		g.drawImage(ImageModifier.scaleWithDimension(ImageMethod.getImage("room/Button.png"), this.getSize()), 0, 0,
+				null);
 	}
 
 	/**
 	 * @param object paints the image of the object
 	 */
 	public void drawGameObject(GameObject object) {
-		sprite = new JLabel(ImageMethod.getImageIcon(object.getImagePath()));
+		sprite.setIcon(new ImageIcon(ImageModifier.scaleWithDimension(object.getTextureImage(), buttonDimension)));
+	}
+
+	/**
+	 * Method to draw the door
+	 */
+	public void drawDoor() {
+		sprite.setIcon(new ImageIcon(
+				ImageModifier.scaleWithDimension(ImageMethod.getImage("room/door.png"), buttonDimension)));
+		repaint();
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		/*
+		 * TODO Auto-generated method stub Pass gameAreaController, and check flag if is
+		 * moving or attacking
+		 */
 	}
 
 	/**
-	 * @return the label sprite
+	 * Method to remove the sprite from a GameButton
 	 */
-	public JLabel getSprite() {
-		return sprite;
+	public void removeSprite() {
+		this.sprite.setIcon(null);
+		repaint();
 	}
 
 	/**
-	 * @param label change the label sprite
+	 * Method that highlight the background with the passed image
+	 * 
+	 * @param image the image to place on background
 	 */
-	public void setSprite(JLabel label) {
-		this.sprite = label;
-	}
-	/**
-	 * @return the pos of the button in the room
-	 */
-	public Pair<Integer, Integer> getPos(){
-		return this.pos;
+	public void highlightCell(ImageIcon image) {
+		this.strategyLabel.setIcon(image);
 	}
 
+	/**
+	 * Method that remove the highlight from the cell
+	 */
+	public void removeHighlight() {
+		this.strategyLabel.setIcon(null);
+	}
 }

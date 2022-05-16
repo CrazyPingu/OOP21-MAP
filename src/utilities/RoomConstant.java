@@ -2,6 +2,8 @@ package utilities;
 
 import java.util.List;
 
+import javax.swing.ImageIcon;
+
 import logics.game_object.GameObject;
 import logics.game_object.artefact.Artefact;
 import logics.game_object.entity.Player;
@@ -12,11 +14,14 @@ public class RoomConstant {
 	public static final int SPAWNING_RATIO = 30;
 	public static final int FORBIDDEN_ZOMBIE_SPAWN = 3;
 
-	public static final int MAX_X = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(Constant.GAME_WIDTH / 15);
+	public static final int MAX_X = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(Constant.GAME_WIDTH / 20);
 	public static final int MAX_Y = Constant.TOP_HEIGHT / Constant.verticalAspectRatio(Constant.TOP_HEIGHT / 10);
 
-	public static final int MIN_X = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(Constant.GAME_WIDTH / 6);
-	public static final int MIN_Y = Constant.TOP_HEIGHT / Constant.verticalAspectRatio(Constant.TOP_HEIGHT / 5);
+	public static final int MIN_X = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(Constant.GAME_WIDTH / 12);
+	public static final int MIN_Y = Constant.TOP_HEIGHT / Constant.verticalAspectRatio(Constant.TOP_HEIGHT / 7);
+
+	public static final ImageIcon ATTACK_HIGHLIGHT = ImageMethod.getImageIcon("room/RedBall.png");
+	public static final ImageIcon MOVE_HIGHLIGHT = ImageMethod.getImageIcon("room/BlueBall.png");
 
 	/**
 	 * @param pos            the position of the GameObject to be found
@@ -24,9 +29,11 @@ public class RoomConstant {
 	 * @return the gameObject if found, else null
 	 */
 	public static GameObject findGameObject(Pair<Integer, Integer> pos, List<GameObject> gameObjectList) {
-		for (var x : gameObjectList) {
-			if (x.getPos().equals(pos)) {
-				return x;
+		if (gameObjectList != null && !gameObjectList.isEmpty()) {
+			for (var x : gameObjectList) {
+				if (x.getPos().equals(pos)) {
+					return x;
+				}
 			}
 		}
 		return null;
@@ -37,10 +44,12 @@ public class RoomConstant {
 	 * @param list the list of artefact to search out
 	 * @return the artefact if found, else null
 	 */
-	public static Artefact searchArtefact(Pair<Integer, Integer> pos, List<Artefact> list) {
-		for (var x : list) {
-			if (x.getPos().equals(pos)) {
-				return x;
+	public static Artefact searchArtefact(Pair<Integer, Integer> pos, List<Artefact> artefactList) {
+		if (artefactList != null && !artefactList.isEmpty()) {
+			for (var x : artefactList) {
+				if (x.getPos().equals(pos)) {
+					return x;
+				}
 			}
 		}
 		return null;
@@ -51,10 +60,12 @@ public class RoomConstant {
 	 * @param list the list of SimpleEntity to search out
 	 * @return the SimpleEntity if found, else null
 	 */
-	public static SimpleEnemy searchEnemy(Pair<Integer, Integer> pos, List<SimpleEnemy> list) {
-		for (var x : list) {
-			if (x.getPos().equals(pos)) {
-				return x;
+	public static SimpleEnemy searchEnemy(Pair<Integer, Integer> pos, List<SimpleEnemy> enemyList) {
+		if (enemyList != null && !enemyList.isEmpty()) {
+			for (var x : enemyList) {
+				if (x.getPos().equals(pos)) {
+					return x;
+				}
 			}
 		}
 		return null;

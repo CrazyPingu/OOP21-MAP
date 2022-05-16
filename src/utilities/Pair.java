@@ -1,14 +1,18 @@
 package utilities;
 
-public class Pair<X,Y> {
-	
+public class Pair<X, Y> {
+
 	private final X x;
 	private final Y y;
-	
+
 	public Pair(X x, Y y) {
 		super();
 		this.x = x;
 		this.y = y;
+	}
+
+	public static Pair<Integer, Integer> revertPair(Pair<Integer, Integer> pair) {
+		return new Pair<Integer, Integer>(pair.getY(), pair.getX());
 	}
 
 	public X getX() {
@@ -55,7 +59,5 @@ public class Pair<X,Y> {
 	public String toString() {
 		return "Pair [x=" + x + ", y=" + y + "]";
 	}
-	
-	
 
 }

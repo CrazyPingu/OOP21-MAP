@@ -1,7 +1,9 @@
 package logics.room.works;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import logics.game_object.artefact.Artefact;
 import logics.game_object.entity.Player;
@@ -17,7 +19,7 @@ import view.game.central.GameButton;
  */
 public class RoomImpl implements Room {
 	private Pair<Integer, Integer> size;
-	private List<GameButton> cells;
+	private Map<Pair<Integer, Integer>, GameButton> cells;
 	private List<SimpleEnemy> enemyList;
 	private List<Artefact> artefactList;
 	private Player player;
@@ -29,13 +31,13 @@ public class RoomImpl implements Room {
 	 * @param newPosPlayer the new position of the player
 	 */
 	public RoomImpl(Pair<Integer, Integer> size, Player player, Pair<Integer, Integer> newPosPlayer) {
+		player.setPos(newPosPlayer);
 		this.size = size;
 		this.player = player;
-		this.cells = new ArrayList<>();
+		this.cells = new HashMap<>();
 		this.door = generateDoor(size);
-		this.enemyList = new RandomEnemyList(size, player);
-		this.artefactList = new RandomArtefactList(size, enemyList, player);
-		player.setPos(newPosPlayer);
+		this.enemyList = new RandomEnemyList(size, player, door);
+		this.artefactList = new RandomArtefactList(size, enemyList, player, door);
 	}
 
 	/**
@@ -72,7 +74,7 @@ public class RoomImpl implements Room {
 		List<Pair<Integer, Integer>> tmp = new ArrayList<>();
 		tmp.add(new Pair<Integer, Integer>(size.getX() - 1, size.getY() / 2));
 		if (size.getY() % 2 == 0) {
-			tmp.add(new Pair<Integer, Integer>(size.getX() - 1, (size.getY() / 2) + 1));
+			tmp.add(new Pair<Integer, Integer>(size.getX() - 1, (size.getY() / 2) - 1));
 		}
 		return tmp;
 	}
@@ -80,8 +82,8 @@ public class RoomImpl implements Room {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void addButtonToCells(GameButton button) {
-		this.cells.add(button);
+	public void addButtonToCells(Pair<Integer, Integer> pos, GameButton button) {
+		this.cells.put(pos, button);
 	}
 
 	/**
@@ -111,7 +113,7 @@ public class RoomImpl implements Room {
 	/**
 	 * {@inheritDoc}
 	 */
-	public List<GameButton> getCells() {
+	public Map<Pair<Integer, Integer>, GameButton> getCells() {
 		return this.cells;
 	}
 

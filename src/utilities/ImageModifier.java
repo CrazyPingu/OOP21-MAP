@@ -1,13 +1,18 @@
 package utilities;
 
-import java.awt.*;
-import javax.swing.JButton;
+import java.awt.Dimension;
+import java.awt.Image;
 
 public class ImageModifier {
 
-	// given the image, and the size of the button / label it will scale based on
-	// your monitor
-	public static final Image scale(Image image, Dimension size) {
+	/**
+	 * Method that return a scaled image maintaining the aspect ratio
+	 * 
+	 * @param image the image to resize
+	 * @param size  the dimension to resize
+	 * @return an image scaled with the same aspect ratio (not stretched)
+	 */
+	public static final Image scaleMaintainingAspectRatio(Image image, Dimension size) {
 		double scaleFactor = Math.min(1d,
 				getScaleFactorToFit(new Dimension(image.getWidth(null), image.getHeight(null)), size));
 		int scaleWidth = (int) Math.round(image.getWidth(null) * scaleFactor);
@@ -25,9 +30,22 @@ public class ImageModifier {
 		return dScale;
 	}
 
-	// given an image and the size of the button / label it will fill the
+	/**
+	 * @param img the image that will be scaled
+	 * @return the image scaled with the dimension of your screen
+	 */
 	public static final Image scaleFullScreen(Image img) {
-		return img.getScaledInstance(Constant.WIDTH, Constant.HEIGHT, Image.SCALE_DEFAULT);
+		return scaleWithDimension(img, new Dimension(Constant.WIDTH, Constant.HEIGHT));
+	}
+
+	/**
+	 * 
+	 * @param img the image that will be scaled
+	 * @param dim the dimension your image will be
+	 * @return the image scaled with the dimension you passed
+	 */
+	public static final Image scaleWithDimension(Image img, Dimension dim) {
+		return img.getScaledInstance((int) dim.getWidth(), (int) (dim.getHeight()), Image.SCALE_DEFAULT);
 	}
 
 }

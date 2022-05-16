@@ -10,6 +10,7 @@ import logics.game_object.artefact.ActionNumberArtefactFactoryImpl;
 import logics.game_object.artefact.Artefact;
 import logics.game_object.artefact.HealthArtefactFactoryImpl;
 import logics.game_object.artefact.MovementArtefactFactoryImp;
+import logics.game_object.artefact.WeaponArtefactFactoryImpl;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import logics.strategy.weapon.WeaponFactoryImpl;
@@ -29,8 +30,8 @@ public class RandomArtefactList extends ArrayList<Artefact> {
 	/**
 	 * @param size the size of the room
 	 */
-	public RandomArtefactList(Pair<Integer, Integer> size, List<SimpleEnemy> enemyList,Player player) {
-		factoryOfArtefact.put(new WeaponFactoryImpl(), new WeaponFactoryImpl().getClass().getDeclaredMethods().length);
+	public RandomArtefactList(Pair<Integer, Integer> size, List<SimpleEnemy> enemyList,Player player, List<Pair<Integer, Integer>> door) {
+		factoryOfArtefact.put(new WeaponArtefactFactoryImpl(), new WeaponFactoryImpl().getClass().getDeclaredMethods().length);
 		factoryOfArtefact.put(new HealthArtefactFactoryImpl(), new HealthArtefactFactoryImpl().getClass().getDeclaredMethods().length);
 		factoryOfArtefact.put(new ActionNumberArtefactFactoryImpl(),new ActionNumberArtefactFactoryImpl().getClass().getDeclaredMethods().length);
 		factoryOfArtefact.put(new MovementArtefactFactoryImp(), new MovementArtefactFactoryImp().getClass().getDeclaredMethods().length);
@@ -39,7 +40,7 @@ public class RandomArtefactList extends ArrayList<Artefact> {
 			do {
 				artefactPos = new Pair<Integer, Integer>(new Random().ints(0, size.getX()).findFirst().getAsInt(),
 						new Random().ints(0, size.getY()).findFirst().getAsInt());
-			} while (RoomConstant.cellsOccupated(enemyList, this, player, artefactPos));
+			} while (RoomConstant.cellsOccupated(enemyList, this, player, artefactPos) || door.contains(artefactPos));
 			generateRandomArtefact(generateRandomArtefactFactory(), artefactPos);
 		}
 	}
@@ -50,7 +51,7 @@ public class RandomArtefactList extends ArrayList<Artefact> {
 	 * @param pos             the position of the artefact generated
 	 */
 	private void generateRandomArtefact(Object artefactFactory, Pair<Integer, Integer> pos) {
-		int random = (int) Math.random() * factoryOfArtefact.get(artefactFactory);
+		int random = new Random().ints(0, factoryOfArtefact.get(artefactFactory)).findAny().getAsInt();
 		Artefact generatedArtefact = null;
 		try {
 			generatedArtefact = (Artefact) artefactFactory.getClass().getDeclaredMethods()[random]
@@ -68,8 +69,7 @@ public class RandomArtefactList extends ArrayList<Artefact> {
 	 */
 	private Object generateRandomArtefactFactory() {
 		List<Object> keys = new ArrayList<Object>(factoryOfArtefact.keySet());
-		Object randomKey = keys.get(new Random().nextInt(keys.size()));
-		return factoryOfArtefact.get(randomKey);
+		Object obj = keys.get(new Random().nextInt(keys.size()));
+		return obj;
 	}
-	
 }
