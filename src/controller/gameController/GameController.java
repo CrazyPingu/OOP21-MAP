@@ -24,6 +24,7 @@ public abstract class GameController {
     private ActionMenuController actionMenuController;
     private GameAreaController gameAreaController;
     private TotalPanel totalPanel;
+    private Player player;
 
     public GameController() {
 
@@ -38,7 +39,7 @@ s
     public void startGame() {
         WeaponFactoryImpl wf = new WeaponFactoryImpl();
         MovementFactoryImpl mf = new MovementFactoryImpl();
-        Player player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), new Pair<>(3, 3), wf.createAxe(),
+        player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), new Pair<>(3, 3), wf.createAxe(),
                 mf.stepMovement(), "Marcello", EntityTexture.PLAYER);
         Room randomRoom = new RandomRoomGenerator().generateRoom(player);
 
