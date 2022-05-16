@@ -9,10 +9,17 @@ import view.game.central.GameArea;
 
 public class GameAreaController {
     
-    Player player;
+    private Player player;
+    private ActionMenuController actionMenuController;
+    private List <SimpleEnemy> enemyList;
+    private GameArea gameArea;
+    
     
     public GameAreaController(ActionMenuController actionMenuController, Player player, List<SimpleEnemy> enemyList, GameArea gameArea) {
         this.player = player;
+        this.actionMenuController = actionMenuController;
+        this.enemyList = enemyList;
+        this.gameArea = gameArea;
     }
     
     /**
@@ -20,7 +27,6 @@ public class GameAreaController {
      */
     public Room newRoom() {
         return new RandomRoomGenerator().generateRoom(player);
-        //così dovrebbe essere a posto
     }
     
     public void chosenAction() {

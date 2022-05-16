@@ -54,7 +54,7 @@ public abstract class GameController {
 
     public TotalPanel getTotalPanel() {
         return this.totalPanel;
-
+        //per ora basta così, se ho altri dubbi ti scrivo ma per ora sono a posto, ciao ciao
     }
 
     /**
