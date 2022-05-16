@@ -73,4 +73,16 @@ public class EnemyAITest {
 		this.enemyAI.move(enemy, player, roomSize, null);
 		assertEquals(expectedResult, this.enemy.getPos());
 	}
+	
+	@org.junit.Test
+	/**
+	 * testing of enemy's attack
+	 */
+	public void attackPlayerInArea() {
+		this.player.setPos(new Pair<>(4,1));
+		
+		int expectedHealth = this.player.getHealth()-this.enemy.getWeapon().getDamage();
+		this.enemyAI.attack(enemy, player);
+		assertEquals(expectedHealth, this.player.getHealth());
+	}
 }
