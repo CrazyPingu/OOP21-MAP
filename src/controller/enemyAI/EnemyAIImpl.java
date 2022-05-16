@@ -23,10 +23,9 @@ public class EnemyAIImpl implements EnemyAI {
 		List<Pair<Integer,Integer>> enemyReachableArea = enemy.getMovementSystem().reachableCells(enemy.getPos(), roomSize);
 		List<Float> distances = new ArrayList<Float>();
 		int newX=enemyReachableArea.get(0).getX(), newY=enemyReachableArea.get(0).getY();
-		float distance;
 		
 		for (Pair<Integer,Integer> cell : enemyReachableArea) {			
-			distances.add((float) ((cell.getX()-player.getPos().getX())/(cell.getX()-player.getPos().getY())));
+			distances.add((float) (Math.abs(cell.getX()-player.getPos().getX())/Math.abs(cell.getX()-player.getPos().getY())));
 		}
 		
 		Collections.sort(distances);
