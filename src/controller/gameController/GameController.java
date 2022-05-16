@@ -62,7 +62,7 @@ public abstract class GameController {
 
     }
 
-    public TotalPanel getTotalPanel(TotalPanel panel) {
+    public TotalPanel getTotalPanel() {
         return this.totalPanel;
 
     }
@@ -77,7 +77,7 @@ public abstract class GameController {
     /**
      * start a new Enemy Turn.
      */
-    public abstract void enemyTurn(ActionMenuController actionMenuController);
+    public abstract void enemyTurn();
 
     /**
      * close the Game.

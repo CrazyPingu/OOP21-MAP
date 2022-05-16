@@ -33,6 +33,10 @@ public class ActionMenuController {
     public void skip() {
         this.decreaseAction();
     }
+    
+    public int getcurrentActionNumber() {
+        return this.currentActionNumber;
+    }
 
     /**
      * Specify the type of action to apply to GameArea's chosen cell.
