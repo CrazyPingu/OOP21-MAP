@@ -3,7 +3,6 @@ package controller.enemyAI;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import utilities.Pair;
-import view.game.central.GameArea;
 
 /**
  * 
