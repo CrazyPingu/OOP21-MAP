@@ -15,7 +15,7 @@ import utilities.Constant;
 import utilities.ImageMethod;
 import utilities.Pair;
 import utilities.RoomConstant;
-import controller.ActionFlag
+import controller.ActionFlag;
 
 /**
  * 
@@ -168,6 +168,16 @@ public class GameArea extends JPanel {
 			}
 			this.repaint();
 		}
+	}
+	
+	/**
+	 * Method that remove all the highight
+	 */
+	public void removeHighlight() {
+		for (var x : room.getCells().entrySet()) {
+			x.getValue().removeHighlight();
+		}
+		this.repaint();
 	}
 
 }
