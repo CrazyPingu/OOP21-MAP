@@ -16,7 +16,7 @@ public class EnemyAIImpl implements EnemyAI {
 	
 	private TotalPanel totalPanel;
 
-	public EnemyAIImpl(TotalPanel totalPanel, Player player) {
+	public EnemyAIImpl(TotalPanel totalPanel) {
 		this.totalPanel = totalPanel;
 	}
 	

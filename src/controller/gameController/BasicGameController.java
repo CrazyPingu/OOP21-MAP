@@ -19,7 +19,7 @@ public class BasicGameController extends GameController {
 
 	public BasicGameController() {
 		super();
-		this.enemyAI = new EnemyAIImpl(this.getTotalPanel(), this.getTotalPanel().getGameArea().getRoom().getPlayer());
+		this.enemyAI = new EnemyAIImpl(this.getTotalPanel());
 	}
 
 	/**

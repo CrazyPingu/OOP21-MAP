@@ -45,7 +45,7 @@ public class EnemyAITest {
 				mf.stepMovement(), "Marcello", EntityTexture.PLAYER);
 		this.room = new RoomImpl(roomSize, this.player, new Pair<>(2, 1));
 		this.totalPanel = new TotalPanel(room, player);
-		this.enemyAI = new EnemyAIImpl(totalPanel, player);
+		this.enemyAI = new EnemyAIImpl(totalPanel);
 		this.room.getEnemyList().clear();
 		this.enemyAroundArea = ef.createZombieStick(new Pair<>(5, 1));
 		this.room.getEnemyList().add(this.enemyAroundArea);
