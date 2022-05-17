@@ -148,7 +148,7 @@ public class Player implements MultipleActionObject, ArtefactUserObject, MovingO
 	}
 
 	public String toString() {
-		return " name = " + this.name + "\n health = " + this.getHealth() + "\n max health" + this.getMaxHealth()
+		return " name = " + this.name + "\n health = " + this.getHealth() + "\n max health = " + this.getMaxHealth()
 				+ "\n weapon damage = " + this.weapon.getDamage() + "\n number action = " + this.getActionNumber();
 	}
 }
