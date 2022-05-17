@@ -70,6 +70,35 @@ public class EnemyAITest {
 	
 	@org.junit.Test
 	/**
+	 * testing of enemy's moving area with different coordinates than player's
+	 * position
+	 */
+	public void playerOutside() {
+		this.player.setPos(new Pair<>(2, 3));
+		this.expectedResult.add(new Pair<>(4, 2));
+		this.expectedResult.add(new Pair<>(4, 1));
+		this.enemyAI.move(this.enemyAroundArea);
+		assertTrue(expectedResult.contains(this.enemyAroundArea.getPos()));
+		
+		this.expectedResult.clear();
+		this.player.setPos(new Pair<>(2, 0));
+		this.expectedResult.add(new Pair<>(3, 1));
+		this.enemyAI.move(this.enemyCrossArea);
+		assertTrue(expectedResult.contains(this.enemyCrossArea.getPos()));
+		
+		this.expectedResult.clear();
+		this.enemyCrossArea.setPos(new Pair<>(3,3));
+		this.player.setPos(new Pair<>(6, 0));
+		this.expectedResult.add(new Pair<>(3, 1));
+		this.expectedResult.add(new Pair<>(3, 2));
+		this.expectedResult.add(new Pair<>(4, 3));
+		this.expectedResult.add(new Pair<>(5, 3));
+		this.enemyAI.move(this.enemyCrossArea);
+		assertTrue(expectedResult.contains(this.enemyCrossArea.getPos()));
+	}
+	
+	@org.junit.Test
+	/**
 	 * testing of enemy's moving area with enemy and player with the same X coordinate
 	 */
 	public void playerAlignedX() {
@@ -90,17 +119,5 @@ public class EnemyAITest {
 		this.expectedResult = new Pair<>(5,2);
 		this.enemyAI.move(enemy, player, roomSize, null);
 		assertEquals(expectedResult, this.enemy.getPos());
-	}
-	
-	@org.junit.Test
-	/**
-	 * testing of enemy's attack
-	 */
-	public void attackPlayerInArea() {
-		this.player.setPos(new Pair<>(4,1));
-		
-		int expectedHealth = this.player.getHealth()-this.enemy.getWeapon().getDamage();
-		this.enemyAI.attack(enemy, player);
-		assertEquals(expectedHealth, this.player.getHealth());
 	}
 }
