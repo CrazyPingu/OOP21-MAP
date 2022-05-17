@@ -34,7 +34,6 @@ public class TotalPanel extends JPanel {
 		this.add(stats, new GbcDimension(0));
 
 		gameArea = new GameArea(room);
-		System.out.println(gameArea.getClass());
 		fixSize(Constant.GAME_WIDTH, Constant.TOP_HEIGHT, gameArea);
 		this.add(gameArea, new GbcDimension(1));
 
