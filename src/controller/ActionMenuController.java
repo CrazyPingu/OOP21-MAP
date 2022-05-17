@@ -54,10 +54,17 @@ public class ActionMenuController {
     }
 
     /**
-     * Move the player to a new position
+     * Move in a chosen cell by the user
+     * 
+     * @param newpos : the new position of the player
      */
     public void move(Pair<Integer, Integer> newpos) {
-        this.totalPanel.getGameArea().moveGameObject(player.getPos(), newpos);
+        if (RoomConstant.searchEnemy(newpos, this.totalPanel.getGameArea().getRoom().getEnemyList()) == null) {
+            this.totalPanel.getGameArea().moveGameObject(player.getPos(), newpos);
+            if(RoomConstant.searchArtefact(newpos, this.totalPanel.getGameArea().getRoom().getArtefactList()) != null) {
+                RoomConstant.searchArtefact(newpos, this.totalPanel.getGameArea().getRoom().getArtefactList()).execute(player);
+            }
+        }
         this.decreaseAction();
     }
 
@@ -84,7 +91,7 @@ public class ActionMenuController {
     public void setActionFlag(ActionFlag actionFlag) {
         this.actionFlag = actionFlag;
     }
-    
+
     /**
      * 
      * @return the ActionFlag
