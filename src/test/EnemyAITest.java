@@ -55,17 +55,6 @@ public class EnemyAITest {
 	
 	@org.junit.Test
 	/**
-	 * testing of enemy's attack
-	 */
-	public void attackPlayerInArea() {
-		this.player.setPos(new Pair<>(4, 1));
-		int expectedHealth = this.player.getHealth() - this.enemyAroundArea.getWeapon().getDamage();
-		this.enemyAI.attack(this.enemyAroundArea, this.player);
-		assertEquals(expectedHealth, this.player.getHealth());
-	}
-	
-	@org.junit.Test
-	/**
 	 * testing of enemy's moving area with different coordinates than player's
 	 * position
 	 */

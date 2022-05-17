@@ -45,20 +45,6 @@ public class EnemyAIImpl implements EnemyAI {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void attack(SimpleEnemy enemy, Player player) {
-		player.damage(enemy.getWeapon().getDamage());
-		if (player.isDead()) {
-			// TODO lost game/main menu (pageController)
-		} else {
-			this.totalPanel.getScrollableStats().getStatsValues().update(player);
-			this.totalPanel.getScrollableLog().getLogMessage().update("" + player.getName() + " ha subito " + enemy.getWeapon().getDamage()
-					+ " da " + enemy.getName() + "!");
-		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
 	public boolean isPlayerInAttackArea(SimpleEnemy enemy, Player player, Pair<Integer, Integer> roomSize) {
 		final List<Pair<Integer, Integer>> attackableArea = enemy.getWeapon().getAttackArea(enemy.getPos(), roomSize);
 		return (attackableArea.contains(player.getPos()));

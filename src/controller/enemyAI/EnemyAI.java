@@ -17,13 +17,6 @@ public interface EnemyAI {
 	 * @return the new calculated position for the enemy
 	 */
 	public Pair<Integer, Integer> move(SimpleEnemy enemy);
-	
-	/**
-	 * enemy automated attack
-	 * @param enemy: makes damage
-	 * @param player: takes in the damage
-	 */
-    public void attack(SimpleEnemy enemy, Player player);
     
     /**
      * checks if player is reachable by the enemy attack

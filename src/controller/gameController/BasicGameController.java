@@ -14,16 +14,17 @@ import utilities.Pair;
  *
  */
 public class BasicGameController extends GameController {
-	
+
 	private EnemyAIImpl enemyAI;
 
-	public BasicGameController () {
+	public BasicGameController() {
 		super();
 		this.enemyAI = new EnemyAIImpl(this.getTotalPanel(), this.getTotalPanel().getGameArea().getRoom().getPlayer());
 	}
-	
+
 	/**
 	 * {@inheritDoc}
+	 * 
 	 * @param actionMenuController: controller of the action menu
 	 */
 	@Override
@@ -31,7 +32,8 @@ public class BasicGameController extends GameController {
 		int currentAction = actionMenuController.getCurrentActionNumber();
 		Player player = this.getTotalPanel().getGameArea().getRoom().getPlayer();
 		actionMenuController.setActionNumber(player.getActionNumber());
-		while (currentAction>0);
+		while (currentAction > 0)
+			;
 	}
 
 	/**
@@ -39,16 +41,24 @@ public class BasicGameController extends GameController {
 	 */
 	@Override
 	public void enemyTurn() {
-		List<SimpleEnemy> allEnemyList =  this.getTotalPanel().getGameArea().getRoom().getEnemyList();
+		List<SimpleEnemy> allEnemyList = this.getTotalPanel().getGameArea().getRoom().getEnemyList();
 		Player player = this.getTotalPanel().getGameArea().getRoom().getPlayer();
-		Pair<Integer,Integer> roomSize = this.getTotalPanel().getGameArea().getRoom().getSize();
-		
+		Pair<Integer, Integer> roomSize = this.getTotalPanel().getGameArea().getRoom().getSize();
+
 		for (SimpleEnemy enemy : allEnemyList) {
-			if (this.enemyAI.isPlayerInAttackArea(enemy, player, roomSize))
-				this.enemyAI.attack(enemy, player);
-			else
+			if (this.enemyAI.isPlayerInAttackArea(enemy, player, roomSize)) {
+				player.damage(enemy.getWeapon().getDamage());
+				if (player.isDead()) {
+					// TODO lost game/main menu (pageController)
+				} else {
+					this.getTotalPanel().getScrollableStats().getStatsValues().update(player);
+					this.getTotalPanel().getScrollableLog().getLogMessage().update("" + player.getName() + " ha subito "
+							+ enemy.getWeapon().getDamage() + " da " + enemy.getName() + "!");
+				}
+			} else {
 				this.getTotalPanel().getGameArea().moveGameObject(enemy.getPos(), this.enemyAI.move(enemy));
-			
+			}
+
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
