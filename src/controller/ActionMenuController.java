@@ -1,6 +1,7 @@
 package controller;
 
 import view.game.TotalPanel;
+import view.game.action.ActionMenu;
 
 public class ActionMenuController {
 
@@ -11,8 +12,9 @@ public class ActionMenuController {
      * 
      * @param totalpanel : panel that contains all the game screen
      */
-    public ActionMenuController(TotalPanel totalpanel) {
+    public ActionMenuController(TotalPanel totalpanel, PageController controller) {
         this.totalPanel = totalpanel;
+        this.totalPanel.setActionMenu(new ActionMenu(controller,this));
     }
 
     /**
@@ -76,6 +78,5 @@ public class ActionMenuController {
         } else if (actionFlag.equals(ActionFlag.MOVE)) {
             move();
         }
-
     }
 }

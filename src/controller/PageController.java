@@ -8,8 +8,9 @@ import view.pause.PauseMenu;
 
 public class PageController {
     
-    BasicFrame frame;
+    PageController controller;
     Room room;
+    BasicFrame frame;
     
     public PageController(BasicFrame frame) {
         this.frame = frame;
@@ -17,7 +18,7 @@ public class PageController {
     
     public void setupAllCardLayout() {
         MainMenu mm = new MainMenu();
-        PauseMenu pm = new PauseMenu(frame);
+        PauseMenu pm = new PauseMenu(controller);
         TotalPanel tp = new TotalPanel(room);
         LoadingScreenImpl ls = new LoadingScreenImpl();
         LoseGame lg = new LoseGame();
@@ -56,5 +57,9 @@ public class PageController {
     public void showWinGame() {
         frame.showInFrame("Win");
     }
+    
+    /*public void quitGame() {
+        System.exit(0);
+    }*/
 
 }
