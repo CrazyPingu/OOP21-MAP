@@ -3,12 +3,12 @@ package view.pause;
 import java.awt.*;
 import javax.swing.*;
 
+import controller.PageController;
 import utilities.Constant;
 import utilities.GbcDimension;
 import utilities.ImageMethod;
 import utilities.ImageModifier;
 import view.MenuButton;
-import view.frame.BasicFrame;
 import view.pause.action.MainMenuAction;
 import view.pause.action.QuitAction;
 import view.pause.action.ResumeAction;
@@ -29,7 +29,7 @@ public class PauseMenu extends JPanel {
      * 
      * @param frame : the frame passed in input, change the screen using buttons
      */
-    public PauseMenu(BasicFrame frame) {
+    public PauseMenu(PageController controller) {
     
         image = ImageMethod.getImage("pause/Background.jpg");
         MenuButton resume = new MenuButton("Resume", 40);
@@ -42,9 +42,9 @@ public class PauseMenu extends JPanel {
         this.add(resume, new GbcDimension(1, GbcDimension.createInsets(30, 0, 30, 0)));
         this.add(mainmenu, new GbcDimension(2, GbcDimension.createInsets(30, 0, 30, 0)));
         this.add(quit, new GbcDimension(3, GbcDimension.createInsets(30, 0, 30, 0)));
-        resume.addActionListener(new ResumeAction());
-        mainmenu.addActionListener(new MainMenuAction());
-        quit.addActionListener(new QuitAction());
+        resume.addActionListener(new ResumeAction(controller));
+        mainmenu.addActionListener(new MainMenuAction(controller));
+        quit.addActionListener(new QuitAction(controller));
         
     }
 

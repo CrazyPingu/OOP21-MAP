@@ -3,23 +3,24 @@ package view.pause.action;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import view.frame.BasicFrame;
+import controller.PageController;
 
 public class MainMenuAction implements ActionListener {
 
-    private BasicFrame frame;
+    private PageController controller;
+
     /**
      * 
      * {@inheritDoc}
      */
-    public MainMenuAction(BasicFrame frame){
-        this.frame = frame;
+    public MainMenuAction(PageController controller) {
+        this.controller = controller;
     }
-    
+
     /**
      * {@inheritDoc}
      */
     public void actionPerformed(ActionEvent e) {
-        frame.showInFrame("MainMenu");    
+        controller.showMainMenu();
     }
 }

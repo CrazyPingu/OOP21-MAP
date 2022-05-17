@@ -1,28 +1,27 @@
 package view.pause.action;
 
-import view.frame.BasicFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+import controller.PageController;
 
 public class ResumeAction implements ActionListener {
-    
-    BasicFrame frame;
-    
+
+    PageController controller;
+
     /**
      * 
      * {@inheritDoc}
      */
-    public ResumeAction(BasicFrame frame) {
-        this.frame = frame;
+    public ResumeAction(PageController controller) {
+        this.controller = controller;
     }
 
     /**
      * {@inheritDoc}
      */
     public void actionPerformed(ActionEvent e) {
-        frame.showInFrame("Game");
+        controller.showGame();
 
     }
 
