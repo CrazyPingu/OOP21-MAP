@@ -24,6 +24,7 @@ public class BasicGameController extends GameController {
 	
 	/**
 	 * {@inheritDoc}
+	 * @param actionMenuController: controller of the action menu
 	 */
 	@Override
 	public void playerTurn(ActionMenuController actionMenuController) {
