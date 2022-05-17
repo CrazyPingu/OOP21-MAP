@@ -7,7 +7,6 @@ import controller.enemyAI.EnemyAIImpl;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import utilities.Pair;
-import view.game.central.GameArea;
 
 /**
  * 
@@ -16,8 +15,13 @@ import view.game.central.GameArea;
  */
 public class BasicGameController extends GameController {
 	
-	EnemyAIImpl enemyAI = new EnemyAIImpl();
+	private EnemyAIImpl enemyAI;
 
+	public BasicGameController () {
+		super();
+		this.enemyAI = new EnemyAIImpl(this.getTotalPanel(), this.getTotalPanel().getGameArea().getRoom().getPlayer());
+	}
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -36,14 +40,13 @@ public class BasicGameController extends GameController {
 	public void enemyTurn() {
 		List<SimpleEnemy> allEnemyList =  this.getTotalPanel().getGameArea().getRoom().getEnemyList();
 		Player player = this.getTotalPanel().getGameArea().getRoom().getPlayer();
-		GameArea gameArea = this.getTotalPanel().getGameArea();
 		Pair<Integer,Integer> roomSize = this.getTotalPanel().getGameArea().getRoom().getSize();
 		
 		for (SimpleEnemy enemy : allEnemyList) {
 			if (this.enemyAI.isPlayerInAttackArea(enemy, player, roomSize))
 				this.enemyAI.attack(enemy, player);
 			else
-				this.enemyAI.move(enemy, player, roomSize, gameArea);
+				this.enemyAI.move(enemy);
 			
 			try {
 				Thread.sleep(1000);
