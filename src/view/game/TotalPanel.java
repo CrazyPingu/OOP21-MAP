@@ -7,13 +7,15 @@ import java.awt.GridBagLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import logics.game_object.entity.Player;
 import logics.room.works.Room;
 import utilities.Constant;
 import utilities.GbcDimension;
+import view.game.action.ActionMenu;
 import view.game.central.GameArea;
+import view.game.logStats.Log;
 import view.game.logStats.ScrollableLog;
 import view.game.logStats.ScrollableStats;
+import view.game.logStats.Stats;
 
 public class TotalPanel extends JPanel {
 
@@ -41,11 +43,6 @@ public class TotalPanel extends JPanel {
 		fixSize(Constant.LABEL_WIDTH, Constant.TOP_HEIGHT, log);
 		this.add(log, new GbcDimension(2));
 
-		actionMenu = new ActionMenu();
-		fixSize(Constant.WIDTH, Constant.ACTION_HEIGHT, actionMenu);
-		GbcDimension gbc = new GbcDimension(0, 1);
-		gbc.gridwidth = 3;
-		this.add(actionMenu, gbc);
 	}
 
 	private void fixSize(int width, int height, JComponent jComponent) {
@@ -65,6 +62,14 @@ public class TotalPanel extends JPanel {
 
 	public ScrollableStats getScrollableStats() {
 		return stats;
+	}
+
+	public void setActionMenu(ActionMenu actionMenu) {
+		this.actionMenu = actionMenu;
+		fixSize(Constant.WIDTH, Constant.ACTION_HEIGHT, actionMenu);
+		GbcDimension gbc = new GbcDimension(0, 1);
+		gbc.gridwidth = 3;
+		this.add(actionMenu, gbc);
 	}
 
 	public ActionMenu getActionMenu() {
