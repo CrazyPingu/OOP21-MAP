@@ -135,7 +135,9 @@ public class EnemyAITest {
 		this.expectedResult.add(new Pair<>(3, 1));
 		this.enemyAI.move(this.enemyCrossArea);
 		assertTrue(expectedResult.contains(this.enemyCrossArea.getPos()));
-	}@org.junit.Test
+	}
+	
+	@org.junit.Test
 	/**
 	 * testing of enemy's moving area with enemy and player on the right of enemy's
 	 * area (not exactly aligned with enemy pos)
