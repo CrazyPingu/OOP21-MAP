@@ -73,13 +73,13 @@ public class EnemyAITest {
 		this.player.setPos(new Pair<>(2, 3));
 		this.expectedResult.add(new Pair<>(4, 2));
 		this.expectedResult.add(new Pair<>(4, 1));
-		this.enemyAI.move(this.enemyAroundArea);
+		this.totalPanel.getGameArea().moveGameObject(enemyAroundArea.getPos(), this.enemyAI.move(this.enemyAroundArea));
 		assertTrue(expectedResult.contains(this.enemyAroundArea.getPos()));
 		
 		this.expectedResult.clear();
 		this.player.setPos(new Pair<>(2, 0));
 		this.expectedResult.add(new Pair<>(3, 1));
-		this.enemyAI.move(this.enemyCrossArea);
+		this.totalPanel.getGameArea().moveGameObject(enemyCrossArea.getPos(), this.enemyAI.move(this.enemyCrossArea));
 		assertTrue(expectedResult.contains(this.enemyCrossArea.getPos()));
 		
 		this.expectedResult.clear();
@@ -89,7 +89,7 @@ public class EnemyAITest {
 		this.expectedResult.add(new Pair<>(3, 2));
 		this.expectedResult.add(new Pair<>(4, 3));
 		this.expectedResult.add(new Pair<>(5, 3));
-		this.enemyAI.move(this.enemyCrossArea);
+		this.totalPanel.getGameArea().moveGameObject(enemyCrossArea.getPos(), this.enemyAI.move(this.enemyCrossArea));
 		assertTrue(expectedResult.contains(this.enemyCrossArea.getPos()));
 	}
 	
@@ -103,13 +103,13 @@ public class EnemyAITest {
 		this.expectedResult.add(new Pair<>(4, 0));
 		this.expectedResult.add(new Pair<>(4, 1));
 		this.expectedResult.add(new Pair<>(4, 2));
-		this.enemyAI.move(this.enemyAroundArea);
+		this.totalPanel.getGameArea().moveGameObject(enemyAroundArea.getPos(), this.enemyAI.move(this.enemyAroundArea));
 		assertTrue(expectedResult.contains(this.enemyAroundArea.getPos()));
 		
 		this.expectedResult.clear();
 		this.player.setPos(new Pair<>(7, 3));
 		this.expectedResult.add(new Pair<>(5, 3));
-		this.enemyAI.move(this.enemyCrossArea);
+		this.totalPanel.getGameArea().moveGameObject(enemyCrossArea.getPos(), this.enemyAI.move(this.enemyCrossArea));
 		assertTrue(expectedResult.contains(this.enemyCrossArea.getPos()));
 	}
 
@@ -123,13 +123,13 @@ public class EnemyAITest {
 		this.expectedResult.add(new Pair<>(4, 2));
 		this.expectedResult.add(new Pair<>(5, 2));
 		this.expectedResult.add(new Pair<>(6, 2));
-		this.enemyAI.move(this.enemyAroundArea);
+		this.totalPanel.getGameArea().moveGameObject(enemyAroundArea.getPos(), this.enemyAI.move(this.enemyAroundArea));
 		assertTrue(expectedResult.contains(this.enemyAroundArea.getPos()));
 		
 		this.expectedResult.clear();
 		this.player.setPos(new Pair<>(3, 0));
 		this.expectedResult.add(new Pair<>(3, 1));
-		this.enemyAI.move(this.enemyCrossArea);
+		this.totalPanel.getGameArea().moveGameObject(enemyCrossArea.getPos(), this.enemyAI.move(this.enemyCrossArea));
 		assertTrue(expectedResult.contains(this.enemyCrossArea.getPos()));
 	}
 	
@@ -143,14 +143,14 @@ public class EnemyAITest {
 		this.expectedResult.add(new Pair<>(6, 0));
 		this.expectedResult.add(new Pair<>(6, 1));
 		this.expectedResult.add(new Pair<>(6, 2));
-		this.enemyAI.move(this.enemyAroundArea);
+		this.totalPanel.getGameArea().moveGameObject(enemyAroundArea.getPos(), this.enemyAI.move(this.enemyAroundArea));
 		assertTrue(expectedResult.contains(this.enemyAroundArea.getPos()));
 		
 		this.expectedResult.clear();
 		this.player.setPos(new Pair<>(5, 2));
 		this.expectedResult.add(new Pair<>(4, 3));
 		this.expectedResult.add(new Pair<>(5, 3));
-		this.enemyAI.move(this.enemyCrossArea);
+		this.totalPanel.getGameArea().moveGameObject(enemyCrossArea.getPos(), this.enemyAI.move(this.enemyCrossArea));
 		assertTrue(expectedResult.contains(this.enemyCrossArea.getPos()));
 	}
 

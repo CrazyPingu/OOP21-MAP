@@ -25,7 +25,7 @@ public class EnemyAIImpl implements EnemyAI {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void move(SimpleEnemy enemy) {
+	public Pair<Integer, Integer> move(SimpleEnemy enemy) {
 		final List<Pair<Integer, Integer>> enemyReachableArea = enemy.getMovementSystem().reachableCells(enemy.getPos(),
 				this.totalPanel.getGameArea().getRoom().getSize());
 		Pair<Integer, Integer> newEnemyPos = enemy.getPos();
@@ -40,7 +40,7 @@ public class EnemyAIImpl implements EnemyAI {
 			}
 		}
 
-		this.totalPanel.getGameArea().moveGameObject(enemy.getPos(), newEnemyPos);
+		return newEnemyPos;
 	}
 
 	/**

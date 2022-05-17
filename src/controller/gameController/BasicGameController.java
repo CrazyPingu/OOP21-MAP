@@ -47,7 +47,7 @@ public class BasicGameController extends GameController {
 			if (this.enemyAI.isPlayerInAttackArea(enemy, player, roomSize))
 				this.enemyAI.attack(enemy, player);
 			else
-				this.enemyAI.move(enemy);
+				this.getTotalPanel().getGameArea().moveGameObject(enemy.getPos(), this.enemyAI.move(enemy));
 			
 			try {
 				Thread.sleep(1000);

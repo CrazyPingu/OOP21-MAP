@@ -14,8 +14,9 @@ public interface EnemyAI {
 	/**
 	 * enemy automated movement
 	 * @param enemy: enemy of which is needed to change position
+	 * @return the new calculated position for the enemy
 	 */
-	public void move(SimpleEnemy enemy);
+	public Pair<Integer, Integer> move(SimpleEnemy enemy);
 	
 	/**
 	 * enemy automated attack
