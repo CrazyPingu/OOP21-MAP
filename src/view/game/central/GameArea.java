@@ -12,7 +12,6 @@ import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import logics.room.works.Room;
 import utilities.Constant;
-import utilities.ImageMethod;
 import utilities.Pair;
 import utilities.RoomConstant;
 import controller.ActionFlag;
