@@ -28,7 +28,7 @@ public class TotalPanel extends JPanel {
 		this.setOpaque(false);
 		this.setBackground(Color.black);
 
-		stats = new ScrollableStats(room.getPlayer());
+		stats = new ScrollableStats(room.getPlayer(), new Stats());
 		fixSize(Constant.LABEL_WIDTH, Constant.TOP_HEIGHT, stats);
 		this.add(stats, new GbcDimension(0));
 
@@ -37,7 +37,7 @@ public class TotalPanel extends JPanel {
 		fixSize(Constant.GAME_WIDTH, Constant.TOP_HEIGHT, gameArea);
 		this.add(gameArea, new GbcDimension(1));
 
-		log = new ScrollableLog();
+		log = new ScrollableLog(new Log());
 		fixSize(Constant.LABEL_WIDTH, Constant.TOP_HEIGHT, log);
 		this.add(log, new GbcDimension(2));
 
