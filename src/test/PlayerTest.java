@@ -36,15 +36,23 @@ public class PlayerTest {
 
 	@Test
 	/*
-	 * test the correct creation of a SimpleLifeSystem instantiation.
+	 * test the correct creation of a Player instantiation.
 	 */
-	public void SimpleEntityCreationTest() {
+	public void SimplePlayerCreationTest() {
 		this.life = new ExtendibleMaxLifeSystem(this.HEALTH, this.MAX_HEALTH, this.MAX_HEALTH_LIMIT);
 		this.player = new Player(this.life, this.START_POS, this.weaponFactory.createAxe(),
 				this.movementFactory.stepMovement(), this.NAME, this.texture);
 		assertTrue(this.player.getHealth() == this.HEALTH);
 		assertTrue(this.player.getMaxHealth() == this.MAX_HEALTH);
 		assertTrue(this.player.getPos().equals(this.START_POS));
+		assertTrue(this.player.getName().equals(NAME));
+		assertFalse(this.player.isDead());
+
+		this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(),
+				this.NAME, this.texture);
+		assertTrue(this.player.getHealth() == this.HEALTH);
+		assertTrue(this.player.getMaxHealth() == this.MAX_HEALTH);
+		assertTrue(this.player.getPos().equals(new Pair<Integer, Integer>(0, 0)));
 		assertTrue(this.player.getName().equals(NAME));
 		assertFalse(this.player.isDead());
 	}
