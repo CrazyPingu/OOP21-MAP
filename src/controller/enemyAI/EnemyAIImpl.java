@@ -1,13 +1,11 @@
 package controller.enemyAI;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import utilities.Pair;
-import view.game.central.GameArea;
+import view.game.TotalPanel;
 
 /**
  * 
@@ -15,25 +13,35 @@ import view.game.central.GameArea;
  *
  */
 public class EnemyAIImpl implements EnemyAI {
+	
+	private TotalPanel totalPanel;
+	private Player player;
 
+	public EnemyAIImpl(TotalPanel totalPanel, Player player) {
+		this.totalPanel = totalPanel;
+		this.player = player;
+	}
+	
 	/**
 	 * {@inheritDoc}
 	 */
-	public void move(SimpleEnemy enemy, Player player, Pair<Integer,Integer> roomSize, GameArea gameArea) {
-		List<Pair<Integer,Integer>> enemyReachableArea = enemy.getMovementSystem().reachableCells(enemy.getPos(), roomSize);
-		List<Float> distances = new ArrayList<Float>();
-		int newX=enemyReachableArea.get(0).getX(), newY=enemyReachableArea.get(0).getY();
-		
-		for (Pair<Integer,Integer> cell : enemyReachableArea) {			
-			distances.add((float) (Math.abs(cell.getX()-player.getPos().getX())/Math.abs(cell.getX()-player.getPos().getY())));
+	public void move(SimpleEnemy enemy) {
+		final List<Pair<Integer, Integer>> enemyReachableArea = enemy.getMovementSystem().reachableCells(enemy.getPos(),
+				this.totalPanel.getGameArea().getRoom().getSize());
+		Pair<Integer, Integer> newEnemyPos = enemy.getPos();
+		int minDistance = Integer.MAX_VALUE;
+		int distance = -1;
+
+		for (Pair<Integer, Integer> cell : enemyReachableArea) {
+			distance = Math.abs(cell.getX() - this.player.getPos().getX()) + Math.abs(cell.getY() - this.player.getPos().getY());
+			if (distance < minDistance) {
+				newEnemyPos = cell;
+				minDistance = distance;
+			}
 		}
-		
-		Collections.sort(distances);
-        distances.get(0);
-		
-		gameArea.moveGameObject(enemy.getPos(),new Pair<>(newX,newY));
+
+		this.totalPanel.getGameArea().moveGameObject(enemy.getPos(), newEnemyPos);
 	}
-	
 
 	/**
 	 * {@inheritDoc}
