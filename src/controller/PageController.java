@@ -56,5 +56,9 @@ public class PageController {
     public void showWinGame() {
         frame.showInFrame("Win");
     }
+    
+    public void quitGame() {
+        System.exit(0);
+    }
 
 }
