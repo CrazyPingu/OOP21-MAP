@@ -1,5 +1,10 @@
 package controller;
 
+import logics.game_object.entity.Player;
+import logics.game_object.entity.SimpleEnemy;
+import logics.game_object.entity.enemy.EnemyFactoryImpl;
+import utilities.Pair;
+import utilities.RoomConstant;
 import view.game.TotalPanel;
 import view.game.action.ActionMenu;
 
@@ -7,6 +12,8 @@ public class ActionMenuController {
 
     private int currentActionNumber;
     private TotalPanel totalPanel;
+    private Player player;
+    private ActionFlag actionFlag;
 
     /**
      * 
@@ -14,7 +21,7 @@ public class ActionMenuController {
      */
     public ActionMenuController(TotalPanel totalpanel, PageController controller) {
         this.totalPanel = totalpanel;
-        this.totalPanel.setActionMenu(new ActionMenu(controller,this));
+        this.totalPanel.setActionMenu(new ActionMenu(controller, this));
     }
 
     /**
@@ -38,17 +45,19 @@ public class ActionMenuController {
     /**
      * Attack in a chosen cell by the user
      */
-    public void attack() {
-        this.totalPanel.getGameArea().moveGameObject(null, null);
+    public void attack(Pair<Integer, Integer> pos) {
+        if (RoomConstant.searchEnemy(pos, this.totalPanel.getGameArea().getRoom().getEnemyList()) != null) {
+            SimpleEnemy enemy = RoomConstant.searchEnemy(pos, this.totalPanel.getGameArea().getRoom().getEnemyList());
+            enemy.damage(this.totalPanel.getGameArea().getRoom().getPlayer().getWeapon().getDamage());
+        }
         this.decreaseAction();
     }
 
     /**
      * Move the player to a new position
      */
-    public void move() {
-        this.totalPanel.getGameArea().moveGameObject(null, null);
-        ;
+    public void move(Pair<Integer, Integer> newpos) {
+        this.totalPanel.getGameArea().moveGameObject(player.getPos(), newpos);
         this.decreaseAction();
     }
 
@@ -70,13 +79,17 @@ public class ActionMenuController {
     /**
      * Specify the type of action to apply to GameArea's chosen cell.
      * 
-     * @param actionFlag choise of action.
+     * @param actionFlag : set the ActionFlag
      */
-    public void setTypeOfActionFlag(ActionFlag actionFlag) {
-        if (actionFlag.equals(ActionFlag.ATTACK)) {
-            attack();
-        } else if (actionFlag.equals(ActionFlag.MOVE)) {
-            move();
-        }
+    public void setActionFlag(ActionFlag actionFlag) {
+        this.actionFlag = actionFlag;
+    }
+    
+    /**
+     * 
+     * @return the ActionFlag
+     */
+    public ActionFlag getActionFlag() {
+        return this.actionFlag;
     }
 }
