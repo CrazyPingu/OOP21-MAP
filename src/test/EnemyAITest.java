@@ -44,7 +44,7 @@ public class EnemyAITest {
 		this.player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), new Pair<>(2, 3), wf.createAxe(),
 				mf.stepMovement(), "Marcello", EntityTexture.PLAYER);
 		this.room = new RoomImpl(roomSize, this.player, new Pair<>(2, 1));
-		this.totalPanel = new TotalPanel(room, player);
+		this.totalPanel = new TotalPanel(room);
 		this.enemyAI = new EnemyAIImpl(totalPanel);
 		this.room.getEnemyList().clear();
 		this.enemyAroundArea = ef.createZombieStick(new Pair<>(5, 1));
