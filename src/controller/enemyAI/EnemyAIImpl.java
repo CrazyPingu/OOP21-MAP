@@ -5,6 +5,7 @@ import java.util.List;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import utilities.Pair;
+import utilities.RoomConstant;
 import view.game.TotalPanel;
 
 /**
@@ -13,13 +14,13 @@ import view.game.TotalPanel;
  *
  */
 public class EnemyAIImpl implements EnemyAI {
-	
+
 	private TotalPanel totalPanel;
 
 	public EnemyAIImpl(TotalPanel totalPanel) {
 		this.totalPanel = totalPanel;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -33,7 +34,9 @@ public class EnemyAIImpl implements EnemyAI {
 
 		for (Pair<Integer, Integer> cell : enemyReachableArea) {
 			distance = Math.abs(cell.getX() - player.getPos().getX()) + Math.abs(cell.getY() - player.getPos().getY());
-			if (distance < minDistance) {
+			if (distance < minDistance
+					&& !(RoomConstant.cellsOccupated(this.totalPanel.getGameArea().getRoom().getEnemyList(),
+							this.totalPanel.getGameArea().getRoom().getArtefactList(), player, cell))) {
 				newEnemyPos = cell;
 				minDistance = distance;
 			}
@@ -49,5 +52,5 @@ public class EnemyAIImpl implements EnemyAI {
 		final List<Pair<Integer, Integer>> attackableArea = enemy.getWeapon().getAttackArea(enemy.getPos(), roomSize);
 		return (attackableArea.contains(player.getPos()));
 	}
-	
+
 }
