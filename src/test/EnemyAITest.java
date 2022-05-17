@@ -99,25 +99,41 @@ public class EnemyAITest {
 	
 	@org.junit.Test
 	/**
-	 * testing of enemy's moving area with enemy and player with the same X coordinate
+	 * testing of enemy's moving area with enemy and player with the same X
+	 * coordinate
 	 */
 	public void playerAlignedX() {
-		this.player.setPos(new Pair<>(2,1));
+		this.player.setPos(new Pair<>(2, 1));
+		this.expectedResult.add(new Pair<>(4, 0));
+		this.expectedResult.add(new Pair<>(4, 1));
+		this.expectedResult.add(new Pair<>(4, 2));
+		this.enemyAI.move(this.enemyAroundArea);
+		assertTrue(expectedResult.contains(this.enemyAroundArea.getPos()));
 		
-		this.expectedResult = new Pair<>(4,1);
-		this.enemyAI.move(enemy, player, roomSize, null);
-		assertEquals(expectedResult, this.enemy.getPos());
+		this.expectedResult.clear();
+		this.player.setPos(new Pair<>(7, 3));
+		this.expectedResult.add(new Pair<>(5, 3));
+		this.enemyAI.move(this.enemyCrossArea);
+		assertTrue(expectedResult.contains(this.enemyCrossArea.getPos()));
 	}
-	
+
 	@org.junit.Test
 	/**
-	 * testing of enemy's moving area with enemy and player with the same X coordinate
+	 * testing of enemy's moving area with enemy and player with the same X
+	 * coordinate
 	 */
 	public void playerAlignedY() {
-		this.player.setPos(new Pair<>(5,3));
+		this.player.setPos(new Pair<>(5, 3));
+		this.expectedResult.add(new Pair<>(4, 2));
+		this.expectedResult.add(new Pair<>(5, 2));
+		this.expectedResult.add(new Pair<>(6, 2));
+		this.enemyAI.move(this.enemyAroundArea);
+		assertTrue(expectedResult.contains(this.enemyAroundArea.getPos()));
 		
-		this.expectedResult = new Pair<>(5,2);
-		this.enemyAI.move(enemy, player, roomSize, null);
-		assertEquals(expectedResult, this.enemy.getPos());
+		this.expectedResult.clear();
+		this.player.setPos(new Pair<>(3, 0));
+		this.expectedResult.add(new Pair<>(3, 1));
+		this.enemyAI.move(this.enemyCrossArea);
+		assertTrue(expectedResult.contains(this.enemyCrossArea.getPos()));
 	}
 }
