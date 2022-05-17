@@ -15,6 +15,7 @@ import utilities.Constant;
 import utilities.ImageMethod;
 import utilities.Pair;
 import utilities.RoomConstant;
+import controller.ActionFlag;
 
 /**
  * 
@@ -142,7 +143,11 @@ public class GameArea extends JPanel {
 		if (oldPos != null && newPos != null) {
 			this.room.getCells().get(oldPos).removeSprite();
 			this.room.updatePosition(oldPos, newPos);
-			this.room.getCells().get(newPos).drawGameObject(room.getPlayer());
+			if (RoomConstant.searchEnemy(newPos, room.getEnemyList()) != null) {
+				this.room.getCells().get(newPos).drawGameObject(RoomConstant.searchEnemy(newPos, room.getEnemyList()));
+			} else {
+				this.room.getCells().get(newPos).drawGameObject(room.getPlayer());
+			}
 		}
 	}
 
@@ -161,7 +166,18 @@ public class GameArea extends JPanel {
 			for (var x : pos) {
 				this.room.getCells().get(x).highlightCell(image);
 			}
+			this.repaint();
 		}
+	}
+	
+	/**
+	 * Method that remove all the highight
+	 */
+	public void removeHighlight() {
+		for (var x : room.getCells().entrySet()) {
+			x.getValue().removeHighlight();
+		}
+		this.repaint();
 	}
 
 }
