@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 
 import controller.ActionMenuController;
 
+/**
+ *
+ */
 public class AttackAction implements ActionListener {
     ActionMenuController menucontroller;
 
