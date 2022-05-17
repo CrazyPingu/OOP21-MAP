@@ -15,11 +15,9 @@ import view.game.TotalPanel;
 public class EnemyAIImpl implements EnemyAI {
 	
 	private TotalPanel totalPanel;
-	private Player player;
 
 	public EnemyAIImpl(TotalPanel totalPanel, Player player) {
 		this.totalPanel = totalPanel;
-		this.player = player;
 	}
 	
 	/**
@@ -28,12 +26,13 @@ public class EnemyAIImpl implements EnemyAI {
 	public Pair<Integer, Integer> move(SimpleEnemy enemy) {
 		final List<Pair<Integer, Integer>> enemyReachableArea = enemy.getMovementSystem().reachableCells(enemy.getPos(),
 				this.totalPanel.getGameArea().getRoom().getSize());
+		final Player player = this.totalPanel.getGameArea().getRoom().getPlayer();
 		Pair<Integer, Integer> newEnemyPos = enemy.getPos();
 		int minDistance = Integer.MAX_VALUE;
 		int distance = -1;
 
 		for (Pair<Integer, Integer> cell : enemyReachableArea) {
-			distance = Math.abs(cell.getX() - this.player.getPos().getX()) + Math.abs(cell.getY() - this.player.getPos().getY());
+			distance = Math.abs(cell.getX() - player.getPos().getX()) + Math.abs(cell.getY() - player.getPos().getY());
 			if (distance < minDistance) {
 				newEnemyPos = cell;
 				minDistance = distance;
