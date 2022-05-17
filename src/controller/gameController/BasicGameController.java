@@ -32,6 +32,7 @@ public class BasicGameController extends GameController {
 		int currentAction = actionMenuController.getCurrentActionNumber();
 		Player player = this.getTotalPanel().getGameArea().getRoom().getPlayer();
 		actionMenuController.setActionNumber(player.getActionNumber());
+		//TODO move current action control in game loop
 		while (currentAction > 0)
 			;
 	}
