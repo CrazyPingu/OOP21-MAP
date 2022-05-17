@@ -23,12 +23,12 @@ public class TotalPanel extends JPanel {
 	ScrollableStats stats;
 	ActionMenu actionMenu;
 
-	public TotalPanel(Room room, Player player) {
+	public TotalPanel(Room room) {
 		this.setLayout(new GridBagLayout());
 		this.setOpaque(false);
 		this.setBackground(Color.black);
 
-		stats = new ScrollableStats(player);
+		stats = new ScrollableStats(room.getPlayer());
 		fixSize(Constant.LABEL_WIDTH, Constant.TOP_HEIGHT, stats);
 		this.add(stats, new GbcDimension(0));
 
