@@ -11,13 +11,9 @@ import logics.game_object.entity.SimpleEnemy;
 import logics.game_object.entity.enemy.EnemyFactoryImpl;
 import logics.life.ExtendibleMaxLifeSystem;
 import logics.room.works.RoomImpl;
-import logics.strategy.concrete_strategies.AroundArea;
-import logics.strategy.concrete_strategies.VariableDistanceConstants;
 import logics.strategy.movement.MovementFactoryImpl;
-import logics.strategy.movement.MovementImpl;
 import logics.strategy.weapon.WeaponFactoryImpl;
 import utilities.Pair;
-import utilities.RoomConstant;
 import utilities.texture.EntityTexture;
 import view.game.TotalPanel;
 
