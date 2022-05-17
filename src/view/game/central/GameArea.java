@@ -166,6 +166,7 @@ public class GameArea extends JPanel {
 			for (var x : pos) {
 				this.room.getCells().get(x).highlightCell(image);
 			}
+			this.repaint();
 		}
 	}
 
