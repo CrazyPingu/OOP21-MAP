@@ -23,8 +23,18 @@ public class GameLoop {
         return this.flag;
     }
     
+    /**
+     * Decrease the number of available action
+     */
     public void decreaseAction() {
         this.currentAction--;
+    }
+
+    /**
+     * Skip the turn
+     */
+    public void skipTurn() {
+        this.currentAction = 0;
     }
 
     
