@@ -1,27 +1,28 @@
 package controller;
 
+import controller.gameController.GameController;
 
 public class ActionMenuController {
 
-    private GameLoop loop;
+    private GameController controller;
 
-    public ActionMenuController(GameLoop loop) {
-        this.loop = loop;
+    public ActionMenuController(GameController controller) {
+        this.controller = controller;
     }
 
     /**
      * Skip to the next action
      */
     public void skip() {
-        loop.skipTurn();
+        this.controller.skipTurn();
     }
     
     public void setAttack() {
-        loop.setFlag(ActionFlag.ATTACK);
+        this.controller.setFlag(ActionFlag.ATTACK);
     }
     
     public void setMove() {
-        loop.setFlag(ActionFlag.MOVE);
+        this.controller.setFlag(ActionFlag.MOVE);
     }
 
 

@@ -1,5 +1,6 @@
 package controller.gameController;
 
+import controller.ActionFlag;
 import controller.ActionMenuController;
 import controller.GameAreaController;
 import controller.RandomRoomGenerator;
@@ -23,6 +24,8 @@ public abstract class GameController {
     private GameAreaController gameAreaController;
     private TotalPanel totalPanel;
     private Player player;
+    private ActionFlag flag;
+    private int currentAction;
 
     public GameController() {
 
@@ -54,7 +57,8 @@ public abstract class GameController {
 
     public TotalPanel getTotalPanel() {
         return this.totalPanel;
-        //per ora basta così, se ho altri dubbi ti scrivo ma per ora sono a posto, ciao ciao
+        // per ora basta così, se ho altri dubbi ti scrivo ma per ora sono a posto, ciao
+        // ciao
     }
 
     /**
@@ -70,10 +74,35 @@ public abstract class GameController {
     public abstract void enemyTurn();
 
     /**
-     * close the Game.
+     * Specify the type of action to apply to GameArea's chosen cell.
+     * 
+     * @param actionFlag : set the ActionFlag
      */
-    public void quitGame() {
-        System.exit(0);
+    public void setFlag(ActionFlag flag) {
+        this.flag = flag;
+        this.totalPanel.getGameArea().highlightCells(this.flag);
+    }
+
+    /**
+     * 
+     * @return the ActionFlag
+     */
+    public ActionFlag getFlag() {
+        return this.flag;
+    }
+
+    /**
+     * Decrease the number of available action
+     */
+    public void decreaseAction() {
+        this.currentAction--;
+    }
+
+    /**
+     * Skip the turn
+     */
+    public void skipTurn() {
+        this.currentAction = 0;
     }
 
 }
