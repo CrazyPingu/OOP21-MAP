@@ -17,19 +17,39 @@ public class GameLoop {
     private WinGame winGame;
     private LoseGame loseGame;
     private GameController gameController;
+    private ActionMenuController actionMenuController;
+    private GameAreaController gameAreaController;
+    private PageController pageController;
 
     public GameLoop() {
-        this.createPanel();
+        this.
+        this.init();
         // main menu - loading screen - creazione total panel(new room da
         // gameAreaController)
 
         // while True
         // conterrà while(getcurrentactionnumber>0) turno player
+        
+        
+        /*
+         *         
+         *         
+         *         frame.addToCardLayout(mainMenu, "MainMenu");
+        frame.addToCardLayout(pauseMenu, "PauseMenu");
+        frame.addToCardLayout(totalPanel, "Game");
+        frame.addToCardLayout(loadingScreenImpl, "LoadingScreen");
+        frame.addToCardLayout(loseGame, "Defeat");
+        frame.addToCardLayout(winGame, "Win");
+         */
 
     }
-
-    private void createPanel() {
-
+    
+    private void init() {
+        this.actionMenuController = new ActionMenuController(this);
+        this.gameAreaController = new GameAreaController(this);
+        this.pageController = new PageController(frame);
+        
+        
     }
 
     public ActionFlag getFlag() {
