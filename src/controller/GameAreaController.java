@@ -1,16 +1,15 @@
 package controller;
 
-import controller.gameController.GameController;
 import logics.room.works.Room;
 import utilities.Pair;
 
 public class GameAreaController {
 
-    private GameController gameController;
+    private GameLoop gameLoop;
     private RandomRoomGenerator randomRoomGenerator;
 
-    public GameAreaController(GameController gameController) {
-        this.gameController = gameController;
+    public GameAreaController(GameLoop gameLoop) {
+        this.gameLoop = gameLoop;
         this.randomRoomGenerator = new RandomRoomGenerator();
     }
 
@@ -18,7 +17,7 @@ public class GameAreaController {
      * create a new Room.
      */
     public Room generateNewRoom() {
-        return randomRoomGenerator.generateRoom(gameController.getPlayer());
+        return randomRoomGenerator.generateRoom(gameLoop.getPlayer());
     }
 
     /**
@@ -26,10 +25,10 @@ public class GameAreaController {
      * @param pos : the position of the pressed cell
      */
     public void makeAction(Pair<Integer, Integer> pos) {
-        if (this.gameController.getFlag().equals(ActionFlag.ATTACK)) {
-            this.gameController.attack(pos);
-        } else if (this.gameController.getFlag().equals(ActionFlag.MOVE)) {
-            this.gameController.move(pos);
+        if (this.gameLoop.getFlag().equals(ActionFlag.ATTACK)) {
+            this.gameLoop.attack(pos);
+        } else if (this.gameLoop.getFlag().equals(ActionFlag.MOVE)) {
+            this.gameLoop.move(pos);
         }
     }
 
