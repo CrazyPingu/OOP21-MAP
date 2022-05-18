@@ -70,7 +70,7 @@ public class ActionMenuController {
     }
 
     /**
-     * Skip to the next turn
+     * Skip to the next action
      */
     public void skip() {
         this.decreaseAction();
