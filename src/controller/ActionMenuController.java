@@ -90,6 +90,7 @@ public class ActionMenuController {
      */
     public void setActionFlag(ActionFlag actionFlag) {
         this.actionFlag = actionFlag;
+        this.totalPanel.getGameArea().highlightCells(this.actionFlag);
     }
 
     /**
