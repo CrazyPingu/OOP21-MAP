@@ -29,11 +29,9 @@ public abstract class GameController {
     private ActionFlag flag;
     private int currentAction;
 
-    public GameController() {
-
-        this.actionMenuController = new ActionMenuController(totalPanel);
-        this.gameAreaController = new GameAreaController(actionMenuController, null, null, null);
-
+    public GameController(ActionMenuController actionMenuController, GameAreaController gameAreaController) {
+        this.actionMenuController = actionMenuController;
+        this.gameAreaController = gameAreaController;
     }
 
     /**
@@ -42,25 +40,10 @@ public abstract class GameController {
     public void startGame() {
         WeaponFactoryImpl wf = new WeaponFactoryImpl();
         MovementFactoryImpl mf = new MovementFactoryImpl();
-        player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), new Pair<>(3, 3), wf.createAxe(), mf.stepMovement(),
-                "Marcello", EntityTexture.PLAYER);
-        Room randomRoom = new RandomRoomGenerator().generateRoom(player);
-
-        TotalPanel panel = new TotalPanel(randomRoom, player);
-        // this.totalPanel = panel;
-    }
-
-    /**
-     * create a new Game.
-     */
-    public void newGame() {
-        startGame();
-    }
-
-    public TotalPanel getTotalPanel() {
-        return this.totalPanel;
-        // per ora basta così, se ho altri dubbi ti scrivo ma per ora sono a posto, ciao
-        // ciao
+        player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), new Pair<>(3, 3), wf.createStick(),
+                mf.stepMovement(), "Marcello", EntityTexture.PLAYER);
+        Room randomRoom = gameAreaController.generateNewRoom();
+        this.totalPanel = new TotalPanel(randomRoom, actionMenuController, gameAreaController);
     }
 
     /**
@@ -68,12 +51,62 @@ public abstract class GameController {
      * @param actionMenuController
      */
 
-    public abstract void playerTurn(ActionMenuController actionMenuController);
+    public abstract void playerTurn();
 
     /**
      * start a new Enemy Turn.
      */
     public abstract void enemyTurn();
+
+    /**
+     * Decrease the number of available action
+     */
+    public void decreaseAction() {
+        this.currentAction--;
+    }
+
+    /**
+     * Skip the turn
+     */
+    public void skipTurn() {
+        this.currentAction = 0;
+    }
+
+    /**
+     * Attack in a chosen cell by the user
+     */
+    public void attack(Pair<Integer, Integer> pos) {
+        if (RoomConstant.searchEnemy(pos, this.totalPanel.getGameArea().getRoom().getEnemyList()) != null) {
+            SimpleEnemy enemy = RoomConstant.searchEnemy(pos, this.totalPanel.getGameArea().getRoom().getEnemyList());
+            enemy.damage(this.totalPanel.getGameArea().getRoom().getPlayer().getWeapon().getDamage());
+        }
+        this.decreaseAction();
+    }
+
+    /**
+     * Move in a chosen cell by the user
+     * 
+     * @param newpos : the new position of the player
+     */
+    public void move(Pair<Integer, Integer> newpos) {
+        if (RoomConstant.searchEnemy(newpos, this.totalPanel.getGameArea().getRoom().getEnemyList()) == null) {
+            this.totalPanel.getGameArea().moveGameObject(player.getPos(), newpos);
+            if (RoomConstant.searchArtefact(newpos,
+                    this.totalPanel.getGameArea().getRoom().getArtefactList()) != null) {
+                RoomConstant.searchArtefact(newpos, this.totalPanel.getGameArea().getRoom().getArtefactList())
+                        .execute(player);
+            }
+        }
+        this.decreaseAction();
+    }
+
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    public TotalPanel getTotalPanel() {
+        return this.totalPanel;
+    }
 
     /**
      * Specify the type of action to apply to GameArea's chosen cell.
@@ -92,53 +125,5 @@ public abstract class GameController {
     public ActionFlag getFlag() {
         return this.flag;
     }
-
-    /**
-     * Decrease the number of available action
-     */
-    public void decreaseAction() {
-        this.currentAction--;
-    }
-
-    /**
-     * Skip the turn
-     */
-    public void skipTurn() {
-        this.currentAction = 0;
-    }
-    
-    
-    /**
-     * Attack in a chosen cell by the user
-     */
-    public void attack(Pair<Integer, Integer> pos) {
-        if (RoomConstant.searchEnemy(pos, this.gameArea.getRoom().getEnemyList()) != null) {
-            SimpleEnemy enemy = RoomConstant.searchEnemy(pos, this.gameArea.getRoom().getEnemyList());
-            enemy.damage(this.gameArea.getRoom().getPlayer().getWeapon().getDamage());
-        }
-        this.decreaseAction();
-    }
-
-    /**
-     * Move in a chosen cell by the user
-     * 
-     * @param newpos : the new position of the player
-     */
-    public void move(Pair<Integer, Integer> newpos) {
-        if (RoomConstant.searchEnemy(newpos, this.gameArea.getRoom().getEnemyList()) == null) {
-            this.gameArea.moveGameObject(player.getPos(), newpos);
-            if (RoomConstant.searchArtefact(newpos,
-                    this.gameArea.getRoom().getArtefactList()) != null) {
-                RoomConstant.searchArtefact(newpos, this.gameArea.getRoom().getArtefactList())
-                        .execute(player);
-            }
-        }
-        this.decreaseAction();
-    }
-    
-    public Player getPlayer() {
-        return this.player;
-    }
-    
 
 }
