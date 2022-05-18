@@ -16,14 +16,23 @@ public class GameLoop {
     private PauseMenu pauseMenu;
     private WinGame winGame;
     private LoseGame loseGame;
-    private GameController gameController;
+    private BasicGameController gameController;
     private ActionMenuController actionMenuController;
     private GameAreaController gameAreaController;
     private PageController pageController;
 
     public GameLoop() {
-        this.
         this.init();
+        while(true) {
+            this.pageController.showMainMenu();
+            if(/* mainMenuController flag ha premuto new game */) {
+                this.loadingScreen = new LoadingScreenImpl(this.pageController);
+                frame.addToCardLayout(loadingScreenImpl, "LoadingScreen");
+                this.pageController.showLoadingScreen();
+                this.loadingScreen.startProgressBar();
+                this.match();
+            }
+        }
         // main menu - loading screen - creazione total panel(new room da
         // gameAreaController)
 
@@ -34,22 +43,27 @@ public class GameLoop {
         /*
          *         
          *         
-         *         frame.addToCardLayout(mainMenu, "MainMenu");
-        frame.addToCardLayout(pauseMenu, "PauseMenu");
         frame.addToCardLayout(totalPanel, "Game");
-        frame.addToCardLayout(loadingScreenImpl, "LoadingScreen");
-        frame.addToCardLayout(loseGame, "Defeat");
-        frame.addToCardLayout(winGame, "Win");
+         *         
          */
 
     }
-    
+
     private void init() {
+        this.gameController = new BasicGameController();
         this.actionMenuController = new ActionMenuController(this);
         this.gameAreaController = new GameAreaController(this);
         this.pageController = new PageController(frame);
-        
-        
+        // TODO add main menu controller
+
+        this.mainMenu = new MainMenu(/* add controller */);
+        frame.addToCardLayout(mainMenu, "MainMenu");
+        this.pauseMenu = new PauseMenu(this.pageController);
+        frame.addToCardLayout(pauseMenu, "PauseMenu");
+        this.winGame = new winGame(this.pageController);
+        frame.addToCardLayout(winGame, "Win");
+        this.loseGame = new LoseGame(this.pageController);
+        frame.addToCardLayout(loseGame, "Defeat");
     }
 
     public ActionFlag getFlag() {
@@ -74,6 +88,10 @@ public class GameLoop {
 
     public void setFlag(ActionFlag flag) {
         this.gameController.setFlag(flag);
+    }
+
+    private void match() {
+
     }
 
 }
