@@ -17,11 +17,10 @@ public class ActionMenuController {
 
     /**
      * 
-     * @param totalpanel : panel that contains all the game screen
+     * @param totalpanel : add the totalpanel
      */
-    public ActionMenuController(TotalPanel totalpanel, PageController controller) {
+    public void setTotalPanel(TotalPanel totalpanel) {
         this.totalPanel = totalpanel;
-        this.totalPanel.setActionMenu(new ActionMenu(controller, this));
     }
 
     /**
@@ -61,8 +60,10 @@ public class ActionMenuController {
     public void move(Pair<Integer, Integer> newpos) {
         if (RoomConstant.searchEnemy(newpos, this.totalPanel.getGameArea().getRoom().getEnemyList()) == null) {
             this.totalPanel.getGameArea().moveGameObject(player.getPos(), newpos);
-            if(RoomConstant.searchArtefact(newpos, this.totalPanel.getGameArea().getRoom().getArtefactList()) != null) {
-                RoomConstant.searchArtefact(newpos, this.totalPanel.getGameArea().getRoom().getArtefactList()).execute(player);
+            if (RoomConstant.searchArtefact(newpos,
+                    this.totalPanel.getGameArea().getRoom().getArtefactList()) != null) {
+                RoomConstant.searchArtefact(newpos, this.totalPanel.getGameArea().getRoom().getArtefactList())
+                        .execute(player);
             }
         }
         this.decreaseAction();
