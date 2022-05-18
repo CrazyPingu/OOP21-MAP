@@ -91,7 +91,11 @@ public class GameLoop {
     }
 
     private void match() {
-
+        this.gameController.startGame();
+        while(/* player dead  || numero stanze   */) {
+            this.gameController.playerTurn();
+            this.gameController.enemyTurn();
+        }
     }
 
 }
