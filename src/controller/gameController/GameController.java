@@ -5,12 +5,14 @@ import controller.ActionMenuController;
 import controller.GameAreaController;
 import controller.RandomRoomGenerator;
 import logics.game_object.entity.Player;
+import logics.game_object.entity.SimpleEnemy;
 import logics.life.ExtendibleMaxLifeSystem;
 import logics.room.works.Room;
 import logics.strategy.movement.MovementFactoryImpl;
 import logics.strategy.weapon.WeaponFactoryImpl;
 import utilities.texture.EntityTexture;
 import utilities.Pair;
+import utilities.RoomConstant;
 import view.game.TotalPanel;
 
 /**
@@ -104,5 +106,39 @@ public abstract class GameController {
     public void skipTurn() {
         this.currentAction = 0;
     }
+    
+    
+    /**
+     * Attack in a chosen cell by the user
+     */
+    public void attack(Pair<Integer, Integer> pos) {
+        if (RoomConstant.searchEnemy(pos, this.gameArea.getRoom().getEnemyList()) != null) {
+            SimpleEnemy enemy = RoomConstant.searchEnemy(pos, this.gameArea.getRoom().getEnemyList());
+            enemy.damage(this.gameArea.getRoom().getPlayer().getWeapon().getDamage());
+        }
+        this.decreaseAction();
+    }
+
+    /**
+     * Move in a chosen cell by the user
+     * 
+     * @param newpos : the new position of the player
+     */
+    public void move(Pair<Integer, Integer> newpos) {
+        if (RoomConstant.searchEnemy(newpos, this.gameArea.getRoom().getEnemyList()) == null) {
+            this.gameArea.moveGameObject(player.getPos(), newpos);
+            if (RoomConstant.searchArtefact(newpos,
+                    this.gameArea.getRoom().getArtefactList()) != null) {
+                RoomConstant.searchArtefact(newpos, this.gameArea.getRoom().getArtefactList())
+                        .execute(player);
+            }
+        }
+        this.decreaseAction();
+    }
+    
+    public Player getPlayer() {
+        return this.player;
+    }
+    
 
 }
