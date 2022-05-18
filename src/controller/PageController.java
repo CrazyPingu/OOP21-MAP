@@ -8,13 +8,6 @@ import view.pause.PauseMenu;
 public class PageController {
 
     BasicFrame frame;
-    ActionMenuController actionMenuController;
-    TotalPanel totalPanel;
-    MainMenu mainMenu;
-    PauseMenu pauseMenu;
-    LoadingScreenImpl loadingScreenImpl;
-    LoseGame loseGame;
-    WinGame winGame;
 
     /**
      * 
@@ -31,28 +24,12 @@ public class PageController {
             MainMenu mainMenu, PauseMenu pauseMenu, LoadingScreenImpl loadingScreenImpl, LoseGame loseGame,
             WinGame winGame) {
         this.frame = frame;
-        this.actionMenuController = actionMenuController;
-        this.totalPanel = totalPanel;
-        this.mainMenu = mainMenu;
-        this.pauseMenu = pauseMenu;
-        this.loadingScreenImpl = loadingScreenImpl;
-        this.loseGame = loseGame;
-        this.winGame = winGame;
-        this.setupAllCardLayout();
-    }
-
-    /**
-     * method to setup all the cardlayout pages
-     */
-    public void setupAllCardLayout() {
-
-        frame.addToCardLayout(this.mainMenu, "MainMenu");
-        frame.addToCardLayout(this.pauseMenu, "PauseMenu");
-        frame.addToCardLayout(this.totalPanel, "Game");
-        frame.addToCardLayout(this.loadingScreenImpl, "LoadingScreen");
-        frame.addToCardLayout(this.loseGame, "Defeat");
-        frame.addToCardLayout(this.winGame, "Win");
-
+        frame.addToCardLayout(mainMenu, "MainMenu");
+        frame.addToCardLayout(pauseMenu, "PauseMenu");
+        frame.addToCardLayout(totalPanel, "Game");
+        frame.addToCardLayout(loadingScreenImpl, "LoadingScreen");
+        frame.addToCardLayout(loseGame, "Defeat");
+        frame.addToCardLayout(winGame, "Win");
     }
 
     /**
@@ -103,61 +80,4 @@ public class PageController {
     public void quitGame() {
         System.exit(0);
     }
-
-    /**
-     * @return the frame
-     */
-    public BasicFrame getFrame() {
-        return frame;
-    }
-
-    /**
-     * @return the action menu controller
-     */
-    public ActionMenuController getActionMenuController() {
-        return actionMenuController;
-    }
-
-    /**
-     * @return the total panel
-     */
-    public TotalPanel getTotalPanel() {
-        return totalPanel;
-    }
-
-    /**
-     * @return the main menu
-     */
-    public MainMenu getMainMenu() {
-        return mainMenu;
-    }
-
-    /**
-     * @return the pause menu
-     */
-    public PauseMenu getPauseMenu() {
-        return pauseMenu;
-    }
-
-    /**
-     * @return the loading screen
-     */
-    public LoadingScreenImpl getLoadingScreenImpl() {
-        return loadingScreenImpl;
-    }
-
-    /**
-     * @return the lose game page
-     */
-    public LoseGame getLoseGame() {
-        return loseGame;
-    }
-
-    /**
-     * @return the win game page
-     */
-    public WinGame getWinGame() {
-        return winGame;
-    }
-
 }
