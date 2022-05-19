@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import controller.ActionMenuController;
+import controller.GameAreaController;
+import controller.PageController;
 import controller.enemyAI.EnemyAIImpl;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
@@ -24,6 +27,9 @@ import view.game.TotalPanel;
  */
 
 public class EnemyAITest {
+	private ActionMenuController actionMenuController;
+	private GameAreaController gameAreaController;
+	private PageController pageController;
 	private EnemyAIImpl enemyAI;
 	private WeaponFactoryImpl wf;
 	private MovementFactoryImpl mf;
@@ -37,6 +43,9 @@ public class EnemyAITest {
 
 	@org.junit.Before
 	public void init() {
+		this.actionMenuController = new ActionMenuController(null);
+		this.gameAreaController = new GameAreaController(null);
+		this.pageController = new PageController(null, null);
 		this.expectedResult = new ArrayList<>();
 		this.wf = new WeaponFactoryImpl();
 		this.mf = new MovementFactoryImpl();
@@ -44,7 +53,7 @@ public class EnemyAITest {
 		this.player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), new Pair<>(2, 3), wf.createAxe(),
 				mf.stepMovement(), "Marcello", EntityTexture.PLAYER);
 		this.room = new RoomImpl(roomSize, this.player, new Pair<>(2, 1));
-		this.totalPanel = new TotalPanel(room);
+		this.totalPanel = new TotalPanel(room, actionMenuController, gameAreaController, pageController);
 		this.enemyAI = new EnemyAIImpl(totalPanel);
 		this.room.getEnemyList().clear();
 		this.enemyAroundArea = ef.createZombieStick(new Pair<>(5, 1));
