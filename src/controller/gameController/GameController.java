@@ -48,8 +48,8 @@ public abstract class GameController {
     public void startGame() {
         WeaponFactoryImpl wf = new WeaponFactoryImpl();
         MovementFactoryImpl mf = new MovementFactoryImpl();
-        player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), new Pair<>(3, 3), wf.createStick(),
-                mf.stepMovement(), "Marcello", EntityTexture.PLAYER);
+        player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createStick(), mf.stepMovement(), "Marcello",
+                EntityTexture.PLAYER);
         Room randomRoom = gameAreaController.generateNewRoom();
         this.totalPanel = new TotalPanel(randomRoom, actionMenuController, gameAreaController, pageController);
         frame.addToCardLayout(totalPanel, "Game");
