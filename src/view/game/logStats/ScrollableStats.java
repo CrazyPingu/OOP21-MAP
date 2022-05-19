@@ -6,18 +6,19 @@ public class ScrollableStats extends ScrollPaneAppearance {
 
 	private static final long serialVersionUID = 3192980786022666161L;
 
-	private static Stats statsValues = new Stats();
+	private Stats statsValues;
 
-	public ScrollableStats(Player player) {
+	public ScrollableStats(Player player, Stats statsValues) {
 		super(statsValues);
-		statsValues.update(player);
+		this.statsValues = statsValues;
+		this.statsValues.update(player);
 		this.setScrollPaneAppearance();
 	}
 
 	/**
 	 * @return stats values implemented as JTextPane.
 	 */
-	public static Stats getStatsValues() {
-		return statsValues;
+	public Stats getStatsValues() {
+		return this.statsValues;
 	}
 }

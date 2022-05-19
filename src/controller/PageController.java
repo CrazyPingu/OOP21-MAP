@@ -12,10 +12,6 @@ public class PageController {
     public PageController(BasicFrame frame) {
         this.frame = frame;
     }
-
-    /**
-     * show the main menu
-     */
     public void showMainMenu() {
         frame.showInFrame("MainMenu");
     }
@@ -54,7 +50,7 @@ public class PageController {
     public void showWinGame() {
         frame.showInFrame("Win");
     }
-
+  
     /**
      * close the application
      */

@@ -1,28 +1,26 @@
-package view.pause.action;
+package view.game.action.ButtonsAction;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import controller.PageController;
 
-public class ResumeAction implements ActionListener {
-
+public class PauseAction implements ActionListener {
     PageController controller;
 
     /**
      * 
-     * {@inheritDoc}
+     * @param controller : the PageController
      */
-    public ResumeAction(PageController controller) {
+    public PauseAction(PageController controller) {
         this.controller = controller;
     }
 
     /**
-     * {@inheritDoc}
+     * Call showPauseMenu method in PageController
      */
     public void actionPerformed(ActionEvent e) {
-        controller.showGame();
-
+        controller.showPauseMenu();
     }
 
 }

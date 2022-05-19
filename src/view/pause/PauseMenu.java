@@ -1,17 +1,14 @@
 package view.pause;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import controller.PageController;
 import utilities.Constant;
 import utilities.GbcDimension;
 import utilities.ImageMethod;
 import utilities.ImageModifier;
-import view.frame.BasicFrame;
+import view.MenuButton;
 import view.pause.action.MainMenuAction;
 import view.pause.action.QuitAction;
 import view.pause.action.ResumeAction;
@@ -32,12 +29,12 @@ public class PauseMenu extends JPanel {
      * 
      * @param frame : the frame passed in input, change the screen using buttons
      */
-    public PauseMenu(BasicFrame frame) {
+    public PauseMenu(PageController controller) {
     
         image = ImageMethod.getImage("pause/Background.jpg");
-        JButton resume = createJB("Resume");
-        JButton mainmenu = createJB("Main Menu");
-        JButton quit = createJB("Quit");
+        MenuButton resume = new MenuButton("Resume", 40);
+        MenuButton mainmenu = new MenuButton("Main Menu", 40);
+        MenuButton quit = new MenuButton("Quit", 40);
         JLabel pausetext = labeltext("Pause Menu");
 
         this.setLayout(new GridBagLayout());
@@ -45,25 +42,10 @@ public class PauseMenu extends JPanel {
         this.add(resume, new GbcDimension(1, GbcDimension.createInsets(30, 0, 30, 0)));
         this.add(mainmenu, new GbcDimension(2, GbcDimension.createInsets(30, 0, 30, 0)));
         this.add(quit, new GbcDimension(3, GbcDimension.createInsets(30, 0, 30, 0)));
-        resume.addActionListener(new ResumeAction(frame));
-        mainmenu.addActionListener(new MainMenuAction(frame));
-        quit.addActionListener(new QuitAction());
+        resume.addActionListener(new ResumeAction(controller));
+        mainmenu.addActionListener(new MainMenuAction(controller));
+        quit.addActionListener(new QuitAction(controller));
         
-    }
-
-    /**
-     * 
-     * @param name : the string that button will contain
-     * @return the button created
-     */
-    private JButton createJB(String name) {
-        JButton temp = new JButton(name);
-        temp.setFont(Constant.genericFont("Tahoma", Font.PLAIN, Constant.horizontalAspectRatio(40)));
-        temp.setPreferredSize(new Dimension(Constant.horizontalAspectRatio(350), Constant.verticalAspectRatio(150)));
-        temp.setBackground(new Color(197, 199, 196));
-        temp.setBorder(
-                BorderFactory.createLineBorder(new Color(67, 59, 103), Constant.horizontalAspectRatio(10), false));
-        return temp;
     }
 
     /**
