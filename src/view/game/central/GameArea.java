@@ -15,6 +15,7 @@ import utilities.Constant;
 import utilities.Pair;
 import utilities.RoomConstant;
 import controller.ActionFlag;
+import controller.GameAreaController;
 
 /**
  * 
@@ -26,9 +27,11 @@ public class GameArea extends JPanel {
 	private static final long serialVersionUID = 2941617427011748438L;
 	private Room room;
 	private Pair<Integer, Integer> size;
+	private GameAreaController gameAreaController;
 	private Dimension buttonDimension;
 
-	public GameArea(Room room) {
+	public GameArea(Room room, GameAreaController gameAreaController) {
+		this.gameAreaController = gameAreaController;
 		this.setOpaque(false);
 		this.changeRoom(room);
 	}
@@ -80,7 +83,8 @@ public class GameArea extends JPanel {
 	private void placeCells() {
 		for (int i = 0; i < size.getY(); i++) {
 			for (int j = 0; j < size.getX(); j++) {
-				final GameButton jb = new GameButton(buttonDimension);
+				final GameButton jb = new GameButton(buttonDimension, gameAreaController,
+						new Pair<Integer, Integer>(j, i));
 				room.addButtonToCells(new Pair<Integer, Integer>(j, i), jb);
 				this.add(jb);
 			}
@@ -163,12 +167,18 @@ public class GameArea extends JPanel {
 				image = RoomConstant.MOVE_HIGHLIGHT;
 			}
 			for (var x : pos) {
-				this.room.getCells().get(x).highlightCell(image);
+				if(flag.equals(ActionFlag.MOVE)) {
+					if(RoomConstant.searchEnemy(x, this.room.getEnemyList()) == null) {
+						this.room.getCells().get(x).highlightCell(image);
+					}
+				}else {
+					this.room.getCells().get(x).highlightCell(image);
+				}
 			}
 			this.repaint();
 		}
 	}
-	
+
 	/**
 	 * Method that remove all the highight
 	 */
@@ -179,4 +189,20 @@ public class GameArea extends JPanel {
 		this.repaint();
 	}
 
+	/**
+	 * Method to reove the game object from the game
+	 * 
+	 * @param pos the position of the game object to remove
+	 */
+	public void removeGameObject(Pair<Integer, Integer> pos) {
+		if (pos != null && RoomConstant.cellsOccupated(this.room.getEnemyList(), this.room.getArtefactList(),
+				this.room.getPlayer(), pos)) {
+			this.room.getCells().get(pos).removeSprite();
+			if (RoomConstant.searchEnemy(pos, this.room.getEnemyList()) != null) {
+				this.room.getEnemyList().remove(RoomConstant.searchEnemy(pos, this.room.getEnemyList()));
+			} else if (RoomConstant.searchArtefact(pos, this.room.getArtefactList()) != null) {
+				this.room.getArtefactList().remove(RoomConstant.searchArtefact(pos, this.room.getArtefactList()));
+			}
+		}
+	}
 }

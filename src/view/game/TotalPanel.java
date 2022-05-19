@@ -7,6 +7,9 @@ import java.awt.GridBagLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import controller.ActionMenuController;
+import controller.GameAreaController;
+import controller.PageController;
 import logics.room.works.Room;
 import utilities.Constant;
 import utilities.GbcDimension;
@@ -25,7 +28,8 @@ public class TotalPanel extends JPanel {
 	ScrollableStats stats;
 	ActionMenu actionMenu;
 
-	public TotalPanel(Room room) {
+	public TotalPanel(Room room, ActionMenuController actionMenuController, GameAreaController gameAreaController,
+			PageController pageController) {
 		this.setLayout(new GridBagLayout());
 		this.setBackground(Color.black);
 
@@ -33,13 +37,19 @@ public class TotalPanel extends JPanel {
 		fixSize(Constant.LABEL_WIDTH, Constant.TOP_HEIGHT, stats);
 		this.add(stats, new GbcDimension(0));
 
-		gameArea = new GameArea(room);
+		gameArea = new GameArea(room, gameAreaController);
 		fixSize(Constant.GAME_WIDTH, Constant.TOP_HEIGHT, gameArea);
 		this.add(gameArea, new GbcDimension(1));
 
 		log = new ScrollableLog(new Log());
 		fixSize(Constant.LABEL_WIDTH, Constant.TOP_HEIGHT, log);
 		this.add(log, new GbcDimension(2));
+
+		this.actionMenu = new ActionMenu(pageController, actionMenuController);
+		fixSize(Constant.WIDTH, Constant.ACTION_HEIGHT, actionMenu);
+		GbcDimension gbc = new GbcDimension(0, 1);
+		gbc.gridwidth = 3;
+		this.add(actionMenu, gbc);
 
 	}
 
@@ -60,14 +70,6 @@ public class TotalPanel extends JPanel {
 
 	public ScrollableStats getScrollableStats() {
 		return stats;
-	}
-
-	public void setActionMenu(ActionMenu actionMenu) {
-		this.actionMenu = actionMenu;
-		fixSize(Constant.WIDTH, Constant.ACTION_HEIGHT, actionMenu);
-		GbcDimension gbc = new GbcDimension(0, 1);
-		gbc.gridwidth = 3;
-		this.add(actionMenu, gbc);
 	}
 
 	public ActionMenu getActionMenu() {
