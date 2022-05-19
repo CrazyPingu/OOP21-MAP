@@ -43,15 +43,15 @@ public class PageController {
     /**
      * show the lost game page
      */
-    public void showLostGame() {
+    public void showDefeat() {
         frame.showInFrame("Defeat");
     }
 
     /**
      * show the win game page
      */
-    public void showWinGame() {
-        frame.showInFrame("Win");
+    public void showVictory() {
+        frame.showInFrame("Victory");
     }
   
     
