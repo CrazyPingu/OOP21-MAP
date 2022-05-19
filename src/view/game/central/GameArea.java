@@ -2,6 +2,7 @@ package view.game.central;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -155,23 +156,25 @@ public class GameArea extends JPanel {
 	}
 
 	/**
-	 * @param pos  the list of position to highlight
 	 * @param flag the flag that will say which action the player is doing
 	 */
-	public void highlightCells(List<Pair<Integer, Integer>> pos, ActionFlag flag) {
-		if (pos != null && !pos.isEmpty() && flag != null) {
+	public void highlightCells(ActionFlag flag) {
+		if (flag != null) {
 			ImageIcon image = null;
+			List<Pair<Integer, Integer>> pos = new ArrayList<>();
 			if (flag.equals(ActionFlag.ATTACK)) {
+				pos = this.room.getPlayer().getWeapon().getAttackArea(this.room.getPlayer().getPos(), size);
 				image = RoomConstant.ATTACK_HIGHLIGHT;
 			} else if (flag.equals(ActionFlag.MOVE)) {
+				pos = this.room.getPlayer().getMovementSystem().reachableCells(this.room.getPlayer().getPos(), size);
 				image = RoomConstant.MOVE_HIGHLIGHT;
 			}
 			for (var x : pos) {
-				if(flag.equals(ActionFlag.MOVE)) {
-					if(RoomConstant.searchEnemy(x, this.room.getEnemyList()) == null) {
+				if (flag.equals(ActionFlag.MOVE)) {
+					if (RoomConstant.searchEnemy(x, this.room.getEnemyList()) == null) {
 						this.room.getCells().get(x).highlightCell(image);
 					}
-				}else {
+				} else {
 					this.room.getCells().get(x).highlightCell(image);
 				}
 			}
