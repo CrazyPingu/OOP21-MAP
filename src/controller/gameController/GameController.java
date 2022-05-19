@@ -139,5 +139,9 @@ public abstract class GameController {
     public int getRoomCounter() {
         return this.roomCounter;
     }
+    
+    public ActionMenuController getActionMenuController() {
+        return this.actionMenuController;
+    }
 
 }
