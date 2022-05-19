@@ -88,7 +88,7 @@ public abstract class GameController {
     public void attack(Pair<Integer, Integer> pos) {
         SimpleEnemy enemy = RoomConstant.searchEnemy(pos, this.totalPanel.getGameArea().getRoom().getEnemyList());
         if (enemy != null) {
-            enemy.damage(this.totalPanel.getGameArea().getRoom().getPlayer().getWeapon().getDamage());
+            enemy.damage(this.player.getWeapon().getDamage());
             this.getTotalPanel().getScrollableLog().getLogMessage().update(enemy.getName() + " è stato colpito.");
         } else {
             this.getTotalPanel().getScrollableLog().getLogMessage()
@@ -110,7 +110,8 @@ public abstract class GameController {
                 artefact.execute(player);
                 this.totalPanel.getGameArea().removeGameObject(newpos);
                 this.getTotalPanel().getScrollableLog().getLogMessage().update("Raccolto " + artefact.getName() + ".");
-                this.getTotalPanel().getScrollableStats().getStatsValues().update(player);;
+                this.getTotalPanel().getScrollableStats().getStatsValues().update(player);
+                ;
             }
             this.totalPanel.getGameArea().moveGameObject(player.getPos(), newpos);
             if (this.totalPanel.getGameArea().getRoom().playerOnDoor()) {
