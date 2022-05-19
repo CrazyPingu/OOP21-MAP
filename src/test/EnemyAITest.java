@@ -50,7 +50,7 @@ public class EnemyAITest {
 		this.wf = new WeaponFactoryImpl();
 		this.mf = new MovementFactoryImpl();
 		this.ef = new EnemyFactoryImpl();
-		this.player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), new Pair<>(2, 3), wf.createAxe(),
+		this.player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createAxe(),
 				mf.stepMovement(), "Marcello", EntityTexture.PLAYER);
 		this.room = new RoomImpl(roomSize, this.player, new Pair<>(2, 1));
 		this.totalPanel = new TotalPanel(room, actionMenuController, gameAreaController, pageController);
