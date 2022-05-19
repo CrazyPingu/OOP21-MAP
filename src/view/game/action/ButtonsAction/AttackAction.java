@@ -23,7 +23,7 @@ public class AttackAction implements ActionListener {
      * Call attack method in ActionMenuController
      */
     public void actionPerformed(ActionEvent e) {
-        menucontroller.attack();
+        this.menucontroller.setAttack();
     }
 
 }
