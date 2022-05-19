@@ -3,6 +3,7 @@ package controller.gameController;
 import controller.ActionFlag;
 import controller.ActionMenuController;
 import controller.GameAreaController;
+import controller.PageController;
 import controller.RandomRoomGenerator;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
@@ -25,6 +26,7 @@ public abstract class GameController {
 
     private ActionMenuController actionMenuController;
     private GameAreaController gameAreaController;
+    private PageController pageController;
     private TotalPanel totalPanel;
     private Player player;
     private ActionFlag flag;
@@ -33,9 +35,10 @@ public abstract class GameController {
     private int roomCounter;
 
     public GameController(ActionMenuController actionMenuController, GameAreaController gameAreaController,
-            BasicFrame frame) {
+            BasicFrame frame, PageController pageController) {
         this.actionMenuController = actionMenuController;
         this.gameAreaController = gameAreaController;
+        this.pageController = pageController;
         this.frame = frame;
         this.roomCounter = 0;
     }
@@ -49,7 +52,7 @@ public abstract class GameController {
         player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), new Pair<>(3, 3), wf.createStick(),
                 mf.stepMovement(), "Marcello", EntityTexture.PLAYER);
         Room randomRoom = gameAreaController.generateNewRoom();
-        this.totalPanel = new TotalPanel(randomRoom, actionMenuController, gameAreaController);
+        this.totalPanel = new TotalPanel(randomRoom, actionMenuController, gameAreaController, pageController);
         frame.addToCardLayout(totalPanel, "Game");
     }
 
