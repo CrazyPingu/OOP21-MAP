@@ -30,7 +30,7 @@ public abstract class GameController {
     private TotalPanel totalPanel;
     private Player player;
     private ActionFlag flag;
-    private int currentAction;
+    private int currentActionNumber;
     private BasicFrame frame;
     private int roomCounter;
 
@@ -72,14 +72,14 @@ public abstract class GameController {
      * Decrease the number of available action
      */
     public void decreaseAction() {
-        this.currentAction--;
+        this.currentActionNumber--;
     }
 
     /**
      * Skip the turn
      */
     public void skipTurn() {
-        this.currentAction = 0;
+        this.currentActionNumber = 0;
     }
 
     /**
@@ -143,8 +143,12 @@ public abstract class GameController {
         return this.roomCounter;
     }
     
-    public ActionMenuController getActionMenuController() {
-        return this.actionMenuController;
+    public int getCurrentAction() {
+        return currentActionNumber;
+    }
+
+    public void setCurrentAction(int currentActionNumber) {
+        this.currentActionNumber = currentActionNumber;
     }
 
 }
