@@ -183,4 +183,20 @@ public class GameArea extends JPanel {
 		this.repaint();
 	}
 
+	/**
+	 * Method to reove the game object from the game
+	 * 
+	 * @param pos the position of the game object to remove
+	 */
+	public void removeGameObject(Pair<Integer, Integer> pos) {
+		if (pos != null && RoomConstant.cellsOccupated(this.room.getEnemyList(), this.room.getArtefactList(),
+				this.room.getPlayer(), pos)) {
+			this.room.getCells().get(pos).removeSprite();
+			if (RoomConstant.searchEnemy(pos, this.room.getEnemyList()) != null) {
+				this.room.getEnemyList().remove(RoomConstant.searchEnemy(pos, this.room.getEnemyList()));
+			} else if (RoomConstant.searchArtefact(pos, this.room.getArtefactList()) != null) {
+				this.room.getArtefactList().remove(RoomConstant.searchArtefact(pos, this.room.getArtefactList()));
+			}
+		}
+	}
 }
