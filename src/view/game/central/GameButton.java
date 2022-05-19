@@ -84,6 +84,7 @@ public class GameButton extends JButton implements ActionListener {
 	 * @param image the image to place on background
 	 */
 	public void highlightCell(ImageIcon image) {
+		this.setEnabled(true);
 		this.strategyLabel.setIcon(image);
 	}
 
@@ -91,6 +92,7 @@ public class GameButton extends JButton implements ActionListener {
 	 * Method that remove the highlight from the cell
 	 */
 	public void removeHighlight() {
+		this.setEnabled(false);
 		this.strategyLabel.setIcon(null);
 	}
 }
