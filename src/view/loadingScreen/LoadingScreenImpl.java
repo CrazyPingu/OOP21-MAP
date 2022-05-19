@@ -11,12 +11,11 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 
+import controller.PageController;
 import utilities.Constant;
 import utilities.GbcDimension;
 import utilities.ImageMethod;
 import utilities.ImageModifier;
-import view.frame.BasicFrame;
-
 /**
  * 
  * JPanel that contain the loading screen
@@ -25,15 +24,15 @@ import view.frame.BasicFrame;
 public class LoadingScreenImpl extends JPanel implements LoadingScreen, Runnable {
 
 	private static final long serialVersionUID = 8291207301630291996L;
-	JProgressBar progressBar = new JProgressBar();
-	JLabel message = new JLabel("", SwingConstants.CENTER);
-	BasicFrame frame;
-	String guiCardLayout;
+	private JProgressBar progressBar = new JProgressBar();
+	private JLabel message = new JLabel("", SwingConstants.CENTER);
+	private PageController pageController;
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public LoadingScreenImpl() {
+	public LoadingScreenImpl(PageController pageController) {
+		this.pageController = pageController;
 		this.setOpaque(false);
 		this.setLayout(new GridBagLayout());
 		addImage("aldoGiovanniEGiacomo.png");
@@ -82,10 +81,8 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen, Runnable
 	/**
 	 * {@inheritDoc}
 	 */
-	public void startProgressBar(BasicFrame frame, String currentCardLayout, String guiCardLayout) {
-		this.frame = frame;
-		this.guiCardLayout = guiCardLayout;
-		frame.showInFrame(currentCardLayout);
+	public void startProgressBar() {
+		this.pageController.showLoadingScreen();
 		new Thread(this).start();
 	}
 
@@ -104,6 +101,6 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen, Runnable
 				e.printStackTrace();
 			}
 		}
-		frame.showInFrame(guiCardLayout);
+		this.pageController.showGame();
 	}
 }
