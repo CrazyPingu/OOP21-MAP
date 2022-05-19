@@ -1,15 +1,19 @@
 package controller.gameController;
 
+import controller.ActionFlag;
 import controller.ActionMenuController;
 import controller.GameAreaController;
 import controller.RandomRoomGenerator;
 import logics.game_object.entity.Player;
+import logics.game_object.entity.SimpleEnemy;
 import logics.life.ExtendibleMaxLifeSystem;
 import logics.room.works.Room;
 import logics.strategy.movement.MovementFactoryImpl;
 import logics.strategy.weapon.WeaponFactoryImpl;
 import utilities.texture.EntityTexture;
 import utilities.Pair;
+import utilities.RoomConstant;
+import view.frame.BasicFrame;
 import view.game.TotalPanel;
 
 /**
@@ -23,12 +27,17 @@ public abstract class GameController {
     private GameAreaController gameAreaController;
     private TotalPanel totalPanel;
     private Player player;
+    private ActionFlag flag;
+    private int currentAction;
+    private BasicFrame frame;
+    private int roomCounter;
 
-    public GameController() {
-
-        this.actionMenuController = new ActionMenuController(totalPanel);
-        this.gameAreaController = new GameAreaController(actionMenuController, null, null, null);
-
+    public GameController(ActionMenuController actionMenuController, GameAreaController gameAreaController,
+            BasicFrame frame) {
+        this.actionMenuController = actionMenuController;
+        this.gameAreaController = gameAreaController;
+        this.frame = frame;
+        this.roomCounter = 0;
     }
 
     /**
@@ -37,24 +46,11 @@ public abstract class GameController {
     public void startGame() {
         WeaponFactoryImpl wf = new WeaponFactoryImpl();
         MovementFactoryImpl mf = new MovementFactoryImpl();
-        player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), new Pair<>(3, 3), wf.createAxe(), mf.stepMovement(),
-                "Marcello", EntityTexture.PLAYER);
-        Room randomRoom = new RandomRoomGenerator().generateRoom(player);
-
-        TotalPanel panel = new TotalPanel(randomRoom, player);
-        // this.totalPanel = panel;
-    }
-
-    /**
-     * create a new Game.
-     */
-    public void newGame() {
-        startGame();
-    }
-
-    public TotalPanel getTotalPanel() {
-        return this.totalPanel;
-        //per ora basta così, se ho altri dubbi ti scrivo ma per ora sono a posto, ciao ciao
+        player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), new Pair<>(3, 3), wf.createStick(),
+                mf.stepMovement(), "Marcello", EntityTexture.PLAYER);
+        Room randomRoom = gameAreaController.generateNewRoom();
+        this.totalPanel = new TotalPanel(randomRoom, actionMenuController, gameAreaController);
+        frame.addToCardLayout(totalPanel, "Game");
     }
 
     /**
@@ -62,7 +58,7 @@ public abstract class GameController {
      * @param actionMenuController
      */
 
-    public abstract void playerTurn(ActionMenuController actionMenuController);
+    public abstract void playerTurn();
 
     /**
      * start a new Enemy Turn.
@@ -70,10 +66,78 @@ public abstract class GameController {
     public abstract void enemyTurn();
 
     /**
-     * close the Game.
+     * Decrease the number of available action
      */
-    public void quitGame() {
-        System.exit(0);
+    public void decreaseAction() {
+        this.currentAction--;
+    }
+
+    /**
+     * Skip the turn
+     */
+    public void skipTurn() {
+        this.currentAction = 0;
+    }
+
+    /**
+     * Attack in a chosen cell by the user
+     */
+    public void attack(Pair<Integer, Integer> pos) {
+        if (RoomConstant.searchEnemy(pos, this.totalPanel.getGameArea().getRoom().getEnemyList()) != null) {
+            SimpleEnemy enemy = RoomConstant.searchEnemy(pos, this.totalPanel.getGameArea().getRoom().getEnemyList());
+            enemy.damage(this.totalPanel.getGameArea().getRoom().getPlayer().getWeapon().getDamage());
+        }
+        this.decreaseAction();
+    }
+
+    /**
+     * Move in a chosen cell by the user
+     * 
+     * @param newpos : the new position of the player
+     */
+    public void move(Pair<Integer, Integer> newpos) {
+        if (RoomConstant.searchEnemy(newpos, this.totalPanel.getGameArea().getRoom().getEnemyList()) == null) {
+            this.totalPanel.getGameArea().moveGameObject(player.getPos(), newpos);
+            if (RoomConstant.searchArtefact(newpos,
+                    this.totalPanel.getGameArea().getRoom().getArtefactList()) != null) {
+                RoomConstant.searchArtefact(newpos, this.totalPanel.getGameArea().getRoom().getArtefactList())
+                        .execute(player);
+            } else if (this.totalPanel.getGameArea().getRoom().playerOnDoor()) {
+                this.roomCounter++;
+                this.totalPanel.getGameArea().changeRoom(this.gameAreaController.generateNewRoom());
+            }
+        }
+        this.decreaseAction();
+    }
+
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    public TotalPanel getTotalPanel() {
+        return this.totalPanel;
+    }
+
+    /**
+     * Specify the type of action to apply to GameArea's chosen cell.
+     * 
+     * @param actionFlag : set the ActionFlag
+     */
+    public void setFlag(ActionFlag flag) {
+        this.flag = flag;
+        this.totalPanel.getGameArea().highlightCells(this.flag);
+    }
+
+    /**
+     * 
+     * @return the ActionFlag
+     */
+    public ActionFlag getFlag() {
+        return this.flag;
+    }
+
+    public int getRoomCounter() {
+        return this.roomCounter;
     }
 
 }

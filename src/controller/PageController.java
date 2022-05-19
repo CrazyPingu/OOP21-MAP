@@ -1,64 +1,60 @@
 package controller;
 
-import logics.room.works.Room;
 import view.frame.BasicFrame;
-import view.game.TotalPanel;
-import view.loadingScreen.LoadingScreenImpl;
-import view.pause.PauseMenu;
 
 public class PageController {
-    
+
     BasicFrame frame;
-    Room room;
-    
+
+    /**
+     * @param frame the frame of the game
+     */
     public PageController(BasicFrame frame) {
         this.frame = frame;
     }
-    
-    public void setupAllCardLayout() {
-        MainMenu mm = new MainMenu();
-        PauseMenu pm = new PauseMenu();
-        TotalPanel tp = new TotalPanel(room, null);
-        LoadingScreenImpl ls = new LoadingScreenImpl();
-        LoseGame lg = new LoseGame();
-        WinGame wg = new WinGame();
-        
-        
-        frame.addToCardLayout(mm, "MainMenu");
-        frame.addToCardLayout(pm, "PauseMenu");
-        frame.addToCardLayout(tp, "Game");
-        frame.addToCardLayout(ls, "LoadingScreen");
-        frame.addToCardLayout(lg, "Defeat");
-        frame.addToCardLayout(wg, "Win");
-        
-    }
-    
     public void showMainMenu() {
         frame.showInFrame("MainMenu");
     }
-    
+
+    /**
+     * show the loading screen
+     */
     public void showLoadingScreen() {
         frame.showInFrame("LoadingScreen");
     }
-    
+
+    /**
+     * show the game screen
+     */
     public void showGame() {
         frame.showInFrame("Game");
     }
-    
+
+    /**
+     * show the pause menu
+     */
     public void showPauseMenu() {
         frame.showInFrame("PauseMenu");
     }
-    
+
+    /**
+     * show the lost game page
+     */
     public void showLostGame() {
         frame.showInFrame("Defeat");
     }
-    
+
+    /**
+     * show the win game page
+     */
     public void showWinGame() {
         frame.showInFrame("Win");
     }
-    
+  
+    /**
+     * close the application
+     */
     public void quitGame() {
         System.exit(0);
     }
-
 }

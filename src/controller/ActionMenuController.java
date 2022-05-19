@@ -1,81 +1,26 @@
 package controller;
 
-import view.game.TotalPanel;
-
 public class ActionMenuController {
 
-    private int currentActionNumber;
-    private TotalPanel totalPanel;
+    private GameLoop gameLoop;
 
-    /**
-     * 
-     * @param totalpanel : panel that contains all the game screen
-     */
-    public ActionMenuController(TotalPanel totalpanel) {
-        this.totalPanel = totalpanel;
+    public ActionMenuController(GameLoop gameLoop) {
+        this.gameLoop = gameLoop;
     }
 
     /**
-     * 
-     * @param currentActionNumber : the current number of action available
-     * 
-     *                            Set the number of action available by the player
-     */
-    public void setActionNumber(int currentActionNumber) {
-        this.currentActionNumber = currentActionNumber;
-    }
-
-    /**
-     * Decrease the number of action available by the player
-     */
-
-    private void decreaseAction() {
-        this.currentActionNumber--;
-    }
-
-    /**
-     * Attack in a chosen cell by the user
-     */
-    public void attack() {
-        this.totalPanel.getGameArea().moveGameObject(null, null);
-        this.decreaseAction();
-    }
-
-    /**
-     * Move the player to a new position
-     */
-    public void move() {
-        this.totalPanel.getGameArea().moveGameObject(null, null);
-        ;
-        this.decreaseAction();
-    }
-
-    /**
-     * Skip to the next turn
+     * Skip to the next action
      */
     public void skip() {
-        this.decreaseAction();
+        this.gameLoop.skipTurn();
     }
 
-    /**
-     * 
-     * @return the number of action available by the player
-     */
-    public int getCurrentActionNumber() {
-        return this.currentActionNumber;
+    public void setAttack() {
+        this.gameLoop.setFlag(ActionFlag.ATTACK);
     }
 
-    /**
-     * Specify the type of action to apply to GameArea's chosen cell.
-     * 
-     * @param actionFlag choise of action.
-     */
-    public void setTypeOfActionFlag(ActionFlag actionFlag) {
-        if (actionFlag.equals(ActionFlag.ATTACK)) {
-            attack();
-        } else if (actionFlag.equals(ActionFlag.MOVE)) {
-            move();
-        }
-
+    public void setMove() {
+        this.gameLoop.setFlag(ActionFlag.MOVE);
     }
+
 }

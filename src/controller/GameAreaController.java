@@ -1,45 +1,35 @@
 package controller;
 
-import java.util.List;
-
-import logics.game_object.entity.Player;
-import logics.game_object.entity.SimpleEnemy;
 import logics.room.works.Room;
-import view.game.central.GameArea;
+import utilities.Pair;
 
 public class GameAreaController {
-    
-    private Player player;
-    private ActionMenuController actionMenuController;
-    private List <SimpleEnemy> enemyList;
-    private GameArea gameArea;
-    
-    
-    public GameAreaController(ActionMenuController actionMenuController, Player player, List<SimpleEnemy> enemyList, GameArea gameArea) {
-        this.player = player;
-        this.actionMenuController = actionMenuController;
-        this.enemyList = enemyList;
-        this.gameArea = gameArea;
+
+    private GameLoop gameLoop;
+    private RandomRoomGenerator randomRoomGenerator;
+
+    public GameAreaController(GameLoop gameLoop) {
+        this.gameLoop = gameLoop;
+        this.randomRoomGenerator = new RandomRoomGenerator();
     }
-    
+
     /**
      * create a new Room.
      */
-    public Room newRoom() {
-        return new RandomRoomGenerator().generateRoom(player);
+    public Room generateNewRoom() {
+        return randomRoomGenerator.generateRoom(gameLoop.getPlayer());
     }
-    
-    public void chosenAction() {
-        
+
+    /**
+     * 
+     * @param pos : the position of the pressed cell
+     */
+    public void makeAction(Pair<Integer, Integer> pos) {
+        if (this.gameLoop.getFlag().equals(ActionFlag.ATTACK)) {
+            this.gameLoop.attack(pos);
+        } else if (this.gameLoop.getFlag().equals(ActionFlag.MOVE)) {
+            this.gameLoop.move(pos);
+        }
     }
-    
-    public void attackChoice() {
-        
-    }
-    
-    public void moveChoice() {
-        
-    }
-    
-    
+
 }
