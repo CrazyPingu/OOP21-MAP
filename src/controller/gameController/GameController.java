@@ -145,11 +145,11 @@ public abstract class GameController {
         return this.roomCounter;
     }
 
-    public int getCurrentAction() {
+    public int getCurrentActionNumber() {
         return currentActionNumber;
     }
 
-    public void setCurrentAction(int currentActionNumber) {
+    public void setCurrentActionNumber(int currentActionNumber) {
         this.currentActionNumber = currentActionNumber;
     }
 
