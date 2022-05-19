@@ -2,18 +2,23 @@ package view.game.action.ButtonsAction;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import controller.ActionMenuController;
+import view.MenuButton;
 
 public class MoveAction implements ActionListener {
     ActionMenuController menucontroller;
+    private List<MenuButton> button;
 
     /**
      * 
      * @param menucontroller : the ActionMenuController
+     * @param button
      */
-    public MoveAction(ActionMenuController menucontroller) {
+    public MoveAction(ActionMenuController menucontroller, List<MenuButton> button) {
         this.menucontroller = menucontroller;
+        this.button = button;
     }
 
     /**
@@ -21,6 +26,9 @@ public class MoveAction implements ActionListener {
      */
     public void actionPerformed(ActionEvent e) {
         this.menucontroller.setMove();
+        for (MenuButton x : button) {
+            x.setEnabled(false);
+        }
     }
 
 }

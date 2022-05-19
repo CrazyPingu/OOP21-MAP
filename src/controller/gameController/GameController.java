@@ -4,7 +4,6 @@ import controller.ActionFlag;
 import controller.ActionMenuController;
 import controller.GameAreaController;
 import controller.PageController;
-import controller.RandomRoomGenerator;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import logics.life.ExtendibleMaxLifeSystem;
@@ -90,7 +89,7 @@ public abstract class GameController {
             SimpleEnemy enemy = RoomConstant.searchEnemy(pos, this.totalPanel.getGameArea().getRoom().getEnemyList());
             enemy.damage(this.totalPanel.getGameArea().getRoom().getPlayer().getWeapon().getDamage());
         }
-        this.decreaseAction();
+        this.endPlayerTurn();
     }
 
     /**
@@ -104,7 +103,7 @@ public abstract class GameController {
                     this.totalPanel.getGameArea().getRoom().getArtefactList()) != null) {
                 RoomConstant.searchArtefact(newpos, this.totalPanel.getGameArea().getRoom().getArtefactList())
                         .execute(player);
-                this.totalPanel.getGameArea().removeGameObject(newpos);                
+                this.totalPanel.getGameArea().removeGameObject(newpos);
             }
             this.totalPanel.getGameArea().moveGameObject(player.getPos(), newpos);
             if (this.totalPanel.getGameArea().getRoom().playerOnDoor()) {
@@ -112,7 +111,7 @@ public abstract class GameController {
                 this.totalPanel.getGameArea().changeRoom(this.gameAreaController.generateNewRoom());
             }
         }
-        this.decreaseAction();
+        this.endPlayerTurn();
     }
 
     public Player getPlayer() {
@@ -151,6 +150,12 @@ public abstract class GameController {
 
     public void setCurrentActionNumber(int currentActionNumber) {
         this.currentActionNumber = currentActionNumber;
+    }
+
+    private void endPlayerTurn() {
+        this.totalPanel.getActionMenu().enableButton();
+        this.totalPanel.getGameArea().removeHighlight();
+        this.decreaseAction();
     }
 
 }
