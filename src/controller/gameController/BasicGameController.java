@@ -33,9 +33,9 @@ public class BasicGameController extends GameController {
 	 */
 	@Override
 	public void playerTurn() {
-		int currentAction = this.getActionMenuController().getCurrentActionNumber();
+		int currentAction = this.getCurrentActionNumber();
 		Player player = this.getTotalPanel().getGameArea().getRoom().getPlayer();
-		this.getActionMenuController().setActionNumber(player.getActionNumber());
+		this.setActionNumber(player.getActionNumber());
 		//TODO move current action control in game loop
 		while (currentAction > 0)
 			;
