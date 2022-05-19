@@ -2,6 +2,7 @@ package view.endGameMenu;
 
 import java.awt.BorderLayout;
 import java.awt.Graphics;
+import java.awt.GridBagLayout;
 import java.awt.Image;
 import javax.swing.JPanel;
 
@@ -13,28 +14,26 @@ import utilities.ImageModifier;
 import view.MenuButton;
 import view.pause.action.*;
 
-public class EndGameMenu extends JPanel {
+public abstract class EndGameMenu extends JPanel {
 
     private static final long serialVersionUID = 6789169156087285519L;
-    PageController controller;
-    MenuButton mainMenu = new MenuButton("Main Menu", 40);
-    MenuButton quit = new MenuButton("Quit", 40);
-    QuitAction quitAction = new QuitAction(controller);
-    MainMenuAction mainMenuAction = new MainMenuAction(controller);
     Image image;
 
-    public EndGameMenu(String imageName) {
+    public EndGameMenu(String imageName, PageController controller) {
+
+        MenuButton mainMenu = new MenuButton("Main Menu", 40);
+        MenuButton quit = new MenuButton("Quit", 40);
 
         this.image = ImageMethod.getImage("endGame/" + imageName + ".png");
-        quit.addActionListener(quitAction);
-        mainMenu.addActionListener(mainMenuAction);
+        quit.addActionListener(new QuitAction(controller));
+        mainMenu.addActionListener(new MainMenuAction(controller));
         this.setLayout(new BorderLayout());
-
-        this.add(mainMenu, new GbcDimension(0, 0, Constant.horizontalAspectRatio(300),
+        JPanel bottom = new JPanel(new GridBagLayout());
+        bottom.add(mainMenu, new GbcDimension(0, 0, Constant.horizontalAspectRatio(300),
                 Constant.verticalAspectRatio(150), GbcDimension.createInsets(0, 0, 0, 100)));
-        this.add(quit, new GbcDimension(1, 0, Constant.horizontalAspectRatio(300), Constant.verticalAspectRatio(150),
+        bottom.add(quit, new GbcDimension(1, 0, Constant.horizontalAspectRatio(300), Constant.verticalAspectRatio(150),
                 GbcDimension.createInsets(0, 100, 0, 0)));
-        this.add(this, BorderLayout.SOUTH);
+        this.add(bottom, BorderLayout.SOUTH);
     }
 
     public void paintComponent(Graphics g) {
