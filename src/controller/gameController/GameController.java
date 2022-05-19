@@ -4,7 +4,6 @@ import controller.ActionFlag;
 import controller.ActionMenuController;
 import controller.GameAreaController;
 import controller.PageController;
-import controller.RandomRoomGenerator;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import logics.life.ExtendibleMaxLifeSystem;
@@ -90,6 +89,7 @@ public abstract class GameController {
             SimpleEnemy enemy = RoomConstant.searchEnemy(pos, this.totalPanel.getGameArea().getRoom().getEnemyList());
             enemy.damage(this.totalPanel.getGameArea().getRoom().getPlayer().getWeapon().getDamage());
         }
+        this.totalPanel.getActionMenu().enableButton();
         this.decreaseAction();
     }
 
@@ -112,6 +112,7 @@ public abstract class GameController {
                 this.totalPanel.getGameArea().changeRoom(this.gameAreaController.generateNewRoom());
             }
         }
+        this.totalPanel.getActionMenu().enableButton();
         this.decreaseAction();
     }
 
