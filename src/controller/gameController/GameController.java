@@ -4,6 +4,7 @@ import controller.ActionFlag;
 import controller.ActionMenuController;
 import controller.GameAreaController;
 import controller.PageController;
+import logics.game_object.artefact.Artefact;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import logics.life.ExtendibleMaxLifeSystem;
@@ -85,9 +86,13 @@ public abstract class GameController {
      * Attack in a chosen cell by the user
      */
     public void attack(Pair<Integer, Integer> pos) {
-        if (RoomConstant.searchEnemy(pos, this.totalPanel.getGameArea().getRoom().getEnemyList()) != null) {
-            SimpleEnemy enemy = RoomConstant.searchEnemy(pos, this.totalPanel.getGameArea().getRoom().getEnemyList());
+        SimpleEnemy enemy = RoomConstant.searchEnemy(pos, this.totalPanel.getGameArea().getRoom().getEnemyList());
+        if (enemy != null) {
             enemy.damage(this.totalPanel.getGameArea().getRoom().getPlayer().getWeapon().getDamage());
+            this.getTotalPanel().getScrollableLog().getLogMessage().update(enemy.getName() + " è stato colpito.");
+        } else {
+            this.getTotalPanel().getScrollableLog().getLogMessage()
+                    .update(this.player.getName() + " ha mancato il colpo.");
         }
         this.endPlayerTurn();
     }
@@ -99,11 +104,13 @@ public abstract class GameController {
      */
     public void move(Pair<Integer, Integer> newpos) {
         if (RoomConstant.searchEnemy(newpos, this.totalPanel.getGameArea().getRoom().getEnemyList()) == null) {
-            if (RoomConstant.searchArtefact(newpos,
-                    this.totalPanel.getGameArea().getRoom().getArtefactList()) != null) {
-                RoomConstant.searchArtefact(newpos, this.totalPanel.getGameArea().getRoom().getArtefactList())
-                        .execute(player);
+            Artefact artefact = RoomConstant.searchArtefact(newpos,
+                    this.totalPanel.getGameArea().getRoom().getArtefactList());
+            if (artefact != null) {
+                artefact.execute(player);
                 this.totalPanel.getGameArea().removeGameObject(newpos);
+                this.getTotalPanel().getScrollableLog().getLogMessage().update("Raccolto " + artefact.getName() + ".");
+                this.getTotalPanel().getScrollableStats().getStatsValues().update(player);;
             }
             this.totalPanel.getGameArea().moveGameObject(player.getPos(), newpos);
             if (this.totalPanel.getGameArea().getRoom().playerOnDoor()) {
