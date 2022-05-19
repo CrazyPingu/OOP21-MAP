@@ -21,7 +21,7 @@ import utilities.Pair;
 public class Player implements MultipleActionObject, ArtefactUserObject, MovingObject, WeaponizedObject, KillableObject,
 		GameObject {
 
-	private final int INITIAL_ACTION_NUMBER = 0;
+	private final int INITIAL_ACTION_NUMBER = 2;
 	private final static Pair<Integer, Integer> STANDARD_SPAWN_POSITION = new Pair<Integer, Integer>(0, 0);
 
 	private ExtendibleMaxLifeSystem life;
