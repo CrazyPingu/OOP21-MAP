@@ -3,10 +3,13 @@ package controller.gameController;
 import java.util.List;
 
 import controller.ActionMenuController;
+import controller.GameAreaController;
+import controller.PageController;
 import controller.enemyAI.EnemyAIImpl;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import utilities.Pair;
+import view.frame.BasicFrame;
 
 /**
  * 
@@ -17,8 +20,9 @@ public class BasicGameController extends GameController {
 
 	private EnemyAIImpl enemyAI;
 
-	public BasicGameController() {
-		super();
+	public BasicGameController(ActionMenuController actionMenuController, GameAreaController gameAreaController,
+            BasicFrame frame, PageController pageController) {
+		super(actionMenuController, gameAreaController, frame, pageController);
 		this.enemyAI = new EnemyAIImpl(this.getTotalPanel());
 	}
 
@@ -28,10 +32,10 @@ public class BasicGameController extends GameController {
 	 * @param actionMenuController: controller of the action menu
 	 */
 	@Override
-	public void playerTurn(ActionMenuController actionMenuController) {
-		int currentAction = actionMenuController.getCurrentActionNumber();
+	public void playerTurn() {
+		int currentAction = this.getActionMenuController().getCurrentActionNumber();
 		Player player = this.getTotalPanel().getGameArea().getRoom().getPlayer();
-		actionMenuController.setActionNumber(player.getActionNumber());
+		this.getActionMenuController().setActionNumber(player.getActionNumber());
 		//TODO move current action control in game loop
 		while (currentAction > 0)
 			;
