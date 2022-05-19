@@ -21,9 +21,9 @@ import utilities.Pair;
 public class Player implements MultipleActionObject, ArtefactUserObject, MovingObject, WeaponizedObject, KillableObject,
 		GameObject {
 
-	private final int INITIAL_ACTION_NUMBER = 0;
+	private final static int INITIAL_ACTION_NUMBER = 2;
 	private final static Pair<Integer, Integer> STANDARD_SPAWN_POSITION = new Pair<Integer, Integer>(0, 0);
-	
+
 	private ExtendibleMaxLifeSystem life;
 	private Pair<Integer, Integer> pos;
 	private Weapon weapon;
@@ -33,6 +33,8 @@ public class Player implements MultipleActionObject, ArtefactUserObject, MovingO
 	private int actionNumber;
 
 	/**
+	 * This method allows an initialization for the player whit complete
+	 * customizable fields
 	 * 
 	 * @param life         is the life system of the player
 	 * @param pos          is the position of the player
@@ -43,17 +45,19 @@ public class Player implements MultipleActionObject, ArtefactUserObject, MovingO
 	 *                     utilis.texture
 	 */
 	public Player(ExtendibleMaxLifeSystem life, Pair<Integer, Integer> pos, Weapon weapon, Movement movement,
-			String name, Image textureImage) {
+			String name, Image textureImage, int initialActionNumber) {
 		this.life = life;
 		this.pos = pos;
 		this.weapon = weapon;
 		this.movement = movement;
 		this.name = name;
 		this.textureImage = textureImage;
-		this.actionNumber = this.INITIAL_ACTION_NUMBER;
+		this.actionNumber = initialActionNumber;
 	}
-	
+
 	/**
+	 * This method allows a fast initialization for the player using standard values
+	 * for the spawn position and action number
 	 * 
 	 * @param life         is the life system of the player
 	 * @param weapon       is the weapon the player is holding
@@ -63,9 +67,9 @@ public class Player implements MultipleActionObject, ArtefactUserObject, MovingO
 	 *                     utilis.texture
 	 */
 	public Player(ExtendibleMaxLifeSystem life, Weapon weapon, Movement movement, String name, Image textureImage) {
-		this(life, STANDARD_SPAWN_POSITION, weapon, movement, name, textureImage);
+		this(life, STANDARD_SPAWN_POSITION, weapon, movement, name, textureImage, INITIAL_ACTION_NUMBER);
 	}
-	
+
 	@Override
 	public void changeWeapon(Weapon weapon) {
 		this.weapon = weapon;
@@ -149,6 +153,7 @@ public class Player implements MultipleActionObject, ArtefactUserObject, MovingO
 
 	public String toString() {
 		return " name = " + this.name + "\n health = " + this.getHealth() + "\n max health = " + this.getMaxHealth()
-				+ "\n weapon damage = " + this.weapon.getDamage() + "\n number action = " + this.getActionNumber();
+				+ "\n current weapon = " + this.weapon.getName() + "\n weapon damage = " + this.weapon.getDamage()
+				+ "\n number action = " + this.getActionNumber();
 	}
 }

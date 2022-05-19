@@ -154,4 +154,15 @@ public class PlayerTest {
 		assertTrue(this.player.getMaxHealth() == MAX_HEALTH_LIMIT);
 	}
 
+	@Test
+	/*
+	 * test toString result
+	 */
+	public void toStringTest() {
+		this.life = new ExtendibleMaxLifeSystem(this.HEALTH, this.MAX_HEALTH, this.MAX_HEALTH_LIMIT);
+		this.player = new Player(this.life, this.START_POS, this.weaponFactory.createAxe(),
+				this.movementFactory.stepMovement(), this.NAME, this.texture);
+
+		System.out.println(this.player.toString());
+	}
 }
