@@ -28,8 +28,8 @@ public class GameLoop {
             if(/* mainMenuController flag ha premuto new game */) {
                 this.loadingScreen = new LoadingScreenImpl(this.pageController);
                 frame.addToCardLayout(loadingScreenImpl, "LoadingScreen");
-                this.pageController.showLoadingScreen();
                 this.loadingScreen.startProgressBar();
+                this.gameController = new BasicGameController(this.actionMenuController, this.gameAreaController, this.frame);
                 this.match();
             }
         }
@@ -43,14 +43,12 @@ public class GameLoop {
         /*
          *         
          *         
-        frame.addToCardLayout(totalPanel, "Game");
          *         
          */
 
     }
 
     private void init() {
-        this.gameController = new BasicGameController();
         this.actionMenuController = new ActionMenuController(this);
         this.gameAreaController = new GameAreaController(this);
         this.pageController = new PageController(frame);
@@ -92,7 +90,7 @@ public class GameLoop {
 
     private void match() {
         this.gameController.startGame();
-        while(/* player dead  || numero stanze   */) {
+        while(!this.gameController.getPlayer().isDead() || this.gameController.getRoomCounter() > 3) {
             this.gameController.playerTurn();
             this.gameController.enemyTurn();
         }

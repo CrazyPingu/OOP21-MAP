@@ -13,6 +13,7 @@ import logics.strategy.weapon.WeaponFactoryImpl;
 import utilities.texture.EntityTexture;
 import utilities.Pair;
 import utilities.RoomConstant;
+import view.frame.BasicFrame;
 import view.game.TotalPanel;
 
 /**
@@ -28,10 +29,15 @@ public abstract class GameController {
     private Player player;
     private ActionFlag flag;
     private int currentAction;
+    private BasicFrame frame;
+    private int roomCounter;
 
-    public GameController(ActionMenuController actionMenuController, GameAreaController gameAreaController) {
+    public GameController(ActionMenuController actionMenuController, GameAreaController gameAreaController,
+            BasicFrame frame) {
         this.actionMenuController = actionMenuController;
         this.gameAreaController = gameAreaController;
+        this.frame = frame;
+        this.roomCounter = 0;
     }
 
     /**
@@ -44,6 +50,7 @@ public abstract class GameController {
                 mf.stepMovement(), "Marcello", EntityTexture.PLAYER);
         Room randomRoom = gameAreaController.generateNewRoom();
         this.totalPanel = new TotalPanel(randomRoom, actionMenuController, gameAreaController);
+        frame.addToCardLayout(totalPanel, "Game");
     }
 
     /**
@@ -95,6 +102,9 @@ public abstract class GameController {
                     this.totalPanel.getGameArea().getRoom().getArtefactList()) != null) {
                 RoomConstant.searchArtefact(newpos, this.totalPanel.getGameArea().getRoom().getArtefactList())
                         .execute(player);
+            } else if (this.totalPanel.getGameArea().getRoom().playerOnDoor()) {
+                this.roomCounter++;
+                this.totalPanel.getGameArea().changeRoom(this.gameAreaController.generateNewRoom());
             }
         }
         this.decreaseAction();
@@ -124,6 +134,10 @@ public abstract class GameController {
      */
     public ActionFlag getFlag() {
         return this.flag;
+    }
+
+    public int getRoomCounter() {
+        return this.roomCounter;
     }
 
 }
