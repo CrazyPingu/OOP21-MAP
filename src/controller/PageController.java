@@ -4,14 +4,17 @@ import view.frame.BasicFrame;
 
 public class PageController {
 
-    BasicFrame frame;
+    private BasicFrame frame;
+    private GameLoop gameLoop; 
 
     /**
      * @param frame the frame of the game
      */
-    public PageController(BasicFrame frame) {
+    public PageController(BasicFrame frame, GameLoop gameLoop) {
         this.frame = frame;
+        this.gameLoop = gameLoop; 
     }
+    
     public void showMainMenu() {
         frame.showInFrame("MainMenu");
     }
@@ -51,6 +54,11 @@ public class PageController {
         frame.showInFrame("Win");
     }
   
+    
+    public void startGame() {
+    	this.gameLoop.startGame();
+    }
+    
     /**
      * close the application
      */
