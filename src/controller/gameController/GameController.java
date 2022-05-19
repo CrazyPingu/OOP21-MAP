@@ -30,7 +30,7 @@ public abstract class GameController {
     private TotalPanel totalPanel;
     private Player player;
     private ActionFlag flag;
-    private int currentAction;
+    private int currentActionNumber;
     private BasicFrame frame;
     private int roomCounter;
 
@@ -72,14 +72,14 @@ public abstract class GameController {
      * Decrease the number of available action
      */
     public void decreaseAction() {
-        this.currentAction--;
+        this.currentActionNumber--;
     }
 
     /**
      * Skip the turn
      */
     public void skipTurn() {
-        this.currentAction = 0;
+        this.currentActionNumber = 0;
     }
 
     /**
@@ -100,12 +100,14 @@ public abstract class GameController {
      */
     public void move(Pair<Integer, Integer> newpos) {
         if (RoomConstant.searchEnemy(newpos, this.totalPanel.getGameArea().getRoom().getEnemyList()) == null) {
-            this.totalPanel.getGameArea().moveGameObject(player.getPos(), newpos);
             if (RoomConstant.searchArtefact(newpos,
                     this.totalPanel.getGameArea().getRoom().getArtefactList()) != null) {
                 RoomConstant.searchArtefact(newpos, this.totalPanel.getGameArea().getRoom().getArtefactList())
                         .execute(player);
-            } else if (this.totalPanel.getGameArea().getRoom().playerOnDoor()) {
+                this.totalPanel.getGameArea().removeGameObject(newpos);                
+            }
+            this.totalPanel.getGameArea().moveGameObject(player.getPos(), newpos);
+            if (this.totalPanel.getGameArea().getRoom().playerOnDoor()) {
                 this.roomCounter++;
                 this.totalPanel.getGameArea().changeRoom(this.gameAreaController.generateNewRoom());
             }
@@ -142,9 +144,13 @@ public abstract class GameController {
     public int getRoomCounter() {
         return this.roomCounter;
     }
-    
-    public ActionMenuController getActionMenuController() {
-        return this.actionMenuController;
+
+    public int getCurrentActionNumber() {
+        return currentActionNumber;
+    }
+
+    public void setCurrentActionNumber(int currentActionNumber) {
+        this.currentActionNumber = currentActionNumber;
     }
 
 }
