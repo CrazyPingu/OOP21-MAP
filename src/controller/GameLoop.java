@@ -20,12 +20,14 @@ public class GameLoop {
     private ActionMenuController actionMenuController;
     private GameAreaController gameAreaController;
     private PageController pageController;
+    private boolean newGamePressed; 
 
     public GameLoop() {
         this.init();
         while(true) {
             this.pageController.showMainMenu();
-            if(/* mainMenuController flag ha premuto new game */) {
+            if(this.newGamePressed ) {
+            	this.newGamePressed = false; 
                 this.loadingScreen = new LoadingScreenImpl(this.pageController);
                 frame.addToCardLayout(loadingScreenImpl, "LoadingScreen");
                 this.loadingScreen.startProgressBar();
@@ -51,9 +53,9 @@ public class GameLoop {
     private void init() {
         this.actionMenuController = new ActionMenuController(this);
         this.gameAreaController = new GameAreaController(this);
-        this.pageController = new PageController(frame);
-        // TODO add main menu controller
-
+        this.pageController = new PageController(frame, this);
+        this.newGamePressed = false; 
+        
         this.mainMenu = new MainMenu(/* add controller */);
         frame.addToCardLayout(mainMenu, "MainMenu");
         this.pauseMenu = new PauseMenu(this.pageController);
@@ -96,4 +98,10 @@ public class GameLoop {
         }
     }
 
+    /**
+     * When this method is called the game loop start; 
+     */
+    public void startGame() {
+    	this.newGamePressed = true; 
+    }
 }
