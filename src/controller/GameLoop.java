@@ -29,7 +29,7 @@ public class GameLoop {
             if(this.newGamePressed ) {
             	this.newGamePressed = false; 
                 this.loadingScreen = new LoadingScreenImpl(this.pageController);
-                frame.addToCardLayout(loadingScreenImpl, "LoadingScreen");
+                frame.addToCardLayout(loadingScreen, "LoadingScreen");
                 this.loadingScreen.startProgressBar();
                 this.gameController = new BasicGameController(this.actionMenuController, this.gameAreaController, this.frame, this.pageController);
                 this.match();

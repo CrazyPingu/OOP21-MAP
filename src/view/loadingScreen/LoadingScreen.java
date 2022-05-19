@@ -1,6 +1,5 @@
 package view.loadingScreen;
 
-import view.frame.BasicFrame;
 
 /**
  * 
@@ -31,12 +30,8 @@ public interface LoadingScreen {
 	public void addMessage();
 
 	/**
-	 * 
-	 * @param frame             : the frame where I'm currently working
-	 * @param currentCardLayout : the name of the CardLayout of this LoadingScreen
-	 * @param guiCardLayout     : the name of the CardLayout that will be shown when
-	 *                          the progress bar reach 100%
+	 * Start the progress bar and show the game at the end of it
 	 */
-	public void startProgressBar(BasicFrame frame, String currentCardLayout, String guiCardLayout);
+	public void startProgressBar();
 
 }
