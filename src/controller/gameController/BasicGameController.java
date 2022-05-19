@@ -35,7 +35,7 @@ public class BasicGameController extends GameController {
 	public void playerTurn() {
 		int currentAction = this.getCurrentActionNumber();
 		Player player = this.getTotalPanel().getGameArea().getRoom().getPlayer();
-		this.setActionNumber(player.getActionNumber());
+		this.setCurrentActionNumber(player.getActionNumber());
 		//TODO move current action control in game loop
 		while (currentAction > 0)
 			;
