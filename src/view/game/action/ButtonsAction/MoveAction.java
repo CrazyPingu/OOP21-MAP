@@ -20,7 +20,7 @@ public class MoveAction implements ActionListener {
      * Call the move method in ActionMenuController
      */
     public void actionPerformed(ActionEvent e) {
-        menucontroller.move();
+        this.menucontroller.setMove();
     }
 
 }
