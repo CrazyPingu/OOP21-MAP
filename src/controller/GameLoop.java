@@ -44,6 +44,7 @@ public class GameLoop {
     }
 
     private void init() {
+        frame = new BasicFrame();
         this.actionMenuController = new ActionMenuController(this);
         this.gameAreaController = new GameAreaController(this);
         this.pageController = new PageController(frame, this);
