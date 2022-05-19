@@ -23,7 +23,7 @@ public class Player implements MultipleActionObject, ArtefactUserObject, MovingO
 
 	private final int INITIAL_ACTION_NUMBER = 0;
 	private final static Pair<Integer, Integer> STANDARD_SPAWN_POSITION = new Pair<Integer, Integer>(0, 0);
-	
+
 	private ExtendibleMaxLifeSystem life;
 	private Pair<Integer, Integer> pos;
 	private Weapon weapon;
@@ -52,7 +52,7 @@ public class Player implements MultipleActionObject, ArtefactUserObject, MovingO
 		this.textureImage = textureImage;
 		this.actionNumber = this.INITIAL_ACTION_NUMBER;
 	}
-	
+
 	/**
 	 * 
 	 * @param life         is the life system of the player
@@ -65,7 +65,7 @@ public class Player implements MultipleActionObject, ArtefactUserObject, MovingO
 	public Player(ExtendibleMaxLifeSystem life, Weapon weapon, Movement movement, String name, Image textureImage) {
 		this(life, STANDARD_SPAWN_POSITION, weapon, movement, name, textureImage);
 	}
-	
+
 	@Override
 	public void changeWeapon(Weapon weapon) {
 		this.weapon = weapon;
@@ -149,6 +149,7 @@ public class Player implements MultipleActionObject, ArtefactUserObject, MovingO
 
 	public String toString() {
 		return " name = " + this.name + "\n health = " + this.getHealth() + "\n max health = " + this.getMaxHealth()
-				+ "\n weapon damage = " + this.weapon.getDamage() + "\n number action = " + this.getActionNumber();
+				+ "\n current weapon = " + this.weapon.getName() + "\n weapon damage = " + this.weapon.getDamage()
+				+ "\n number action = " + this.getActionNumber();
 	}
 }
