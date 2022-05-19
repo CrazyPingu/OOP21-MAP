@@ -167,7 +167,13 @@ public class GameArea extends JPanel {
 				image = RoomConstant.MOVE_HIGHLIGHT;
 			}
 			for (var x : pos) {
-				this.room.getCells().get(x).highlightCell(image);
+				if(flag.equals(ActionFlag.MOVE)) {
+					if(RoomConstant.searchEnemy(x, this.room.getEnemyList()) == null) {
+						this.room.getCells().get(x).highlightCell(image);
+					}
+				}else {
+					this.room.getCells().get(x).highlightCell(image);
+				}
 			}
 			this.repaint();
 		}
