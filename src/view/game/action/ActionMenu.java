@@ -20,14 +20,14 @@ import view.game.action.ButtonsAction.SkipAction;
 public class ActionMenu extends JPanel {
 
     private static final long serialVersionUID = -4962314493991930765L;
-
+    private List<MenuButton> button;
     /**
      * 
      * @param controller     : the PageController
      * @param menucontroller : the ActionMenuController
      */
     public ActionMenu(PageController controller, ActionMenuController menucontroller) {
-        List<MenuButton> button = new ArrayList<>();
+        this.button = new ArrayList<>();
         MenuButton attack = new MenuButton("Attack", 30);
         MenuButton move = new MenuButton("Move", 30);
         MenuButton skip = new MenuButton("Skip", 30);
@@ -49,5 +49,11 @@ public class ActionMenu extends JPanel {
                 buttonInsets));
         this.add(pause, new GbcDimension(3, 0, Constant.horizontalAspectRatio(350), Constant.verticalAspectRatio(150),
                 buttonInsets));
+    }
+    
+    public void enableButton() {
+        for(MenuButton x : button) {
+            x.setEnabled(true);
+        }
     }
 }
