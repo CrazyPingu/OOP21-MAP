@@ -1,12 +1,17 @@
 package controller;
 
+import controller.gameController.BasicGameController;
 import controller.gameController.GameController;
 import logics.game_object.entity.Player;
 import utilities.Pair;
+import view.endGameMenu.EndGameMenu;
 import view.frame.BasicFrame;
 import view.game.TotalPanel;
 import view.loadingScreen.LoadingScreenImpl;
+import view.mainMenu.MainMenu;
 import view.pause.PauseMenu;
+import view.endGameMenu.Victory;
+import view.endGameMenu.Defeat;
 
 public class GameLoop {
     private BasicFrame frame;
@@ -14,8 +19,8 @@ public class GameLoop {
     private MainMenu mainMenu;
     private TotalPanel totalPanel;
     private PauseMenu pauseMenu;
-    private WinGame winGame;
-    private LoseGame loseGame;
+    private Victory victory;
+    private Defeat defeat;
     private BasicGameController gameController;
     private ActionMenuController actionMenuController;
     private GameAreaController gameAreaController;
@@ -24,8 +29,8 @@ public class GameLoop {
 
     public GameLoop() {
         this.init();
-        while(true) {
             this.pageController.showMainMenu();
+        while(true) {
             if(this.newGamePressed ) {
             	this.newGamePressed = false; 
                 this.loadingScreen = new LoadingScreenImpl(this.pageController);
@@ -35,19 +40,6 @@ public class GameLoop {
                 this.match();
             }
         }
-        // main menu - loading screen - creazione total panel(new room da
-        // gameAreaController)
-
-        // while True
-        // conterrà while(getcurrentactionnumber>0) turno player
-        
-        
-        /*
-         *         
-         *         
-         *         
-         */
-
     }
 
     private void init() {
@@ -56,14 +48,14 @@ public class GameLoop {
         this.pageController = new PageController(frame, this);
         this.newGamePressed = false; 
         
-        this.mainMenu = new MainMenu(/* add controller */);
+        this.mainMenu = new MainMenu(pageController);
         frame.addToCardLayout(mainMenu, "MainMenu");
         this.pauseMenu = new PauseMenu(this.pageController);
         frame.addToCardLayout(pauseMenu, "PauseMenu");
-        this.winGame = new winGame(this.pageController);
-        frame.addToCardLayout(winGame, "Win");
-        this.loseGame = new LoseGame(this.pageController);
-        frame.addToCardLayout(loseGame, "Defeat");
+        this.victory = new Victory(this.pageController);
+        frame.addToCardLayout(victory, "Victory");
+        this.defeat = new Defeat(this.pageController);
+        frame.addToCardLayout(defeat, "Defeat");
     }
 
     public ActionFlag getFlag() {
@@ -95,6 +87,11 @@ public class GameLoop {
         while(!this.gameController.getPlayer().isDead() || this.gameController.getRoomCounter() > 3) {
             this.gameController.playerTurn();
             this.gameController.enemyTurn();
+        }
+        if(this.gameController.getPlayer().isDead()) {
+            this.pageController.showDefeat();
+        }else if (this.gameController.getRoomCounter() >=3) {
+            this.pageController.showVictory();
         }
     }
 
