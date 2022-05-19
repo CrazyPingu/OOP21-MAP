@@ -9,9 +9,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import controller.GameAreaController;
 import logics.game_object.GameObject;
 import utilities.ImageMethod;
 import utilities.ImageModifier;
+import utilities.Pair;
 
 /**
  * 
@@ -24,9 +26,13 @@ public class GameButton extends JButton implements ActionListener {
 	private JLabel sprite;
 	private JLabel strategyLabel;
 	private Dimension buttonDimension;
+	private GameAreaController gameAreaController;
+	private Pair<Integer, Integer> pos;
 
-	public GameButton(Dimension buttonDimension) {
+	public GameButton(Dimension buttonDimension, GameAreaController gameAreaController, Pair<Integer, Integer> pos) {
 		this.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+		this.pos = pos;
+		this.gameAreaController = gameAreaController;
 		this.buttonDimension = buttonDimension;
 		this.setEnabled(false);
 		sprite = new JLabel();
@@ -61,10 +67,7 @@ public class GameButton extends JButton implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		/*
-		 * TODO Auto-generated method stub Pass gameAreaController, and check flag if is
-		 * moving or attacking
-		 */
+		this.gameAreaController.makeAction(pos);
 	}
 
 	/**

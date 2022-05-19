@@ -15,6 +15,7 @@ import utilities.Constant;
 import utilities.Pair;
 import utilities.RoomConstant;
 import controller.ActionFlag;
+import controller.GameAreaController;
 
 /**
  * 
@@ -26,9 +27,11 @@ public class GameArea extends JPanel {
 	private static final long serialVersionUID = 2941617427011748438L;
 	private Room room;
 	private Pair<Integer, Integer> size;
+	private GameAreaController gameAreaController;
 	private Dimension buttonDimension;
 
-	public GameArea(Room room) {
+	public GameArea(Room room, GameAreaController gameAreaController) {
+		this.gameAreaController = gameAreaController;
 		this.setOpaque(false);
 		this.changeRoom(room);
 	}
@@ -80,7 +83,8 @@ public class GameArea extends JPanel {
 	private void placeCells() {
 		for (int i = 0; i < size.getY(); i++) {
 			for (int j = 0; j < size.getX(); j++) {
-				final GameButton jb = new GameButton(buttonDimension);
+				final GameButton jb = new GameButton(buttonDimension, gameAreaController,
+						new Pair<Integer, Integer>(j, i));
 				room.addButtonToCells(new Pair<Integer, Integer>(j, i), jb);
 				this.add(jb);
 			}
@@ -168,7 +172,7 @@ public class GameArea extends JPanel {
 			this.repaint();
 		}
 	}
-	
+
 	/**
 	 * Method that remove all the highight
 	 */
