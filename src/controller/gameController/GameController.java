@@ -100,12 +100,14 @@ public abstract class GameController {
      */
     public void move(Pair<Integer, Integer> newpos) {
         if (RoomConstant.searchEnemy(newpos, this.totalPanel.getGameArea().getRoom().getEnemyList()) == null) {
-            this.totalPanel.getGameArea().moveGameObject(player.getPos(), newpos);
             if (RoomConstant.searchArtefact(newpos,
                     this.totalPanel.getGameArea().getRoom().getArtefactList()) != null) {
                 RoomConstant.searchArtefact(newpos, this.totalPanel.getGameArea().getRoom().getArtefactList())
                         .execute(player);
-            } else if (this.totalPanel.getGameArea().getRoom().playerOnDoor()) {
+                this.totalPanel.getGameArea().removeGameObject(newpos);                
+            }
+            this.totalPanel.getGameArea().moveGameObject(player.getPos(), newpos);
+            if (this.totalPanel.getGameArea().getRoom().playerOnDoor()) {
                 this.roomCounter++;
                 this.totalPanel.getGameArea().changeRoom(this.gameAreaController.generateNewRoom());
             }
@@ -142,7 +144,7 @@ public abstract class GameController {
     public int getRoomCounter() {
         return this.roomCounter;
     }
-    
+
     public int getCurrentAction() {
         return currentActionNumber;
     }
