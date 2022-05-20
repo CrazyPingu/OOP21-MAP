@@ -2,8 +2,6 @@ package controller.gameController;
 
 import java.util.List;
 
-import controller.ActionFlag;
-import controller.ActionMenuController;
 import controller.GameAreaController;
 import controller.PageController;
 import controller.enemyAI.EnemyAIImpl;
@@ -11,7 +9,6 @@ import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import logics.game_statistics.GameStatisticsImpl;
 import utilities.Pair;
-import view.frame.BasicFrame;
 import view.game.TotalPanel;
 
 /**
@@ -42,7 +39,7 @@ public class BasicGameController extends GameController {
 				if (player.isDead()) {
 					this.getPageController().showDefeat();
 				} else {
-					this.getTotalPanel().getScrollableStats().getStatsValues().update(player, this.getGameStats());
+					this.getTotalPanel().getScrollableStats().getStatsValues().update(player, this.getGameStats(), this.getCurrentActionNumber());
 					this.getTotalPanel().getScrollableLog().getLogMessage().update("" + player.getName() + " got hit "
 							+ enemy.getWeapon().getDamage() + " by " + enemy.getName() + "!");
 				}

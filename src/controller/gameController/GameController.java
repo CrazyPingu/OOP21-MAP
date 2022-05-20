@@ -64,6 +64,7 @@ public abstract class GameController {
      */
     public void decreaseAction() {
         this.currentActionNumber--;
+        this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.getGameStats(), this.currentActionNumber);
     }
 
     /**
@@ -72,6 +73,7 @@ public abstract class GameController {
     public void skipTurn() {
         this.totalPanel.getGameArea().removeHighlight();
         this.currentActionNumber = 0;
+        this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.getGameStats(), this.currentActionNumber);
         this.enemyTurn();
     }
 
@@ -80,12 +82,13 @@ public abstract class GameController {
      */
     private void attack(Pair<Integer, Integer> pos) {
         SimpleEnemy enemy = RoomConstant.searchEnemy(pos, this.totalPanel.getGameArea().getRoom().getEnemyList());
+        this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.getGameStats(), this.currentActionNumber);
         if (enemy != null) {
             enemy.damage(this.getPlayer().getWeapon().getDamage());
             if (enemy.isDead()) {
                 this.totalPanel.getGameArea().removeGameObject(pos);
                 this.gameStats.increaseKilledEnemies();
-                this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.gameStats);
+                this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.gameStats, this.currentActionNumber);
             }
             this.getTotalPanel().getScrollableLog().getLogMessage().update(enemy.getName() + " got hit");
         } else {
@@ -101,6 +104,7 @@ public abstract class GameController {
      * @param newpos : the new position of the player
      */
     private void move(Pair<Integer, Integer> newpos) {
+    	this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.getGameStats(), this.currentActionNumber);
         if (RoomConstant.searchEnemy(newpos, this.totalPanel.getGameArea().getRoom().getEnemyList()) == null) {
             Artefact artefact = RoomConstant.searchArtefact(newpos,
                     this.totalPanel.getGameArea().getRoom().getArtefactList());
@@ -109,12 +113,12 @@ public abstract class GameController {
                 this.totalPanel.getGameArea().removeGameObject(newpos);
                 this.gameStats.increaseCollectedArtefacts();
                 this.getTotalPanel().getScrollableLog().getLogMessage().update("Picked up " + artefact.getName() + ".");
-                this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.gameStats);
+                this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.gameStats, this.currentActionNumber);
             }
             this.totalPanel.getGameArea().moveGameObject(this.getPlayer().getPos(), newpos);
             if (this.totalPanel.getGameArea().getRoom().playerOnDoor()) {
                 this.gameStats.increaseCompletedRooms();
-                this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.gameStats);
+                this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.gameStats, this.currentActionNumber);
                 this.totalPanel.getGameArea().changeRoom(this.gameAreaController.generateNewRoom(this.getPlayer()));
             }
         }
@@ -195,8 +199,12 @@ public abstract class GameController {
     public void makeAction(Pair<Integer, Integer> pos) {
         if (this.flag.equals(ActionFlag.ATTACK)) {
             this.attack(pos);
+            this.gameStats.increaseAttackActionCounter();
+            //TODO display stats
         } else if (this.flag.equals(ActionFlag.MOVE)) {
             this.move(pos);
+            this.gameStats.increaseMoveActionCounter();
+            //TODO display stats
         }
 
     }
