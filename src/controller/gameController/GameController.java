@@ -125,6 +125,10 @@ public abstract class GameController {
     public Player getPlayer() {
         return this.player;
     }
+    
+    public boolean isDead() {
+        return this.getPlayer().isDead();
+    }
 
     public TotalPanel getTotalPanel() {
         return this.totalPanel;
