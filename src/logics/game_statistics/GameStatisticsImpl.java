@@ -3,37 +3,37 @@ package logics.game_statistics;
 import utilities.counter.CounterImpl;
 
 public class GameStatisticsImpl implements GameStatistics {
-	private CounterImpl killedEnemies;
-	private CounterImpl passedRooms;
-	private CounterImpl collectedArtefacts;
+	private CounterImpl killedEnemiesCounter;
+	private CounterImpl passedRoomsCounter;
+	private CounterImpl collectedArtefactsCounter;
 
 	@Override
 	public void increaseKilledEnemies() {
-		this.killedEnemies.increment();
+		this.killedEnemiesCounter.increment();
 	}
 
 	@Override
 	public void increasePassedRooms() {
-		this.passedRooms.increment();
+		this.passedRoomsCounter.increment();
 	}
 	
 	@Override
 	public void increaseCollectedArtefacts() {
-		this.passedRooms.increment();
+		this.collectedArtefactsCounter.increment();
 	}
 
 	@Override
 	public int getKilledEnemies() {
-		return this.killedEnemies.getCountValue();
+		return this.killedEnemiesCounter.getCountValue();
 	}
 
 	@Override
 	public int getPassedRoom() {
-		return this.passedRooms.getCountValue();
+		return this.passedRoomsCounter.getCountValue();
 	}
 	
 	@Override
 	public int getCollectedArtefacts() {
-		return this.collectedArtefacts.getCountValue();
+		return this.collectedArtefactsCounter.getCountValue();
 	}
 }
