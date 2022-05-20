@@ -14,6 +14,8 @@ public class GameStatisticsImpl implements GameStatistics {
 		this.killedEnemiesCounter = new CounterImpl();
 		this.completedRoomsCounter = new CounterImpl();
 		this.collectedArtefactsCounter = new CounterImpl();
+		this.attackActionCounter = new CounterImpl();
+		this.moveActionCounter = new CounterImpl();
 	}
 
 	@Override
