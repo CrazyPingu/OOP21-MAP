@@ -1,11 +1,11 @@
 package view.game.central;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import logics.game_object.artefact.Artefact;
@@ -33,7 +33,6 @@ public class GameArea extends JPanel {
 
 	public GameArea(Room room, GameAreaController gameAreaController) {
 		this.gameAreaController = gameAreaController;
-		this.setOpaque(false);
 		this.changeRoom(room);
 	}
 
@@ -44,14 +43,14 @@ public class GameArea extends JPanel {
 	 * @param room the room to replace the older one
 	 */
 	public void changeRoom(Room room) {
+		this.removeAll();
 		this.room = room;
 		this.size = room.getSize();
 		this.setLayout(new GridLayout(size.getY(), size.getX()));
-		this.removeAll();
 		this.buttonDimension = new Dimension(Constant.GAME_WIDTH / size.getX(), Constant.TOP_HEIGHT / size.getY());
 		this.placeCells();
 		this.initializeSprite();
-		repaint();
+		this.validate();
 	}
 
 	/**
@@ -160,22 +159,23 @@ public class GameArea extends JPanel {
 	 */
 	public void highlightCells(ActionFlag flag) {
 		if (flag != null) {
-			ImageIcon image = null;
+			Color backgroudColor = null;
 			List<Pair<Integer, Integer>> pos = new ArrayList<>();
 			if (flag.equals(ActionFlag.ATTACK)) {
 				pos = this.room.getPlayer().getWeapon().getAttackArea(this.room.getPlayer().getPos(), size);
-				image = RoomConstant.ATTACK_HIGHLIGHT;
+				backgroudColor = RoomConstant.ATTACK_HIGHLIGHT;
 			} else if (flag.equals(ActionFlag.MOVE)) {
 				pos = this.room.getPlayer().getMovementSystem().reachableCells(this.room.getPlayer().getPos(), size);
-				image = RoomConstant.MOVE_HIGHLIGHT;
+				backgroudColor = RoomConstant.MOVE_HIGHLIGHT;
 			}
+			this.drawDoor(room.getDoor());
 			for (var x : pos) {
 				if (flag.equals(ActionFlag.MOVE)) {
 					if (RoomConstant.searchEnemy(x, this.room.getEnemyList()) == null) {
-						this.room.getCells().get(x).highlightCell(image);
+						this.room.getCells().get(x).highlightCell(backgroudColor);
 					}
 				} else {
-					this.room.getCells().get(x).highlightCell(image);
+					this.room.getCells().get(x).highlightCell(backgroudColor);
 				}
 			}
 			this.repaint();
@@ -189,7 +189,8 @@ public class GameArea extends JPanel {
 		for (var x : room.getCells().entrySet()) {
 			x.getValue().removeHighlight();
 		}
-		this.repaint();
+		this.drawDoor(room.getDoor());
+		repaint();
 	}
 
 	/**
