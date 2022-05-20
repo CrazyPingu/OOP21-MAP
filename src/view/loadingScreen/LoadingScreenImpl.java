@@ -47,7 +47,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen, Runnable
 	 */
 	public void addImage(String fileName) {
 		Image image = ImageModifier.scaleWithDimension(ImageMethod.getImage("loadingScreen/" + fileName),
-				new Dimension(960, 540));
+				new Dimension(Constant.WIDTH / 2, Constant.HEIGHT / 2));
 		add(new JLabel(new ImageIcon(image)), new GbcDimension(0, 0, 0, 80));
 	}
 
