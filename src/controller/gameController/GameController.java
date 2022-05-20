@@ -16,6 +16,7 @@ import utilities.Pair;
 import utilities.RoomConstant;
 import view.frame.BasicFrame;
 import view.game.TotalPanel;
+import logics.game_statistics.GameStatistics;
 
 /**
  * 
@@ -24,34 +25,20 @@ import view.game.TotalPanel;
  */
 public abstract class GameController {
 
-    private ActionMenuController actionMenuController;
     private GameAreaController gameAreaController;
-    private PageController pageController;
     private TotalPanel totalPanel;
-    private Player player;
+    private PageController pageController;
     private ActionFlag flag;
     private int currentActionNumber;
-    private BasicFrame frame;
+    private GameStatistics gameStats;
 
-    public GameController(ActionMenuController actionMenuController, GameAreaController gameAreaController,
-            BasicFrame frame, PageController pageController) {
-        this.actionMenuController = actionMenuController;
-        this.gameAreaController = gameAreaController;
+    public GameController(GameAreaController gameAreaController, TotalPanel totalPanel, PageController pageController,
+            GameStatistics gameStats) {
+        this.totalPanel = totalPanel;
         this.pageController = pageController;
-        this.frame = frame;
-    }
-
-    /**
-     * setup the first Game.
-     */
-    public void startGame() {
-        WeaponFactoryImpl wf = new WeaponFactoryImpl();
-        MovementFactoryImpl mf = new MovementFactoryImpl();
-        player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createStick(), mf.stepMovement(), "Marcello",
-                EntityTexture.PLAYER);
-        Room randomRoom = gameAreaController.generateNewRoom();
-        this.totalPanel = new TotalPanel(randomRoom, actionMenuController, gameAreaController, pageController);
-        frame.addToCardLayout(totalPanel, "Game");
+        this.gameStats = gameStats;
+        this.gameAreaController = gameAreaController;
+        this.currentActionNumber = this.getPlayer().getActionNumber();
     }
 
     /**
@@ -71,6 +58,10 @@ public abstract class GameController {
      */
     public abstract boolean isWon();
 
+    public PageController getPageController() {
+        return this.pageController;
+    }
+
     /**
      * Decrease the number of available action
      */
@@ -82,7 +73,9 @@ public abstract class GameController {
      * Skip the turn
      */
     public void skipTurn() {
+        this.totalPanel.getGameArea().removeHighlight();
         this.currentActionNumber = 0;
+        this.enemyTurn();
     }
 
     /**
@@ -91,11 +84,14 @@ public abstract class GameController {
     private void attack(Pair<Integer, Integer> pos) {
         SimpleEnemy enemy = RoomConstant.searchEnemy(pos, this.totalPanel.getGameArea().getRoom().getEnemyList());
         if (enemy != null) {
-            enemy.damage(this.player.getWeapon().getDamage());
+            enemy.damage(this.getPlayer().getWeapon().getDamage());
+            if (enemy.isDead()) {
+                this.totalPanel.getGameArea().removeGameObject(pos);
+            }
             this.getTotalPanel().getScrollableLog().getLogMessage().update(enemy.getName() + " è stato colpito.");
         } else {
             this.getTotalPanel().getScrollableLog().getLogMessage()
-                    .update(this.player.getName() + " ha mancato il colpo.");
+                    .update(this.getPlayer().getName() + " ha mancato il colpo.");
         }
         this.endPlayerTurn();
     }
@@ -110,16 +106,15 @@ public abstract class GameController {
             Artefact artefact = RoomConstant.searchArtefact(newpos,
                     this.totalPanel.getGameArea().getRoom().getArtefactList());
             if (artefact != null) {
-                artefact.execute(player);
+                artefact.execute(this.getPlayer());
                 this.totalPanel.getGameArea().removeGameObject(newpos);
                 this.getTotalPanel().getScrollableLog().getLogMessage().update("Raccolto " + artefact.getName() + ".");
-                this.getTotalPanel().getScrollableStats().getStatsValues().update(player);
-                ;
+                this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer());
             }
-            this.totalPanel.getGameArea().moveGameObject(player.getPos(), newpos);
+            this.totalPanel.getGameArea().moveGameObject(this.getPlayer().getPos(), newpos);
             if (this.totalPanel.getGameArea().getRoom().playerOnDoor()) {
-                //this.roomCounter++; TODO
-                this.totalPanel.getGameArea().changeRoom(this.gameAreaController.generateNewRoom());
+                gameStats.increasePassedRooms();
+                this.totalPanel.getGameArea().changeRoom(this.gameAreaController.generateNewRoom(this.getPlayer()));
             }
         }
         this.endPlayerTurn();
@@ -130,7 +125,7 @@ public abstract class GameController {
      * @return the player
      */
     public Player getPlayer() {
-        return this.player;
+        return this.totalPanel.getGameArea().getRoom().getPlayer();
     }
 
     /**
@@ -138,7 +133,7 @@ public abstract class GameController {
      * @return if the player is dead
      */
     public boolean isDead() {
-        return this.player.isDead();
+        return this.getPlayer().isDead();
     }
 
     /**
@@ -156,6 +151,7 @@ public abstract class GameController {
      */
     public void setFlag(ActionFlag flag) {
         this.flag = flag;
+        this.totalPanel.getGameArea().removeHighlight();
         this.totalPanel.getGameArea().highlightCells(this.flag);
     }
 
@@ -167,23 +163,23 @@ public abstract class GameController {
         return currentActionNumber;
     }
 
-    /**
-     * 
-     * @param currentActionNumber the number of action available by the player
-     * 
-     *                            Set the number of action
+    /** reset the number of action available by the player
+     *
      */
-    public void setCurrentActionNumber(int currentActionNumber) {
-        this.currentActionNumber = currentActionNumber;
+    public void resetActionNumber() {
+        this.currentActionNumber = this.getPlayer().getActionNumber();
     }
 
     /**
      * end the turn of the player
      */
     private void endPlayerTurn() {
-        this.totalPanel.getActionMenu().enableButton();
         this.totalPanel.getGameArea().removeHighlight();
         this.decreaseAction();
+        if (this.getCurrentActionNumber() == 0) {
+            enemyTurn();
+        }
+        this.isWon();
     }
 
     /**
