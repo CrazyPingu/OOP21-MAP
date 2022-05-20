@@ -181,7 +181,9 @@ public abstract class GameController {
         if (this.getCurrentActionNumber() == 0) {
             enemyTurn();
         }
-        this.isWon();
+        if (isWon()) {
+            this.getPageController().showVictory();
+        }
     }
 
     /**
@@ -196,5 +198,7 @@ public abstract class GameController {
         }
 
     }
+    
+    public abstract boolean isDefeated();
 
 }
