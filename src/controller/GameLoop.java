@@ -60,18 +60,6 @@ public class GameLoop {
         frame.addToCardLayout(defeat, "Defeat");
     }
 
-    public ActionFlag getFlag() {
-        return this.gameController.getFlag();
-    }
-
-    public void attack(Pair<Integer, Integer> pos) {
-        this.gameController.attack(pos);
-    }
-
-    public void move(Pair<Integer, Integer> pos) {
-        this.gameController.move(pos);
-    }
-
     public Player getPlayer() {
         return this.gameController.getPlayer();
     }
@@ -102,5 +90,10 @@ public class GameLoop {
      */
     public void startGame() {
         this.newGamePressed = true;
+    }
+
+    public void makeAction(Pair<Integer, Integer> pos) {
+        this.gameController.makeAction(pos);
+        
     }
 }

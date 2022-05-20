@@ -85,7 +85,7 @@ public abstract class GameController {
     /**
      * Attack in a chosen cell by the user
      */
-    public void attack(Pair<Integer, Integer> pos) {
+    private void attack(Pair<Integer, Integer> pos) {
         SimpleEnemy enemy = RoomConstant.searchEnemy(pos, this.totalPanel.getGameArea().getRoom().getEnemyList());
         if (enemy != null) {
             enemy.damage(this.player.getWeapon().getDamage());
@@ -102,7 +102,7 @@ public abstract class GameController {
      * 
      * @param newpos : the new position of the player
      */
-    public void move(Pair<Integer, Integer> newpos) {
+    private void move(Pair<Integer, Integer> newpos) {
         if (RoomConstant.searchEnemy(newpos, this.totalPanel.getGameArea().getRoom().getEnemyList()) == null) {
             Artefact artefact = RoomConstant.searchArtefact(newpos,
                     this.totalPanel.getGameArea().getRoom().getArtefactList());
@@ -140,14 +140,6 @@ public abstract class GameController {
         this.totalPanel.getGameArea().highlightCells(this.flag);
     }
 
-    /**
-     * 
-     * @return the ActionFlag
-     */
-    public ActionFlag getFlag() {
-        return this.flag;
-    }
-
     public int getRoomCounter() {
         return this.roomCounter;
     }
@@ -164,6 +156,15 @@ public abstract class GameController {
         this.totalPanel.getActionMenu().enableButton();
         this.totalPanel.getGameArea().removeHighlight();
         this.decreaseAction();
+    }
+
+    public void makeAction(Pair<Integer, Integer> pos) {
+        if (this.flag.equals(ActionFlag.ATTACK)) {
+            this.attack(pos);
+        } else if (this.flag.equals(ActionFlag.MOVE)) {
+            this.move(pos);
+        }
+
     }
 
 }

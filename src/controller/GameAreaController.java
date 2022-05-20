@@ -25,11 +25,7 @@ public class GameAreaController {
      * @param pos : the position of the pressed cell
      */
     public void makeAction(Pair<Integer, Integer> pos) {
-        if (this.gameLoop.getFlag().equals(ActionFlag.ATTACK)) {
-            this.gameLoop.attack(pos);
-        } else if (this.gameLoop.getFlag().equals(ActionFlag.MOVE)) {
-            this.gameLoop.move(pos);
-        }
+        this.gameLoop.makeAction(pos);
     }
 
 }

@@ -2,6 +2,7 @@ package controller.gameController;
 
 import java.util.List;
 
+import controller.ActionFlag;
 import controller.ActionMenuController;
 import controller.GameAreaController;
 import controller.PageController;
@@ -71,5 +72,6 @@ public class BasicGameController extends GameController {
 			}
 		}
 	}
+
 
 }
