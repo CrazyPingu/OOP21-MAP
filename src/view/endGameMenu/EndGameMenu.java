@@ -34,6 +34,7 @@ public abstract class EndGameMenu extends JPanel {
         bottom.add(quit, new GbcDimension(1, 0, Constant.horizontalAspectRatio(300), Constant.verticalAspectRatio(150),
                 GbcDimension.createInsets(0, 100, 0, 0)));
         this.add(bottom, BorderLayout.SOUTH);
+        bottom.setOpaque(false);
     }
 
     public void paintComponent(Graphics g) {
