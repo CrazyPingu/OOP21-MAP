@@ -1,5 +1,6 @@
 package controller;
 
+import logics.game_object.entity.Player;
 import logics.room.works.Room;
 import utilities.Pair;
 
@@ -16,8 +17,8 @@ public class GameAreaController {
     /**
      * create a new Room.
      */
-    public Room generateNewRoom() {
-        return randomRoomGenerator.generateRoom(gameLoop.getPlayer());
+    public Room generateNewRoom(Player player) {
+        return randomRoomGenerator.generateRoom(player);
     }
 
     /**
