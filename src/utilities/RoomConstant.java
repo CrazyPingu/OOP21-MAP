@@ -1,8 +1,7 @@
 package utilities;
 
+import java.awt.Color;
 import java.util.List;
-
-import javax.swing.ImageIcon;
 
 import logics.game_object.GameObject;
 import logics.game_object.artefact.Artefact;
@@ -20,8 +19,12 @@ public class RoomConstant {
 	public static final int MIN_X = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(Constant.GAME_WIDTH / 12);
 	public static final int MIN_Y = Constant.TOP_HEIGHT / Constant.verticalAspectRatio(Constant.TOP_HEIGHT / 7);
 
-	public static final ImageIcon ATTACK_HIGHLIGHT = ImageMethod.getImageIcon("room/RedBall.png");
-	public static final ImageIcon MOVE_HIGHLIGHT = ImageMethod.getImageIcon("room/BlueBall.png");
+	public static final Color ATTACK_HIGHLIGHT = Color.RED;
+	public static final Color MOVE_HIGHLIGHT = Color.BLUE;
+	
+	public static final Color BASIC_CELL_COLOR = Color.GRAY;
+	public static final Color DOOR_CELL_COLOR = new Color(110, 38, 14);
+	
 
 	/**
 	 * @param pos            the position of the GameObject to be found
