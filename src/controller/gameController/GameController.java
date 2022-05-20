@@ -1,20 +1,13 @@
 package controller.gameController;
 
 import controller.ActionFlag;
-import controller.ActionMenuController;
 import controller.GameAreaController;
 import controller.PageController;
 import logics.game_object.artefact.Artefact;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
-import logics.life.ExtendibleMaxLifeSystem;
-import logics.room.works.Room;
-import logics.strategy.movement.MovementFactoryImpl;
-import logics.strategy.weapon.WeaponFactoryImpl;
-import utilities.texture.EntityTexture;
 import utilities.Pair;
 import utilities.RoomConstant;
-import view.frame.BasicFrame;
 import view.game.TotalPanel;
 import logics.game_statistics.GameStatistics;
 
@@ -58,7 +51,7 @@ public abstract class GameController {
      */
     public abstract boolean isWon();
     
-    public GameStatistict getGameStats() {
+    public GameStatistics getGameStats() {
         return this.gameStats;
     }
 

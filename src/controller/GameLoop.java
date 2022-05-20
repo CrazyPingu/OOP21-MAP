@@ -3,6 +3,7 @@ package controller;
 import controller.gameController.BasicGameController;
 import controller.gameController.GameController;
 import logics.game_object.entity.Player;
+import logics.game_statistics.GameStatistics;
 import logics.life.ExtendibleMaxLifeSystem;
 import logics.room.works.Room;
 import logics.strategy.movement.MovementFactoryImpl;
@@ -28,7 +29,7 @@ public class GameLoop {
     private ActionMenuController actionMenuController;
     private GameAreaController gameAreaController;
     private PageController pageController;
-
+    private GameStatistics gameStats;
     private BasicGameController gameController;
 
     public GameLoop() {
@@ -59,7 +60,7 @@ public class GameLoop {
         Room randomRoom = gameAreaController.generateNewRoom(player);
         this.totalPanel = new TotalPanel(randomRoom, actionMenuController, gameAreaController, pageController);
         frame.addToCardLayout(totalPanel, "Game");
-        gameController = new BasicGameController(gameAreaController, totalPanel, pageController);
+        gameController = new BasicGameController(gameAreaController, totalPanel, pageController, gameStats);
     }
 
     public void skipTurn() {
