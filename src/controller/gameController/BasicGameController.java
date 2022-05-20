@@ -63,4 +63,9 @@ public class BasicGameController extends GameController {
 		return this.getGameStats().getCompletedRooms() == ROOM_TO_WIN;
 	}
 
+	@Override
+	public boolean isDefeated() {
+		return this.getPlayer().isDead();
+	}
+
 }
