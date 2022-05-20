@@ -63,6 +63,7 @@ public abstract class GameController {
      * Decrease the number of available action
      */
     public void decreaseAction() {
+    	this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.getGameStats(), this.currentActionNumber);
         this.currentActionNumber--;
         this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.getGameStats(), this.currentActionNumber);
     }
@@ -200,11 +201,11 @@ public abstract class GameController {
         if (this.flag.equals(ActionFlag.ATTACK)) {
             this.attack(pos);
             this.gameStats.increaseAttackActionCounter();
-            //TODO display stats
+            this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.getGameStats(), this.currentActionNumber);
         } else if (this.flag.equals(ActionFlag.MOVE)) {
             this.move(pos);
             this.gameStats.increaseMoveActionCounter();
-            //TODO display stats
+            this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.getGameStats(), this.currentActionNumber);
         }
 
     }
