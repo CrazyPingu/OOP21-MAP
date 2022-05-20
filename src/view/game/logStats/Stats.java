@@ -1,6 +1,7 @@
 package view.game.logStats;
 
 import logics.game_object.entity.Player;
+import logics.game_statistics.GameStatistics;
 
 /**
  *
@@ -20,8 +21,8 @@ public class Stats extends TextAreaAppearance {
 	 * @param player : player object to init first values in the stats view
 	 */
 	
-	public void update(Player player) {
-		this.setText(player.toString());
+	public void update(Player player, GameStatistics gameStats) {
+		this.setText(player.toString(), gameStats.toString());
 	}
 
 }
