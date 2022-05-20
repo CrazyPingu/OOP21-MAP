@@ -1,5 +1,6 @@
 package controller;
 
+import logics.game_object.entity.Player;
 import logics.room.works.Room;
 import utilities.Pair;
 
@@ -16,8 +17,8 @@ public class GameAreaController {
     /**
      * create a new Room.
      */
-    public Room generateNewRoom() {
-        return randomRoomGenerator.generateRoom(gameLoop.getPlayer());
+    public Room generateNewRoom(Player player) {
+        return randomRoomGenerator.generateRoom(player);
     }
 
     /**
@@ -25,11 +26,7 @@ public class GameAreaController {
      * @param pos : the position of the pressed cell
      */
     public void makeAction(Pair<Integer, Integer> pos) {
-        if (this.gameLoop.getFlag().equals(ActionFlag.ATTACK)) {
-            this.gameLoop.attack(pos);
-        } else if (this.gameLoop.getFlag().equals(ActionFlag.MOVE)) {
-            this.gameLoop.move(pos);
-        }
+        this.gameLoop.makeAction(pos);
     }
 
 }

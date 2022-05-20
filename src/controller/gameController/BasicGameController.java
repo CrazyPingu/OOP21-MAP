@@ -2,6 +2,7 @@ package controller.gameController;
 
 import java.util.List;
 
+import controller.ActionFlag;
 import controller.ActionMenuController;
 import controller.GameAreaController;
 import controller.PageController;
@@ -26,20 +27,7 @@ public class BasicGameController extends GameController {
 		this.enemyAI = new EnemyAIImpl(this.getTotalPanel());
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @param actionMenuController: controller of the action menu
-	 */
-	@Override
-	public void playerTurn() {
-		int currentAction = this.getCurrentActionNumber();
-		Player player = this.getTotalPanel().getGameArea().getRoom().getPlayer();
-		this.setCurrentActionNumber(player.getActionNumber());
-		//TODO move current action control in game loop
-		while (currentAction > 0)
-			;
-	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -71,5 +59,7 @@ public class BasicGameController extends GameController {
 			}
 		}
 	}
+
+
 
 }
