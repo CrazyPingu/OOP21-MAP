@@ -19,6 +19,14 @@ public interface GameStatistics {
 	 */
 	public void increaseCollectedArtefacts();
 	/**
+	 * Increase attack action counter.
+	 */
+	public void increaseAttackActionCounter();
+	/**
+	 * Increase move action counter.
+	 */
+	public void increaseMoveActionCounter();
+	/**
 	 * @return killed enemies counter.
 	 */
 	public int getKilledEnemies();
@@ -30,6 +38,14 @@ public interface GameStatistics {
 	 * @return collected artefacts counter.
 	 */
 	public int getCollectedArtefacts();
+	/**
+	 * @return attack action counter.
+	 */
+	public int getAttackActionCounter();
+	/**
+	 * @return move action counter.
+	 */
+	public int getMoveActionCounter();
 	/**
 	 * @return a string with all fields
 	 */
