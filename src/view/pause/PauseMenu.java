@@ -23,6 +23,8 @@ import view.pause.action.ResumeAction;
 public class PauseMenu extends JPanel {
 
     private static final long serialVersionUID = 8006565750742104587L;
+    private final int BUTTON_WIDTH = 200;
+    private final int BUTTON_HEIGHT = 70;
     Image image;
 
     /**
@@ -38,10 +40,16 @@ public class PauseMenu extends JPanel {
         JLabel pausetext = labeltext("Pause Menu");
 
         this.setLayout(new GridBagLayout());
-        this.add(pausetext, new GbcDimension(0, GbcDimension.createInsets(70, 0, 30, 0)));
-        this.add(resume, new GbcDimension(1, GbcDimension.createInsets(30, 0, 30, 0)));
-        this.add(mainmenu, new GbcDimension(2, GbcDimension.createInsets(30, 0, 30, 0)));
-        this.add(quit, new GbcDimension(3, GbcDimension.createInsets(30, 0, 30, 0)));
+        
+                resume.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
+                mainmenu.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
+                quit.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
+                
+        this.add(pausetext, new GbcDimension(0, 1, BUTTON_WIDTH, BUTTON_HEIGHT));
+        this.add(resume, new GbcDimension(0, 2, BUTTON_WIDTH, BUTTON_HEIGHT, GbcDimension.createInsets(40, 0, 0, 0)));
+        this.add(mainmenu, new GbcDimension(0, 3, BUTTON_WIDTH, BUTTON_HEIGHT, GbcDimension.createInsets(40, 0, 0, 0)));
+        this.add(quit, new GbcDimension(0, 4, BUTTON_WIDTH, BUTTON_HEIGHT, GbcDimension.createInsets(40, 0, 0, 0)));
+        
         resume.addActionListener(new ResumeAction(controller));
         mainmenu.addActionListener(new MainMenuAction(controller));
         quit.addActionListener(new QuitAction(controller));
