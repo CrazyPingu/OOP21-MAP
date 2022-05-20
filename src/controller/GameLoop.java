@@ -50,13 +50,15 @@ public class GameLoop {
     }
 
     public void newGame() {
+        this.gameStats = new GameStatisticsImpl();
         this.loadingScreen.startProgressBar();
         WeaponFactoryImpl wf = new WeaponFactoryImpl();
         MovementFactoryImpl mf = new MovementFactoryImpl();
         this.player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createStick(), mf.stepMovement(),
                 "Marcello", EntityTexture.PLAYER);
         Room randomRoom = gameAreaController.generateNewRoom(player);
-        this.totalPanel = new TotalPanel(randomRoom, actionMenuController, gameAreaController, pageController, gameStats);
+        this.totalPanel = new TotalPanel(randomRoom, actionMenuController, gameAreaController, pageController,
+                gameStats);
         frame.addToCardLayout(totalPanel, "Game");
         gameController = new BasicGameController(gameAreaController, totalPanel, pageController, gameStats);
     }
