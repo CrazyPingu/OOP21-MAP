@@ -1,16 +1,14 @@
 package controller;
 
 import controller.gameController.BasicGameController;
-import controller.gameController.GameController;
 import logics.game_object.entity.Player;
-import logics.game_statistics.GameStatistics;
+import logics.game_statistics.GameStatisticsImpl;
 import logics.life.ExtendibleMaxLifeSystem;
 import logics.room.works.Room;
 import logics.strategy.movement.MovementFactoryImpl;
 import logics.strategy.weapon.WeaponFactoryImpl;
 import utilities.Pair;
 import utilities.texture.EntityTexture;
-import view.endGameMenu.EndGameMenu;
 import view.frame.BasicFrame;
 import view.game.TotalPanel;
 import view.loadingScreen.LoadingScreenImpl;
@@ -29,7 +27,7 @@ public class GameLoop {
     private ActionMenuController actionMenuController;
     private GameAreaController gameAreaController;
     private PageController pageController;
-    private GameStatistics gameStats;
+    private GameStatisticsImpl gameStats;
     private BasicGameController gameController;
 
     public GameLoop() {
@@ -58,7 +56,7 @@ public class GameLoop {
         this.player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createStick(), mf.stepMovement(),
                 "Marcello", EntityTexture.PLAYER);
         Room randomRoom = gameAreaController.generateNewRoom(player);
-        this.totalPanel = new TotalPanel(randomRoom, actionMenuController, gameAreaController, pageController);
+        this.totalPanel = new TotalPanel(randomRoom, actionMenuController, gameAreaController, pageController, gameStats);
         frame.addToCardLayout(totalPanel, "Game");
         gameController = new BasicGameController(gameAreaController, totalPanel, pageController, gameStats);
     }
