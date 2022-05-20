@@ -9,7 +9,7 @@ import logics.game_object.entity.SimpleEnemy;
 import utilities.Pair;
 import utilities.RoomConstant;
 import view.game.TotalPanel;
-import logics.game_statistics.GameStatistics;
+import logics.game_statistics.GameStatisticsImpl;
 
 /**
  * 
@@ -23,10 +23,10 @@ public abstract class GameController {
     private PageController pageController;
     private ActionFlag flag;
     private int currentActionNumber;
-    private GameStatistics gameStats;
+    private GameStatisticsImpl gameStats;
 
     public GameController(GameAreaController gameAreaController, TotalPanel totalPanel, PageController pageController,
-            GameStatistics gameStats) {
+            GameStatisticsImpl gameStats) {
         this.totalPanel = totalPanel;
         this.pageController = pageController;
         this.gameStats = gameStats;
@@ -50,8 +50,8 @@ public abstract class GameController {
      * @return if the player won the game
      */
     public abstract boolean isWon();
-    
-    public GameStatistics getGameStats() {
+
+    public GameStatisticsImpl getGameStats() {
         return this.gameStats;
     }
 
@@ -106,11 +106,11 @@ public abstract class GameController {
                 artefact.execute(this.getPlayer());
                 this.totalPanel.getGameArea().removeGameObject(newpos);
                 this.getTotalPanel().getScrollableLog().getLogMessage().update("Picked up " + artefact.getName() + ".");
-                this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer());
+                this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.gameStats);
             }
             this.totalPanel.getGameArea().moveGameObject(this.getPlayer().getPos(), newpos);
             if (this.totalPanel.getGameArea().getRoom().playerOnDoor()) {
-                gameStats.increaseCompletedRooms();
+                this.gameStats.increaseCompletedRooms();
                 this.totalPanel.getGameArea().changeRoom(this.gameAreaController.generateNewRoom(this.getPlayer()));
             }
         }
@@ -160,7 +160,8 @@ public abstract class GameController {
         return currentActionNumber;
     }
 
-    /** reset the number of action available by the player
+    /**
+     * reset the number of action available by the player
      *
      */
     public void resetActionNumber() {
