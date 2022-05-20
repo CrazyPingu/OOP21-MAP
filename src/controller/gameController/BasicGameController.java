@@ -12,6 +12,7 @@ import logics.game_object.entity.SimpleEnemy;
 import logics.game_statistics.GameStatistics;
 import utilities.Pair;
 import view.frame.BasicFrame;
+import view.game.TotalPanel;
 
 /**
  * 
@@ -22,10 +23,10 @@ public class BasicGameController extends GameController {
 
 	private EnemyAIImpl enemyAI;
 	private final int ROOM_TO_WIN = 3;
-	
-	public BasicGameController(ActionMenuController actionMenuController, GameAreaController gameAreaController,
+
+	public BasicGameController(GameAreaController gameAreaController, TotalPanel totalPanel,
 			PageController pageController, GameStatistics gameStats) {
-		super(actionMenuController, gameAreaController, pageController, gameStats);
+		super(gameAreaController, totalPanel, pageController, gameStats);
 		this.enemyAI = new EnemyAIImpl(this.getTotalPanel());
 	}
 
@@ -52,14 +53,14 @@ public class BasicGameController extends GameController {
 		this.resetActionNumber();
 	}
 
-	@Ovveride
+	@Override
 	public boolean isDoorAvailable() {
 		return true;
 	}
-	
+
 	@Override
 	public boolean isWon() {
-		return this.getGameStats() == ROOM_TO_WIN;
+		return this.getGameStats().getPassedRooms() == ROOM_TO_WIN;
 	}
 
 }
