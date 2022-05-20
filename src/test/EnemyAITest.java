@@ -12,6 +12,7 @@ import controller.enemyAI.EnemyAIImpl;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import logics.game_object.entity.enemy.EnemyFactoryImpl;
+import logics.game_statistics.GameStatisticsImpl;
 import logics.life.ExtendibleMaxLifeSystem;
 import logics.room.works.RoomImpl;
 import logics.strategy.movement.MovementFactoryImpl;
@@ -40,6 +41,7 @@ public class EnemyAITest {
 	private SimpleEnemy enemyAroundArea, enemyCrossArea;
 	private List<Pair<Integer, Integer>> expectedResult;
 	private Pair<Integer, Integer> roomSize = new Pair<>(10, 4);
+	private GameStatisticsImpl gameStats;
 
 	@org.junit.Before
 	public void init() {
@@ -47,13 +49,14 @@ public class EnemyAITest {
 		this.gameAreaController = new GameAreaController(null);
 		this.pageController = new PageController(null, null);
 		this.expectedResult = new ArrayList<>();
+		this.gameStats = new GameStatisticsImpl();
 		this.wf = new WeaponFactoryImpl();
 		this.mf = new MovementFactoryImpl();
 		this.ef = new EnemyFactoryImpl();
 		this.player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createAxe(),
 				mf.stepMovement(), "Marcello", EntityTexture.PLAYER);
 		this.room = new RoomImpl(roomSize, this.player, new Pair<>(2, 1));
-		this.totalPanel = new TotalPanel(room, actionMenuController, gameAreaController, pageController);
+		this.totalPanel = new TotalPanel(room, actionMenuController, gameAreaController, pageController, gameStats);
 		this.enemyAI = new EnemyAIImpl(totalPanel);
 		this.room.getEnemyList().clear();
 		this.enemyAroundArea = ef.createZombieStick(new Pair<>(5, 1));
