@@ -15,7 +15,7 @@ public interface GameStatistics {
 	/**
 	 * Increase passed rooms counter.
 	 */
-	public void increasePassedRooms();
+	public void increaseCompletedRooms();
 	/**
 	 * Increase collected artefacts counter.
 	 */
@@ -27,10 +27,13 @@ public interface GameStatistics {
 	/**
 	 * @return passed rooms counter.
 	 */
-	public int getPassedRoom();
+	public int getCompletedRooms();
 	/**
 	 * @return collected artefacts counter.
 	 */
 	public int getCollectedArtefacts();
-	
+	/**
+	 * @return a string with all fields
+	 */
+	public String toString();
 }

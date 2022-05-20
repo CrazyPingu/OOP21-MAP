@@ -110,7 +110,7 @@ public abstract class GameController {
             }
             this.totalPanel.getGameArea().moveGameObject(this.getPlayer().getPos(), newpos);
             if (this.totalPanel.getGameArea().getRoom().playerOnDoor()) {
-                gameStats.increasePassedRooms();
+                gameStats.increaseCompletedRooms();
                 this.totalPanel.getGameArea().changeRoom(this.gameAreaController.generateNewRoom(this.getPlayer()));
             }
         }

@@ -4,7 +4,7 @@ import utilities.counter.CounterImpl;
 
 public class GameStatisticsImpl implements GameStatistics {
 	private CounterImpl killedEnemiesCounter;
-	private CounterImpl passedRoomsCounter;
+	private CounterImpl completedRoomsCounter;
 	private CounterImpl collectedArtefactsCounter;
 
 	@Override
@@ -13,8 +13,8 @@ public class GameStatisticsImpl implements GameStatistics {
 	}
 
 	@Override
-	public void increasePassedRooms() {
-		this.passedRoomsCounter.increment();
+	public void increaseCompletedRooms() {
+		this.completedRoomsCounter.increment();
 	}
 	
 	@Override
@@ -28,12 +28,17 @@ public class GameStatisticsImpl implements GameStatistics {
 	}
 
 	@Override
-	public int getPassedRoom() {
-		return this.passedRoomsCounter.getCountValue();
+	public int getCompletedRooms() {
+		return this.completedRoomsCounter.getCountValue();
 	}
 	
 	@Override
 	public int getCollectedArtefacts() {
 		return this.collectedArtefactsCounter.getCountValue();
+	}
+	@Override
+	public String toString() {
+		return "\nKilled enemies: " + this.killedEnemiesCounter + "\nCompleted rooms: " + this.completedRoomsCounter
+				+ "\nCollected artefacts: " + this.collectedArtefactsCounter + "\n";
 	}
 }
