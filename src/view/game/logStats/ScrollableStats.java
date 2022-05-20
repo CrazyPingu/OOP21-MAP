@@ -1,6 +1,7 @@
 package view.game.logStats;
 
 import logics.game_object.entity.Player;
+import logics.game_statistics.GameStatisticsImpl;
 
 public class ScrollableStats extends ScrollPaneAppearance {
 
@@ -8,10 +9,10 @@ public class ScrollableStats extends ScrollPaneAppearance {
 
 	private Stats statsValues;
 
-	public ScrollableStats(Player player, Stats statsValues) {
+	public ScrollableStats(Player player, Stats statsValues, GameStatisticsImpl gameStats) {
 		super(statsValues);
 		this.statsValues = statsValues;
-		this.statsValues.update(player);
+		this.statsValues.update(player, gameStats);
 		this.setScrollPaneAppearance();
 	}
 
