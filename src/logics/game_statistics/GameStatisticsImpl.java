@@ -2,7 +2,7 @@ package logics.game_statistics;
 
 import utilities.counter.CounterImpl;
 
-public class GameStatistics {
+public class GameStatisticsImpl implements GameStatistics {
 	private CounterImpl killedEnemies;
 	private CounterImpl passedRooms;
 	private CounterImpl collectedArtefacts;
@@ -15,7 +15,7 @@ public class GameStatistics {
 		passedRooms.increment();
 	}
 	
-	public void collectedArtefacts() {
+	public void increaseCollectedArtefacts() {
 		passedRooms.increment();
 	}
 
