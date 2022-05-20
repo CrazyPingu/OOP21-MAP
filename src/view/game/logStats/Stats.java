@@ -18,11 +18,13 @@ public class Stats extends TextAreaAppearance {
 	}
 
 	/**
-	 * @param player : player object to init first values in the stats view
+	 * @param player: player object to init first values in the stats view
+	 * @param gameStats: satistics of the game
+	 * @param currentActionNumber: actions left in a turn
 	 */
-	
+
 	public void update(Player player, GameStatisticsImpl gameStats, int currentActionNumber) {
-		this.setText(player.toString() + gameStats.toString() + currentActionNumber);
+		this.setText(player.toString() + gameStats.toString() + "\n Actions left: " + currentActionNumber);
 	}
 
 }
