@@ -2,26 +2,21 @@ package view.game.action.ButtonsAction;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import controller.ActionMenuController;
-import view.MenuButton;
 
 /**
  *
  */
 public class AttackAction implements ActionListener {
     ActionMenuController menucontroller;
-    private List<MenuButton> button;
 
     /**
      * 
      * @param menucontroller : the ActionMenuController
-     * @param button 
      */
-    public AttackAction(ActionMenuController menucontroller, List<MenuButton> button) {
+    public AttackAction(ActionMenuController menucontroller) {
         this.menucontroller = menucontroller;
-        this.button=button;
     }
 
     /**
@@ -29,9 +24,6 @@ public class AttackAction implements ActionListener {
      */
     public void actionPerformed(ActionEvent e) {
         this.menucontroller.setAttack();
-        for(MenuButton x : button) {
-            x.setEnabled(false);
-        }
     }
 
 }
