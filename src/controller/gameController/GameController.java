@@ -16,6 +16,7 @@ import utilities.Pair;
 import utilities.RoomConstant;
 import view.frame.BasicFrame;
 import view.game.TotalPanel;
+import logics.game_statistics.GameStatistics;
 
 /**
  * 
@@ -24,49 +25,46 @@ import view.game.TotalPanel;
  */
 public abstract class GameController {
 
-    private ActionMenuController actionMenuController;
     private GameAreaController gameAreaController;
-    private PageController pageController;
     private TotalPanel totalPanel;
-    private Player player;
+    private PageController pageController;
     private ActionFlag flag;
     private int currentActionNumber;
-    private BasicFrame frame;
-    private int roomCounter;
+    private GameStatistics gameStats;
 
-    public GameController(ActionMenuController actionMenuController, GameAreaController gameAreaController,
-            BasicFrame frame, PageController pageController) {
-        this.actionMenuController = actionMenuController;
-        this.gameAreaController = gameAreaController;
+    public GameController(GameAreaController gameAreaController, TotalPanel totalPanel, PageController pageController,
+            GameStatistics gameStats) {
+        this.totalPanel = totalPanel;
         this.pageController = pageController;
-        this.frame = frame;
-        this.roomCounter = 0;
+        this.gameStats = gameStats;
+        this.gameAreaController = gameAreaController;
+        this.currentActionNumber = this.getPlayer().getActionNumber();
     }
-
-    /**
-     * setup the first Game.
-     */
-    public void startGame() {
-        WeaponFactoryImpl wf = new WeaponFactoryImpl();
-        MovementFactoryImpl mf = new MovementFactoryImpl();
-        player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createStick(), mf.stepMovement(), "Marcello",
-                EntityTexture.PLAYER);
-        Room randomRoom = gameAreaController.generateNewRoom();
-        this.totalPanel = new TotalPanel(randomRoom, actionMenuController, gameAreaController, pageController);
-        frame.addToCardLayout(totalPanel, "Game");
-    }
-
-    /**
-     * 
-     * @param actionMenuController
-     */
-
-    public abstract void playerTurn();
 
     /**
      * start a new Enemy Turn.
      */
     public abstract void enemyTurn();
+
+    /**
+     * 
+     * @return if the door of the room is available
+     */
+    public abstract boolean isDoorAvailable();
+
+    /**
+     * 
+     * @return if the player won the game
+     */
+    public abstract boolean isWon();
+    
+    public GameStatistict getGameStats() {
+        return this.gameStats;
+    }
+
+    public PageController getPageController() {
+        return this.pageController;
+    }
 
     /**
      * Decrease the number of available action
@@ -79,20 +77,25 @@ public abstract class GameController {
      * Skip the turn
      */
     public void skipTurn() {
+        this.totalPanel.getGameArea().removeHighlight();
         this.currentActionNumber = 0;
+        this.enemyTurn();
     }
 
     /**
      * Attack in a chosen cell by the user
      */
-    public void attack(Pair<Integer, Integer> pos) {
+    private void attack(Pair<Integer, Integer> pos) {
         SimpleEnemy enemy = RoomConstant.searchEnemy(pos, this.totalPanel.getGameArea().getRoom().getEnemyList());
         if (enemy != null) {
-            enemy.damage(this.player.getWeapon().getDamage());
+            enemy.damage(this.getPlayer().getWeapon().getDamage());
+            if (enemy.isDead()) {
+                this.totalPanel.getGameArea().removeGameObject(pos);
+            }
             this.getTotalPanel().getScrollableLog().getLogMessage().update(enemy.getName() + " è stato colpito.");
         } else {
             this.getTotalPanel().getScrollableLog().getLogMessage()
-                    .update(this.player.getName() + " ha mancato il colpo.");
+                    .update(this.getPlayer().getName() + " ha mancato il colpo.");
         }
         this.endPlayerTurn();
     }
@@ -102,30 +105,45 @@ public abstract class GameController {
      * 
      * @param newpos : the new position of the player
      */
-    public void move(Pair<Integer, Integer> newpos) {
+    private void move(Pair<Integer, Integer> newpos) {
         if (RoomConstant.searchEnemy(newpos, this.totalPanel.getGameArea().getRoom().getEnemyList()) == null) {
             Artefact artefact = RoomConstant.searchArtefact(newpos,
                     this.totalPanel.getGameArea().getRoom().getArtefactList());
             if (artefact != null) {
-                artefact.execute(player);
+                artefact.execute(this.getPlayer());
                 this.totalPanel.getGameArea().removeGameObject(newpos);
                 this.getTotalPanel().getScrollableLog().getLogMessage().update("Raccolto " + artefact.getName() + ".");
-                this.getTotalPanel().getScrollableStats().getStatsValues().update(player);
-                ;
+                this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer());
             }
-            this.totalPanel.getGameArea().moveGameObject(player.getPos(), newpos);
+            this.totalPanel.getGameArea().moveGameObject(this.getPlayer().getPos(), newpos);
             if (this.totalPanel.getGameArea().getRoom().playerOnDoor()) {
-                this.roomCounter++;
-                this.totalPanel.getGameArea().changeRoom(this.gameAreaController.generateNewRoom());
+                gameStats.increasePassedRooms();
+                this.totalPanel.getGameArea().changeRoom(this.gameAreaController.generateNewRoom(this.getPlayer()));
             }
         }
         this.endPlayerTurn();
     }
 
+    /**
+     * 
+     * @return the player
+     */
     public Player getPlayer() {
-        return this.player;
+        return this.totalPanel.getGameArea().getRoom().getPlayer();
     }
 
+    /**
+     * 
+     * @return if the player is dead
+     */
+    public boolean isDead() {
+        return this.getPlayer().isDead();
+    }
+
+    /**
+     * 
+     * @return the total panel
+     */
     public TotalPanel getTotalPanel() {
         return this.totalPanel;
     }
@@ -137,33 +155,48 @@ public abstract class GameController {
      */
     public void setFlag(ActionFlag flag) {
         this.flag = flag;
+        this.totalPanel.getGameArea().removeHighlight();
         this.totalPanel.getGameArea().highlightCells(this.flag);
     }
 
     /**
      * 
-     * @return the ActionFlag
+     * @return the number of action of the player
      */
-    public ActionFlag getFlag() {
-        return this.flag;
-    }
-
-    public int getRoomCounter() {
-        return this.roomCounter;
-    }
-
     public int getCurrentActionNumber() {
         return currentActionNumber;
     }
 
-    public void setCurrentActionNumber(int currentActionNumber) {
-        this.currentActionNumber = currentActionNumber;
+    /** reset the number of action available by the player
+     *
+     */
+    public void resetActionNumber() {
+        this.currentActionNumber = this.getPlayer().getActionNumber();
     }
 
+    /**
+     * end the turn of the player
+     */
     private void endPlayerTurn() {
-        this.totalPanel.getActionMenu().enableButton();
         this.totalPanel.getGameArea().removeHighlight();
         this.decreaseAction();
+        if (this.getCurrentActionNumber() == 0) {
+            enemyTurn();
+        }
+        this.isWon();
+    }
+
+    /**
+     * 
+     * @param pos the pos of the player
+     */
+    public void makeAction(Pair<Integer, Integer> pos) {
+        if (this.flag.equals(ActionFlag.ATTACK)) {
+            this.attack(pos);
+        } else if (this.flag.equals(ActionFlag.MOVE)) {
+            this.move(pos);
+        }
+
     }
 
 }
