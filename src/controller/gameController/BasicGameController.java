@@ -43,8 +43,8 @@ public class BasicGameController extends GameController {
 					this.getPageController().showDefeat();
 				} else {
 					this.getTotalPanel().getScrollableStats().getStatsValues().update(player, this.getGameStats());
-					this.getTotalPanel().getScrollableLog().getLogMessage().update("" + player.getName() + " ha subito "
-							+ enemy.getWeapon().getDamage() + " da " + enemy.getName() + "!");
+					this.getTotalPanel().getScrollableLog().getLogMessage().update("" + player.getName() + " got hit "
+							+ enemy.getWeapon().getDamage() + " by " + enemy.getName() + "!");
 				}
 			} else {
 				this.getTotalPanel().getGameArea().moveGameObject(enemy.getPos(), this.enemyAI.move(enemy));
