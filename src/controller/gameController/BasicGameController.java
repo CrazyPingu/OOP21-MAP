@@ -9,7 +9,7 @@ import controller.PageController;
 import controller.enemyAI.EnemyAIImpl;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
-import logics.game_statistics.GameStatistics;
+import logics.game_statistics.GameStatisticsImpl;
 import utilities.Pair;
 import view.frame.BasicFrame;
 import view.game.TotalPanel;
@@ -25,7 +25,7 @@ public class BasicGameController extends GameController {
 	private final int ROOM_TO_WIN = 3;
 
 	public BasicGameController(GameAreaController gameAreaController, TotalPanel totalPanel,
-			PageController pageController, GameStatistics gameStats) {
+			PageController pageController, GameStatisticsImpl gameStats) {
 		super(gameAreaController, totalPanel, pageController, gameStats);
 		this.enemyAI = new EnemyAIImpl(this.getTotalPanel());
 	}
@@ -42,7 +42,7 @@ public class BasicGameController extends GameController {
 				if (player.isDead()) {
 					this.getPageController().showDefeat();
 				} else {
-					this.getTotalPanel().getScrollableStats().getStatsValues().update(player);
+					this.getTotalPanel().getScrollableStats().getStatsValues().update(player, gameStats);
 					this.getTotalPanel().getScrollableLog().getLogMessage().update("" + player.getName() + " ha subito "
 							+ enemy.getWeapon().getDamage() + " da " + enemy.getName() + "!");
 				}
