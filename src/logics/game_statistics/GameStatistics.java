@@ -23,14 +23,14 @@ public interface GameStatistics {
 	/**
 	 * @return killed enemies counter.
 	 */
-	public CounterImpl getKilledEnemies();
+	public int getKilledEnemies();
 	/**
 	 * @return passed rooms counter.
 	 */
-	public CounterImpl getPassedRoom();
+	public int getPassedRoom();
 	/**
 	 * @return collected artefacts counter.
 	 */
-	public CounterImpl getCollectedArtefacts();
+	public int getCollectedArtefacts();
 	
 }

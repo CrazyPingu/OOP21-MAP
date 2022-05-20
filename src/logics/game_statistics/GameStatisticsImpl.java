@@ -9,31 +9,31 @@ public class GameStatisticsImpl implements GameStatistics {
 
 	@Override
 	public void increaseKilledEnemies() {
-		killedEnemies.increment();
+		this.killedEnemies.increment();
 	}
 
 	@Override
 	public void increasePassedRooms() {
-		passedRooms.increment();
+		this.passedRooms.increment();
 	}
 	
 	@Override
 	public void increaseCollectedArtefacts() {
-		passedRooms.increment();
+		this.passedRooms.increment();
 	}
 
 	@Override
-	public CounterImpl getKilledEnemies() {
-		return killedEnemies;
+	public int getKilledEnemies() {
+		return this.killedEnemies.getCountValue();
 	}
 
 	@Override
-	public CounterImpl getPassedRoom() {
-		return passedRooms;
+	public int getPassedRoom() {
+		return this.passedRooms.getCountValue();
 	}
 	
 	@Override
-	public CounterImpl getCollectedArtefacts() {
-		return collectedArtefacts;
+	public int getCollectedArtefacts() {
+		return this.collectedArtefacts.getCountValue();
 	}
 }
