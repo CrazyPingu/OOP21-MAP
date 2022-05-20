@@ -35,7 +35,7 @@ public class GbcDimension extends GridBagConstraints {
 		super();
 		this.gridx = gridx;
 		this.gridy = gridy;
-		this.ipadx = ipadx;
+		this.ipadx = Constant.horizontalAspectRatio(ipadx);
 	}
 
 	/**
@@ -45,8 +45,8 @@ public class GbcDimension extends GridBagConstraints {
 		super();
 		this.gridx = gridx;
 		this.gridy = gridy;
-		this.ipadx = ipadx;
-		this.ipady = ipady;
+		this.ipadx = Constant.horizontalAspectRatio(ipadx);
+		this.ipady = Constant.verticalAspectRatio(ipady);
 	}
 
 	/**
@@ -56,8 +56,8 @@ public class GbcDimension extends GridBagConstraints {
 		super();
 		this.gridx = gridx;
 		this.gridy = gridy;
-		this.ipadx = ipadx;
-		this.ipady = ipady;
+		this.ipadx = Constant.horizontalAspectRatio(ipadx);
+		this.ipady = Constant.verticalAspectRatio(ipady);
 		this.insets = insets;
 	}
 	
@@ -66,7 +66,7 @@ public class GbcDimension extends GridBagConstraints {
 	 */
 	public GbcDimension(int gridy, Insets insets) {
 		super();
-		this.gridy = gridy;
+		this.ipady = Constant.verticalAspectRatio(ipady);
 		this.insets = insets;
 	}
 	
