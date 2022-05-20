@@ -60,7 +60,7 @@ public class BasicGameController extends GameController {
 
 	@Override
 	public boolean isWon() {
-		return this.getGameStats().getPassedRooms() == ROOM_TO_WIN;
+		return this.getGameStats().getCompletedRooms() == ROOM_TO_WIN;
 	}
 
 }
