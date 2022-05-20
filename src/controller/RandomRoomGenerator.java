@@ -10,7 +10,7 @@ public class RandomRoomGenerator {
 
     public Room generateRoom(Player player) {
         RoomFactoryImpl roomFactory = new RoomFactoryImpl(player);
-        int random = new Random().ints(0, roomFactory.getClass().getMethods().length).findAny().getAsInt();
+        int random = new Random().ints(0, roomFactory.getClass().getDeclaredMethods().length).findAny().getAsInt();
         Room room = null;
         try {
             room = (Room) roomFactory.getClass().getDeclaredMethods()[random].invoke(roomFactory);
