@@ -42,7 +42,7 @@ public class BasicGameController extends GameController {
 				if (player.isDead()) {
 					this.getPageController().showDefeat();
 				} else {
-					this.getTotalPanel().getScrollableStats().getStatsValues().update(player, gameStats);
+					this.getTotalPanel().getScrollableStats().getStatsValues().update(player, this.getGameStats());
 					this.getTotalPanel().getScrollableLog().getLogMessage().update("" + player.getName() + " ha subito "
 							+ enemy.getWeapon().getDamage() + " da " + enemy.getName() + "!");
 				}
