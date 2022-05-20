@@ -62,17 +62,4 @@ public class BasicGameController extends GameController {
 
 
 
-    public boolean isDoorAvailable() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-
-
-    public boolean isWon() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-
 }

@@ -57,6 +57,10 @@ public abstract class GameController {
      * @return if the player won the game
      */
     public abstract boolean isWon();
+    
+    public GameStatistict getGameStats() {
+        return this.gameStats;
+    }
 
     public PageController getPageController() {
         return this.pageController;
