@@ -21,6 +21,10 @@ public class RoomConstant {
 
 	public static final Color ATTACK_HIGHLIGHT = Color.RED;
 	public static final Color MOVE_HIGHLIGHT = Color.BLUE;
+	
+	public static final Color BASIC_CELL_COLOR = Color.GRAY;
+	public static final Color DOOR_CELL_COLOR = new Color(110, 38, 14);
+	
 
 	/**
 	 * @param pos            the position of the GameObject to be found

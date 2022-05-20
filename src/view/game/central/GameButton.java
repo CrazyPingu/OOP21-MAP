@@ -13,6 +13,7 @@ import controller.GameAreaController;
 import logics.game_object.GameObject;
 import utilities.ImageModifier;
 import utilities.Pair;
+import utilities.RoomConstant;
 
 /**
  * 
@@ -29,7 +30,7 @@ public class GameButton extends JButton implements ActionListener {
 	private Color color;
 
 	public GameButton(Dimension buttonDimension, GameAreaController gameAreaController, Pair<Integer, Integer> pos) {
-		this.color = Color.gray;
+		this.color = RoomConstant.BASIC_CELL_COLOR;
 		this.pos = pos;
 		image = null;
 		this.setContentAreaFilled(false);
@@ -61,7 +62,7 @@ public class GameButton extends JButton implements ActionListener {
 	 * Method to draw the door
 	 */
 	public void drawDoor() {
-		this.color = new Color(110, 38, 14);
+		this.color = RoomConstant.DOOR_CELL_COLOR;
 		repaint();
 	}
 
@@ -92,7 +93,7 @@ public class GameButton extends JButton implements ActionListener {
 	 */
 	public void removeHighlight() {
 		this.setEnabled(false);
-		this.color = Color.gray;
+		this.color = RoomConstant.BASIC_CELL_COLOR;
 		repaint();
 	}
 }
