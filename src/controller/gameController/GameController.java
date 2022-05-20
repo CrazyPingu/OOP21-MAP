@@ -85,10 +85,10 @@ public abstract class GameController {
             if (enemy.isDead()) {
                 this.totalPanel.getGameArea().removeGameObject(pos);
             }
-            this.getTotalPanel().getScrollableLog().getLogMessage().update(enemy.getName() + " è stato colpito.");
+            this.getTotalPanel().getScrollableLog().getLogMessage().update(enemy.getName() + " got hit");
         } else {
             this.getTotalPanel().getScrollableLog().getLogMessage()
-                    .update(this.getPlayer().getName() + " ha mancato il colpo.");
+                    .update(this.getPlayer().getName() + " miss the attack");
         }
         this.endPlayerTurn();
     }
@@ -105,7 +105,7 @@ public abstract class GameController {
             if (artefact != null) {
                 artefact.execute(this.getPlayer());
                 this.totalPanel.getGameArea().removeGameObject(newpos);
-                this.getTotalPanel().getScrollableLog().getLogMessage().update("Raccolto " + artefact.getName() + ".");
+                this.getTotalPanel().getScrollableLog().getLogMessage().update("Picked up " + artefact.getName() + ".");
                 this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer());
             }
             this.totalPanel.getGameArea().moveGameObject(this.getPlayer().getPos(), newpos);
