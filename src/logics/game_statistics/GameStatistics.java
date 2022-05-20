@@ -1,7 +1,5 @@
 package logics.game_statistics;
 
-import utilities.counter.CounterImpl;
-
 /**
  * 
  * Contains game's statistics.
