@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import logics.game_object.artefact.Artefact;
@@ -33,6 +34,8 @@ public class GameArea extends JPanel {
 
 	public GameArea(Room room, GameAreaController gameAreaController) {
 		this.gameAreaController = gameAreaController;
+		this.setBackground(RoomConstant.BASIC_CELL_COLOR);
+		this.setBorder(BorderFactory.createEmptyBorder());
 		this.changeRoom(room);
 	}
 
