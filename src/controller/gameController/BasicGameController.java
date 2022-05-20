@@ -27,20 +27,7 @@ public class BasicGameController extends GameController {
 		this.enemyAI = new EnemyAIImpl(this.getTotalPanel());
 	}
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @param actionMenuController: controller of the action menu
-	 */
-	@Override
-	public void playerTurn() {
-		int currentAction = this.getCurrentActionNumber();
-		Player player = this.getTotalPanel().getGameArea().getRoom().getPlayer();
-		this.setCurrentActionNumber(player.getActionNumber());
-		//TODO move current action control in game loop
-		while (currentAction > 0)
-			;
-	}
+
 
 	/**
 	 * {@inheritDoc}
@@ -72,6 +59,20 @@ public class BasicGameController extends GameController {
 			}
 		}
 	}
+
+
+
+    public boolean isDoorAvailable() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+
+
+    public boolean isWon() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
 
 }

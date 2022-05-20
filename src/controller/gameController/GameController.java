@@ -32,7 +32,6 @@ public abstract class GameController {
     private ActionFlag flag;
     private int currentActionNumber;
     private BasicFrame frame;
-    private int roomCounter;
 
     public GameController(ActionMenuController actionMenuController, GameAreaController gameAreaController,
             BasicFrame frame, PageController pageController) {
@@ -40,7 +39,6 @@ public abstract class GameController {
         this.gameAreaController = gameAreaController;
         this.pageController = pageController;
         this.frame = frame;
-        this.roomCounter = 0;
     }
 
     /**
@@ -57,16 +55,21 @@ public abstract class GameController {
     }
 
     /**
-     * 
-     * @param actionMenuController
-     */
-
-    public abstract void playerTurn();
-
-    /**
      * start a new Enemy Turn.
      */
     public abstract void enemyTurn();
+
+    /**
+     * 
+     * @return if the door of the room is available
+     */
+    public abstract boolean isDoorAvailable();
+
+    /**
+     * 
+     * @return if the player won the game
+     */
+    public abstract boolean isWon();
 
     /**
      * Decrease the number of available action
@@ -115,21 +118,33 @@ public abstract class GameController {
             }
             this.totalPanel.getGameArea().moveGameObject(player.getPos(), newpos);
             if (this.totalPanel.getGameArea().getRoom().playerOnDoor()) {
-                this.roomCounter++;
+                //this.roomCounter++; TODO
                 this.totalPanel.getGameArea().changeRoom(this.gameAreaController.generateNewRoom());
             }
         }
         this.endPlayerTurn();
     }
 
+    /**
+     * 
+     * @return the player
+     */
     public Player getPlayer() {
         return this.player;
     }
-    
+
+    /**
+     * 
+     * @return if the player is dead
+     */
     public boolean isDead() {
-        return this.getPlayer().isDead();
+        return this.player.isDead();
     }
 
+    /**
+     * 
+     * @return the total panel
+     */
     public TotalPanel getTotalPanel() {
         return this.totalPanel;
     }
@@ -144,24 +159,37 @@ public abstract class GameController {
         this.totalPanel.getGameArea().highlightCells(this.flag);
     }
 
-    public int getRoomCounter() {
-        return this.roomCounter;
-    }
-
+    /**
+     * 
+     * @return the number of action of the player
+     */
     public int getCurrentActionNumber() {
         return currentActionNumber;
     }
 
+    /**
+     * 
+     * @param currentActionNumber the number of action available by the player
+     * 
+     *                            Set the number of action
+     */
     public void setCurrentActionNumber(int currentActionNumber) {
         this.currentActionNumber = currentActionNumber;
     }
 
+    /**
+     * end the turn of the player
+     */
     private void endPlayerTurn() {
         this.totalPanel.getActionMenu().enableButton();
         this.totalPanel.getGameArea().removeHighlight();
         this.decreaseAction();
     }
 
+    /**
+     * 
+     * @param pos the pos of the player
+     */
     public void makeAction(Pair<Integer, Integer> pos) {
         if (this.flag.equals(ActionFlag.ATTACK)) {
             this.attack(pos);
