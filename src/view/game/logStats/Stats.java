@@ -21,8 +21,8 @@ public class Stats extends TextAreaAppearance {
 	 * @param player : player object to init first values in the stats view
 	 */
 	
-	public void update(Player player, GameStatisticsImpl gameStats) {
-		this.setText(player.toString() + gameStats.toString());
+	public void update(Player player, GameStatisticsImpl gameStats, int currentActionNumber) {
+		this.setText(player.toString() + gameStats.toString() + currentActionNumber);
 	}
 
 }

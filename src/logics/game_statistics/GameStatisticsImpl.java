@@ -59,7 +59,6 @@ public class GameStatisticsImpl implements GameStatistics {
 	@Override
 	public int getAttackActionCounter() {
 		return this.attackActionCounter.getCountValue();
-
 	}
 
 	@Override

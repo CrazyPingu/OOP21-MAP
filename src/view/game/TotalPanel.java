@@ -34,7 +34,7 @@ public class TotalPanel extends JPanel {
 		this.setLayout(new GridBagLayout());
 		this.setBackground(Color.black);
 
-		stats = new ScrollableStats(room.getPlayer(), new Stats(), gameStats);
+		stats = new ScrollableStats(room.getPlayer(), new Stats(), gameStats,  room.getPlayer().getActionNumber());
 		fixSize(Constant.LABEL_WIDTH, Constant.TOP_HEIGHT, stats);
 		this.add(stats, new GbcDimension(0));
 

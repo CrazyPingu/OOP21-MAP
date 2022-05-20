@@ -9,10 +9,10 @@ public class ScrollableStats extends ScrollPaneAppearance {
 
 	private Stats statsValues;
 
-	public ScrollableStats(Player player, Stats statsValues, GameStatisticsImpl gameStats) {
+	public ScrollableStats(Player player, Stats statsValues, GameStatisticsImpl gameStats, int currentActionNumber) {
 		super(statsValues);
 		this.statsValues = statsValues;
-		this.statsValues.update(player, gameStats);
+		this.statsValues.update(player, gameStats, currentActionNumber);
 		this.setScrollPaneAppearance();
 	}
 
