@@ -183,6 +183,8 @@ public abstract class GameController {
         }
         if (isWon()) {
             this.getPageController().showVictory();
+        }else if(isDefeated()) {
+            this.getPageController().showDefeat();
         }
     }
 
