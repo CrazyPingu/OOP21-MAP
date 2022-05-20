@@ -84,6 +84,8 @@ public abstract class GameController {
             enemy.damage(this.getPlayer().getWeapon().getDamage());
             if (enemy.isDead()) {
                 this.totalPanel.getGameArea().removeGameObject(pos);
+                this.gameStats.increaseKilledEnemies();
+                this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.gameStats);
             }
             this.getTotalPanel().getScrollableLog().getLogMessage().update(enemy.getName() + " got hit");
         } else {
@@ -105,12 +107,14 @@ public abstract class GameController {
             if (artefact != null) {
                 artefact.execute(this.getPlayer());
                 this.totalPanel.getGameArea().removeGameObject(newpos);
+                this.gameStats.increaseCollectedArtefacts();
                 this.getTotalPanel().getScrollableLog().getLogMessage().update("Picked up " + artefact.getName() + ".");
                 this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.gameStats);
             }
             this.totalPanel.getGameArea().moveGameObject(this.getPlayer().getPos(), newpos);
             if (this.totalPanel.getGameArea().getRoom().playerOnDoor()) {
                 this.gameStats.increaseCompletedRooms();
+                this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.gameStats);
                 this.totalPanel.getGameArea().changeRoom(this.gameAreaController.generateNewRoom(this.getPlayer()));
             }
         }
