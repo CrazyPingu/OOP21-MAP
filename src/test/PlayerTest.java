@@ -40,7 +40,7 @@ public class PlayerTest {
 	 */
 	public void SimplePlayerCreationTest() {
 		this.life = new ExtendibleMaxLifeSystem(this.HEALTH, this.MAX_HEALTH, this.MAX_HEALTH_LIMIT);
-		this.player = new Player(this.life, this.START_POS, this.weaponFactory.createAxe(),
+		this.player = new Player(this.life, this.weaponFactory.createAxe(),
 				this.movementFactory.stepMovement(), this.NAME, this.texture);
 		assertTrue(this.player.getHealth() == this.HEALTH);
 		assertTrue(this.player.getMaxHealth() == this.MAX_HEALTH);
@@ -63,7 +63,7 @@ public class PlayerTest {
 	 */
 	public void damageEntityTest() {
 		this.life = new ExtendibleMaxLifeSystem(this.HEALTH, this.MAX_HEALTH, this.MAX_HEALTH_LIMIT);
-		this.player = new Player(this.life, this.START_POS, this.weaponFactory.createAxe(),
+		this.player = new Player(this.life, this.weaponFactory.createAxe(),
 				this.movementFactory.stepMovement(), this.NAME, this.texture);
 		this.player.damage(this.DAMAGE);
 		assertTrue(this.player.getHealth() == this.HEALTH - this.DAMAGE);
@@ -75,7 +75,7 @@ public class PlayerTest {
 	 */
 	public void healthNotBelowZeroTest() {
 		this.life = new ExtendibleMaxLifeSystem(this.HEALTH, this.MAX_HEALTH, this.MAX_HEALTH_LIMIT);
-		this.player = new Player(this.life, this.START_POS, this.weaponFactory.createAxe(),
+		this.player = new Player(this.life, this.weaponFactory.createAxe(),
 				this.movementFactory.stepMovement(), this.NAME, this.texture);
 		this.player.damage(this.player.getHealth() + this.DAMAGE);
 		assertTrue(this.player.getHealth() == 0);
@@ -87,7 +87,7 @@ public class PlayerTest {
 	 */
 	public void isDeadTest() {
 		this.life = new ExtendibleMaxLifeSystem(this.HEALTH, this.MAX_HEALTH, this.MAX_HEALTH_LIMIT);
-		this.player = new Player(this.life, this.START_POS, this.weaponFactory.createAxe(),
+		this.player = new Player(this.life, this.weaponFactory.createAxe(),
 				this.movementFactory.stepMovement(), this.NAME, this.texture);
 		this.player.damage(this.player.getHealth() + this.DAMAGE);
 		assertTrue(this.player.isDead());
@@ -99,7 +99,7 @@ public class PlayerTest {
 	 */
 	public void healTest() {
 		this.life = new ExtendibleMaxLifeSystem(this.HEALTH, this.MAX_HEALTH, this.MAX_HEALTH_LIMIT);
-		this.player = new Player(this.life, this.START_POS, this.weaponFactory.createAxe(),
+		this.player = new Player(this.life, this.weaponFactory.createAxe(),
 				this.movementFactory.stepMovement(), this.NAME, this.texture);
 
 		// test the correct funcioning of the method heal
@@ -121,7 +121,7 @@ public class PlayerTest {
 	 */
 	public void healAfterDeath() {
 		this.life = new ExtendibleMaxLifeSystem(this.HEALTH, this.MAX_HEALTH, this.MAX_HEALTH_LIMIT);
-		this.player = new Player(this.life, this.START_POS, this.weaponFactory.createAxe(),
+		this.player = new Player(this.life, this.weaponFactory.createAxe(),
 				this.movementFactory.stepMovement(), this.NAME, this.texture);
 
 		// the player die
@@ -141,7 +141,7 @@ public class PlayerTest {
 	 */
 	public void maxHealthInRange() {
 		this.life = new ExtendibleMaxLifeSystem(this.HEALTH, this.MAX_HEALTH, this.MAX_HEALTH_LIMIT);
-		this.player = new Player(this.life, this.START_POS, this.weaponFactory.createAxe(),
+		this.player = new Player(this.life, this.weaponFactory.createAxe(),
 				this.movementFactory.stepMovement(), this.NAME, this.texture);
 		// test the functioning of the method setMaxHealth
 		this.player.setMaxHealth(MAX_HEALTH_LIMIT - 3);
@@ -160,7 +160,7 @@ public class PlayerTest {
 	 */
 	public void toStringTest() {
 		this.life = new ExtendibleMaxLifeSystem(this.HEALTH, this.MAX_HEALTH, this.MAX_HEALTH_LIMIT);
-		this.player = new Player(this.life, this.START_POS, this.weaponFactory.createAxe(),
+		this.player = new Player(this.life, this.weaponFactory.createAxe(),
 				this.movementFactory.stepMovement(), this.NAME, this.texture);
 
 		System.out.println(this.player.toString());
