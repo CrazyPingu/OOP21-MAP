@@ -17,6 +17,11 @@ import utilities.Pair;
 import utilities.RoomConstant;
 import utilities.texture.EntityTexture;
 
+/**
+ * 
+ * Junit test for room
+ *
+ */
 public class RoomTest {
 	private RoomFactory roomFactory;
 	private WeaponFactory weaponFactory;
@@ -49,7 +54,7 @@ public class RoomTest {
 		Room room = this.roomFactory.createSmallRoom();
 		assertEquals(room.getSize(), new Pair<Integer, Integer>(RoomConstant.MIN_X, RoomConstant.MIN_Y));
 	}
-	
+
 	@org.junit.Test
 	/**
 	 * testing the correct spawn of the enemy
@@ -57,8 +62,8 @@ public class RoomTest {
 	public void forbiddenZombieSpawn() {
 		Room room = this.roomFactory.createRandomRoom();
 		boolean flag = false;
-		for(SimpleEnemy x : room.getEnemyList()) {
-			if(x.getPos().getX() < RoomConstant.FORBIDDEN_ZOMBIE_SPAWN) {
+		for (SimpleEnemy x : room.getEnemyList()) {
+			if (x.getPos().getX() < RoomConstant.FORBIDDEN_ZOMBIE_SPAWN) {
 				flag = true;
 			}
 		}
