@@ -3,9 +3,7 @@ package test;
 import static org.junit.Assert.assertEquals;
 
 import logics.game_object.entity.Player;
-import logics.game_object.entity.enemy.EnemyFactoryImpl;
 import logics.life.ExtendibleMaxLifeSystem;
-import logics.room.works.RandomEnemyList;
 import logics.room.works.Room;
 import logics.room.works.RoomFactory;
 import logics.room.works.RoomFactoryImpl;
@@ -13,7 +11,6 @@ import logics.strategy.movement.MovementFactory;
 import logics.strategy.movement.MovementFactoryImpl;
 import logics.strategy.weapon.WeaponFactory;
 import logics.strategy.weapon.WeaponFactoryImpl;
-import utilities.Pair;
 import utilities.RoomConstant;
 import utilities.texture.EntityTexture;
 
