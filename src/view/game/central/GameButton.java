@@ -71,14 +71,6 @@ public class GameButton extends JButton implements ActionListener {
 		repaint();
 	}
 
-	/**
-	 * Method to draw the door
-	 */
-	public void drawDoor() {
-		this.color = RoomConstant.DOOR_CELL_COLOR;
-		repaint();
-	}
-
 	public void actionPerformed(ActionEvent e) {
 		this.gameAreaController.makeAction(pos);
 	}
