@@ -2,7 +2,6 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
