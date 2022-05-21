@@ -63,20 +63,6 @@ public class GameArea extends JPanel {
 		this.drawEnemyFromList(this.room.getEnemyList());
 		this.drawArtefactFromList(this.room.getArtefactList());
 		this.drawPlayer(this.room.getPlayer());
-		this.drawDoor(this.room.getDoor());
-	}
-
-	/**
-	 * Method that given the position of the door it draws it
-	 * 
-	 * @param door the position of the door
-	 */
-	private void drawDoor(List<Pair<Integer, Integer>> door) {
-		for (var x : this.room.getCells().entrySet()) {
-			if (door.contains(x.getKey())) {
-				x.getValue().drawDoor();
-			}
-		}
 	}
 
 	/**
@@ -86,8 +72,12 @@ public class GameArea extends JPanel {
 	private void placeCells() {
 		for (int i = 0; i < size.getY(); i++) {
 			for (int j = 0; j < size.getX(); j++) {
-				final GameButton jb = new GameButton(buttonDimension, gameAreaController,
-						new Pair<Integer, Integer>(j, i));
+				final GameButton jb;
+				if (room.getDoor().contains(new Pair<Integer, Integer>(j, i))) {
+					jb = new GameButton(buttonDimension, gameAreaController, new Pair<Integer, Integer>(j, i), true);
+				} else {
+					jb = new GameButton(buttonDimension, gameAreaController, new Pair<Integer, Integer>(j, i), false);
+				}
 				room.addButtonToCells(new Pair<Integer, Integer>(j, i), jb);
 				this.add(jb);
 			}
@@ -171,7 +161,6 @@ public class GameArea extends JPanel {
 				pos = this.room.getPlayer().getMovementSystem().reachableCells(this.room.getPlayer().getPos(), size);
 				backgroudColor = RoomConstant.MOVE_HIGHLIGHT;
 			}
-			this.drawDoor(room.getDoor());
 			for (var x : pos) {
 				if (flag.equals(ActionFlag.MOVE)) {
 					if (RoomConstant.searchEnemy(x, this.room.getEnemyList()) == null) {
@@ -192,7 +181,6 @@ public class GameArea extends JPanel {
 		for (var x : room.getCells().entrySet()) {
 			x.getValue().removeHighlight();
 		}
-		this.drawDoor(room.getDoor());
 		repaint();
 	}
 

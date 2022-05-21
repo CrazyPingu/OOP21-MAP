@@ -1,6 +1,7 @@
 package utilities;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.util.List;
 
 import logics.game_object.GameObject;
@@ -24,6 +25,7 @@ public class RoomConstant {
 	
 	public static final Color BASIC_CELL_COLOR = Color.GRAY;
 	public static final Color DOOR_CELL_COLOR = new Color(110, 38, 14);
+	public static final Image BUTTON_IMAGE = ImageMethod.getImage("room/Button.png");
 	
 
 	/**
