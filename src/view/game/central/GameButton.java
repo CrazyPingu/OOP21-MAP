@@ -28,8 +28,10 @@ public class GameButton extends JButton implements ActionListener {
 	private Pair<Integer, Integer> pos;
 	private Image image;
 	private Color color;
+	private boolean isDoor;
 
-	public GameButton(Dimension buttonDimension, GameAreaController gameAreaController, Pair<Integer, Integer> pos) {
+	public GameButton(Dimension buttonDimension, GameAreaController gameAreaController, Pair<Integer, Integer> pos, boolean isDoor) {
+		this.isDoor = isDoor;
 		this.color = RoomConstant.BASIC_CELL_COLOR;
 		this.pos = pos;
 		image = null;
@@ -42,12 +44,23 @@ public class GameButton extends JButton implements ActionListener {
 	}
 
 	protected void paintComponent(Graphics g) {
-		this.setBackground(color);
 		super.paintComponent(g);
-		if(image != null) {
+		if (isDoor) {
+			g.setColor(RoomConstant.DOOR_CELL_COLOR);
+			g.fillRect(0, 0, (int) buttonDimension.getWidth(), (int) buttonDimension.getHeight());
+		} else {
+			g.drawImage(RoomConstant.BUTTON_IMAGE, 0, 0, (int) buttonDimension.getWidth(),
+					(int) buttonDimension.getHeight(), null);
+		}
+
+		if (this.color.equals(RoomConstant.ATTACK_HIGHLIGHT) || this.color.equals(RoomConstant.MOVE_HIGHLIGHT)) {
+			g.setColor(color);
+			g.fillOval(0, 0, (int) buttonDimension.getWidth(), (int) buttonDimension.getHeight());
+		}
+		if (image != null) {
 			g.drawImage(image, 0, 0, (int) buttonDimension.getWidth(), (int) buttonDimension.getHeight(), null);
 		}
-		
+
 	}
 
 	/**
