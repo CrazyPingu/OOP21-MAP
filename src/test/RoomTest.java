@@ -1,9 +1,11 @@
 package test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import logics.game_object.entity.Player;
+import logics.game_object.entity.SimpleEnemy;
 import logics.life.ExtendibleMaxLifeSystem;
 import logics.room.works.Room;
 import logics.room.works.RoomFactory;
@@ -47,5 +49,20 @@ public class RoomTest {
 	public void smallRoomSize() {
 		Room room = this.roomFactory.createSmallRoom();
 		assertEquals(room.getSize(), new Pair<Integer, Integer>(RoomConstant.MIN_X, RoomConstant.MIN_Y));
+	}
+	
+	@org.junit.Test
+	/**
+	 * testing the correct spawn of the enemy
+	 */
+	public void forbiddenZombieSpawn() {
+		Room room = this.roomFactory.createRandomRoom();
+		boolean flag = false;
+		for(SimpleEnemy x : room.getEnemyList()) {
+			if(x.getPos().getX() < RoomConstant.FORBIDDEN_ZOMBIE_SPAWN) {
+				flag = true;
+			}
+		}
+		assertFalse(flag);
 	}
 }
