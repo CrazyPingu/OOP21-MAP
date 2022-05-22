@@ -34,7 +34,7 @@ public class PlayerTest {
   /*
    * test the correct creation of a Player instantiation.
    */
-  public void SimplePlayerCreationTest() {
+  public void simplePlayerCreationTest() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
     this.player = new Player(life, START_POS, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
         TEXTURE, DAMAGE);
