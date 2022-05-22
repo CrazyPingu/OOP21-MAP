@@ -17,7 +17,7 @@ public interface EnemyAI {
 	 * @param enemy: enemy of which is needed to change position
 	 * @return the new calculated position for the enemy
 	 */
-	public Pair<Integer, Integer> move(SimpleEnemy enemy);
+	Pair<Integer, Integer> move(SimpleEnemy enemy);
 
 	/**
 	 * checks if player is reachable by the enemy attack
@@ -26,6 +26,6 @@ public interface EnemyAI {
 	 * @param player:   entity to be found whether or not is in the attackable area
 	 * @param roomSize: size of the current room
 	 */
-	public boolean isPlayerInAttackArea(SimpleEnemy enemy, Player player, Pair<Integer, Integer> roomSize);
+	boolean isPlayerInAttackArea(SimpleEnemy enemy, Player player, Pair<Integer, Integer> roomSize);
 
 }
