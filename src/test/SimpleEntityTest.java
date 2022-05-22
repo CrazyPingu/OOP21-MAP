@@ -31,7 +31,7 @@ public class SimpleEntityTest {
    * test the correct creation of a SimpleLifeSystem instantiation.
    */
   @SuppressWarnings("PMD.SimplifiableTestAssertion")
-  public void SimpleEntityCreationTest() {
+  public void simpleEntityCreationTest() {
     this.life = new SimpleLifeSystem(HEALTH);
     this.entity = new SimpleEnemy(this.life, START_POS, this.weaponFactory.createAxe(),
         this.movementFactory.stepMovement(), NAME, TEXTURE);
