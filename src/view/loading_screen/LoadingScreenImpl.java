@@ -84,8 +84,8 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen, Runnable
         this.message.setText("LOADING " + Integer.toString(i) + "%");
         i++;
       } catch (InterruptedException e) {
-        // TODO Auto-generated catch block
         e.printStackTrace();
+        System.out.println("Error during loading screen");
       }
 
     }
