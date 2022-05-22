@@ -6,26 +6,28 @@ package logics.strategy.weapon;
  *
  */
 public interface WeaponFactory {
+    /**
+     * @return a stick
+     */
+    Weapon createStick();
 
-	/**
-	 * @return a stick
-	 */
-	public Weapon createStick();
-	/**
-	 * @return a axe
-	 */
-	public Weapon createAxe();
-	/**
-	 * @return a dagger
-	 */
-	public Weapon createDagger();
-	/**
-	 * @return a tube
-	 */
-	public Weapon createTube();
-	/**
-	 * @return a gun
-	 */
-	public Weapon createGun();
+    /**
+     * @return a axe
+     */
+    Weapon createAxe();
 
+    /**
+     * @return a dagger
+     */
+    Weapon createDagger();
+
+    /**
+     * @return a tube
+     */
+    Weapon createTube();
+
+    /**
+     * @return a gun
+     */
+    Weapon createGun();
 }
