@@ -2,9 +2,6 @@ package logics.strategy.concrete_strategies;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.management.ConstructorParameters;
-
 import logics.strategy.Strategy;
 import utilities.Pair;
 import utilities.PosInGrid;
@@ -17,12 +14,12 @@ import utilities.PosInGrid;
  */
 public class CrossArea implements Strategy {
 	
-	private int distance;
+	private final int distance;
 
 	/**
 	 * @param distance is how far from around area can reach
 	 */
-	public CrossArea(int distance) {
+	public CrossArea(final int distance) {
 		this.distance = distance;
 	}
 
@@ -30,8 +27,8 @@ public class CrossArea implements Strategy {
 	/**
 	 * {inheritDoc}
 	 */
-	public List<Pair<Integer, Integer>> execute(Pair<Integer, Integer> pos, Pair<Integer, Integer> size) {
-		List<Pair<Integer, Integer>> reachableCells = new ArrayList<Pair<Integer, Integer>>();
+	public List<Pair<Integer, Integer>> execute(final Pair<Integer, Integer> pos, final Pair<Integer, Integer> size) {
+		final List<Pair<Integer, Integer>> reachableCells = new ArrayList<>();
 		Pair<Integer, Integer> cellToAdd;
 
 		for (int i = pos.getX() - this.distance; i <= pos.getX() + this.distance; i++) {
