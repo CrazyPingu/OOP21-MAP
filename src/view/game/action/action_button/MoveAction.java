@@ -1,29 +1,27 @@
-package view.game.action.ButtonsAction;
+package view.game.action.action_button;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import controller.ActionMenuController;
 
-/**
- *
- */
-public class AttackAction implements ActionListener {
+public class MoveAction implements ActionListener {
     ActionMenuController menucontroller;
 
     /**
      * 
      * @param menucontroller : the ActionMenuController
+     * @param button
      */
-    public AttackAction(final ActionMenuController menucontroller) {
+    public MoveAction(final ActionMenuController menucontroller) {
         this.menucontroller = menucontroller;
     }
 
     /**
-     * Call attack method in ActionMenuController
+     * Call the move method in ActionMenuController
      */
     public void actionPerformed(final ActionEvent e) {
-        this.menucontroller.setAttack();
+        this.menucontroller.setMove();
     }
 
 }

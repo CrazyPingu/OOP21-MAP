@@ -10,10 +10,10 @@ import controller.ActionMenuController;
 import controller.PageController;
 import utilities.GbcDimension;
 import view.MenuButton;
-import view.game.action.ButtonsAction.AttackAction;
-import view.game.action.ButtonsAction.MoveAction;
-import view.game.action.ButtonsAction.PauseAction;
-import view.game.action.ButtonsAction.SkipAction;
+import view.game.action.action_button.AttackAction;
+import view.game.action.action_button.MoveAction;
+import view.game.action.action_button.PauseAction;
+import view.game.action.action_button.SkipAction;
 
 public class ActionMenu extends JPanel {
 

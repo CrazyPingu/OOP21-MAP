@@ -1,4 +1,4 @@
-package view.game.action.ButtonsAction;
+package view.game.action.action_button;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
