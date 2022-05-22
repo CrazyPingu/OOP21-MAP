@@ -7,111 +7,112 @@ import org.junit.jupiter.api.Test;
 import logics.life.ExtendibleMaxLifeSystem;
 
 public class ExtendibleMaxLifeSystemTest {
-	final private int HEALTH = 9;
-	final private int MAX_HEALTH = 10;
-	final private int MAX_HEALTH_EXTENSION = 15;
-	final private int DAMAGE = 1;
-	final private int HEAL = 5;
+  private static final int HEALTH = 9;
+  private static final int MAX_HEALTH = 10;
+  private static final int MAX_HEALTH_EXTENSION = 15;
+  private static final int DAMAGE = 1;
+  private static final int HEAL = 5;
 
-	@Test
-	/*
-	 * test the correct creation of a HealLifeSystem instantiation.
-	 */
-	public void createLifeTest() {
-		ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(this.HEALTH, this.MAX_HEALTH,
-				this.MAX_HEALTH_EXTENSION);
-		assertTrue(life.getCurrentHealth() == this.HEALTH);
-		assertTrue(life.getMaxHealth() == this.MAX_HEALTH);
+  @Test
 
-		// test than the LifeSystem can't be created with a starting life value greater
-		// tha maxHealth value
-		life = new ExtendibleMaxLifeSystem(this.MAX_HEALTH + 1, this.MAX_HEALTH, this.MAX_HEALTH_EXTENSION);
-		assertTrue(life.getMaxHealth() == this.MAX_HEALTH);
+  @SuppressWarnings("PMD.SimplifiableTestAssertion")
+  public void createLifeTest() {
+    ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_EXTENSION);
+    assertTrue(life.getCurrentHealth() == HEALTH);
+    assertTrue(life.getMaxHealth() == MAX_HEALTH);
 
-		// test than the LifeSystem can't be created with a maximum Health value greater
-		// tha maxHealthExtension value
-		life = new ExtendibleMaxLifeSystem(this.MAX_HEALTH, this.MAX_HEALTH_EXTENSION + 1, this.MAX_HEALTH_EXTENSION);
-		assertTrue(life.getMaxHealthReachable() == this.MAX_HEALTH_EXTENSION);
+    /*
+     * test than the LifeSystem can't be created with a starting life value greater
+     * tha maxHealth value
+     */
+    life = new ExtendibleMaxLifeSystem(MAX_HEALTH + 1, MAX_HEALTH, MAX_HEALTH_EXTENSION);
+    assertTrue(life.getMaxHealth() == MAX_HEALTH);
 
-	}
+    /*
+     * test than the LifeSystem can't be created with a maximum Health value greater
+     * tha maxHealthExtension value
+     */
+    life = new ExtendibleMaxLifeSystem(MAX_HEALTH, MAX_HEALTH_EXTENSION + 1, MAX_HEALTH_EXTENSION);
+    assertTrue(life.getMaxHealthReachable() == MAX_HEALTH_EXTENSION);
 
-	@Test
-	/*
-	 * test the proper operation of the method damage.
-	 */
-	public void damageTest() {
-		ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(this.HEALTH, this.MAX_HEALTH,
-				this.MAX_HEALTH_EXTENSION);
-		life.damage(this.DAMAGE);
-		assertTrue(life.getCurrentHealth() == this.HEALTH - this.DAMAGE);
-		life.damage(this.DAMAGE);
-		assertTrue(life.getCurrentHealth() == this.HEALTH - (2 * this.DAMAGE));
-	}
+  }
 
-	@Test
-	/*
-	 * test that the health value does not go below zero
-	 */
-	public void healthNotBelowZeroTest() {
-		ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(this.HEALTH, this.MAX_HEALTH,
-				this.MAX_HEALTH_EXTENSION);
-		life.damage(life.getCurrentHealth() + this.DAMAGE);
-		assertTrue(life.getCurrentHealth() == 0);
-	}
+  @Test
+  @SuppressWarnings("PMD.SimplifiableTestAssertion")
+  /*
+   * test the proper operation of the method damage.
+   */
+  public void damageTest() {
+    final ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_EXTENSION);
+    life.damage(DAMAGE);
+    assertTrue(life.getCurrentHealth() == HEALTH - DAMAGE);
+    life.damage(DAMAGE);
+    assertTrue(life.getCurrentHealth() == HEALTH - (2 * DAMAGE));
+  }
 
-	@Test
-	/*
-	 * test the correct working of the isDead method
-	 */
-	public void isDeadTest() {
-		ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(this.HEALTH, this.MAX_HEALTH,
-				this.MAX_HEALTH_EXTENSION);
-		assertFalse(life.isDead());
-		life.damage(life.getCurrentHealth() + this.DAMAGE);
-		assertTrue(life.isDead());
-	}
+  @Test
+  @SuppressWarnings("PMD.SimplifiableTestAssertion")
+  /*
+   * test that the health value does not go below zero
+   */
+  public void healthNotBelowZeroTest() {
+    final ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_EXTENSION);
+    life.damage(life.getCurrentHealth() + DAMAGE);
+    assertTrue(life.getCurrentHealth() == 0);
+  }
 
-	@Test
-	/*
-	 * test the correct working of the heal method
-	 */
-	public void healTest() {
-		ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(this.MAX_HEALTH, this.MAX_HEALTH,
-				this.MAX_HEALTH_EXTENSION);
-		// test that heal don't work with negative value
-		life.heal(-this.HEAL);
-		assertTrue(life.getCurrentHealth() == this.MAX_HEALTH);
-		life.damage(this.MAX_HEALTH - (this.HEAL - 1));
-		life.heal(this.HEAL);
-		assertTrue(life.getCurrentHealth() == this.MAX_HEALTH - 1);
-		life.heal(this.MAX_HEALTH);
-		assertTrue(life.getCurrentHealth() == this.MAX_HEALTH);
-	}
+  @Test
+  /*
+   * test the correct working of the isDead method
+   */
+  public void isDeadTest() {
+    final ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_EXTENSION);
+    assertFalse(life.isDead());
+    life.damage(life.getCurrentHealth() + DAMAGE);
+    assertTrue(life.isDead());
+  }
 
-	@Test
-	/*
-	 * test the correct working of the heal method
-	 */
-	public void increaseMaxHealthTest() {
-		ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(this.HEALTH, this.MAX_HEALTH,
-				this.MAX_HEALTH_EXTENSION);
+  @Test
+  @SuppressWarnings("PMD.SimplifiableTestAssertion")
+  /*
+   * test the correct working of the heal method
+   */
+  public void healTest() {
+    final ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(MAX_HEALTH, MAX_HEALTH, MAX_HEALTH_EXTENSION);
+    // test that heal don't work with negative value
+    life.heal(-HEAL);
+    assertTrue(life.getCurrentHealth() == MAX_HEALTH);
+    life.damage(MAX_HEALTH - (HEAL - 1));
+    life.heal(HEAL);
+    assertTrue(life.getCurrentHealth() == MAX_HEALTH - 1);
+    life.heal(MAX_HEALTH);
+    assertTrue(life.getCurrentHealth() == MAX_HEALTH);
+  }
 
-		life.setMaxHealth(this.MAX_HEALTH + 1);
-		assertTrue(life.getMaxHealth() == this.MAX_HEALTH + 1);
+  @Test
+  @SuppressWarnings("PMD.SimplifiableTestAssertion")
+  /*
+   * test the correct working of the heal method
+   */
+  public void increaseMaxHealthTest() {
+    final ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_EXTENSION);
 
-		life.setMaxHealth(this.MAX_HEALTH + 2);
-		assertTrue(life.getMaxHealth() == this.MAX_HEALTH + 2);
+    life.setMaxHealth(MAX_HEALTH + 1);
+    assertTrue(life.getMaxHealth() == MAX_HEALTH + 1);
 
-		life.setMaxHealth(this.MAX_HEALTH - 5);
-		assertTrue(life.getMaxHealth() == this.MAX_HEALTH - 5);
-		
-		life.setMaxHealth(this.MAX_HEALTH_EXTENSION + 1);
-		assertTrue(life.getMaxHealth() == this.MAX_HEALTH_EXTENSION);
+    life.setMaxHealth(MAX_HEALTH + 2);
+    assertTrue(life.getMaxHealth() == MAX_HEALTH + 2);
 
-		int currentMaxHealth = life.getMaxHealth();
-		life.setMaxHealth(0);
-		assertTrue(life.getMaxHealth() == currentMaxHealth);
+    life.setMaxHealth(MAX_HEALTH - 5);
+    assertTrue(life.getMaxHealth() == MAX_HEALTH - 5);
 
-	}
+    life.setMaxHealth(MAX_HEALTH_EXTENSION + 1);
+    assertTrue(life.getMaxHealth() == MAX_HEALTH_EXTENSION);
+
+    final int currentMaxHealth = life.getMaxHealth();
+    life.setMaxHealth(0);
+    assertTrue(life.getMaxHealth() == currentMaxHealth);
+
+  }
 
 }
