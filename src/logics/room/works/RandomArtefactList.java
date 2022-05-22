@@ -1,5 +1,6 @@
 package logics.room.works;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,52 +25,58 @@ import utilities.RoomConstant;
  */
 public class RandomArtefactList extends ArrayList<Artefact> {
 
-	private static final long serialVersionUID = -6692451133647329784L;
-	private Map<Object, Integer> factoryOfArtefact = new HashMap<>();
+  private static final long serialVersionUID = -6692451133647329784L;
+  private Map<Object, Integer> factoryOfArtefact = new HashMap<>();
 
-	/**
-	 * @param size the size of the room
-	 */
-	public RandomArtefactList(Pair<Integer, Integer> size, List<SimpleEnemy> enemyList,Player player, List<Pair<Integer, Integer>> door) {
-		factoryOfArtefact.put(new WeaponArtefactFactoryImpl(), new WeaponFactoryImpl().getClass().getDeclaredMethods().length);
-		factoryOfArtefact.put(new HealthArtefactFactoryImpl(), new HealthArtefactFactoryImpl().getClass().getDeclaredMethods().length);
-		factoryOfArtefact.put(new ActionNumberArtefactFactoryImpl(),new ActionNumberArtefactFactoryImpl().getClass().getDeclaredMethods().length);
-		factoryOfArtefact.put(new MovementArtefactFactoryImp(), new MovementArtefactFactoryImp().getClass().getDeclaredMethods().length);
-		Pair<Integer, Integer> artefactPos;
-		for (int i = 0; i < size.getX() * size.getY() / RoomConstant.SPAWNING_RATIO; i++) {
-			do {
-				artefactPos = new Pair<Integer, Integer>(new Random().ints(0, size.getX()).findFirst().getAsInt(),
-						new Random().ints(0, size.getY()).findFirst().getAsInt());
-			} while (RoomConstant.cellsOccupated(enemyList, this, player, artefactPos) || door.contains(artefactPos));
-			generateRandomArtefact(generateRandomArtefactFactory(), artefactPos);
-		}
-	}
+  /**
+   * 
+   * @param size      the size of the room
+   * @param enemyList the list of the enemy
+   * @param player    the player
+   * @param door      the position of the door
+   */
+  public RandomArtefactList(final Pair<Integer, Integer> size, final List<SimpleEnemy> enemyList, final Player player,
+      final List<Pair<Integer, Integer>> door) {
+    factoryOfArtefact.put(new WeaponArtefactFactoryImpl(),
+        new WeaponFactoryImpl().getClass().getDeclaredMethods().length);
+    factoryOfArtefact.put(new HealthArtefactFactoryImpl(),
+        new HealthArtefactFactoryImpl().getClass().getDeclaredMethods().length);
+    factoryOfArtefact.put(new ActionNumberArtefactFactoryImpl(),
+        new ActionNumberArtefactFactoryImpl().getClass().getDeclaredMethods().length);
+    factoryOfArtefact.put(new MovementArtefactFactoryImp(),
+        new MovementArtefactFactoryImp().getClass().getDeclaredMethods().length);
+    Pair<Integer, Integer> artefactPos;
+    for (int i = 0; i < size.getX() * size.getY() / RoomConstant.SPAWNING_RATIO; i++) {
+      do {
+        artefactPos = new Pair<>(new Random().ints(0, size.getX()).findFirst().getAsInt(),
+            new Random().ints(0, size.getY()).findFirst().getAsInt());
+      } while (RoomConstant.cellsOccupated(enemyList, this, player, artefactPos) || door.contains(artefactPos));
+      generateRandomArtefact(generateRandomArtefactFactory(), artefactPos);
+    }
+  }
 
-	/**
-	 * 
-	 * @param artefactFactory the artefactFactory that will be called
-	 * @param pos             the position of the artefact generated
-	 */
-	private void generateRandomArtefact(Object artefactFactory, Pair<Integer, Integer> pos) {
-		int random = new Random().ints(0, factoryOfArtefact.get(artefactFactory)).findAny().getAsInt();
-		Artefact generatedArtefact = null;
-		try {
-			generatedArtefact = (Artefact) artefactFactory.getClass().getDeclaredMethods()[random]
-					.invoke(artefactFactory, pos);
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Error during artefact generation");
-		}
-		this.add(generatedArtefact);
+  /**
+   * 
+   * @param artefactFactory the artefactFactory that will be called
+   * @param pos             the position of the artefact generated
+   */
+  private void generateRandomArtefact(final Object artefactFactory, final Pair<Integer, Integer> pos) {
+    Artefact generatedArtefact = null;
+    try {
+      generatedArtefact = (Artefact) artefactFactory.getClass().getDeclaredMethods()[new Random()
+          .ints(0, factoryOfArtefact.get(artefactFactory)).findAny().getAsInt()].invoke(artefactFactory, pos);
+    } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException e) {
+      System.out.println("Error during artefact generation");
+      e.printStackTrace();
+    }
+    this.add(generatedArtefact);
+  }
 
-	}
-
-	/**
-	 * @return a random ArtefactFactory
-	 */
-	private Object generateRandomArtefactFactory() {
-		List<Object> keys = new ArrayList<Object>(factoryOfArtefact.keySet());
-		Object obj = keys.get(new Random().nextInt(keys.size()));
-		return obj;
-	}
+  /**
+   * @return a random ArtefactFactory
+   */
+  private Object generateRandomArtefactFactory() {
+    return new ArrayList<Object>(factoryOfArtefact.keySet())
+        .get(new Random().nextInt(new ArrayList<Object>(factoryOfArtefact.keySet()).size()));
+  }
 }
