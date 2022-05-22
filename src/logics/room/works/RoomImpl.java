@@ -18,138 +18,113 @@ import view.game.central.GameButton;
  *
  */
 public class RoomImpl implements Room {
-	private Pair<Integer, Integer> size;
-	private Map<Pair<Integer, Integer>, GameButton> cells;
-	private List<SimpleEnemy> enemyList;
-	private List<Artefact> artefactList;
-	private Player player;
-	private List<Pair<Integer, Integer>> door;
+  private final Pair<Integer, Integer> size;
+  private final Map<Pair<Integer, Integer>, GameButton> cells;
+  private final List<SimpleEnemy> enemyList;
+  private final List<Artefact> artefactList;
+  private Player player;
+  private final List<Pair<Integer, Integer>> door;
 
-	/**
-	 * @param size         the size of the room.
-	 * @param player       the player of the game
-	 * @param newPosPlayer the new position of the player
-	 */
-	public RoomImpl(Pair<Integer, Integer> size, Player player, Pair<Integer, Integer> newPosPlayer) {
-		player.setPos(newPosPlayer);
-		this.size = size;
-		this.player = player;
-		this.cells = new HashMap<>();
-		this.door = generateDoor(size);
-		this.enemyList = new RandomEnemyList(size, player, door);
-		this.artefactList = new RandomArtefactList(size, enemyList, player, door);
-	}
+  /**
+   * @param size         the size of the room.
+   * @param player       the player of the game
+   * @param newPosPlayer the new position of the player
+   */
+  public RoomImpl(final Pair<Integer, Integer> size, final Player player, final Pair<Integer, Integer> newPosPlayer) {
+    player.setPos(newPosPlayer);
+    this.size = size;
+    this.player = player;
+    this.cells = new HashMap<>();
+    this.door = generateDoor(size);
+    this.enemyList = new RandomEnemyList(size, player, door);
+    this.artefactList = new RandomArtefactList(size, enemyList, player, door);
+  }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public boolean playerOnDoor() {
-		return this.door.contains(this.player.getPos());
-	}
+  @Override
+  public boolean playerOnDoor() {
+    return this.door.contains(this.player.getPos());
+  }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public Artefact playerGetArtefact() {
-		if (playerOnArtefact()) {
-			this.removeObject(player.getPos());
-		}
-		return RoomConstant.searchArtefact(this.player.getPos(), artefactList);
-	}
+  @Override
+  public Artefact playerGetArtefact() {
+    if (playerOnArtefact()) {
+      this.removeObject(player.getPos());
+    }
+    return RoomConstant.searchArtefact(this.player.getPos(), artefactList);
+  }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public boolean playerOnArtefact() {
-		return RoomConstant.searchArtefact(this.player.getPos(), artefactList) != null;
-	}
+  @Override
+  public boolean playerOnArtefact() {
+    return RoomConstant.searchArtefact(this.player.getPos(), artefactList) != null;
+  }
 
-	/**
-	 * Method that generate the door in the last x position, with the middle y
-	 * 
-	 * @param size the size of the room
-	 * @return a List with the cell of the door
-	 */
-	private List<Pair<Integer, Integer>> generateDoor(Pair<Integer, Integer> size) {
-		List<Pair<Integer, Integer>> tmp = new ArrayList<>();
-		tmp.add(new Pair<Integer, Integer>(size.getX() - 1, size.getY() / 2));
-		if (size.getY() % 2 == 0) {
-			tmp.add(new Pair<Integer, Integer>(size.getX() - 1, (size.getY() / 2) - 1));
-		}
-		return tmp;
-	}
+  /**
+   * Method that generate the door in the last x position, with the middle y
+   * 
+   * @param size the size of the room
+   * @return a List with the cell of the door
+   */
+  private List<Pair<Integer, Integer>> generateDoor(final Pair<Integer, Integer> size) {
+    final List<Pair<Integer, Integer>> tmp = new ArrayList<>();
+    tmp.add(new Pair<Integer, Integer>(size.getX() - 1, size.getY() / 2));
+    if (size.getY() % 2 == 0) {
+      tmp.add(new Pair<Integer, Integer>(size.getX() - 1, size.getY() / 2 - 1));
+    }
+    return tmp;
+  }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public void addButtonToCells(Pair<Integer, Integer> pos, GameButton button) {
-		this.cells.put(pos, button);
-	}
+  @Override
+  public void addButtonToCells(final Pair<Integer, Integer> pos, final GameButton button) {
+    this.cells.put(pos, button);
+  }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public void updatePosition(Pair<Integer, Integer> oldPos, Pair<Integer, Integer> newPos) {
-		if (RoomConstant.searchEnemy(oldPos, enemyList) != null) {
-			RoomConstant.searchEnemy(oldPos, enemyList).setPos(newPos);
-		} else if (this.player.getPos().equals(oldPos)) {
-			this.player.setPos(newPos);
-		}
-	}
+  @Override
+  public void updatePosition(final Pair<Integer, Integer> oldPos, final Pair<Integer, Integer> newPos) {
+    if (RoomConstant.searchEnemy(oldPos, enemyList) != null) {
+      RoomConstant.searchEnemy(oldPos, enemyList).setPos(newPos);
+    } else if (this.player.getPos().equals(oldPos)) {
+      this.player.setPos(newPos);
+    }
+  }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public void removeObject(Pair<Integer, Integer> pos) {
-		if (RoomConstant.searchEnemy(pos, enemyList) != null) {
-			enemyList.remove(RoomConstant.searchEnemy(pos, enemyList));
-		} else if (RoomConstant.searchArtefact(pos, artefactList) != null) {
-			artefactList.remove(RoomConstant.searchArtefact(pos, artefactList));
-		} else if (player.getPos().equals(pos)) {
-			player = null;
-		}
-	}
+  @Override
+  public void removeObject(final Pair<Integer, Integer> pos) {
+    if (RoomConstant.searchEnemy(pos, enemyList) != null) {
+      enemyList.remove(RoomConstant.searchEnemy(pos, enemyList));
+    } else if (RoomConstant.searchArtefact(pos, artefactList) != null) {
+      artefactList.remove(RoomConstant.searchArtefact(pos, artefactList));
+    } else if (player.getPos().equals(pos)) {
+      player = null;
+    }
+  }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public Map<Pair<Integer, Integer>, GameButton> getCells() {
-		return this.cells;
-	}
+  @Override
+  public Map<Pair<Integer, Integer>, GameButton> getCells() {
+    return this.cells;
+  }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public Pair<Integer, Integer> getSize() {
-		return this.size;
-	}
+  @Override
+  public Pair<Integer, Integer> getSize() {
+    return this.size;
+  }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public List<SimpleEnemy> getEnemyList() {
-		return this.enemyList;
-	}
+  @Override
+  public List<SimpleEnemy> getEnemyList() {
+    return this.enemyList;
+  }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public List<Artefact> getArtefactList() {
-		return this.artefactList;
-	}
+  @Override
+  public List<Artefact> getArtefactList() {
+    return this.artefactList;
+  }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public Player getPlayer() {
-		return this.player;
-	}
+  @Override
+  public Player getPlayer() {
+    return this.player;
+  }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public List<Pair<Integer, Integer>> getDoor() {
-		return this.door;
-	}
-
+  @Override
+  public List<Pair<Integer, Integer>> getDoor() {
+    return this.door;
+  }
 }
