@@ -1,4 +1,4 @@
-package view.loadingScreen;
+package view.loading_screen;
 
 import java.awt.Color;
 import java.awt.Dimension;

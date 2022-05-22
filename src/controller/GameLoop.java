@@ -11,7 +11,7 @@ import utilities.Pair;
 import utilities.texture.EntityTexture;
 import view.frame.BasicFrame;
 import view.game.TotalPanel;
-import view.loadingScreen.LoadingScreenImpl;
+import view.loading_screen.LoadingScreenImpl;
 import view.mainMenu.MainMenu;
 import view.pause.PauseMenu;
 import view.endGameMenu.Victory;
