@@ -97,7 +97,7 @@ public class PlayerTest {
    * test the heal method
    */
   public void healTest() {
-    this.life = new ExtendibleMaxLifeSystem(this.HEALTH, this.MAX_HEALTH, this.MAX_HEALTH_LIMIT);
+    this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
     this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
         TEXTURE);
 
