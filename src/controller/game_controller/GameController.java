@@ -1,4 +1,4 @@
-package controller.gameController;
+package controller.game_controller;
 
 import controller.ActionFlag;
 import controller.GameAreaController;

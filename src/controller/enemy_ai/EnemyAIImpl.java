@@ -1,4 +1,4 @@
-package controller.enemyAI;
+package controller.enemy_ai;
 
 import java.util.List;
 

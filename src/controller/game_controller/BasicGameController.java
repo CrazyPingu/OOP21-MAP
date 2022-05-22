@@ -1,10 +1,10 @@
-package controller.gameController;
+package controller.game_controller;
 
 import java.util.List;
 
 import controller.GameAreaController;
 import controller.PageController;
-import controller.enemyAI.EnemyAIImpl;
+import controller.enemy_ai.EnemyAIImpl;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import logics.game_statistics.GameStatisticsImpl;
