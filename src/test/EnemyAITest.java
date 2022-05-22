@@ -14,7 +14,7 @@ import logics.game_object.entity.SimpleEnemy;
 import logics.game_object.entity.enemy.EnemyFactoryImpl;
 import logics.game_statistics.GameStatisticsImpl;
 import logics.life.ExtendibleMaxLifeSystem;
-import logics.room.works.RoomImpl;
+import logics.room.RoomImpl;
 import logics.strategy.movement.MovementFactoryImpl;
 import logics.strategy.weapon.WeaponFactoryImpl;
 import utilities.Pair;

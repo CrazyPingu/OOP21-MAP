@@ -4,9 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import logics.game_object.entity.Player;
 import logics.life.ExtendibleMaxLifeSystem;
-import logics.room.works.Room;
-import logics.room.works.RoomFactory;
-import logics.room.works.RoomFactoryImpl;
+import logics.room.Room;
+import logics.room.RoomFactory;
+import logics.room.RoomFactoryImpl;
 import logics.strategy.movement.MovementFactory;
 import logics.strategy.movement.MovementFactoryImpl;
 import logics.strategy.weapon.WeaponFactory;

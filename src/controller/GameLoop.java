@@ -4,7 +4,7 @@ import controller.game_controller.BasicGameController;
 import logics.game_object.entity.Player;
 import logics.game_statistics.GameStatisticsImpl;
 import logics.life.ExtendibleMaxLifeSystem;
-import logics.room.works.Room;
+import logics.room.Room;
 import logics.strategy.movement.MovementFactoryImpl;
 import logics.strategy.weapon.WeaponFactoryImpl;
 import utilities.Pair;

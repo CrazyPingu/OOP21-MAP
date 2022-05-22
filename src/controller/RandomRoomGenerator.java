@@ -4,8 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 
 import logics.game_object.entity.Player;
-import logics.room.works.Room;
-import logics.room.works.RoomFactoryImpl;
+import logics.room.Room;
+import logics.room.RoomFactoryImpl;
 
 public class RandomRoomGenerator {
   public Room generateRoom(final Player player) {

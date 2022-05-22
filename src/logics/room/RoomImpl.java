@@ -1,4 +1,4 @@
-package logics.room.works;
+package logics.room;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +8,8 @@ import java.util.Map;
 import logics.game_object.artefact.Artefact;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
+import logics.room.works.RandomArtefactList;
+import logics.room.works.RandomEnemyList;
 import utilities.Pair;
 import utilities.RoomConstant;
 import view.game.central.GameButton;

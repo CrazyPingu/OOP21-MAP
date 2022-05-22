@@ -1,7 +1,7 @@
 package logics.room.type;
 
 import logics.game_object.entity.Player;
-import logics.room.works.RoomImpl;
+import logics.room.RoomImpl;
 import utilities.Pair;
 
 /**

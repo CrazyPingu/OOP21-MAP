@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import logics.game_object.artefact.Artefact;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
-import logics.room.works.Room;
+import logics.room.Room;
 import utilities.Constant;
 import utilities.Pair;
 import utilities.RoomConstant;

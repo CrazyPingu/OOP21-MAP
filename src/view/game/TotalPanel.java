@@ -11,7 +11,7 @@ import controller.ActionMenuController;
 import controller.GameAreaController;
 import controller.PageController;
 import logics.game_statistics.GameStatisticsImpl;
-import logics.room.works.Room;
+import logics.room.Room;
 import utilities.Constant;
 import utilities.GbcDimension;
 import view.game.action.ActionMenu;

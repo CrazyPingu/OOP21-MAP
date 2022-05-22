@@ -1,4 +1,4 @@
-package logics.room.works;
+package logics.room;
 
 import java.util.Random;
 
