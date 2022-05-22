@@ -8,24 +8,24 @@ import java.awt.Image;
 import javax.swing.JPanel;
 
 import controller.PageController;
-import utilities.Constant;
 import utilities.GbcDimension;
 import utilities.ImageMethod;
 import utilities.ImageModifier;
 import view.MenuButton;
-import view.pause.action.*;
+import view.pause.action.MainMenuAction;
+import view.pause.action.QuitAction;
 
 public abstract class EndGameMenu extends JPanel {
 
     private static final long serialVersionUID = 6789169156087285519L;
     Image image;
-    private final int BUTTON_WIDTH =300;
-    private final int BUTTON_HEIGHT = 100;
+    private static final int BUTTON_WIDTH =300;
+    private static final int BUTTON_HEIGHT = 100;
 
-    public EndGameMenu(String imageName, PageController controller) {
+    public EndGameMenu(final String imageName, final PageController controller) {
 
-        MenuButton mainMenu = new MenuButton("Main Menu", 60);
-        MenuButton quit = new MenuButton("Quit", 60);
+        final MenuButton mainMenu = new MenuButton("Main Menu", 60);
+        final MenuButton quit = new MenuButton("Quit", 60);
 
         this.image = ImageMethod.getImage("endGame/" + imageName + ".png");
         quit.addActionListener(new QuitAction(controller));
@@ -35,7 +35,7 @@ public abstract class EndGameMenu extends JPanel {
         quit.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
         mainMenu.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
 
-        JPanel bottom = new JPanel(new GridBagLayout());
+        final JPanel bottom = new JPanel(new GridBagLayout());
         bottom.add(mainMenu,
                 new GbcDimension(0, 0, BUTTON_WIDTH, BUTTON_HEIGHT, GbcDimension.createInsets(0, 0, 0, 100)));
         bottom.add(quit, new GbcDimension(1, 0, BUTTON_WIDTH, BUTTON_HEIGHT, GbcDimension.createInsets(0, 100, 0, 0)));
@@ -43,7 +43,7 @@ public abstract class EndGameMenu extends JPanel {
         bottom.setOpaque(false);
     }
 
-    public void paintComponent(Graphics g) {
+    public void paintComponent(final Graphics g) {
         super.paintComponent(g);
         g.drawImage(ImageModifier.scaleFullScreen(this.image), 0, 0, null);
     }
