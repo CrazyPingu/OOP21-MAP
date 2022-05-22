@@ -8,7 +8,7 @@ import utilities.texture.ArtefactTexture;
 
 public class MovementArtefactFactoryImp implements MovementArtefactFactory {
 
-  private MovementFactory movementFactory = new MovementFactoryImpl();
+  final private MovementFactory movementFactory = new MovementFactoryImpl();
 
   @Override
   public Artefact stepArtefact(final Pair<Integer, Integer> pos) {
