@@ -15,14 +15,14 @@ public class AttackAction implements ActionListener {
      * 
      * @param menucontroller : the ActionMenuController
      */
-    public AttackAction(ActionMenuController menucontroller) {
+    public AttackAction(final ActionMenuController menucontroller) {
         this.menucontroller = menucontroller;
     }
 
     /**
      * Call attack method in ActionMenuController
      */
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
         this.menucontroller.setAttack();
     }
 

@@ -12,14 +12,14 @@ public class PauseAction implements ActionListener {
      * 
      * @param controller : the PageController
      */
-    public PauseAction(PageController controller) {
+    public PauseAction(final PageController controller) {
         this.controller = controller;
     }
 
     /**
      * Call showPauseMenu method in PageController
      */
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
         controller.showPauseMenu();
     }
 

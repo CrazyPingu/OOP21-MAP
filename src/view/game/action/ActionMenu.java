@@ -24,13 +24,13 @@ public class ActionMenu extends JPanel {
          * @param controller     : the PageController
          * @param menucontroller : the ActionMenuController
          */
-        public ActionMenu(PageController controller, ActionMenuController menuController) {
+        public ActionMenu(final PageController controller, final ActionMenuController menuController) {
                 this.setBackground(Color.BLACK);
                 
-                MenuButton attack = new MenuButton("Attack", 30);
-                MenuButton move = new MenuButton("Move", 30);
-                MenuButton skip = new MenuButton("Skip", 30);
-                MenuButton pause = new MenuButton("Pause", 30);
+                final MenuButton attack = new MenuButton("Attack", 30);
+                final MenuButton move = new MenuButton("Move", 30);
+                final MenuButton skip = new MenuButton("Skip", 30);
+                final MenuButton pause = new MenuButton("Pause", 30);
                 
                 attack.addActionListener(new AttackAction(menuController));
                 move.addActionListener(new MoveAction(menuController));
@@ -39,7 +39,7 @@ public class ActionMenu extends JPanel {
                 
                 this.setLayout(new GridBagLayout());
 
-                Insets buttonInsets = GbcDimension.createInsets(30, 30, 30, 0);
+                final Insets buttonInsets = GbcDimension.createInsets(30, 30, 30, 0);
                 this.add(attack, new GbcDimension(0, 0, 350, 150, buttonInsets));
                 this.add(move, new GbcDimension(1, 0, 350, 150, buttonInsets));
                 this.add(skip, new GbcDimension(2, 0, 350, 150, buttonInsets));

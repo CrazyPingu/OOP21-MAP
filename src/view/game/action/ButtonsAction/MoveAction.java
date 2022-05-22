@@ -13,14 +13,14 @@ public class MoveAction implements ActionListener {
      * @param menucontroller : the ActionMenuController
      * @param button
      */
-    public MoveAction(ActionMenuController menucontroller) {
+    public MoveAction(final ActionMenuController menucontroller) {
         this.menucontroller = menucontroller;
     }
 
     /**
      * Call the move method in ActionMenuController
      */
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
         this.menucontroller.setMove();
     }
 
