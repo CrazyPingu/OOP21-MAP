@@ -9,13 +9,14 @@ import javax.swing.ImageIcon;
  * Class to work easily with images
  *
  */
+@SuppressWarnings("PMD.UseUtilityClass")
 public class ImageMethod {
 
 	/**
 	 * @param fileName : the name of the images (and his path from resources)
 	 * @return the image correlated
 	 */
-	public static Image getImage(String fileName) {
+	public static Image getImage(final String fileName) {
 		try {
 			return ImageIO.read(ImageMethod.class.getResource("/resources/" + fileName));
 		} catch (IOException e) {
@@ -28,7 +29,7 @@ public class ImageMethod {
 	 * @param fileName : the name of the images (and his path from resources)
 	 * @return the ImageIcon
 	 */
-	public static ImageIcon getImageIcon(String fileName) {
+	public static ImageIcon getImageIcon(final String fileName) {
 		return new ImageIcon(getImage(fileName));
 	}
 }
