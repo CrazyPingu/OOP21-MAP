@@ -3,7 +3,7 @@ package logics.life;
 public class HealLifeSystem implements LifeSystem, HealSystem {
 
 	private SimpleLifeSystem life;
-	private int maxHealth;
+	private final int maxHealth;
 
 	/**
 	 * 
@@ -13,14 +13,14 @@ public class HealLifeSystem implements LifeSystem, HealSystem {
 	 * @param maxHealth    the maximum amount of health that can be reached using
 	 *                     heal method
 	 */
-	public HealLifeSystem(int startingLife, int maxHealth) {
-		startingLife = startingLife <= maxHealth ? startingLife : maxHealth;
-		this.life = new SimpleLifeSystem(startingLife);
+	public HealLifeSystem(final int startingLife, final int maxHealth) {
+		final int newStartingLife = startingLife <= maxHealth ? startingLife : maxHealth;
+		this.life = new SimpleLifeSystem(newStartingLife);
 		this.maxHealth = maxHealth;
 	}
 
 	@Override
-	public void heal(int healValue) {
+	public void heal(final int healValue) {
 		if (healValue > 0 && !this.isDead()) {
 			int newHealthValue = (this.life.getCurrentHealth() + healValue) > maxHealth ? maxHealth
 					: this.life.getCurrentHealth() + healValue;
@@ -39,7 +39,7 @@ public class HealLifeSystem implements LifeSystem, HealSystem {
 	}
 
 	@Override
-	public void damage(int damageValue) {
+	public void damage(final int damageValue) {
 		this.life.damage(damageValue);
 	}
 
