@@ -16,10 +16,10 @@ import utilities.Constant;
 import utilities.GbcDimension;
 import view.game.action.ActionMenu;
 import view.game.central.GameArea;
-import view.game.logStats.Log;
-import view.game.logStats.ScrollableLog;
-import view.game.logStats.ScrollableStats;
-import view.game.logStats.Stats;
+import view.game.log_stats.Log;
+import view.game.log_stats.ScrollableLog;
+import view.game.log_stats.ScrollableStats;
+import view.game.log_stats.Stats;
 
 public class TotalPanel extends JPanel {
 

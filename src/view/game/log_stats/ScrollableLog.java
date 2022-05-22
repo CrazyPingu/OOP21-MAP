@@ -1,9 +1,10 @@
-package view.game.logStats;
+package view.game.log_stats;
 
 public class ScrollableLog extends ScrollPaneAppearance {
 
     private static final long serialVersionUID = -2513174390328036056L;
-
+    
+    @SuppressWarnings("PMD.ProperLogger")
     private final Log logMessage;
 
     public ScrollableLog(final Log logMessage) {

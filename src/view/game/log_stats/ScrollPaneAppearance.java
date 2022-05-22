@@ -1,4 +1,4 @@
-package view.game.logStats;
+package view.game.log_stats;
 
 import java.awt.*;
 import javax.swing.*;
