@@ -6,7 +6,7 @@ public class Defeat extends EndGameMenu {
 
     private static final long serialVersionUID = 3843742944194787112L;
 
-    public Defeat(String imageName, PageController controller) {
+    public Defeat(final String imageName, final PageController controller) {
         super(imageName, controller);
     }
 
