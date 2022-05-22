@@ -29,9 +29,6 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen, Runnable
   private JLabel message = new JLabel("", SwingConstants.CENTER);
   private final PageController pageController;
 
-  /**
-   * {@inheritDoc}
-   */
   @SuppressWarnings("PMD.ConstructorCallsOverridableMethod")
   public LoadingScreenImpl(final PageController pageController) {
     this.pageController = pageController;
