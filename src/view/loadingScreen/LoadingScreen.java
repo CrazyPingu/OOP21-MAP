@@ -10,7 +10,7 @@ public interface LoadingScreen {
   /**
    * @param name : the file name of the image
    */
-  void addImage(String name);
+  void addImage();
 
   /**
    * Add the title "Marcello Apocalypse"

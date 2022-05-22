@@ -27,6 +27,8 @@ public class RoomConstant {
 	public static final Color DOOR_CELL_COLOR = new Color(110, 38, 14);
 	public static final Image BUTTON_IMAGE = ImageMethod.getImage("room/Button.png");
 	
+	public static final Image LOADING_SCREEN = ImageMethod.getImage("loadingScreen/aldoGiovanniEGiacomo.png");
+	
 
 	/**
 	 * @param pos            the position of the GameObject to be found
