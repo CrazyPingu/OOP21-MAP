@@ -12,7 +12,7 @@ import utilities.texture.EntityTexture;
 import view.frame.BasicFrame;
 import view.game.TotalPanel;
 import view.loading_screen.LoadingScreenImpl;
-import view.mainMenu.MainMenu;
+import view.main_menu.MainMenu;
 import view.pause.PauseMenu;
 import view.endGameMenu.Victory;
 import view.endGameMenu.Defeat;
