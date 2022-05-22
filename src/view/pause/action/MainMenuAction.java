@@ -7,20 +7,20 @@ import controller.PageController;
 
 public class MainMenuAction implements ActionListener {
 
-    private PageController controller;
+    private final PageController controller;
 
     /**
      * 
      * {@inheritDoc}
      */
-    public MainMenuAction(PageController controller) {
+    public MainMenuAction(final PageController controller) {
         this.controller = controller;
     }
 
     /**
      * {@inheritDoc}
      */
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
         controller.showMainMenu();
     }
 }

@@ -13,14 +13,14 @@ public class ResumeAction implements ActionListener {
      * 
      * {@inheritDoc}
      */
-    public ResumeAction(PageController controller) {
+    public ResumeAction(final PageController controller) {
         this.controller = controller;
     }
 
     /**
      * {@inheritDoc}
      */
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
         controller.showGame();
 
     }
