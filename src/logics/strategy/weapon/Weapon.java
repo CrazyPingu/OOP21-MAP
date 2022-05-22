@@ -6,23 +6,23 @@ import utilities.Pair;
 
 /**
  * 
- * Interface that declares methods for the weapon.
- * Represent the "Context" of Factory interface.
+ * Interface that declares methods for the weapon. Represent the "Context" of
+ * Factory interface.
  *
  */
 public interface Weapon {
+    /**
+     * @return the damage of the weapon.
+     */
+    int getDamage();
 
-	/**
-	 * @return the damage of the weapon.
-	 */
-	public int getDamage();
-	
-	/**
-	 * @return the name of the weapon.
-	 */
-	public String getName();
-	/**
-	 * @return list of available cells to attack based on shooting strategy applied.
-	 */
-	public List<Pair<Integer, Integer>> getAttackArea(Pair<Integer, Integer> pos, Pair<Integer, Integer> size);
+    /**
+     * @return the name of the weapon.
+     */
+    String getName();
+
+    /**
+     * @return list of available cells to attack based on shooting strategy applied.
+     */
+    List<Pair<Integer, Integer>> getAttackArea(Pair<Integer, Integer> pos, Pair<Integer, Integer> size);
 }
