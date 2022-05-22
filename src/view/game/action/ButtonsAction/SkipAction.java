@@ -12,14 +12,14 @@ public class SkipAction implements ActionListener {
      * 
      * @param menucontroller : the ActionMenuController
      */
-    public SkipAction(ActionMenuController menucontroller) {
+    public SkipAction(final ActionMenuController menucontroller) {
         this.menucontroller = menucontroller;
     }
 
     /**
      * Call skip method in ActionMenuController
      */
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
         menucontroller.skip();
     }
 
