@@ -1,4 +1,4 @@
-package view.endGameMenu;
+package view.end_game_menu;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
