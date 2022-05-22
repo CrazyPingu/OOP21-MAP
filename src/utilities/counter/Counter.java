@@ -9,10 +9,10 @@ public interface Counter {
 	/**
 	 * Increments the counter.
 	 */
-	public void increment();
+	void increment();
 	
 	/**
 	 * @return counter value.
 	 */
-	public int getCountValue();
+	int getCountValue();
 }
