@@ -10,7 +10,8 @@ public class SimpleLifeSystem implements LifeSystem {
 	private int health;
 	private boolean isDead;
 
-	public SimpleLifeSystem(int health) {
+	@SuppressWarnings("PMD.SimplifiedTernary")
+  public SimpleLifeSystem(final int health) {
 		this.health = health;
 		this.isDead = health > 0 ? false : true;
 	}
@@ -21,10 +22,10 @@ public class SimpleLifeSystem implements LifeSystem {
 	}
 
 	@Override
-	public void damage(int damageValue) {
+	public void damage(final int damageValue) {
 		if (damageValue > 0 && !this.isDead) {
 			this.health = (this.health - damageValue) < 0 ? 0 : this.health - damageValue;
-			this.isDead = !(this.health > 0);
+			this.isDead = this.health <= 0;
 		}
 	}
 
