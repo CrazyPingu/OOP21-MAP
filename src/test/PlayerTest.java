@@ -36,7 +36,8 @@ public class PlayerTest {
    */
   public void SimplePlayerCreationTest() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
-    this.player = new Player(life, START_POS, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME, TEXTURE, DAMAGE); 
+    this.player = new Player(life, START_POS, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
+        TEXTURE, DAMAGE);
     assertTrue(this.player.getHealth() == HEALTH);
     assertTrue(this.player.getMaxHealth() == MAX_HEALTH);
     assertTrue(this.player.getPos().equals(START_POS));
