@@ -1,4 +1,4 @@
-package controller.enemyAI;
+package controller.enemy_ai;
 
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;

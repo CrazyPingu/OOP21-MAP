@@ -8,7 +8,7 @@ import java.util.List;
 import controller.ActionMenuController;
 import controller.GameAreaController;
 import controller.PageController;
-import controller.enemyAI.EnemyAIImpl;
+import controller.enemy_ai.EnemyAIImpl;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import logics.game_object.entity.enemy.EnemyFactoryImpl;
