@@ -8,23 +8,21 @@ package view.game.logStats;
 
 public class Log extends TextAreaAppearance {
 
-	private static final long serialVersionUID = 3777939147427639785L;
+    private static final long serialVersionUID = 3777939147427639785L;
 
-	private final String initialText = "Marcello has to escape to survive... RUN!!!!";
+    private static final String INIT_TEXT = "Marcello has to escape to survive... RUN!!!!";
 
-	/**
-	 * Sets first log message.
-	 */
-	
-	public Log() {
-		this.setText(initialText);
-	}
+    /**
+     * Sets first log message.
+     */
+    public Log() {
+        this.setText(INIT_TEXT);
+    }
 
-	/**
-	 * Updates the log messages shown on the screen.
-	 */
-	
-	public void update(String message) {
-		this.setText(this.getText() + "\n" + message);
-	}
+    /**
+     * Updates the log messages shown on the screen.
+     */
+    public void update(final String message) {
+        this.setText(this.getText() + "\n" + message);
+    }
 }
