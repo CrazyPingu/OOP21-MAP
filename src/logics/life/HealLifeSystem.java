@@ -22,7 +22,7 @@ public class HealLifeSystem implements LifeSystem, HealSystem {
 	@Override
 	public void heal(final int healValue) {
 		if (healValue > 0 && !this.isDead()) {
-			int newHealthValue = (this.life.getCurrentHealth() + healValue) > maxHealth ? maxHealth
+			final int newHealthValue = (this.life.getCurrentHealth() + healValue) > maxHealth ? maxHealth
 					: this.life.getCurrentHealth() + healValue;
 			this.life = new SimpleLifeSystem(newHealthValue);
 		}
