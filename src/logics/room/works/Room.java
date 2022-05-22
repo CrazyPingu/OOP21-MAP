@@ -19,7 +19,7 @@ public interface Room {
 	/**
 	 * @return true if the player is on the door, else false
 	 */
-	public boolean playerOnDoor();
+	boolean playerOnDoor();
 
 	/**
 	 * Method that check if the player is on an artefact and return the artefact
@@ -27,59 +27,59 @@ public interface Room {
 	 * @return an Artefact if the player is on it, and remove it from the list of
 	 *         artefact, else null
 	 */
-	public Artefact playerGetArtefact();
+	Artefact playerGetArtefact();
 
 	/**
 	 * Method that check if the player is on an artefact
 	 * 
 	 * @return true if the player is on a artefact
 	 */
-	public boolean playerOnArtefact();
+	boolean playerOnArtefact();
 
 	/**
 	 * @param button the button that will be added to the grid
 	 * @param pos    the position of the button in the grid
 	 */
-	public void addButtonToCells(Pair<Integer, Integer> pos, GameButton button);
+	void addButtonToCells(Pair<Integer, Integer> pos, GameButton button);
 
 	/**
 	 * @param currentPos the current game object position
 	 * @param futurePos  the position that the game object will have
 	 */
-	public void updatePosition(Pair<Integer, Integer> oldPos, Pair<Integer, Integer> newPos);
+	void updatePosition(Pair<Integer, Integer> oldPos, Pair<Integer, Integer> newPos);
 
 	/**
 	 * @param pos the position of the game object to remove from the game
 	 */
-	public void removeObject(Pair<Integer, Integer> pos);
+	void removeObject(Pair<Integer, Integer> pos);
 
 	/**
 	 * @return the cells
 	 */
-	public Map<Pair<Integer, Integer>, GameButton> getCells();
+	Map<Pair<Integer, Integer>, GameButton> getCells();
 
 	/**
 	 * @return a Pair<> that represent the size of the room.
 	 */
-	public Pair<Integer, Integer> getSize();
+	Pair<Integer, Integer> getSize();
 
 	/**
 	 * @return a List<SimpleEntity> that contains all the SimpleEntity (the enemy)
 	 */
-	public List<SimpleEnemy> getEnemyList();
+	List<SimpleEnemy> getEnemyList();
 
 	/**
 	 * @return a List<Artefact> that contains all the artefact in the room
 	 */
-	public List<Artefact> getArtefactList();
+	List<Artefact> getArtefactList();
 
 	/**
 	 * @return the player of the game
 	 */
-	public Player getPlayer();
+	Player getPlayer();
 
 	/**
 	 * @return the door
 	 */
-	public List<Pair<Integer, Integer>> getDoor();
+	List<Pair<Integer, Integer>> getDoor();
 }
