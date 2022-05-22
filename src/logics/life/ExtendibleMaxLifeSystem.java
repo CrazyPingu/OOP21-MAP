@@ -31,7 +31,7 @@ public class ExtendibleMaxLifeSystem implements LifeSystem, HealSystem {
   public void setMaxHealth(final int lifeExtension) {
     final int newLifeExtension = lifeExtension <= maxHealthReachable ? lifeExtension : maxHealthReachable;
     if (lifeExtension > 0) {
-      int newStartingLifeValue = this.life.getCurrentHealth() <= lifeExtension ? this.life.getCurrentHealth()
+      final int newStartingLifeValue = this.life.getCurrentHealth() <= lifeExtension ? this.life.getCurrentHealth()
           : lifeExtension;
       this.life = new HealLifeSystem(newStartingLifeValue, newLifeExtension);
     }
