@@ -14,7 +14,6 @@ import javax.swing.SwingConstants;
 import controller.PageController;
 import utilities.Constant;
 import utilities.GbcDimension;
-import utilities.ImageMethod;
 import utilities.ImageModifier;
 import utilities.RoomConstant;
 
