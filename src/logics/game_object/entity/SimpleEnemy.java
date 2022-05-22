@@ -14,85 +14,86 @@ import utilities.Pair;
 /**
  * 
  * Implements all the common method for a simple game object able to hold a
- * weapon, move and take damage. This class is used for the enemy implementation.
+ * weapon, move and take damage. This class is used for the enemy
+ * implementation.
  *
  */
 public class SimpleEnemy implements MovingObject, WeaponizedObject, KillableObject, GameObject {
 
-	private LifeSystem life;
-	private Pair<Integer, Integer> pos;
-	private Weapon weapon;
-	private Movement movement;
-	private String name;
-	private Image textureImage;
+  private final LifeSystem life;
+  private final Weapon weapon;
+  private final Movement movement;
+  private final String name;
+  private final Image textureImage;
+  private Pair<Integer, Integer> pos;
 
-	/**
-	 * 
-	 * @param life         is the life system of the entity
-	 * @param pos          is the position of the entity
-	 * @param weapon       is the weapon the entity is holding
-	 * @param movement     is the movement sistem of the entity
-	 * @param name         the name of the entity
-	 * @param textureImage the texture of the entity. Texture can be found in
-	 *                     utilis.texture
-	 */
-	public SimpleEnemy(LifeSystem life, Pair<Integer, Integer> pos, Weapon weapon, Movement movement, String name,
-			Image textureImage) {
-		this.life = life;
-		this.pos = pos;
-		this.weapon = weapon;
-		this.movement = movement;
-		this.name = name;
-		this.textureImage = textureImage;
-	}
+  /**
+   * 
+   * @param life         is the life system of the entity
+   * @param pos          is the position of the entity
+   * @param weapon       is the weapon the entity is holding
+   * @param movement     is the movement sistem of the entity
+   * @param name         the name of the entity
+   * @param textureImage the texture of the entity. Texture can be found in
+   *                     utilis.texture
+   */
+  public SimpleEnemy(final LifeSystem life, final Pair<Integer, Integer> pos, final Weapon weapon,
+      final Movement movement, final String name, final Image textureImage) {
+    this.life = life;
+    this.pos = pos;
+    this.weapon = weapon;
+    this.movement = movement;
+    this.name = name;
+    this.textureImage = textureImage;
+  }
 
-	@Override
-	public void damage(int damageValue) {
-		this.life.damage(damageValue);
-	}
+  @Override
+  public void damage(final int damageValue) {
+    this.life.damage(damageValue);
+  }
 
-	@Override
-	public int getHealth() {
-		return life.getCurrentHealth();
-	}
+  @Override
+  public int getHealth() {
+    return life.getCurrentHealth();
+  }
 
-	@Override
-	public Boolean isDead() {
-		return this.life.isDead();
-	}
+  @Override
+  public Boolean isDead() {
+    return this.life.isDead();
+  }
 
-	@Override
-	public void setPos(Pair<Integer, Integer> pos) {
-		this.pos = pos;
-	}
+  @Override
+  public void setPos(final Pair<Integer, Integer> pos) {
+    this.pos = pos;
+  }
 
-	public Pair<Integer, Integer> getPos() {
-		return this.pos;
-	}
+  public Pair<Integer, Integer> getPos() {
+    return this.pos;
+  }
 
-	@Override
-	public Weapon getWeapon() {
-		return this.weapon;
-	}
+  @Override
+  public Weapon getWeapon() {
+    return this.weapon;
+  }
 
-	@Override
-	public Movement getMovementSystem() {
-		return this.movement;
-	}
+  @Override
+  public Movement getMovementSystem() {
+    return this.movement;
+  }
 
-	@Override
-	public String getName() {
-		return this.name;
-	}
+  @Override
+  public String getName() {
+    return this.name;
+  }
 
-	@Override
-	public Image getTextureImage() {
-		return this.textureImage;
-	}
+  @Override
+  public Image getTextureImage() {
+    return this.textureImage;
+  }
 
-	public String toString() {
-		return "name = " + name + " " + "health = " + this.life.getCurrentHealth() + " " + "weapon damage = "
-				+ this.weapon.getDamage();
-	}
+  public String toString() {
+    return "name = " + name + " " + "health = " + this.life.getCurrentHealth() + " " + "weapon damage = "
+        + this.weapon.getDamage();
+  }
 
 }
