@@ -9,8 +9,8 @@ import logics.strategy.weapon.Weapon;
  */
 public interface WeaponizedObject {
 
-	/**
-	 * @return the weapon that the entity is holding.
-	 */
-	public Weapon getWeapon();
+  /**
+   * @return the weapon that the entity is holding.
+   */
+  Weapon getWeapon();
 }

@@ -13,49 +13,37 @@ import utilities.texture.EntityTexture;
  *
  */
 public class EnemyFactoryImpl implements EnemyFactory {
-	
-	private static int LOW_HEALTH = 5;
-	private static int MID_HEALTH = 7;
-	private static int HIGH_HEALTH = 10;
+    private final static int LOW_HEALTH = 5;
+    private final static int MID_HEALTH = 7;
+    private final static int HIGH_HEALTH = 10;
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public SimpleEnemy createZombieStick(Pair<Integer, Integer> pos) {
-		return new SimpleEnemy(new SimpleLifeSystem(LOW_HEALTH), pos, new WeaponFactoryImpl().createStick(),
-				new MovementFactoryImpl().stepMovement(), "zombie stick", EntityTexture.ZOMBIE_STICK);
-	}
+    @Override
+    public SimpleEnemy createZombieStick(final Pair<Integer, Integer> pos) {
+        return new SimpleEnemy(new SimpleLifeSystem(LOW_HEALTH), pos, new WeaponFactoryImpl().createStick(),
+                new MovementFactoryImpl().stepMovement(), "zombie stick", EntityTexture.ZOMBIE_STICK);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public SimpleEnemy createZombieAxe(Pair<Integer, Integer> pos) {
-		return new SimpleEnemy(new SimpleLifeSystem(LOW_HEALTH), pos, new WeaponFactoryImpl().createStick(),
-				new MovementFactoryImpl().stepMovement(), "zombie axe", EntityTexture.ZOMBIE_AXE);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public SimpleEnemy createZombieDagger(Pair<Integer, Integer> pos) {
-		return new SimpleEnemy(new SimpleLifeSystem(MID_HEALTH), pos, new WeaponFactoryImpl().createStick(),
-				new MovementFactoryImpl().runMovement(), "zombie dagger", EntityTexture.ZOMBIE_DAGGER);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public SimpleEnemy createZombieTube(Pair<Integer, Integer> pos) {
-		return new SimpleEnemy(new SimpleLifeSystem(HIGH_HEALTH), pos, new WeaponFactoryImpl().createStick(),
-				new MovementFactoryImpl().stepMovement(), "zombie tube", EntityTexture.ZOMBIE_TUBE);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public SimpleEnemy createZombieGun(Pair<Integer, Integer> pos) {
-		return new SimpleEnemy(new SimpleLifeSystem(HIGH_HEALTH), pos, new WeaponFactoryImpl().createStick(),
-				new MovementFactoryImpl().runMovement(), "zombie gun", EntityTexture.ZOMBIE_GUN);
-	}
-	
+    @Override
+    public SimpleEnemy createZombieAxe(final Pair<Integer, Integer> pos) {
+        return new SimpleEnemy(new SimpleLifeSystem(LOW_HEALTH), pos, new WeaponFactoryImpl().createStick(),
+                new MovementFactoryImpl().stepMovement(), "zombie axe", EntityTexture.ZOMBIE_AXE);
+    }
+
+    @Override
+    public SimpleEnemy createZombieDagger(final Pair<Integer, Integer> pos) {
+        return new SimpleEnemy(new SimpleLifeSystem(MID_HEALTH), pos, new WeaponFactoryImpl().createStick(),
+                new MovementFactoryImpl().runMovement(), "zombie dagger", EntityTexture.ZOMBIE_DAGGER);
+    }
+
+    @Override
+    public SimpleEnemy createZombieTube(final Pair<Integer, Integer> pos) {
+        return new SimpleEnemy(new SimpleLifeSystem(HIGH_HEALTH), pos, new WeaponFactoryImpl().createStick(),
+                new MovementFactoryImpl().stepMovement(), "zombie tube", EntityTexture.ZOMBIE_TUBE);
+    }
+
+    @Override
+    public SimpleEnemy createZombieGun(final Pair<Integer, Integer> pos) {
+        return new SimpleEnemy(new SimpleLifeSystem(HIGH_HEALTH), pos, new WeaponFactoryImpl().createStick(),
+                new MovementFactoryImpl().runMovement(), "zombie gun", EntityTexture.ZOMBIE_GUN);
+    }
 }

@@ -12,22 +12,22 @@ import utilities.Pair;
  */
 public interface GameObject {
 
-	/**
-	 * 
-	 * @return the current position of the object
-	 */
-	public Pair<Integer, Integer> getPos();
+  /**
+   * 
+   * @return the current position of the object
+   */
+  Pair<Integer, Integer> getPos();
 
-	/**
-	 * 
-	 * @return the name of the GameObject
-	 */
-	public String getName();
+  /**
+   * 
+   * @return the name of the GameObject
+   */
+  String getName();
 
-	/**
-	 * 
-	 * @return the object's texture image
-	 */
-	public Image getTextureImage();
+  /**
+   * 
+   * @return the object's texture image
+   */
+  Image getTextureImage();
 
 }

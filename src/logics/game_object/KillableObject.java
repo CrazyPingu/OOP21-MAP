@@ -6,20 +6,21 @@ package logics.game_object;
  *
  */
 public interface KillableObject {
-	/**
-	 * @param damageValue value that will be decreased from the entity's current
-	 *                    health.
-	 */
-	public void damage(int damageValue);
+  /**
+   * @param damageValue value that will be decreased from the entity's current
+   *                    health.
+   */
+  void damage(int damageValue);
 
-	/**
-	 * 
-	 * @return the current amounth of health
-	 */
-	public int getHealth(); 
-	/**
-	 * 
-	 * @return the life state of the entity (True = DEAD, FALSE = IN LIFE)
-	 */
-	public Boolean isDead();
+  /**
+   * 
+   * @return the current amounth of health
+   */
+  int getHealth();
+
+  /**
+   * 
+   * @return the life state of the entity (True = DEAD, FALSE = IN LIFE)
+   */
+  Boolean isDead();
 }
