@@ -16,18 +16,18 @@ public interface GameObject {
 	 * 
 	 * @return the current position of the object
 	 */
-	public Pair<Integer, Integer> getPos();
+	Pair<Integer, Integer> getPos();
 
 	/**
 	 * 
 	 * @return the name of the GameObject
 	 */
-	public String getName();
+	String getName();
 
 	/**
 	 * 
 	 * @return the object's texture image
 	 */
-	public Image getTextureImage();
+	Image getTextureImage();
 
 }
