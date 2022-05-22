@@ -11,20 +11,17 @@ import logics.game_statistics.GameStatisticsImpl;
 
 public class Stats extends TextAreaAppearance {
 
-	private static final long serialVersionUID = -678263256165523272L;
+    private static final long serialVersionUID = -678263256165523272L;
 
-	public Stats() {
-		super();
-	}
+    /**
+     * @param player:              player object to init first values in the stats
+     *                             view
+     * @param gameStats:           statistics of the game
+     * @param currentActionNumber: actions left in a turn
+     */
 
-	/**
-	 * @param player: player object to init first values in the stats view
-	 * @param gameStats: satistics of the game
-	 * @param currentActionNumber: actions left in a turn
-	 */
-
-	public void update(Player player, GameStatisticsImpl gameStats, int currentActionNumber) {
-		this.setText(player.toString() + gameStats.toString() + "\n Actions left: " + currentActionNumber);
-	}
+    public void update(final Player player, final GameStatisticsImpl gameStats, final int currentActionNumber) {
+        this.setText(player.toString() + gameStats.toString() + "\n Actions left: " + currentActionNumber);
+    }
 
 }
