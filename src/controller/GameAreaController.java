@@ -6,10 +6,10 @@ import utilities.Pair;
 
 public class GameAreaController {
 
-    private GameLoop gameLoop;
-    private RandomRoomGenerator randomRoomGenerator;
+    private final GameLoop gameLoop;
+    private final RandomRoomGenerator randomRoomGenerator;
 
-    public GameAreaController(GameLoop gameLoop) {
+    public GameAreaController(final GameLoop gameLoop) {
         this.gameLoop = gameLoop;
         this.randomRoomGenerator = new RandomRoomGenerator();
     }
@@ -17,7 +17,7 @@ public class GameAreaController {
     /**
      * create a new Room.
      */
-    public Room generateNewRoom(Player player) {
+    public Room generateNewRoom(final Player player) {
         return randomRoomGenerator.generateRoom(player);
     }
 
@@ -25,7 +25,7 @@ public class GameAreaController {
      * 
      * @param pos : the position of the pressed cell
      */
-    public void makeAction(Pair<Integer, Integer> pos) {
+    public void makeAction(final Pair<Integer, Integer> pos) {
         this.gameLoop.makeAction(pos);
     }
 

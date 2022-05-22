@@ -2,9 +2,9 @@ package controller;
 
 public class ActionMenuController {
 
-    private GameLoop gameLoop;
+    private final GameLoop gameLoop;
 
-    public ActionMenuController(GameLoop gameLoop) {
+    public ActionMenuController(final GameLoop gameLoop) {
         this.gameLoop = gameLoop;
     }
 

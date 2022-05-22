@@ -18,68 +18,64 @@ import view.endGameMenu.Victory;
 import view.endGameMenu.Defeat;
 
 public class GameLoop {
-    private BasicFrame frame;
+  private final BasicFrame frame;
 
-    private LoadingScreenImpl loadingScreen;
-    private TotalPanel totalPanel;
-    private Player player;
+  private final LoadingScreenImpl loadingScreen;
 
-    private ActionMenuController actionMenuController;
-    private GameAreaController gameAreaController;
-    private PageController pageController;
-    private GameStatisticsImpl gameStats;
-    private BasicGameController gameController;
+  private final ActionMenuController actionMenuController;
+  private final GameAreaController gameAreaController;
+  private final PageController pageController;
+  private BasicGameController gameController;
 
-    public GameLoop() {
-        frame = new BasicFrame();
-        this.actionMenuController = new ActionMenuController(this);
-        this.gameAreaController = new GameAreaController(this);
-        this.pageController = new PageController(frame, this);
+  public GameLoop() {
+    frame = new BasicFrame();
+    this.actionMenuController = new ActionMenuController(this);
+    this.gameAreaController = new GameAreaController(this);
+    this.pageController = new PageController(frame, this);
 
-        this.loadingScreen = new LoadingScreenImpl(this.pageController);
-        MainMenu mainMenu = new MainMenu(this.pageController);
-        frame.addToCardLayout(mainMenu, "MainMenu");
-        PauseMenu pauseMenu = new PauseMenu(this.pageController);
-        frame.addToCardLayout(pauseMenu, "PauseMenu");
-        Victory victory = new Victory("Victory", this.pageController);
-        frame.addToCardLayout(victory, "Victory");
-        Defeat defeat = new Defeat("Defeat", this.pageController);
-        frame.addToCardLayout(defeat, "Defeat");
-        frame.addToCardLayout(loadingScreen, "LoadingScreen");
-        this.pageController.showMainMenu();
-    }
+    this.loadingScreen = new LoadingScreenImpl(this.pageController);
+    final MainMenu mainMenu = new MainMenu(this.pageController);
+    frame.addToCardLayout(mainMenu, "MainMenu");
+    final PauseMenu pauseMenu = new PauseMenu(this.pageController);
+    frame.addToCardLayout(pauseMenu, "PauseMenu");
+    final Victory victory = new Victory("Victory", this.pageController);
+    frame.addToCardLayout(victory, "Victory");
+    final Defeat defeat = new Defeat("Defeat", this.pageController);
+    frame.addToCardLayout(defeat, "Defeat");
+    frame.addToCardLayout(loadingScreen, "LoadingScreen");
+    this.pageController.showMainMenu();
+  }
 
-    public void newGame() {
-        this.gameStats = new GameStatisticsImpl();
-        this.loadingScreen.startProgressBar();
-        WeaponFactoryImpl wf = new WeaponFactoryImpl();
-        MovementFactoryImpl mf = new MovementFactoryImpl();
-        this.player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createStick(), mf.stepMovement(),
-                "Marcello", EntityTexture.PLAYER);
-        Room randomRoom = gameAreaController.generateNewRoom(player);
-        this.totalPanel = new TotalPanel(randomRoom, actionMenuController, gameAreaController, pageController,
-                gameStats);
-        frame.addToCardLayout(totalPanel, "Game");
-        gameController = new BasicGameController(gameAreaController, totalPanel, pageController, gameStats);
-    }
+  public void newGame() {
+    final GameStatisticsImpl gameStats = new GameStatisticsImpl();
+    this.loadingScreen.startProgressBar();
+    final WeaponFactoryImpl wf = new WeaponFactoryImpl();
+    final MovementFactoryImpl mf = new MovementFactoryImpl();
+    final Player player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createStick(), mf.stepMovement(), "Marcello",
+        EntityTexture.PLAYER);
+    final Room randomRoom = gameAreaController.generateNewRoom(player);
+    final TotalPanel totalPanel = new TotalPanel(randomRoom, actionMenuController, gameAreaController, pageController, gameStats);
+    frame.addToCardLayout(totalPanel, "Game");
+    gameController = new BasicGameController(gameAreaController, totalPanel, pageController, gameStats);
+  }
 
-    public void skipTurn() {
-        this.gameController.skipTurn();
-    }
+  public void skipTurn() {
+    this.gameController.skipTurn();
+  }
 
-    public void setFlag(ActionFlag flag) {
-        this.gameController.setFlag(flag);
-    }
+  public void setFlag(final ActionFlag flag) {
+    this.gameController.setFlag(flag);
+  }
 
-    /**
-     * When this method is called the game loop start;
-     */
-    public void startGame() {
-        this.newGame();
-    }
+  /**
+   * When this method is called the game loop start;
+   */
+  public void startGame() {
+    this.newGame();
+  }
 
-    public void makeAction(Pair<Integer, Integer> pos) {
-        this.gameController.makeAction(pos);
+  public void makeAction(final Pair<Integer, Integer> pos) {
+    this.gameController.makeAction(pos);
 
-    }
+  }
 }
