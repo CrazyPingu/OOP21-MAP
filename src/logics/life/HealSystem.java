@@ -8,11 +8,11 @@ public interface HealSystem {
 	 *                  can't be greater than max health. Don't work with negative
 	 *                  values
 	 */
-	public void heal(int healValue); 
+	void heal(int healValue); 
 
 	/**
 	 * 
 	 * @return the maximum amount of health that can be reached
 	 */
-	public int getMaxHealth(); 
+	int getMaxHealth(); 
 }
