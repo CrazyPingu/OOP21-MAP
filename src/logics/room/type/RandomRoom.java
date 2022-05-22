@@ -11,12 +11,7 @@ import utilities.Pair;
  */
 public class RandomRoom extends RoomImpl {
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public RandomRoom(Pair<Integer, Integer> size, Player player) {
-		super(size, player, new Pair<Integer, Integer>(0, size.getY() / 2));
-
-	}
-
+  public RandomRoom(final Pair<Integer, Integer> size, final Player player) {
+    super(size, player, new Pair<Integer, Integer>(0, size.getY() / 2));
+  }
 }
