@@ -27,7 +27,7 @@ public class RoomTest {
   private MovementFactory movementFactory = new MovementFactoryImpl();;
   private Player player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), weaponFactory.createAxe(),
       movementFactory.stepMovement(), "Marcello", EntityTexture.PLAYER);
-  private RoomFactory roomFactory = new RoomFactoryImpl(player);;
+  private RoomFactory roomFactory = new RoomFactoryImpl(player);
 
   @org.junit.Test
   /**
