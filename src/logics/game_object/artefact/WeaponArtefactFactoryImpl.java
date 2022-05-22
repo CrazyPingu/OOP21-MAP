@@ -8,66 +8,65 @@ import utilities.texture.ArtefactTexture;
 
 public class WeaponArtefactFactoryImpl implements WeaponArtefactFactory {
 
-	private WeaponFactory weaponFactory = new WeaponFactoryImpl();
+  private WeaponFactory weaponFactory = new WeaponFactoryImpl();
 
-	@Override
-	public Artefact stickArtefact(Pair<Integer, Integer> pos) {
-		return new Artefact(pos, "stick artefact", ArtefactTexture.STRICK) {
+  @Override
+  public Artefact stickArtefact(final Pair<Integer, Integer> pos) {
+    return new Artefact(pos, "stick artefact", ArtefactTexture.STRICK) {
 
-			@Override
-			public void execute(ArtefactUserObject subject) {
-				subject.changeWeapon(weaponFactory.createStick());
-			}
-		};
-	}
+      @Override
+      public void execute(final ArtefactUserObject subject) {
+        subject.changeWeapon(weaponFactory.createStick());
+      }
+    };
+  }
 
-	@Override
-	public Artefact tubeArtefact(Pair<Integer, Integer> pos) {
-		return new Artefact(pos, "tube artefact", ArtefactTexture.TUBE) {
+  @Override
+  public Artefact tubeArtefact(final Pair<Integer, Integer> pos) {
+    return new Artefact(pos, "tube artefact", ArtefactTexture.TUBE) {
 
-			@Override
-			public void execute(ArtefactUserObject subject) {
-				subject.changeWeapon(weaponFactory.createTube());
+      @Override
+      public void execute(final ArtefactUserObject subject) {
+        subject.changeWeapon(weaponFactory.createTube());
 
-			}
-		};
-	}
+      }
+    };
+  }
 
-	@Override
-	public Artefact axeArtefact(Pair<Integer, Integer> pos) {
-		return new Artefact(pos, "axe artefact", ArtefactTexture.AXE) {
+  @Override
+  public Artefact axeArtefact(final Pair<Integer, Integer> pos) {
+    return new Artefact(pos, "axe artefact", ArtefactTexture.AXE) {
 
-			@Override
-			public void execute(ArtefactUserObject subject) {
-				subject.changeWeapon(weaponFactory.createAxe());
+      @Override
+      public void execute(final ArtefactUserObject subject) {
+        subject.changeWeapon(weaponFactory.createAxe());
 
-			}
-		};
+      }
+    };
+  }
 
-	}
+  @Override
+  public Artefact daggerArtefact(final Pair<Integer, Integer> pos) {
+    return new Artefact(pos, "dagger artefact", ArtefactTexture.DAGGER) {
 
-	@Override
-	public Artefact daggerArtefact(Pair<Integer, Integer> pos) {
-		return new Artefact(pos, "dagger artefact", ArtefactTexture.DAGGER) {
+      @Override
+      public void execute(final ArtefactUserObject subject) {
+        subject.changeWeapon(weaponFactory.createDagger());
 
-			@Override
-			public void execute(ArtefactUserObject subject) {
-				subject.changeWeapon(weaponFactory.createDagger());
+      }
+    };
+  }
 
-			}
-		};
-	}
+  @Override
+  public Artefact gunArtefact(final Pair<Integer, Integer> pos) {
+    return new Artefact(pos, "gun artefact", ArtefactTexture.GUN) {
 
-	@Override
-	public Artefact gunArtefact(Pair<Integer, Integer> pos) {
-		return new Artefact(pos, "gun artefact", ArtefactTexture.GUN) {
+      @Override
+      public void execute(final ArtefactUserObject subject) {
+        subject.changeWeapon(weaponFactory.createGun());
 
-			@Override
-			public void execute(ArtefactUserObject subject) {
-				subject.changeWeapon(weaponFactory.createGun());
-
-			}
-		};
-	}
+      }
+    };
+  }
 
 }
