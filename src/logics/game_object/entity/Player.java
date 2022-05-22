@@ -23,13 +23,12 @@ public class Player
 
   private final static int INITIAL_ACTION_NUMBER = 2;
   private final static Pair<Integer, Integer> STANDARD_SPAWN_POSITION = new Pair<>(0, 0);
-
-  private ExtendibleMaxLifeSystem life;
+  private final String name;
+  private final ExtendibleMaxLifeSystem life;
+  private final Image textureImage;
   private Pair<Integer, Integer> pos;
   private Weapon weapon;
   private Movement movement;
-  private String name;
-  private Image textureImage;
   private int actionNumber;
 
   /**
