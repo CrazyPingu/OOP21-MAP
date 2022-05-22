@@ -8,9 +8,9 @@ package logics.game_object;
  */
 public interface MultipleActionObject {
 
-	/**
-	 * 
-	 * @return the number of action the object can perform in a turn
-	 */
-	public int getActionNumber();
+  /**
+   * 
+   * @return the number of action the object can perform in a turn
+   */
+  int getActionNumber();
 }
