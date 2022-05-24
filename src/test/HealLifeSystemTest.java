@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
 import logics.life.HealLifeSystem;
 
-public class HealLifeSystemTest {
+class HealLifeSystemTest {
   private static final int HEALTH = 9;
   private static final int MAX_HEALTH = 10;
   private static final int DAMAGE = 1;
@@ -16,7 +16,7 @@ public class HealLifeSystemTest {
    * test the correct creation of a HealLifeSystem instantiation.
    */
   @SuppressWarnings("PMD.SimplifiableTestAssertion")
-  public void createLifeTest() {
+  void createLifeTest() {
     HealLifeSystem life = new HealLifeSystem(HEALTH, MAX_HEALTH);
     assertTrue(life.getCurrentHealth() == HEALTH);
     assertTrue(life.getMaxHealth() == MAX_HEALTH);
@@ -33,7 +33,7 @@ public class HealLifeSystemTest {
   /*
    * test the proper operation of the method damage.
    */
-  public void damageTest() {
+  void damageTest() {
     final HealLifeSystem life = new HealLifeSystem(HEALTH, MAX_HEALTH);
     life.damage(DAMAGE);
     assertTrue(life.getCurrentHealth() == HEALTH - DAMAGE);
@@ -46,7 +46,7 @@ public class HealLifeSystemTest {
   /*
    * test that the health value does not go below zero
    */
-  public void healthNotBelowZeroTest() {
+  void healthNotBelowZeroTest() {
     final HealLifeSystem life = new HealLifeSystem(HEALTH, MAX_HEALTH);
     life.damage(life.getCurrentHealth() + DAMAGE);
     assertTrue(life.getCurrentHealth() == 0);
@@ -56,7 +56,7 @@ public class HealLifeSystemTest {
   /*
    * test the correct working of the isDead method
    */
-  public void isDeadTest() {
+  void isDeadTest() {
     final HealLifeSystem life = new HealLifeSystem(HEALTH, MAX_HEALTH);
     assertFalse(life.isDead());
     life.damage(life.getCurrentHealth() + DAMAGE);
@@ -68,7 +68,7 @@ public class HealLifeSystemTest {
   /*
    * test the correct working of the heal method
    */
-  public void healTest() {
+  void healTest() {
     final HealLifeSystem life = new HealLifeSystem(MAX_HEALTH, MAX_HEALTH);
     life.heal(-HEAL); // test that heal don't work with negative value
     assertTrue(life.getCurrentHealth() == MAX_HEALTH);

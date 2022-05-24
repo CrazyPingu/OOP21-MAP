@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
 import logics.life.ExtendibleMaxLifeSystem;
 
-public class ExtendibleMaxLifeSystemTest {
+class ExtendibleMaxLifeSystemTest {
   private static final int HEALTH = 9;
   private static final int MAX_HEALTH = 10;
   private static final int MAX_HEALTH_EXTENSION = 15;
@@ -16,7 +16,7 @@ public class ExtendibleMaxLifeSystemTest {
   @Test
 
   @SuppressWarnings("PMD.SimplifiableTestAssertion")
-  public void createLifeTest() {
+  void createLifeTest() {
     ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_EXTENSION);
     assertTrue(life.getCurrentHealth() == HEALTH);
     assertTrue(life.getMaxHealth() == MAX_HEALTH);
@@ -42,7 +42,7 @@ public class ExtendibleMaxLifeSystemTest {
   /*
    * test the proper operation of the method damage.
    */
-  public void damageTest() {
+  void damageTest() {
     final ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_EXTENSION);
     life.damage(DAMAGE);
     assertTrue(life.getCurrentHealth() == HEALTH - DAMAGE);
@@ -55,7 +55,7 @@ public class ExtendibleMaxLifeSystemTest {
   /*
    * test that the health value does not go below zero
    */
-  public void healthNotBelowZeroTest() {
+  void healthNotBelowZeroTest() {
     final ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_EXTENSION);
     life.damage(life.getCurrentHealth() + DAMAGE);
     assertTrue(life.getCurrentHealth() == 0);
@@ -65,7 +65,7 @@ public class ExtendibleMaxLifeSystemTest {
   /*
    * test the correct working of the isDead method
    */
-  public void isDeadTest() {
+  void isDeadTest() {
     final ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_EXTENSION);
     assertFalse(life.isDead());
     life.damage(life.getCurrentHealth() + DAMAGE);
@@ -77,7 +77,7 @@ public class ExtendibleMaxLifeSystemTest {
   /*
    * test the correct working of the heal method
    */
-  public void healTest() {
+  void healTest() {
     final ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(MAX_HEALTH, MAX_HEALTH, MAX_HEALTH_EXTENSION);
     // test that heal don't work with negative value
     life.heal(-HEAL);
@@ -94,7 +94,7 @@ public class ExtendibleMaxLifeSystemTest {
   /*
    * test the correct working of the heal method
    */
-  public void increaseMaxHealthTest() {
+   void increaseMaxHealthTest() {
     final ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_EXTENSION);
 
     life.setMaxHealth(MAX_HEALTH + 1);

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import utilities.Pair;
 import utilities.PosInGrid;
 
-public class PosInGridTest {
+class PosInGridTest {
 
   private final Pair<Integer, Integer> size = new Pair<>(6, 4);
   private Pair<Integer, Integer> pos;
@@ -58,7 +58,7 @@ public class PosInGridTest {
   /*
    * test all the possible coordinate in the grid
    */
-  void AllCoordinateTest() {
+  void allCoordinateTest() {
     for (int i = 0; i < size.getX(); i++) {
       for (int j = 0; j < size.getY(); j++) {
         pos = new Pair<>(i, j);
@@ -71,7 +71,7 @@ public class PosInGridTest {
   /*
    * test some wrong coordinates that don't belong to the grid
    */
-  void WrongCoordinateTest() {
+  void wrongCoordinateTest() {
     pos = new Pair<>(-1, 0);
     assertFalse(PosInGrid.checkPosInGrid(pos, size));
     pos = new Pair<>(-1, -1);

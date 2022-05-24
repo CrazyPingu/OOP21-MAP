@@ -14,7 +14,7 @@ import logics.strategy.weapon.WeaponFactoryImpl;
 import utilities.Pair;
 import utilities.texture.EntityTexture;
 
-public class SimpleEntityTest {
+class SimpleEntityTest {
   private static final int HEALTH = 9;
   private static final int DAMAGE = 1;
   private static final String NAME = "name";
@@ -31,7 +31,7 @@ public class SimpleEntityTest {
    * test the correct creation of a SimpleLifeSystem instantiation.
    */
   @SuppressWarnings("PMD.SimplifiableTestAssertion")
-  public void simpleEntityCreationTest() {
+  void simpleEntityCreationTest() {
     this.life = new SimpleLifeSystem(HEALTH);
     this.entity = new SimpleEnemy(this.life, START_POS, this.weaponFactory.createAxe(),
         this.movementFactory.stepMovement(), NAME, TEXTURE);
@@ -46,7 +46,7 @@ public class SimpleEntityTest {
   /*
    * test the proper operation of the method damage.
    */
-  public void damageEntityTest() {
+  void damageEntityTest() {
     this.life = new SimpleLifeSystem(HEALTH);
     this.entity = new SimpleEnemy(this.life, START_POS, this.weaponFactory.createAxe(),
         this.movementFactory.stepMovement(), NAME, TEXTURE);
@@ -59,7 +59,7 @@ public class SimpleEntityTest {
    * test that the health value does not go below zero
    */
   @SuppressWarnings("PMD.SimplifiableTestAssertion")
-  public void healthNotBelowZeroTest() {
+  void healthNotBelowZeroTest() {
     this.life = new SimpleLifeSystem(HEALTH);
     this.entity = new SimpleEnemy(this.life, START_POS, this.weaponFactory.createAxe(),
         this.movementFactory.stepMovement(), NAME, TEXTURE);
@@ -71,7 +71,7 @@ public class SimpleEntityTest {
   /*
    * test the correct working of the isDead method
    */
-  public void isDeadTest() {
+  void isDeadTest() {
     this.life = new SimpleLifeSystem(HEALTH);
     this.entity = new SimpleEnemy(this.life, START_POS, this.weaponFactory.createAxe(),
         this.movementFactory.stepMovement(), NAME, TEXTURE);

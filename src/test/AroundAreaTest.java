@@ -6,7 +6,7 @@ import logics.strategy.concrete_strategies.VariableDistanceConstants;
 import utilities.Pair;
 import logics.strategy.concrete_strategies.AroundArea;
 
-public class AroundAreaTest {
+class AroundAreaTest {
 
   private final Pair<Integer, Integer> size = new Pair<>(7, 6);
   private Pair<Integer, Integer> pos;

@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
 import logics.life.SimpleLifeSystem;
 
-public class SimpleLifeSystemTest {
+class SimpleLifeSystemTest {
   private static final int HEALTH = 9;
   private static final int DAMAGE = 1;
 
@@ -15,7 +15,7 @@ public class SimpleLifeSystemTest {
   /*
    * test the correct creation of a SimpleLifeSystem instantiation.
    */
-  public void createLifeTest() {
+  void createLifeTest() {
     final SimpleLifeSystem life = new SimpleLifeSystem(HEALTH);
     assertTrue(life.getCurrentHealth() == HEALTH);
   }
@@ -25,7 +25,7 @@ public class SimpleLifeSystemTest {
   /*
    * test the proper operation of the method damage.
    */
-  public void damageTest() {
+  void damageTest() {
     final SimpleLifeSystem life = new SimpleLifeSystem(HEALTH);
     life.damage(-DAMAGE); // test that damage don't work with negative value
     assertTrue(life.getCurrentHealth() == HEALTH);
@@ -40,7 +40,7 @@ public class SimpleLifeSystemTest {
   /*
    * test that the health value does not go below zero
    */
-  public void healthNotBelowZeroTest() {
+  void healthNotBelowZeroTest() {
     final SimpleLifeSystem life = new SimpleLifeSystem(HEALTH);
     life.damage(life.getCurrentHealth() + DAMAGE);
     assertTrue(life.getCurrentHealth() == 0);
@@ -50,7 +50,7 @@ public class SimpleLifeSystemTest {
   /*
    * test the correct working of the isDead method
    */
-  public void isDeadTest() {
+  void isDeadTest() {
     final SimpleLifeSystem life = new SimpleLifeSystem(HEALTH);
     assertFalse(life.isDead());
     life.damage(life.getCurrentHealth() + DAMAGE);

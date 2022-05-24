@@ -6,7 +6,7 @@ import logics.strategy.concrete_strategies.CrossArea;
 import logics.strategy.concrete_strategies.VariableDistanceConstants;
 import utilities.Pair;
 
-public class CrossAreaTest {
+class CrossAreaTest {
   private final Pair<Integer, Integer> size = new Pair<>(7, 6);
   private Pair<Integer, Integer> pos;
   private Strategy strategy = new CrossArea(VariableDistanceConstants.DOUBLE_DISTANCE);

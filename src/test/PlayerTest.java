@@ -14,7 +14,7 @@ import logics.strategy.weapon.WeaponFactoryImpl;
 import utilities.Pair;
 import utilities.texture.EntityTexture;
 
-public class PlayerTest {
+class PlayerTest {
   private static final int HEALTH = 9;
   private static final int MAX_HEALTH = 15;
   private static final int MAX_HEALTH_LIMIT = 20;
@@ -34,7 +34,7 @@ public class PlayerTest {
   /*
    * test the correct creation of a Player instantiation.
    */
-  public void simplePlayerCreationTest() {
+  void simplePlayerCreationTest() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
     this.player = new Player(life, START_POS, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
         TEXTURE, DAMAGE);
@@ -58,7 +58,7 @@ public class PlayerTest {
    * test the proper operation of the method damage.
    */
   @SuppressWarnings("PMD.SimplifiableTestAssertion")
-  public void damageEntityTest() {
+  void damageEntityTest() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
     this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
         TEXTURE);
@@ -71,7 +71,7 @@ public class PlayerTest {
   /*
    * test that the health value does not go below zero
    */
-  public void healthNotBelowZeroTest() {
+  void healthNotBelowZeroTest() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
     this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
         TEXTURE);
@@ -83,7 +83,7 @@ public class PlayerTest {
   /*
    * test the correct functioning of the isDead method
    */
-  public void isDeadTest() {
+  void isDeadTest() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
     this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
         TEXTURE);
@@ -96,7 +96,7 @@ public class PlayerTest {
   /*
    * test the heal method
    */
-  public void healTest() {
+  void healTest() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
     this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
         TEXTURE);
@@ -119,7 +119,7 @@ public class PlayerTest {
    * test that the heal method do nothing after the player is dead
    */
   @SuppressWarnings("PMD.SimplifiableTestAssertion")
-  public void healAfterDeath() {
+  void healAfterDeath() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
     this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
         TEXTURE);
@@ -140,7 +140,7 @@ public class PlayerTest {
   /*
    * test the max health stay in the correct range specified in the constructor
    */
-  public void maxHealthInRange() {
+  void maxHealthInRange() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
     this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
         TEXTURE);
@@ -159,7 +159,7 @@ public class PlayerTest {
   /*
    * test toString result
    */
-  public void toStringTest() {
+  void playerPrintTest() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
     this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
         TEXTURE);
