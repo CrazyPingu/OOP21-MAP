@@ -5,72 +5,77 @@ import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
 import logics.life.HealLifeSystem;
 
-public class HealLifeSystemTest {
-	final private int HEALTH = 9;
-	final private int MAX_HEALTH = 10;
-	final private int DAMAGE = 1;
-	final private int HEAL = 5;
+class HealLifeSystemTest {
+  private static final int HEALTH = 9;
+  private static final int MAX_HEALTH = 10;
+  private static final int DAMAGE = 1;
+  private static final int HEAL = 5;
 
-	@Test
-	/*
-	 * test the correct creation of a HealLifeSystem instantiation.
-	 */
-	public void createLifeTest() {
-		HealLifeSystem life = new HealLifeSystem(this.HEALTH, this.MAX_HEALTH);
-		assertTrue(life.getCurrentHealth() == this.HEALTH);
-		assertTrue(life.getMaxHealth() == this.MAX_HEALTH);
-		
-		//test than the LifeSystem can't be created with a starting life value greater tha maxHealth value
-		life = new HealLifeSystem(this.MAX_HEALTH + 1, this.MAX_HEALTH);
-		assertTrue(life.getMaxHealth() == this.MAX_HEALTH);
-		
-	}
+  @Test
+  /*
+   * test the correct creation of a HealLifeSystem instantiation.
+   */
+  @SuppressWarnings("PMD.SimplifiableTestAssertion")
+  void createLifeTest() {
+    HealLifeSystem life = new HealLifeSystem(HEALTH, MAX_HEALTH);
+    assertTrue(life.getCurrentHealth() == HEALTH);
+    assertTrue(life.getMaxHealth() == MAX_HEALTH);
 
-	@Test
-	/*
-	 * test the proper operation of the method damage.
-	 */
-	public void damageTest() {
-		HealLifeSystem life = new HealLifeSystem(this.HEALTH, this.MAX_HEALTH);
-		life.damage(this.DAMAGE);
-		assertTrue(life.getCurrentHealth() == this.HEALTH - this.DAMAGE);
-		life.damage(this.DAMAGE);
-		assertTrue(life.getCurrentHealth() == this.HEALTH - (2 * this.DAMAGE));
-	}
+    // test than the LifeSystem can't be created with a starting life value greater
+    // tha maxHealth value
+    life = new HealLifeSystem(MAX_HEALTH + 1, MAX_HEALTH);
+    assertTrue(life.getMaxHealth() == MAX_HEALTH);
 
-	@Test
-	/*
-	 * test that the health value does not go below zero
-	 */
-	public void healthNotBelowZeroTest() {
-		HealLifeSystem life = new HealLifeSystem(this.HEALTH, this.MAX_HEALTH);
-		life.damage(life.getCurrentHealth() + this.DAMAGE);
-		assertTrue(life.getCurrentHealth() == 0);
-	}
+  }
 
-	@Test
-	/*
-	 * test the correct working of the isDead method
-	 */
-	public void isDeadTest() {
-		HealLifeSystem life = new HealLifeSystem(this.HEALTH, this.MAX_HEALTH);
-		assertFalse(life.isDead());
-		life.damage(life.getCurrentHealth() + this.DAMAGE);
-		assertTrue(life.isDead());
-	}
+  @Test
+  @SuppressWarnings("PMD.SimplifiableTestAssertion")
+  /*
+   * test the proper operation of the method damage.
+   */
+  void damageTest() {
+    final HealLifeSystem life = new HealLifeSystem(HEALTH, MAX_HEALTH);
+    life.damage(DAMAGE);
+    assertTrue(life.getCurrentHealth() == HEALTH - DAMAGE);
+    life.damage(DAMAGE);
+    assertTrue(life.getCurrentHealth() == HEALTH - (2 * DAMAGE));
+  }
 
-	@Test
-	/*
-	 * test the correct working of the heal method
-	 */
-	public void healTest() {
-		HealLifeSystem life = new HealLifeSystem(this.MAX_HEALTH, this.MAX_HEALTH);
-		life.heal(-this.HEAL);   	//test that heal don't work with negative value
-		assertTrue(life.getCurrentHealth() == this.MAX_HEALTH);
-		life.damage(this.MAX_HEALTH - (this.HEAL - 1));
-		life.heal(this.HEAL);
-		assertTrue(life.getCurrentHealth() == this.MAX_HEALTH - 1);
-		life.heal(this.MAX_HEALTH);
-		assertTrue(life.getCurrentHealth() == this.MAX_HEALTH); 
-	}
+  @Test
+  @SuppressWarnings("PMD.SimplifiableTestAssertion")
+  /*
+   * test that the health value does not go below zero
+   */
+  void healthNotBelowZeroTest() {
+    final HealLifeSystem life = new HealLifeSystem(HEALTH, MAX_HEALTH);
+    life.damage(life.getCurrentHealth() + DAMAGE);
+    assertTrue(life.getCurrentHealth() == 0);
+  }
+
+  @Test
+  /*
+   * test the correct working of the isDead method
+   */
+  void isDeadTest() {
+    final HealLifeSystem life = new HealLifeSystem(HEALTH, MAX_HEALTH);
+    assertFalse(life.isDead());
+    life.damage(life.getCurrentHealth() + DAMAGE);
+    assertTrue(life.isDead());
+  }
+
+  @Test
+  @SuppressWarnings("PMD.SimplifiableTestAssertion")
+  /*
+   * test the correct working of the heal method
+   */
+  void healTest() {
+    final HealLifeSystem life = new HealLifeSystem(MAX_HEALTH, MAX_HEALTH);
+    life.heal(-HEAL); // test that heal don't work with negative value
+    assertTrue(life.getCurrentHealth() == MAX_HEALTH);
+    life.damage(MAX_HEALTH - (HEAL - 1));
+    life.heal(HEAL);
+    assertTrue(life.getCurrentHealth() == MAX_HEALTH - 1);
+    life.heal(MAX_HEALTH);
+    assertTrue(life.getCurrentHealth() == MAX_HEALTH);
+  }
 }
