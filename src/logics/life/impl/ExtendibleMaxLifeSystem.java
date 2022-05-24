@@ -1,36 +1,20 @@
 package logics.life.impl;
 
-import logics.life.HealSystem;
-import logics.life.LifeSystem;
+import logics.life.ExtendibleMaxHealthSystem;
 
-public class ExtendibleMaxLifeSystem implements LifeSystem, HealSystem {
+public class ExtendibleMaxLifeSystem implements ExtendibleMaxHealthSystem {
 
   private HealLifeSystem life;
   private final int maxHealthReachable;
 
-  /**
-   * 
-   * @param startingLife       is the amount of health the system start with
-   * @param maxHealth          the maximum amount of health that can be reached
-   *                           using heal method
-   * @param maxHealthReachable represent the maximum extension value for the
-   *                           health
-   */
+  
   public ExtendibleMaxLifeSystem(final int startingLife, final int maxHealth, final int maxHealthReachable) {
     final int newMaxHealth = maxHealth <= maxHealthReachable ? maxHealth : maxHealthReachable;
     this.life = new HealLifeSystem(startingLife, newMaxHealth);
     this.maxHealthReachable = maxHealthReachable;
   }
 
-  /**
-   * 
-   * @param lifeExtension represent the new maximum amount of health the system
-   *                      can reach. It has to be greater than zero and less than
-   *                      maxHealthExtension value. If the passed value is greater
-   *                      than maxHealthExtension is automatically reduced to
-   *                      maxHealthExtension value. If is equal or less than 0 do
-   *                      nothing.
-   */
+  @Override
   public void setMaxHealth(final int lifeExtension) {
     final int newLifeExtension = lifeExtension <= maxHealthReachable ? lifeExtension : maxHealthReachable;
     if (lifeExtension > 0) {
@@ -40,11 +24,7 @@ public class ExtendibleMaxLifeSystem implements LifeSystem, HealSystem {
     }
   }
 
-  /**
-   * 
-   * @return the current maximum amounth of health the sistem can reach using the
-   *         heal method
-   */
+  @Override
   public int getMaxHealthReachable() {
     return this.maxHealthReachable;
   }

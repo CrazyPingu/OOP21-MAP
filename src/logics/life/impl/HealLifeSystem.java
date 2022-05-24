@@ -3,7 +3,7 @@ package logics.life.impl;
 import logics.life.HealSystem;
 import logics.life.LifeSystem;
 
-public class HealLifeSystem implements LifeSystem, HealSystem {
+public class HealLifeSystem implements HealSystem {
 
 	private SimpleLifeSystem life;
 	private final int maxHealth;
