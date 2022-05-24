@@ -7,14 +7,14 @@ import controller.PageController;
 
 public class NewGameAction implements ActionListener {
 
-	private PageController pageController; 
+	private final PageController pageController; 
 	
-	public NewGameAction(PageController pageController) {
+	public NewGameAction(final PageController pageController) {
 		this.pageController = pageController; 
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(final ActionEvent e) {
 		this.pageController.startGame();
 		
 	}
