@@ -14,18 +14,18 @@ public class MainMenu extends JPanel {
 	
     private static final long serialVersionUID = 8006565750742104587L;
 
-	private final int BUTTON_WIDTH = 200;
-	private final int BUTTON_HEIGHT = 70;
+	private static final int BUTTON_WIDTH = 200;
+	private static final int BUTTON_HEIGHT = 70;
 	
 	/**
 	 * 
 	 * @param frame : the frame passed in input, change the screen using buttons
 	 */
-	public MainMenu(PageController controller) {
+	public MainMenu(final PageController controller) {
 
-		JLabel mainMenuLabel = labeltext("Main Menu");
-		MenuButton newGame = new MenuButton("New Game", 40);
-		MenuButton quit = new MenuButton("Quit", 40);
+		final JLabel mainMenuLabel = labeltext("Main Menu");
+		final MenuButton newGame = new MenuButton("New Game", 40);
+		final MenuButton quit = new MenuButton("Quit", 40);
 
 		newGame.addActionListener(new NewGameAction(controller));
 		quit.addActionListener(new QuitAction(controller));
@@ -46,8 +46,8 @@ public class MainMenu extends JPanel {
      * @param name : the string that label will show
      * @return the label with string passed
      */
-    private JLabel labeltext(String name) {
-        JLabel pause = new JLabel(name, SwingConstants.CENTER);
+    private JLabel labeltext(final String name) {
+        final JLabel pause = new JLabel(name, SwingConstants.CENTER);
         pause.setForeground(Color.white);
         pause.setPreferredSize(new Dimension(Constant.horizontalAspectRatio(500), Constant.verticalAspectRatio(100)));
         pause.setFont(Constant.genericFont("Arial", Font.PLAIN, Constant.horizontalAspectRatio(80)));
