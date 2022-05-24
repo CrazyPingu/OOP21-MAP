@@ -3,7 +3,7 @@ package test;
 import static org.junit.Assert.assertEquals;
 
 import logics.game_object.entity.Player;
-import logics.life.ExtendibleMaxLifeSystem;
+import logics.life.impl.ExtendibleMaxLifeSystem;
 import logics.room.Room;
 import logics.room.RoomFactory;
 import logics.room.RoomFactoryImpl;

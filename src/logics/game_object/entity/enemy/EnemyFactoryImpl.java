@@ -1,7 +1,7 @@
 package logics.game_object.entity.enemy;
 
 import logics.game_object.entity.SimpleEnemy;
-import logics.life.SimpleLifeSystem;
+import logics.life.impl.SimpleLifeSystem;
 import logics.strategy.movement.MovementFactoryImpl;
 import logics.strategy.weapon.WeaponFactoryImpl;
 import utilities.Pair;

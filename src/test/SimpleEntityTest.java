@@ -6,7 +6,7 @@ import java.awt.Image;
 import org.junit.jupiter.api.Test;
 import logics.game_object.entity.SimpleEnemy;
 import logics.life.LifeSystem;
-import logics.life.SimpleLifeSystem;
+import logics.life.impl.SimpleLifeSystem;
 import logics.strategy.movement.MovementFactory;
 import logics.strategy.movement.MovementFactoryImpl;
 import logics.strategy.weapon.WeaponFactory;

@@ -1,4 +1,6 @@
-package logics.life;
+package logics.life.impl;
+
+import logics.life.LifeSystem;
 
 /**
  * 

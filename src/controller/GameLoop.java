@@ -3,7 +3,7 @@ package controller;
 import controller.game_controller.BasicGameController;
 import logics.game_object.entity.Player;
 import logics.game_statistics.GameStatisticsImpl;
-import logics.life.ExtendibleMaxLifeSystem;
+import logics.life.impl.ExtendibleMaxLifeSystem;
 import logics.room.Room;
 import logics.strategy.movement.MovementFactoryImpl;
 import logics.strategy.weapon.WeaponFactoryImpl;
