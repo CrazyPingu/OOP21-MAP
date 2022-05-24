@@ -12,10 +12,7 @@ class HealLifeSystemTest {
   private static final int HEAL = 5;
 
   @Test
-  /*
-   * test the correct creation of a HealLifeSystem instantiation.
-   */
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
+  @SuppressWarnings({ "PMD.SimplifiableTestAssertion", "PMD.AvoidDuplicateLiterals" })
   void createLifeTest() {
     HealLifeSystem life = new HealLifeSystem(HEALTH, MAX_HEALTH);
     assertTrue(life.getCurrentHealth() == HEALTH);

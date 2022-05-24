@@ -15,7 +15,7 @@ class ExtendibleMaxLifeSystemTest {
 
   @Test
 
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
+  @SuppressWarnings({ "PMD.SimplifiableTestAssertion", "PMD.AvoidDuplicateLiterals" })
   void createLifeTest() {
     ExtendibleMaxLifeSystem life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_EXTENSION);
     assertTrue(life.getCurrentHealth() == HEALTH);

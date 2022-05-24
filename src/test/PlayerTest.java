@@ -30,7 +30,7 @@ class PlayerTest {
   private Player player;
 
   @Test
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
+  @SuppressWarnings({ "PMD.SimplifiableTestAssertion", "PMD.AvoidDuplicateLiterals" })
   /*
    * test the correct creation of a Player instantiation.
    */
