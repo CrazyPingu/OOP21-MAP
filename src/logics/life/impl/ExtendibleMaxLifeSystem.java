@@ -1,4 +1,7 @@
-package logics.life;
+package logics.life.impl;
+
+import logics.life.HealSystem;
+import logics.life.LifeSystem;
 
 public class ExtendibleMaxLifeSystem implements LifeSystem, HealSystem {
 

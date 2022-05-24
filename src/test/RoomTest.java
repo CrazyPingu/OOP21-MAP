@@ -5,7 +5,7 @@ import static org.junit.Assert.assertFalse;
 
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
-import logics.life.ExtendibleMaxLifeSystem;
+import logics.life.impl.ExtendibleMaxLifeSystem;
 import logics.room.Room;
 import logics.room.RoomFactory;
 import logics.room.RoomFactoryImpl;
