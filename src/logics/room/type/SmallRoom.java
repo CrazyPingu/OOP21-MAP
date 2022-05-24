@@ -1,7 +1,7 @@
 package logics.room.type;
 
 import logics.game_object.entity.Player;
-import logics.room.works.RoomImpl;
+import logics.room.RoomImpl;
 import utilities.Pair;
 
 /**
@@ -11,11 +11,7 @@ import utilities.Pair;
  */
 public class SmallRoom extends RoomImpl {
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public SmallRoom(Pair<Integer, Integer> size, Player player) {
-		super(size, player, new Pair<Integer, Integer>(1, size.getY() / 2));
-	}
-
+  public SmallRoom(final Pair<Integer, Integer> size, final Player player) {
+    super(size, player, new Pair<Integer, Integer>(1, size.getY() / 2));
+  }
 }

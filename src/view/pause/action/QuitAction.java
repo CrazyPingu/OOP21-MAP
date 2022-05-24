@@ -9,14 +9,14 @@ public class QuitAction implements ActionListener {
 
     PageController controller;
 
-    public QuitAction(PageController controller) {
+    public QuitAction(final PageController controller) {
         this.controller = controller;
     }
 
     /**
      * {@inheritDoc}
      */
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
         controller.quitGame();
     }
 }

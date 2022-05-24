@@ -8,28 +8,28 @@ import utilities.texture.ArtefactTexture;
 
 public class MovementArtefactFactoryImp implements MovementArtefactFactory {
 
-	private MovementFactory movementFactory = new MovementFactoryImpl(); 
-	
-	@Override
-	public Artefact stepArtefact(Pair<Integer, Integer> pos) {
-		return new Artefact(pos, "step artefact", ArtefactTexture.STEP) {
+  final private MovementFactory movementFactory = new MovementFactoryImpl();
 
-			@Override
-			public void execute(ArtefactUserObject subject) {
-				subject.changeMovement(movementFactory.stepMovement());
-			}
-		};
-	}
+  @Override
+  public Artefact stepArtefact(final Pair<Integer, Integer> pos) {
+    return new Artefact(pos, "step artefact", ArtefactTexture.STEP) {
 
-	@Override
-	public Artefact runArtefact(Pair<Integer, Integer> pos) {
-		return new Artefact(pos, "step artefact", ArtefactTexture.RUN) {
+      @Override
+      public void execute(final ArtefactUserObject subject) {
+        subject.changeMovement(movementFactory.stepMovement());
+      }
+    };
+  }
 
-			@Override
-			public void execute(ArtefactUserObject subject) {
-				subject.changeMovement(movementFactory.runMovement());
-			}
-		};
-	}
+  @Override
+  public Artefact runArtefact(final Pair<Integer, Integer> pos) {
+    return new Artefact(pos, "step artefact", ArtefactTexture.RUN) {
+
+      @Override
+      public void execute(final ArtefactUserObject subject) {
+        subject.changeMovement(movementFactory.runMovement());
+      }
+    };
+  }
 
 }

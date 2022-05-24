@@ -16,5 +16,5 @@ public interface Strategy {
 	 * @param size represent the size of the map grid
 	 * @return the selectable position calculated by an internal algorithm
 	 */
-	public List<Pair<Integer, Integer>> execute(Pair<Integer, Integer> pos, Pair<Integer, Integer> size);
+	List<Pair<Integer, Integer>> execute(Pair<Integer, Integer> pos, Pair<Integer, Integer> size);
 }

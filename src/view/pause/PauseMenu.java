@@ -23,21 +23,21 @@ import view.pause.action.ResumeAction;
 public class PauseMenu extends JPanel {
 
     private static final long serialVersionUID = 8006565750742104587L;
-    private final int BUTTON_WIDTH = 200;
-    private final int BUTTON_HEIGHT = 70;
+    private static final int BUTTON_WIDTH = 200;
+    private static final int BUTTON_HEIGHT = 70;
     Image image;
 
     /**
      * 
      * @param frame : the frame passed in input, change the screen using buttons
      */
-    public PauseMenu(PageController controller) {
+    public PauseMenu(final PageController controller) {
     
         image = ImageMethod.getImage("pause/Background.jpg");
-        MenuButton resume = new MenuButton("Resume", 40);
-        MenuButton mainmenu = new MenuButton("Main Menu", 40);
-        MenuButton quit = new MenuButton("Quit", 40);
-        JLabel pausetext = labeltext("Pause Menu");
+        final MenuButton resume = new MenuButton("Resume", 40);
+        final MenuButton mainmenu = new MenuButton("Main Menu", 40);
+        final MenuButton quit = new MenuButton("Quit", 40);
+        final JLabel pausetext = labeltext("Pause Menu");
 
         this.setLayout(new GridBagLayout());
         
@@ -61,8 +61,8 @@ public class PauseMenu extends JPanel {
      * @param name : the string that label will show
      * @return the label with string passed
      */
-    private JLabel labeltext(String name) {
-        JLabel pause = new JLabel(name, SwingConstants.CENTER);
+    private JLabel labeltext(final String name) {
+        final JLabel pause = new JLabel(name, SwingConstants.CENTER);
         pause.setForeground(Color.white);
         pause.setPreferredSize(new Dimension(Constant.horizontalAspectRatio(500), Constant.verticalAspectRatio(100)));
         pause.setFont(Constant.genericFont("Arial", Font.PLAIN, Constant.horizontalAspectRatio(80)));
@@ -72,7 +72,7 @@ public class PauseMenu extends JPanel {
     /**
      * {@inheritDoc}
      */
-    public void paintComponent(Graphics g) {
+    public void paintComponent(final Graphics g) {
         super.paintComponent(g);
         g.drawImage(ImageModifier.scaleFullScreen(image), 0, 0, null);
     }

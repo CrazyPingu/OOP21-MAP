@@ -1,9 +1,7 @@
 package utilities;
 
+@SuppressWarnings("PMD.UseUtilityClass")
 public class PosInGrid {
-
-	private PosInGrid() {
-	};
 
 	/**
 	 * 
@@ -13,10 +11,7 @@ public class PosInGrid {
 	 *             number of cells.
 	 * @return true if the position is in the grid, false if it isn't
 	 */
-	public static final boolean checkPosInGrid(Pair<Integer, Integer> pos, Pair<Integer, Integer> size) {
-		if (pos.getX() < 0 || pos.getY() < 0 || pos.getX() >= size.getX() || pos.getY() >= size.getY()) {
-			return false;
-		}
-		return true;
+	public static final boolean checkPosInGrid(final Pair<Integer, Integer> pos,final Pair<Integer, Integer> size) {
+		return !(pos.getX() < 0 || pos.getY() < 0 || pos.getX() >= size.getX() || pos.getY() >= size.getY()) ;
 	}
 }

@@ -4,13 +4,13 @@ import view.frame.BasicFrame;
 
 public class PageController {
 
-    private BasicFrame frame;
-    private GameLoop gameLoop; 
+    private final BasicFrame frame;
+    private final GameLoop gameLoop; 
 
     /**
      * @param frame the frame of the game
      */
-    public PageController(BasicFrame frame, GameLoop gameLoop) {
+    public PageController(final BasicFrame frame, final GameLoop gameLoop) {
         this.frame = frame;
         this.gameLoop = gameLoop; 
     }
@@ -62,6 +62,7 @@ public class PageController {
     /**
      * close the application
      */
+    @SuppressWarnings("PMD.DoNotTerminateVM")
     public void quitGame() {
         System.exit(0);
     }

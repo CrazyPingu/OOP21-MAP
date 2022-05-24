@@ -1,7 +1,7 @@
 package logics.room.type;
 
 import logics.game_object.entity.Player;
-import logics.room.works.RoomImpl;
+import logics.room.RoomImpl;
 import utilities.Pair;
 
 /**
@@ -10,10 +10,8 @@ import utilities.Pair;
  *
  */
 public class BigRoom extends RoomImpl {
-	/**
-	 * {@inheritDoc}
-	 */
-	public BigRoom(Pair<Integer, Integer> size, Player player) {
+
+	public BigRoom(final Pair<Integer, Integer> size,final Player player) {
 		super(size, player, new Pair<Integer, Integer>(2, size.getY() / 2));
 	}
 

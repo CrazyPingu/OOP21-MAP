@@ -34,7 +34,7 @@ public class BasicFrame extends JFrame {
 	/**
 	 * @param cardLayoutName : the name of the CardLayout that will be shown
 	 */
-	public void showInFrame(String cardLayoutName) {
+	public void showInFrame(final String cardLayoutName) {
 		this.cardLayout.show(this.panel, cardLayoutName);
 	}
 
@@ -42,7 +42,7 @@ public class BasicFrame extends JFrame {
 	 * @param panel          : the current panel to add
 	 * @param cardLayoutName : the name to give to the CardLayout
 	 */
-	public void addToCardLayout(JPanel panel, String cardLayoutName) {
+	public void addToCardLayout(final JPanel panel,final String cardLayoutName) {
 		this.panel.add(panel, cardLayoutName);
 	}
 }
