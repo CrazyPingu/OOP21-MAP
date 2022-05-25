@@ -34,8 +34,7 @@ public class RoomFactoryImpl implements RoomFactory {
 
   @Override
   public Room createMediumRoom() {
-    return new MediumRoom(
-        new Pair<Integer, Integer>((maxSize.getX() + minSize.getX()) / 2, (maxSize.getY() + minSize.getY()) / 2),
-        player);
+    return new MediumRoom(new Pair<Integer, Integer>((RoomConstant.MAX_X + RoomConstant.MIN_X) / 2,
+        (RoomConstant.MAX_Y + RoomConstant.MIN_Y) / 2), player);
   }
 }
