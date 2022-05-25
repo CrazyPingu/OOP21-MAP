@@ -9,8 +9,7 @@ import logics.game_object.artefact.Artefact;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 
-@SuppressWarnings("PMD.UseUtilityClass")
-public class RoomConstant {
+public final class RoomConstant {
 
   public static final int MAX_X = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(Constant.GAME_WIDTH / 20);
   public static final int MAX_Y = Constant.TOP_HEIGHT / Constant.verticalAspectRatio(Constant.TOP_HEIGHT / 10);
@@ -30,6 +29,10 @@ public class RoomConstant {
   public static final Image BUTTON_IMAGE = ImageMethod.getImage("room/Button.png");
 
   public static final Image LOADING_SCREEN = ImageMethod.getImage("loadingScreen/aldoGiovanniEGiacomo.png");
+  
+  private RoomConstant() {
+    
+  }
 
   /**
    * @param pos            the position of the GameObject to be found

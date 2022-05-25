@@ -32,7 +32,6 @@ public class GameArea extends JPanel {
   private final GameAreaController gameAreaController;
   private Dimension buttonDimension;
 
-  @SuppressWarnings("PMD.ConstructorCallsOverridableMethod")
   public GameArea(final Room room, final GameAreaController gameAreaController) {
     this.gameAreaController = gameAreaController;
     this.setBackground(RoomConstant.BASIC_CELL_COLOR);
@@ -46,7 +45,7 @@ public class GameArea extends JPanel {
    * 
    * @param room the room to replace the older one
    */
-  public void changeRoom(final Room room) {
+  public final void changeRoom(final Room room) {
     this.removeAll();
     this.room = room;
     this.size = room.getSize();
@@ -109,7 +108,6 @@ public class GameArea extends JPanel {
         this.room.getCells().get(artefact.getPos()).drawGameObject(artefact);
       }
     }
-
   }
 
   /**
