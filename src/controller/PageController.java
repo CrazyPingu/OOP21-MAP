@@ -64,6 +64,6 @@ public class PageController {
      */
     @SuppressWarnings("PMD.DoNotTerminateVM")
     public void quitGame() {
-        System.exit(0);
+      Runtime.getRuntime().exit(0);
     }
 }
