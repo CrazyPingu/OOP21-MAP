@@ -12,9 +12,6 @@ import logics.game_object.entity.SimpleEnemy;
 @SuppressWarnings("PMD.UseUtilityClass")
 public class RoomConstant {
 
-  public static final int SPAWNING_RATIO = 30;
-  public static final int FORBIDDEN_ZOMBIE_SPAWN = 3;
-
   public static final int MAX_X = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(Constant.GAME_WIDTH / 20);
   public static final int MAX_Y = Constant.TOP_HEIGHT / Constant.verticalAspectRatio(Constant.TOP_HEIGHT / 10);
 
@@ -26,6 +23,10 @@ public class RoomConstant {
 
   public static final Color BASIC_CELL_COLOR = Color.GRAY;
   public static final Color DOOR_CELL_COLOR = new Color(110, 38, 14);
+  
+  public static final int SPAWNING_RATIO = (MAX_X + MIN_X) / 2 + (MAX_Y + MIN_Y) / 2;
+  public static final int FORBIDDEN_ZOMBIE_SPAWN = 3;
+  
   public static final Image BUTTON_IMAGE = ImageMethod.getImage("room/Button.png");
 
   public static final Image LOADING_SCREEN = ImageMethod.getImage("loadingScreen/aldoGiovanniEGiacomo.png");

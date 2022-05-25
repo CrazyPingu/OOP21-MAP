@@ -20,6 +20,6 @@ public interface RoomFactory {
 	/**
 	 * @return a new room that will have a random size.
 	 */
-	Room createRandomRoom();
+	Room createMediumRoom();
 	
 }

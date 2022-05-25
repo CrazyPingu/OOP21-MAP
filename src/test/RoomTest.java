@@ -52,7 +52,7 @@ public class RoomTest {
    * testing the correct spawn of the enemy
    */
   public void forbiddenZombieSpawn() {
-    final Room room = this.roomFactory.createRandomRoom();
+    final Room room = this.roomFactory.createMediumRoom();
     boolean flag = false;
     for (final SimpleEnemy x : room.getEnemyList()) {
       if (x.getPos().getX() < RoomConstant.FORBIDDEN_ZOMBIE_SPAWN) {

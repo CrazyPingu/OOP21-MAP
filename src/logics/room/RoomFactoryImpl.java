@@ -1,10 +1,8 @@
 package logics.room;
 
-import java.util.Random;
-
 import logics.game_object.entity.Player;
 import logics.room.type.BigRoom;
-import logics.room.type.RandomRoom;
+import logics.room.type.MediumRoom;
 import logics.room.type.SmallRoom;
 import utilities.Pair;
 import utilities.RoomConstant;
@@ -35,10 +33,8 @@ public class RoomFactoryImpl implements RoomFactory {
   }
 
   @Override
-  public Room createRandomRoom() {
-    return new RandomRoom(
-        new Pair<Integer, Integer>(new Random().ints(minSize.getX(), maxSize.getX()).findFirst().getAsInt(),
-            new Random().ints(minSize.getY(), maxSize.getY()).findFirst().getAsInt()),
-        player);
+  public Room createMediumRoom() {
+    return new MediumRoom(new Pair<Integer, Integer>((RoomConstant.MAX_X + RoomConstant.MIN_X) / 2,
+        (RoomConstant.MAX_Y + RoomConstant.MIN_Y) / 2), player);
   }
 }
