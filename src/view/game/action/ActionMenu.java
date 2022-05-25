@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 
 import controller.ActionMenuController;
 import controller.PageController;
-import utilities.Constant;
 import utilities.GbcDimension;
 import view.MenuButton;
 import view.game.action.action_button.AttackAction;
