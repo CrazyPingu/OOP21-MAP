@@ -27,7 +27,7 @@ public class GameObjectSpawnTest {
   private Player player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), weaponFactory.createAxe(),
       movementFactory.stepMovement(), "Marcello", EntityTexture.PLAYER);
   private RoomFactory roomFactory = new RoomFactoryImpl(player);
-  private Room room = roomFactory.createRandomRoom();
+  private Room room = roomFactory.createMediumRoom();
 	
 	@org.junit.Test
 	/**
