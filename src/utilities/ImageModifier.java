@@ -3,8 +3,11 @@ package utilities;
 import java.awt.Dimension;
 import java.awt.Image;
 
-@SuppressWarnings("PMD.UseUtilityClass")
-public class ImageModifier {
+public final class ImageModifier {
+
+  private ImageModifier() {
+
+  }
 
   /**
    * Method that return a scaled image maintaining the aspect ratio
@@ -35,7 +38,7 @@ public class ImageModifier {
    * @param img the image that will be scaled
    * @return the image scaled with the dimension of your screen
    */
-  public static final Image scaleFullScreen(final Image img) {
+  public static Image scaleFullScreen(final Image img) {
     return scaleWithDimension(img, new Dimension(Constant.WIDTH, Constant.HEIGHT));
   }
 
@@ -45,7 +48,7 @@ public class ImageModifier {
    * @param dim the dimension your image will be
    * @return the image scaled with the dimension you passed
    */
-  public static final Image scaleWithDimension(final Image img, final Dimension dim) {
+  public static Image scaleWithDimension(final Image img, final Dimension dim) {
     return img.getScaledInstance((int) dim.getWidth(), (int) (dim.getHeight()), Image.SCALE_DEFAULT);
   }
 }

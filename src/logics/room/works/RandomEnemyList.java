@@ -6,7 +6,6 @@ import java.util.List;
 
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
-import logics.game_object.entity.enemy.EnemyFactory;
 import logics.game_object.entity.enemy.EnemyFactoryImpl;
 import utilities.Constant;
 import utilities.Pair;

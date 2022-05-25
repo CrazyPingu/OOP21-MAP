@@ -32,7 +32,6 @@ public class Pair<X, Y> {
     return result;
   }
 
-  @SuppressWarnings("rawtypes")
   @Override
   public boolean equals(final Object obj) {
     if (this == obj) {
@@ -44,7 +43,8 @@ public class Pair<X, Y> {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    final Pair other = (Pair) obj;
+    @SuppressWarnings("unchecked")
+    final Pair<X,Y> other = (Pair<X,Y>) obj;
     if (x == null) {
       if (other.x != null) {
         return false;
