@@ -4,7 +4,6 @@ import java.awt.*;
 import javax.swing.*;
 
 import controller.PageController;
-import utilities.Constant;
 import utilities.GbcDimension;
 import view.MenuButton;
 import view.MenuLabel;
