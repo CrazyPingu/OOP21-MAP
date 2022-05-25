@@ -20,7 +20,7 @@ import utilities.RoomConstant;
 public class RandomEnemyList extends ArrayList<SimpleEnemy> {
 
   private static final long serialVersionUID = -1346040616337955961L;
-  private final EnemyFactory enemyFactory;
+  private final EnemyFactoryImpl enemyFactory;
   private final int possibleZombieNumber;
 
   /**
