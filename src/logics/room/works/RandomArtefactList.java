@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import logics.game_object.artefact.ActionNumberArtefactFactoryImpl;
 import logics.game_object.artefact.Artefact;
@@ -15,6 +14,7 @@ import logics.game_object.artefact.WeaponArtefactFactoryImpl;
 import logics.game_object.entity.Player;
 import logics.game_object.entity.SimpleEnemy;
 import logics.strategy.weapon.WeaponFactoryImpl;
+import utilities.Constant;
 import utilities.Pair;
 import utilities.RoomConstant;
 
@@ -48,8 +48,8 @@ public class RandomArtefactList extends ArrayList<Artefact> {
     Pair<Integer, Integer> artefactPos;
     for (int i = 0; i < size.getX() * size.getY() / RoomConstant.SPAWNING_RATIO; i++) {
       do {
-        artefactPos = new Pair<>(new Random().ints(0, size.getX()).findFirst().getAsInt(),
-            new Random().ints(0, size.getY()).findFirst().getAsInt());
+        artefactPos = new Pair<>(Constant.RANDOM.ints(0, size.getX()).findFirst().getAsInt(),
+            Constant.RANDOM.ints(0, size.getY()).findFirst().getAsInt());
       } while (RoomConstant.cellsOccupated(enemyList, this, player, artefactPos) || door.contains(artefactPos));
       generateRandomArtefact(generateRandomArtefactFactory(), artefactPos);
     }
@@ -63,7 +63,7 @@ public class RandomArtefactList extends ArrayList<Artefact> {
   private void generateRandomArtefact(final Object artefactFactory, final Pair<Integer, Integer> pos) {
     Artefact generatedArtefact = null;
     try {
-      generatedArtefact = (Artefact) artefactFactory.getClass().getDeclaredMethods()[new Random()
+      generatedArtefact = (Artefact) artefactFactory.getClass().getDeclaredMethods()[Constant.RANDOM
           .ints(0, factoryOfArtefact.get(artefactFactory)).findAny().getAsInt()].invoke(artefactFactory, pos);
     } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException e) {
       System.out.println("Error during artefact generation");
@@ -77,6 +77,6 @@ public class RandomArtefactList extends ArrayList<Artefact> {
    */
   private Object generateRandomArtefactFactory() {
     return new ArrayList<Object>(factoryOfArtefact.keySet())
-        .get(new Random().nextInt(new ArrayList<Object>(factoryOfArtefact.keySet()).size()));
+        .get(Constant.RANDOM.nextInt(new ArrayList<Object>(factoryOfArtefact.keySet()).size()));
   }
 }

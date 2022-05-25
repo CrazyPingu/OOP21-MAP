@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.util.Random;
 
 /**
  * 
@@ -21,6 +22,9 @@ public class Constant {
   public static final int ACTION_HEIGHT = HEIGHT / 4;
   public static final int GAME_WIDTH = 11 * WIDTH / 17;
   public static final int LABEL_WIDTH = 3 * WIDTH / 17;
+  
+  public static final Random RANDOM = new Random();
+  
   private static final Dimension ASPECT_RATIO = new Dimension(1920, 1080);
 
   /**
