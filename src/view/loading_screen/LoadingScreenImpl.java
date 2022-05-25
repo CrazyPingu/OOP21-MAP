@@ -29,7 +29,6 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen, Runnable
   private JLabel message = new JLabel("", SwingConstants.CENTER);
   private final PageController pageController;
 
-  @SuppressWarnings("PMD.ConstructorCallsOverridableMethod")
   public LoadingScreenImpl(final PageController pageController) {
     this.pageController = pageController;
     this.setOpaque(false);
@@ -41,14 +40,14 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen, Runnable
   }
 
   @Override
-  public void addImage() {
+  public final void addImage() {
     final Image image = ImageModifier.scaleWithDimension(RoomConstant.LOADING_SCREEN,
         new Dimension(Constant.WIDTH / 2, Constant.HEIGHT / 2));
     add(new JLabel(new ImageIcon(image)), new GbcDimension(0, 0, 0, 80));
   }
 
   @Override
-  public void addText() {
+  public final void addText() {
     final JLabel text = new JLabel("Marcello Apocalypse", SwingConstants.CENTER);
     text.setFont(new Font("Arial", Font.BOLD, 70));
     text.setForeground(Color.RED);
@@ -56,14 +55,14 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen, Runnable
   }
 
   @Override
-  public void addMessage() {
+  public final void addMessage() {
     message.setFont(Constant.genericFont("Arial", Font.BOLD, 70));
     add(message, new GbcDimension(0, 3, 0, 80));
     message.setForeground(Color.BLUE);
   }
 
   @Override
-  public void addProgressBar() {
+  public final void addProgressBar() {
     progressBar.setBackground(Color.BLACK);
     progressBar.setForeground(Color.RED);
     add(progressBar, new GbcDimension(0, 2, 640, 80));
