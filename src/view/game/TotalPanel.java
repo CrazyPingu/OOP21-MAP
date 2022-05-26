@@ -24,10 +24,10 @@ import view.game.log_stats.Stats;
 public class TotalPanel extends JPanel {
 
   private static final long serialVersionUID = 3295995931719233232L;
-  ScrollableLog log;
-  GameArea gameArea;
-  ScrollableStats stats;
-  ActionMenu actionMenu;
+  private final ScrollableLog log;
+  private final GameArea gameArea;
+  private final ScrollableStats stats;
+  private final ActionMenu actionMenu;
 
   public TotalPanel(final Room room, final ActionMenuController actionMenuController,
       final GameAreaController gameAreaController, final PageController pageController,
