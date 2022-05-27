@@ -21,6 +21,7 @@ public class GameLoop {
   private final BasicFrame frame;
 
   private final LoadingScreenImpl loadingScreen;
+  private TotalPanel totalPanel;
 
   private final ActionMenuController actionMenuController;
   private final GameAreaController gameAreaController;
@@ -56,10 +57,9 @@ public class GameLoop {
     this.player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createStick(), mf.stepMovement(), "Marcello",
         EntityTexture.PLAYER);
     this.room = gameAreaController.generateNewRoom(player);
-    final TotalPanel totalPanel = new TotalPanel(this, actionMenuController, gameAreaController, pageController,
-        gameStats);
+    this.totalPanel = new TotalPanel(this, actionMenuController, gameAreaController, pageController, gameStats);
     frame.addToCardLayout(totalPanel, "Game");
-    gameController = new BasicGameController(gameAreaController, totalPanel, pageController, gameStats);
+    gameController = new BasicGameController(gameAreaController, pageController, this, gameStats);
   }
 
   public void skipTurn() {
@@ -87,5 +87,37 @@ public class GameLoop {
 
   public Player getPlayer() {
     return this.player;
+  }
+
+  public GameAreaController getGameAreaController() {
+    return gameAreaController;
+  }
+
+  public void updateLog(final String text) {
+    this.gameAreaController.updateLog(this.totalPanel.getScrollableLog(), text);
+  }
+
+  public void updateStats(final GameStatisticsImpl statistics, final int actionNumber) {
+    this.gameAreaController.updateStats(this.totalPanel.getScrollableStats(), player, statistics, actionNumber);
+  }
+  
+  public void removeHighlight() {
+    this.gameAreaController.removeHighlight(this.totalPanel.getGameArea());
+  }
+  
+  public void highlightCells(final ActionFlag flag) {
+    this.gameAreaController.highlightCells(flag, this.totalPanel.getGameArea());
+  }
+  
+  public void moveGameObject(final Pair<Integer, Integer> oldPos, final Pair<Integer, Integer> newPos) {
+    this.gameAreaController.moveGameObject(oldPos, newPos);
+  }
+
+  public void changeRoom() {
+    this.gameAreaController.changeRoom(this.player, this.totalPanel.getGameArea());
+  }
+  
+  public void setRoom(final Room room) {
+    this.room = room;
   }
 }

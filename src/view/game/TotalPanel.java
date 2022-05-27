@@ -12,7 +12,6 @@ import controller.GameAreaController;
 import controller.GameLoop;
 import controller.PageController;
 import model.game_statistics.GameStatisticsImpl;
-import model.room.Room;
 import utilities.Constant;
 import utilities.GbcDimension;
 import view.game.action.ActionMenu;
