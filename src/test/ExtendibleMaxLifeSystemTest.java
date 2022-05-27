@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import logics.life.impl.ExtendibleMaxLifeSystem;
+import model.life.impl.ExtendibleMaxLifeSystem;
 
 class ExtendibleMaxLifeSystemTest {
   private static final int HEALTH = 9;

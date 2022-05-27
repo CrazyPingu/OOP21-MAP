@@ -1,7 +1,7 @@
 package view.game.log_stats;
 
-import logics.game_object.entity.Player;
-import logics.game_statistics.GameStatisticsImpl;
+import model.game_object.entity.Player;
+import model.game_statistics.GameStatisticsImpl;
 
 /**
  *

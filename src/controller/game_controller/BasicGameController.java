@@ -5,9 +5,9 @@ import java.util.List;
 import controller.GameAreaController;
 import controller.PageController;
 import controller.enemy_ai.EnemyAIImpl;
-import logics.game_object.entity.Player;
-import logics.game_object.entity.SimpleEnemy;
-import logics.game_statistics.GameStatisticsImpl;
+import model.game_object.entity.Player;
+import model.game_object.entity.SimpleEnemy;
+import model.game_statistics.GameStatisticsImpl;
 import utilities.Pair;
 import view.game.TotalPanel;
 

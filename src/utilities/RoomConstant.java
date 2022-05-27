@@ -4,10 +4,10 @@ import java.awt.Color;
 import java.awt.Image;
 import java.util.List;
 
-import logics.game_object.GameObject;
-import logics.game_object.artefact.Artefact;
-import logics.game_object.entity.Player;
-import logics.game_object.entity.SimpleEnemy;
+import model.game_object.GameObject;
+import model.game_object.artefact.Artefact;
+import model.game_object.entity.Player;
+import model.game_object.entity.SimpleEnemy;
 
 public final class RoomConstant {
 

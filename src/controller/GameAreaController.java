@@ -1,7 +1,7 @@
 package controller;
 
-import logics.game_object.entity.Player;
-import logics.room.Room;
+import model.game_object.entity.Player;
+import model.room.Room;
 import utilities.Pair;
 
 public class GameAreaController {

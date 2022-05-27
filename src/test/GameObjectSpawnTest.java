@@ -2,15 +2,15 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 
-import logics.game_object.entity.Player;
-import logics.life.impl.ExtendibleMaxLifeSystem;
-import logics.room.Room;
-import logics.room.RoomFactory;
-import logics.room.RoomFactoryImpl;
-import logics.strategy.movement.MovementFactory;
-import logics.strategy.movement.MovementFactoryImpl;
-import logics.strategy.weapon.WeaponFactory;
-import logics.strategy.weapon.WeaponFactoryImpl;
+import model.game_object.entity.Player;
+import model.life.impl.ExtendibleMaxLifeSystem;
+import model.room.Room;
+import model.room.RoomFactory;
+import model.room.RoomFactoryImpl;
+import model.strategy.movement.MovementFactory;
+import model.strategy.movement.MovementFactoryImpl;
+import model.strategy.weapon.WeaponFactory;
+import model.strategy.weapon.WeaponFactoryImpl;
 import utilities.RoomConstant;
 import utilities.texture.EntityTexture;
 

@@ -2,9 +2,9 @@ package controller;
 
 import java.lang.reflect.InvocationTargetException;
 
-import logics.game_object.entity.Player;
-import logics.room.Room;
-import logics.room.RoomFactoryImpl;
+import model.game_object.entity.Player;
+import model.room.Room;
+import model.room.RoomFactoryImpl;
 import utilities.Constant;
 
 public class RandomRoomGenerator {

@@ -1,9 +1,10 @@
 package test;
 
 import org.junit.jupiter.api.Test;
-import logics.strategy.Strategy;
-import logics.strategy.concrete_strategies.CrossArea;
-import logics.strategy.concrete_strategies.VariableDistanceConstants;
+
+import model.strategy.Strategy;
+import model.strategy.concrete_strategies.CrossArea;
+import model.strategy.concrete_strategies.VariableDistanceConstants;
 import utilities.Pair;
 
 class CrossAreaTest {

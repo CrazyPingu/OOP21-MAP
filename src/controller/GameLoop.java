@@ -1,12 +1,12 @@
 package controller;
 
 import controller.game_controller.BasicGameController;
-import logics.game_object.entity.Player;
-import logics.game_statistics.GameStatisticsImpl;
-import logics.life.impl.ExtendibleMaxLifeSystem;
-import logics.room.Room;
-import logics.strategy.movement.MovementFactoryImpl;
-import logics.strategy.weapon.WeaponFactoryImpl;
+import model.game_object.entity.Player;
+import model.game_statistics.GameStatisticsImpl;
+import model.life.impl.ExtendibleMaxLifeSystem;
+import model.room.Room;
+import model.strategy.movement.MovementFactoryImpl;
+import model.strategy.weapon.WeaponFactoryImpl;
 import utilities.Pair;
 import utilities.texture.EntityTexture;
 import view.end_game_menu.Defeat;

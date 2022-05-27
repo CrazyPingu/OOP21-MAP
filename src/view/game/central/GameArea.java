@@ -9,15 +9,15 @@ import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import logics.game_object.artefact.Artefact;
-import logics.game_object.entity.Player;
-import logics.game_object.entity.SimpleEnemy;
-import logics.room.Room;
 import utilities.Constant;
 import utilities.Pair;
 import utilities.RoomConstant;
 import controller.ActionFlag;
 import controller.GameAreaController;
+import model.game_object.artefact.Artefact;
+import model.game_object.entity.Player;
+import model.game_object.entity.SimpleEnemy;
+import model.room.Room;
 
 /**
  * 

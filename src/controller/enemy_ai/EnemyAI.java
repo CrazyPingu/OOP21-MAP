@@ -1,7 +1,7 @@
 package controller.enemy_ai;
 
-import logics.game_object.entity.Player;
-import logics.game_object.entity.SimpleEnemy;
+import model.game_object.entity.Player;
+import model.game_object.entity.SimpleEnemy;
 import utilities.Pair;
 
 /**
