@@ -14,6 +14,7 @@ import utilities.Pair;
 import utilities.RoomConstant;
 import controller.ActionFlag;
 import controller.GameAreaController;
+import controller.GameLoop;
 import model.game_object.artefact.Artefact;
 import model.game_object.entity.Player;
 import model.game_object.entity.SimpleEnemy;
@@ -32,11 +33,11 @@ public class GameArea extends JPanel {
   private final GameAreaController gameAreaController;
   private Dimension buttonDimension;
 
-  public GameArea(final Room room, final GameAreaController gameAreaController) {
+  public GameArea(final GameLoop loop, final GameAreaController gameAreaController) {
     this.gameAreaController = gameAreaController;
     this.setBackground(RoomConstant.BASIC_CELL_COLOR);
     this.setBorder(BorderFactory.createEmptyBorder());
-    this.changeRoom(room);
+    this.changeRoom(loop);
   }
 
   /**
@@ -45,9 +46,9 @@ public class GameArea extends JPanel {
    * 
    * @param room the room to replace the older one
    */
-  public final void changeRoom(final Room room) {
+  public final void changeRoom(final GameLoop loop) {
     this.removeAll();
-    this.room = room;
+    this.room = loop.getRoom();
     this.size = room.getSize();
     this.setLayout(new GridLayout(size.getY(), size.getX()));
     this.buttonDimension = new Dimension(Constant.GAME_WIDTH / size.getX(), Constant.TOP_HEIGHT / size.getY());

@@ -26,6 +26,8 @@ public class GameLoop {
   private final GameAreaController gameAreaController;
   private final PageController pageController;
   private BasicGameController gameController;
+  private Room room;
+  private Player player;
 
   public GameLoop() {
     frame = new BasicFrame();
@@ -51,10 +53,11 @@ public class GameLoop {
     this.loadingScreen.startProgressBar();
     final WeaponFactoryImpl wf = new WeaponFactoryImpl();
     final MovementFactoryImpl mf = new MovementFactoryImpl();
-    final Player player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createStick(), mf.stepMovement(), "Marcello",
+    this.player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createStick(), mf.stepMovement(), "Marcello",
         EntityTexture.PLAYER);
-    final Room randomRoom = gameAreaController.generateNewRoom(player);
-    final TotalPanel totalPanel = new TotalPanel(randomRoom, actionMenuController, gameAreaController, pageController, gameStats);
+    this.room = gameAreaController.generateNewRoom(player);
+    final TotalPanel totalPanel = new TotalPanel(this, actionMenuController, gameAreaController, pageController,
+        gameStats);
     frame.addToCardLayout(totalPanel, "Game");
     gameController = new BasicGameController(gameAreaController, totalPanel, pageController, gameStats);
   }
@@ -76,6 +79,13 @@ public class GameLoop {
 
   public void makeAction(final Pair<Integer, Integer> pos) {
     this.gameController.makeAction(pos);
+  }
 
+  public Room getRoom() {
+    return this.room;
+  }
+
+  public Player getPlayer() {
+    return this.player;
   }
 }

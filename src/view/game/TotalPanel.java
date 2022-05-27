@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import controller.ActionMenuController;
 import controller.GameAreaController;
+import controller.GameLoop;
 import controller.PageController;
 import model.game_statistics.GameStatisticsImpl;
 import model.room.Room;
@@ -35,17 +36,17 @@ public class TotalPanel extends JPanel {
   private final ScrollableStats stats;
   private final ActionMenu actionMenu;
 
-  public TotalPanel(final Room room, final ActionMenuController actionMenuController,
+  public TotalPanel(final GameLoop loop, final ActionMenuController actionMenuController,
       final GameAreaController gameAreaController, final PageController pageController,
       final GameStatisticsImpl gameStats) {
     this.setLayout(new GridBagLayout());
     this.setBackground(Color.black);
 
-    stats = new ScrollableStats(room.getPlayer(), new Stats(), gameStats, room.getPlayer().getActionNumber());
+    stats = new ScrollableStats(loop.getPlayer(), new Stats(), gameStats, loop.getPlayer().getActionNumber());
     fixSize(Constant.LABEL_WIDTH, Constant.TOP_HEIGHT, stats);
     this.add(stats, new GbcDimension(0));
 
-    gameArea = new GameArea(room, gameAreaController);
+    gameArea = new GameArea(loop, gameAreaController);
     fixSize(Constant.GAME_WIDTH, Constant.TOP_HEIGHT, gameArea);
     this.add(gameArea, new GbcDimension(1));
 
