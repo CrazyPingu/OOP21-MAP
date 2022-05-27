@@ -35,7 +35,7 @@ public class ArtefactTexture {
 	 * MOVEMENT ARTEFACT
 	 */
 	public static final Image STEP = ImageMethod.getImage("artefact/movement/Step.png");
-	public static final Image RUN = ImageMethod.getImage("artefact/movement/run.png");
+	public static final Image RUN = ImageMethod.getImage("artefact/movement/Run.png");
 
 	/*
 	 * EXTEND ACTION NUMBER ARTEFACT
