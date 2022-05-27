@@ -21,11 +21,14 @@ public class GameLoop {
   private final BasicFrame frame;
 
   private final LoadingScreenImpl loadingScreen;
+  private TotalPanel totalPanel;
 
   private final ActionMenuController actionMenuController;
   private final GameAreaController gameAreaController;
   private final PageController pageController;
   private BasicGameController gameController;
+  private Room room;
+  private Player player;
 
   public GameLoop() {
     frame = new BasicFrame();
@@ -51,12 +54,12 @@ public class GameLoop {
     this.loadingScreen.startProgressBar();
     final WeaponFactoryImpl wf = new WeaponFactoryImpl();
     final MovementFactoryImpl mf = new MovementFactoryImpl();
-    final Player player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createStick(), mf.stepMovement(), "Marcello",
+    this.player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createStick(), mf.stepMovement(), "Marcello",
         EntityTexture.PLAYER);
-    final Room randomRoom = gameAreaController.generateNewRoom(player);
-    final TotalPanel totalPanel = new TotalPanel(randomRoom, actionMenuController, gameAreaController, pageController, gameStats);
+    this.room = gameAreaController.generateNewRoom(player);
+    this.totalPanel = new TotalPanel(this, actionMenuController, gameAreaController, pageController, gameStats);
     frame.addToCardLayout(totalPanel, "Game");
-    gameController = new BasicGameController(gameAreaController, totalPanel, pageController, gameStats);
+    gameController = new BasicGameController(gameAreaController, pageController, this, gameStats);
   }
 
   public void skipTurn() {
@@ -76,6 +79,45 @@ public class GameLoop {
 
   public void makeAction(final Pair<Integer, Integer> pos) {
     this.gameController.makeAction(pos);
+  }
 
+  public Room getRoom() {
+    return this.room;
+  }
+
+  public Player getPlayer() {
+    return this.player;
+  }
+
+  public GameAreaController getGameAreaController() {
+    return gameAreaController;
+  }
+
+  public void updateLog(final String text) {
+    this.gameAreaController.updateLog(this.totalPanel.getScrollableLog(), text);
+  }
+
+  public void updateStats(final GameStatisticsImpl statistics, final int actionNumber) {
+    this.gameAreaController.updateStats(this.totalPanel.getScrollableStats(), player, statistics, actionNumber);
+  }
+  
+  public void removeHighlight() {
+    this.gameAreaController.removeHighlight(this.totalPanel.getGameArea());
+  }
+  
+  public void highlightCells(final ActionFlag flag) {
+    this.gameAreaController.highlightCells(flag, this.totalPanel.getGameArea());
+  }
+  
+  public void moveGameObject(final Pair<Integer, Integer> oldPos, final Pair<Integer, Integer> newPos) {
+    this.gameAreaController.moveGameObject(oldPos, newPos);
+  }
+
+  public void changeRoom() {
+    this.gameAreaController.changeRoom(this.player, this.totalPanel.getGameArea());
+  }
+  
+  public void setRoom(final Room room) {
+    this.room = room;
   }
 }

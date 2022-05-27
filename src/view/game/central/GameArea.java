@@ -14,6 +14,7 @@ import utilities.Pair;
 import utilities.RoomConstant;
 import controller.ActionFlag;
 import controller.GameAreaController;
+import controller.GameLoop;
 import model.game_object.artefact.Artefact;
 import model.game_object.entity.Player;
 import model.game_object.entity.SimpleEnemy;
@@ -32,11 +33,11 @@ public class GameArea extends JPanel {
   private final GameAreaController gameAreaController;
   private Dimension buttonDimension;
 
-  public GameArea(final Room room, final GameAreaController gameAreaController) {
+  public GameArea(final GameLoop loop, final GameAreaController gameAreaController) {
     this.gameAreaController = gameAreaController;
     this.setBackground(RoomConstant.BASIC_CELL_COLOR);
     this.setBorder(BorderFactory.createEmptyBorder());
-    this.changeRoom(room);
+    this.changeRoom(loop.getRoom());
   }
 
   /**
@@ -122,31 +123,6 @@ public class GameArea extends JPanel {
   }
 
   /**
-   * @return the room of the game
-   */
-  public Room getRoom() {
-    return room;
-  }
-
-  /**
-   * Method to move game object around the GameArea
-   * 
-   * @param oldPos the actual position of the GameObject
-   * @param newPos the position that the GameObject will go on
-   */
-  public void moveGameObject(final Pair<Integer, Integer> oldPos, final Pair<Integer, Integer> newPos) {
-    if (oldPos != null && newPos != null) {
-      this.room.getCells().get(oldPos).removeSprite();
-      this.room.updatePosition(oldPos, newPos);
-      if (RoomConstant.searchEnemy(newPos, room.getEnemyList()) != null) {
-        this.room.getCells().get(newPos).drawGameObject(RoomConstant.searchEnemy(newPos, room.getEnemyList()));
-      } else {
-        this.room.getCells().get(newPos).drawGameObject(room.getPlayer());
-      }
-    }
-  }
-
-  /**
    * @param flag the flag that will say which action the player is doing
    */
   public void highlightCells(final ActionFlag flag) {
@@ -183,20 +159,5 @@ public class GameArea extends JPanel {
     repaint();
   }
 
-  /**
-   * Method to reove the game object from the game
-   * 
-   * @param pos the position of the game object to remove
-   */
-  public void removeGameObject(final Pair<Integer, Integer> pos) {
-    if (pos != null && RoomConstant.cellsOccupated(this.room.getEnemyList(), this.room.getArtefactList(),
-        this.room.getPlayer(), pos)) {
-      this.room.getCells().get(pos).removeSprite();
-      if (RoomConstant.searchEnemy(pos, this.room.getEnemyList()) != null) {
-        this.room.getEnemyList().remove(RoomConstant.searchEnemy(pos, this.room.getEnemyList()));
-      } else if (RoomConstant.searchArtefact(pos, this.room.getArtefactList()) != null) {
-        this.room.getArtefactList().remove(RoomConstant.searchArtefact(pos, this.room.getArtefactList()));
-      }
-    }
-  }
+
 }

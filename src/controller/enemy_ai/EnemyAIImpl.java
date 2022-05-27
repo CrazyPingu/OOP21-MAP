@@ -2,11 +2,11 @@ package controller.enemy_ai;
 
 import java.util.List;
 
+import controller.GameLoop;
 import model.game_object.entity.Player;
 import model.game_object.entity.SimpleEnemy;
 import utilities.Pair;
 import utilities.RoomConstant;
-import view.game.TotalPanel;
 
 /**
  * 
@@ -15,25 +15,25 @@ import view.game.TotalPanel;
  */
 public class EnemyAIImpl implements EnemyAI {
 
-    final private TotalPanel totalPanel;
+    private final GameLoop loop;
 
-    public EnemyAIImpl(final TotalPanel totalPanel) {
-        this.totalPanel = totalPanel;
+    public EnemyAIImpl(final GameLoop loop) {
+        this.loop = loop;
     }
 
     @Override
     public Pair<Integer, Integer> move(final SimpleEnemy enemy) {
         final List<Pair<Integer, Integer>> enemyReachableArea = enemy.getMovementSystem().reachableCells(enemy.getPos(),
-                this.totalPanel.getGameArea().getRoom().getSize());
-        final Player player = this.totalPanel.getGameArea().getRoom().getPlayer();
+                this.loop.getRoom().getSize());
+        final Player player = this.loop.getRoom().getPlayer();
         Pair<Integer, Integer> newEnemyPos = enemy.getPos();
         int minDistance = Integer.MAX_VALUE;
         int distance;
         for (final Pair<Integer, Integer> cell : enemyReachableArea) {
             distance = Math.abs(cell.getX() - player.getPos().getX()) + Math.abs(cell.getY() - player.getPos().getY());
             if (distance < minDistance
-                    && !(RoomConstant.cellsOccupated(this.totalPanel.getGameArea().getRoom().getEnemyList(),
-                            this.totalPanel.getGameArea().getRoom().getArtefactList(), player, cell))) {
+                    && !(RoomConstant.cellsOccupated(this.loop.getRoom().getEnemyList(),
+                            this.loop.getRoom().getArtefactList(), player, cell))) {
                 newEnemyPos = cell;
                 minDistance = distance;
             }
