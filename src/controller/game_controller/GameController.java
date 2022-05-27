@@ -2,14 +2,13 @@ package controller.game_controller;
 
 import controller.ActionFlag;
 import controller.GameAreaController;
+import controller.GameLoop;
 import controller.PageController;
 import model.game_object.artefact.Artefact;
-import model.game_object.entity.Player;
 import model.game_object.entity.SimpleEnemy;
 import model.game_statistics.GameStatisticsImpl;
 import utilities.Pair;
 import utilities.RoomConstant;
-import view.game.TotalPanel;
 
 /**
  * 
@@ -19,19 +18,19 @@ import view.game.TotalPanel;
 public abstract class GameController {
 
   private final GameAreaController gameAreaController;
-  private final TotalPanel totalPanel;
   private final PageController pageController;
+  private final GameStatisticsImpl gameStats;
+  private final GameLoop loop;
   private ActionFlag flag;
   private int currentActionNumber;
-  private final GameStatisticsImpl gameStats;
 
-  public GameController(final GameAreaController gameAreaController, final TotalPanel totalPanel,
-      final PageController pageController, final GameStatisticsImpl gameStats) {
-    this.totalPanel = totalPanel;
+  public GameController(final GameAreaController gameAreaController, final PageController pageController,
+      final GameStatisticsImpl gameStats, final GameLoop loop) {
+    this.loop = loop;
     this.pageController = pageController;
     this.gameStats = gameStats;
     this.gameAreaController = gameAreaController;
-    this.currentActionNumber = this.getPlayer().getActionNumber();
+    this.currentActionNumber = this.loop.getPlayer().getActionNumber();
   }
 
   /**
@@ -63,21 +62,22 @@ public abstract class GameController {
    * Decrease the number of available action
    */
   public void decreaseAction() {
-    this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.getGameStats(),
-        this.currentActionNumber);
+    this.updateStats();
     this.currentActionNumber--;
-    this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.getGameStats(),
-        this.currentActionNumber);
+    this.updateStats();
+  }
+
+  public void updateStats() {
+    this.loop.updateStats(this.getGameStats(), this.currentActionNumber);
   }
 
   /**
    * Skip the turn
    */
   public void skipTurn() {
-    this.totalPanel.getGameArea().removeHighlight();
+    this.loop.removeHighlight();
     this.resetActionNumber();
-    this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.getGameStats(),
-        this.currentActionNumber);
+    this.updateStats();
     this.enemyTurn();
   }
 
@@ -85,20 +85,18 @@ public abstract class GameController {
    * Attack in a chosen cell by the user
    */
   private void attack(final Pair<Integer, Integer> pos) {
-    final SimpleEnemy enemy = RoomConstant.searchEnemy(pos, this.totalPanel.getGameArea().getRoom().getEnemyList());
-    this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.getGameStats(),
-        this.currentActionNumber);
+    final SimpleEnemy enemy = RoomConstant.searchEnemy(pos, this.loop.getRoom().getEnemyList());
+    this.updateStats();
     if (enemy != null) {
-      enemy.damage(this.getPlayer().getWeapon().getDamage());
+      enemy.damage(this.loop.getPlayer().getWeapon().getDamage());
       if (enemy.isDead()) {
-        this.totalPanel.getGameArea().removeGameObject(pos);
+        this.gameAreaController.removeGameObject(pos);
         this.gameStats.increaseKilledEnemies();
-        this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.gameStats,
-            this.currentActionNumber);
+        this.updateStats();
       }
-      this.getTotalPanel().getScrollableLog().getLogMessage().update(enemy.getName() + " got hit");
+      this.loop.updateLog(enemy.getName() + " got hit");
     } else {
-      this.getTotalPanel().getScrollableLog().getLogMessage().update(this.getPlayer().getName() + " miss the attack");
+      this.loop.updateLog(this.loop.getPlayer().getName() + " miss the attack");
     }
     this.endPlayerTurn();
   }
@@ -109,25 +107,21 @@ public abstract class GameController {
    * @param newpos : the new position of the player
    */
   private void move(final Pair<Integer, Integer> newpos) {
-    this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.getGameStats(),
-        this.currentActionNumber);
-    if (RoomConstant.searchEnemy(newpos, this.totalPanel.getGameArea().getRoom().getEnemyList()) == null) {
-      final Artefact artefact = RoomConstant.searchArtefact(newpos,
-          this.totalPanel.getGameArea().getRoom().getArtefactList());
+    this.updateStats();
+    if (RoomConstant.searchEnemy(newpos, this.loop.getRoom().getEnemyList()) == null) {
+      final Artefact artefact = RoomConstant.searchArtefact(newpos, this.loop.getRoom().getArtefactList());
       if (artefact != null) {
-        artefact.execute(this.getPlayer());
-        this.totalPanel.getGameArea().removeGameObject(newpos);
+        artefact.execute(this.loop.getPlayer());
+        this.gameAreaController.removeGameObject(newpos);
         this.gameStats.increaseCollectedArtefacts();
-        this.getTotalPanel().getScrollableLog().getLogMessage().update("Picked up " + artefact.getName() + ".");
-        this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.gameStats,
-            this.currentActionNumber);
+        this.loop.updateLog("Picked up " + artefact.getName() + ".");
+        this.updateStats();
       }
-      this.totalPanel.getGameArea().moveGameObject(this.getPlayer().getPos(), newpos);
-      if (this.totalPanel.getGameArea().getRoom().playerOnDoor()) {
+      this.loop.moveGameObject(this.loop.getPlayer().getPos(), newpos);
+      if (this.loop.getRoom().playerOnDoor()) {
         this.gameStats.increaseCompletedRooms();
-        this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.gameStats,
-            this.currentActionNumber);
-        this.totalPanel.getGameArea().changeRoom(this.gameAreaController.generateNewRoom(this.getPlayer()));
+        this.updateStats();
+        this.loop.changeRoom();
       }
     }
     this.endPlayerTurn();
@@ -135,26 +129,10 @@ public abstract class GameController {
 
   /**
    * 
-   * @return the player
-   */
-  public Player getPlayer() {
-    return this.totalPanel.getGameArea().getRoom().getPlayer();
-  }
-
-  /**
-   * 
    * @return if the player is dead
    */
   public boolean isDead() {
-    return this.getPlayer().isDead();
-  }
-
-  /**
-   * 
-   * @return the total panel
-   */
-  public TotalPanel getTotalPanel() {
-    return this.totalPanel;
+    return this.loop.getRoom().getPlayer().isDead();
   }
 
   /**
@@ -164,8 +142,8 @@ public abstract class GameController {
    */
   public void setFlag(final ActionFlag flag) {
     this.flag = flag;
-    this.totalPanel.getGameArea().removeHighlight();
-    this.totalPanel.getGameArea().highlightCells(this.flag);
+    this.loop.removeHighlight();
+    this.loop.highlightCells(this.flag);
   }
 
   /**
@@ -181,14 +159,14 @@ public abstract class GameController {
    *
    */
   public void resetActionNumber() {
-    this.currentActionNumber = this.getPlayer().getActionNumber();
+    this.currentActionNumber = this.loop.getPlayer().getActionNumber();
   }
 
   /**
    * end the turn of the player
    */
   private void endPlayerTurn() {
-    this.totalPanel.getGameArea().removeHighlight();
+    this.loop.removeHighlight();
     this.decreaseAction();
     if (this.getCurrentActionNumber() == 0) {
       enemyTurn();
@@ -200,6 +178,10 @@ public abstract class GameController {
     }
   }
 
+  public GameLoop getLoop() {
+    return this.loop;
+  }
+
   /**
    * 
    * @param pos the pos of the player
@@ -208,13 +190,11 @@ public abstract class GameController {
     if (this.flag.equals(ActionFlag.ATTACK)) {
       this.attack(pos);
       this.gameStats.increaseAttackActionCounter();
-      this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.getGameStats(),
-          this.currentActionNumber);
+      this.updateStats();
     } else if (this.flag.equals(ActionFlag.MOVE)) {
       this.move(pos);
       this.gameStats.increaseMoveActionCounter();
-      this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.getGameStats(),
-          this.currentActionNumber);
+      this.updateStats();
     }
 
   }
