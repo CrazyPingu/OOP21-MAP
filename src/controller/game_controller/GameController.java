@@ -3,13 +3,13 @@ package controller.game_controller;
 import controller.ActionFlag;
 import controller.GameAreaController;
 import controller.PageController;
-import logics.game_object.artefact.Artefact;
-import logics.game_object.entity.Player;
-import logics.game_object.entity.SimpleEnemy;
+import model.game_object.artefact.Artefact;
+import model.game_object.entity.Player;
+import model.game_object.entity.SimpleEnemy;
+import model.game_statistics.GameStatisticsImpl;
 import utilities.Pair;
 import utilities.RoomConstant;
 import view.game.TotalPanel;
-import logics.game_statistics.GameStatisticsImpl;
 
 /**
  * 

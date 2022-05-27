@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import controller.GameAreaController;
-import logics.game_object.GameObject;
+import model.game_object.GameObject;
 import utilities.ImageModifier;
 import utilities.Pair;
 import utilities.RoomConstant;

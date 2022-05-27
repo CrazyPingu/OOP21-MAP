@@ -5,9 +5,9 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import logics.strategy.Strategy;
-import logics.strategy.concrete_strategies.AsteriskArea;
-import logics.strategy.concrete_strategies.VariableDistanceConstants;
+import model.strategy.Strategy;
+import model.strategy.concrete_strategies.AsteriskArea;
+import model.strategy.concrete_strategies.VariableDistanceConstants;
 import utilities.Pair;
 
 /**

@@ -4,13 +4,14 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import java.awt.Image;
 import org.junit.jupiter.api.Test;
-import logics.game_object.entity.SimpleEnemy;
-import logics.life.LifeSystem;
-import logics.life.impl.SimpleLifeSystem;
-import logics.strategy.movement.MovementFactory;
-import logics.strategy.movement.MovementFactoryImpl;
-import logics.strategy.weapon.WeaponFactory;
-import logics.strategy.weapon.WeaponFactoryImpl;
+
+import model.game_object.entity.SimpleEnemy;
+import model.life.LifeSystem;
+import model.life.impl.SimpleLifeSystem;
+import model.strategy.movement.MovementFactory;
+import model.strategy.movement.MovementFactoryImpl;
+import model.strategy.weapon.WeaponFactory;
+import model.strategy.weapon.WeaponFactoryImpl;
 import utilities.Pair;
 import utilities.texture.EntityTexture;
 
