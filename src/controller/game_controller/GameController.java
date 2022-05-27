@@ -75,7 +75,7 @@ public abstract class GameController {
    */
   public void skipTurn() {
     this.totalPanel.getGameArea().removeHighlight();
-    this.currentActionNumber = 0;
+    this.resetActionNumber();
     this.getTotalPanel().getScrollableStats().getStatsValues().update(this.getPlayer(), this.getGameStats(),
         this.currentActionNumber);
     this.enemyTurn();
