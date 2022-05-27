@@ -21,13 +21,19 @@ import view.game.log_stats.ScrollableLog;
 import view.game.log_stats.ScrollableStats;
 import view.game.log_stats.Stats;
 
+/**
+ * 
+ * The panel that rappresent the game, composed with the log, the stats the
+ * action menu and the game area
+ *
+ */
 public class TotalPanel extends JPanel {
 
   private static final long serialVersionUID = 3295995931719233232L;
-  ScrollableLog log;
-  GameArea gameArea;
-  ScrollableStats stats;
-  ActionMenu actionMenu;
+  private final ScrollableLog log;
+  private final GameArea gameArea;
+  private final ScrollableStats stats;
+  private final ActionMenu actionMenu;
 
   public TotalPanel(final Room room, final ActionMenuController actionMenuController,
       final GameAreaController gameAreaController, final PageController pageController,
@@ -62,18 +68,30 @@ public class TotalPanel extends JPanel {
 
   }
 
+  /**
+   * @return the log
+   */
   public ScrollableLog getScrollableLog() {
     return log;
   }
 
+  /**
+   * @return the gameArea
+   */
   public GameArea getGameArea() {
     return gameArea;
   }
 
+  /**
+   * @return the stats
+   */
   public ScrollableStats getScrollableStats() {
     return stats;
   }
 
+  /**
+   * @return the action menu
+   */
   public ActionMenu getActionMenu() {
     return actionMenu;
   }
