@@ -28,7 +28,7 @@ public final class RoomConstant {
   
   public static final Image BUTTON_IMAGE = ImageMethod.getImage("room/Button.png");
 
-  public static final Image LOADING_SCREEN = ImageMethod.getImage("loadingScreen/aldoGiovanniEGiacomo.png");
+  public static final Image LOADING_SCREEN = ImageMethod.getImage("loadingScreen/Couch.png");
   
   private RoomConstant() {
     
