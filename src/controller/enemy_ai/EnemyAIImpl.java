@@ -1,8 +1,8 @@
 package controller.enemy_ai;
 
-import controller.GameLoop;
 import model.game_object.entity.Player;
 import model.game_object.entity.SimpleEnemy;
+import model.room.Room;
 import utilities.Pair;
 import utilities.RoomConstant;
 
@@ -13,20 +13,20 @@ import utilities.RoomConstant;
  */
 public class EnemyAIImpl implements EnemyAI {
 
-	private final GameLoop loop;
+	private final Room room;
 
-	public EnemyAIImpl(final GameLoop loop) {
-		this.loop = loop;
+	public EnemyAIImpl(final Room room) {
+		this.room = room;
 	}
 
 	@Override
 	public Pair<Integer, Integer> move(final SimpleEnemy enemy) {
-		final Player player = this.loop.getRoom().getPlayer();
-		return enemy.getMovementSystem().reachableCells(enemy.getPos(), this.loop.getRoom().getSize()).stream()
+		final Player player = this.room.getPlayer();
+		return enemy.getMovementSystem().reachableCells(enemy.getPos(), this.room.getSize()).stream()
 				.sorted((p1, p2) -> Integer.compare(calculateDistanceFromPlayer(p1, player.getPos()),
 						calculateDistanceFromPlayer(p2, player.getPos())))
-				.filter(i -> !RoomConstant.cellsOccupated(this.loop.getRoom().getEnemyList(),
-						this.loop.getRoom().getArtefactList(), player, i))
+				.filter(i -> !RoomConstant.cellsOccupated(this.room.getEnemyList(),
+						this.room.getArtefactList(), player, i))
 				.findFirst().get();
 	}
 

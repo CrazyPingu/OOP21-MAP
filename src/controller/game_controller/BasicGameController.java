@@ -24,7 +24,7 @@ public class BasicGameController extends GameController {
   public BasicGameController(final GameAreaController gameAreaController, final PageController pageController,
       final GameLoop loop, final GameStatisticsImpl gameStats) {
     super(gameAreaController, pageController, gameStats, loop);
-    this.enemyAI = new EnemyAIImpl(loop);
+    this.enemyAI = new EnemyAIImpl(loop.getRoom());
   }
 
   @Override
