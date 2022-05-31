@@ -43,8 +43,8 @@ public class EnemyAIImpl implements EnemyAI {
 
     @Override
     public boolean isPlayerInAttackArea(final SimpleEnemy enemy, final Player player, final Pair<Integer, Integer> roomSize) {
-        final List<Pair<Integer, Integer>> attackableArea = enemy.getWeapon().getAttackArea(enemy.getPos(), roomSize);
-        return attackableArea.contains(player.getPos());
+        return enemy.getWeapon().getAttackArea(enemy.getPos(), roomSize).stream()
+				.anyMatch(i -> i.equals(player.getPos()));
     }
 
 }
