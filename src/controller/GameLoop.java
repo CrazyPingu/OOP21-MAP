@@ -54,7 +54,7 @@ public class GameLoop {
     this.loadingScreen.startProgressBar();
     final WeaponFactoryImpl wf = new WeaponFactoryImpl();
     final MovementFactoryImpl mf = new MovementFactoryImpl();
-    this.player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createStick(), mf.stepMovement(), "Marcello",
+    this.player = new Player(new ExtendibleMaxLifeSystem(10, 10, 20), wf.createStick(), mf.stepMovement(), "Marcello",
         EntityTexture.PLAYER);
     this.room = gameAreaController.generateNewRoom(player);
     this.totalPanel = new TotalPanel(this, actionMenuController, gameAreaController, pageController, gameStats);
