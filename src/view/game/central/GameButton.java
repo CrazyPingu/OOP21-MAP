@@ -29,11 +29,16 @@ public class GameButton extends JButton implements ActionListener {
   private Image image;
   private Color color;
   private final boolean isDoor;
+  private final Pair<Integer, Integer> radius;
+  private final Pair<Integer, Integer> dim;
 
   public GameButton(final Dimension buttonDimension, final GameAreaController gameAreaController,
       final Pair<Integer, Integer> pos, final boolean isDoor) {
     this.isDoor = isDoor;
     this.color = RoomConstant.BASIC_CELL_COLOR;
+    radius = new Pair<>((int) buttonDimension.getWidth() / 4, (int) buttonDimension.getHeight() / 4);
+    dim = new Pair<>((int) buttonDimension.getWidth() / 2 - radius.getX() / 2,
+        (int) buttonDimension.getHeight() / 2 - radius.getY() / 2);
     this.pos = pos;
     image = null;
     this.setContentAreaFilled(false);
@@ -53,13 +58,12 @@ public class GameButton extends JButton implements ActionListener {
       g.drawImage(RoomConstant.BUTTON_IMAGE, 0, 0, (int) buttonDimension.getWidth(), (int) buttonDimension.getHeight(),
           null);
     }
-
-    if (checkHighlight()) {
-      g.setColor(color);
-      g.fillOval(0, 0, (int) buttonDimension.getWidth(), (int) buttonDimension.getHeight());
-    }
     if (image != null) {
       g.drawImage(image, 0, 0, (int) buttonDimension.getWidth(), (int) buttonDimension.getHeight(), null);
+    }
+    if (checkHighlight()) {
+      g.setColor(color);
+      g.fillOval(dim.getX(), dim.getY(), radius.getX(), radius.getY());
     }
 
   }
