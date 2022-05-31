@@ -32,20 +32,14 @@ public class BasicGameController extends GameController {
     final List<SimpleEnemy> allEnemyList = this.getLoop().getRoom().getEnemyList();
     final Player player = this.getLoop().getPlayer();
     final Pair<Integer, Integer> roomSize = this.getLoop().getRoom().getSize();
-    for (final SimpleEnemy enemy : allEnemyList) {
-      if (this.enemyAI.isPlayerInAttackArea(enemy, player, roomSize)) {
-        player.damage(enemy.getWeapon().getDamage());
-        if (player.isDead()) {
-          this.getPageController().showDefeat();
-        } else {
-          this.updateStats();
-          this.getLoop().updateLog(
-              player.getName() + " got hit " + enemy.getWeapon().getDamage() + " by " + enemy.getName() + "!");
-        }
-      } else {
-        this.getLoop().moveGameObject(enemy.getPos(), this.enemyAI.move(enemy));
+    allEnemyList.forEach(enemy -> {
+	      if (this.enemyAI.isPlayerInAttackArea(enemy, player, roomSize)) {
+	        this.damagePlayer(enemy, player);
+	      } else {
+	        this.getLoop().moveGameObject(enemy.getPos(), this.enemyAI.move(enemy));
+	      }
       }
-    }
+    );
     this.resetActionNumber();
   }
 
@@ -62,6 +56,17 @@ public class BasicGameController extends GameController {
   @Override
   public boolean isDefeated() {
     return this.getLoop().getPlayer().isDead();
+  }
+  
+  private void damagePlayer(SimpleEnemy enemy, Player player) {
+	  player.damage(enemy.getWeapon().getDamage());
+      if (player.isDead()) {
+        this.getPageController().showDefeat();
+      } else {
+        this.updateStats();
+        this.getLoop().updateLog(
+            player.getName() + " got hit " + enemy.getWeapon().getDamage() + " by " + enemy.getName() + "!");
+      }
   }
 
 }
