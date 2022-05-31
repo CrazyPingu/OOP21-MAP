@@ -5,22 +5,17 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.ActionMenuController;
-import controller.GameAreaController;
-import controller.PageController;
 import controller.enemy_ai.EnemyAIImpl;
 import model.game_object.entity.Player;
 import model.game_object.entity.SimpleEnemy;
 import model.game_object.entity.enemy.EnemyFactoryImpl;
-import model.game_statistics.GameStatisticsImpl;
 import model.life.impl.ExtendibleMaxLifeSystem;
+import model.room.Room;
 import model.room.RoomImpl;
 import model.strategy.movement.MovementFactoryImpl;
 import model.strategy.weapon.WeaponFactoryImpl;
 import utilities.Pair;
 import utilities.texture.EntityTexture;
-import view.game.TotalPanel;
-
 /**
  * 
  * JUnit test for enemy AI methods.
@@ -28,28 +23,23 @@ import view.game.TotalPanel;
  */
 
 public class EnemyAITest {
+	final WeaponFactoryImpl wf = new WeaponFactoryImpl();
+    final MovementFactoryImpl mf = new MovementFactoryImpl();
+    final EnemyFactoryImpl ef = new EnemyFactoryImpl();   
     private EnemyAIImpl enemyAI;
     private Player player;
-    private TotalPanel totalPanel;
     private SimpleEnemy enemyAroundArea, enemyCrossArea;
     private List<Pair<Integer, Integer>> expectedResult;
+    private final Pair<Integer, Integer> roomSize = new Pair<>(10, 4);
+    private Room room;
 
     @org.junit.Before
     public void init() {
-        final ActionMenuController actionMenuController = new ActionMenuController(null);
-        final GameAreaController gameAreaController = new GameAreaController(null);
-        final PageController pageController = new PageController(null, null);
-        this.expectedResult = new ArrayList<>();
-        final GameStatisticsImpl gameStats = new GameStatisticsImpl();
-        final WeaponFactoryImpl wf = new WeaponFactoryImpl();
-        final MovementFactoryImpl mf = new MovementFactoryImpl();
-        final EnemyFactoryImpl ef = new EnemyFactoryImpl();
-        this.player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createAxe(), mf.stepMovement(), "Marcello",
+    	this.player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createAxe(), mf.stepMovement(), "Marcello-test",
                 EntityTexture.PLAYER);
-        final Pair<Integer, Integer> roomSize = new Pair<>(10, 4);
-        final RoomImpl room = new RoomImpl(roomSize, this.player, new Pair<>(2, 1));
-        this.totalPanel = new TotalPanel(room, actionMenuController, gameAreaController, pageController, gameStats);
-        this.enemyAI = new EnemyAIImpl(totalPanel);
+    	this.room = new RoomImpl(roomSize, this.player, new Pair<>(2, 1));
+        this.expectedResult = new ArrayList<>();
+        this.enemyAI = new EnemyAIImpl(room);
         room.getEnemyList().clear();
         this.enemyAroundArea = ef.createZombieStick(new Pair<>(5, 1));
         room.getEnemyList().add(this.enemyAroundArea);
@@ -66,14 +56,12 @@ public class EnemyAITest {
         this.player.setPos(new Pair<>(2, 3));
         this.expectedResult.add(new Pair<>(4, 2));
         this.expectedResult.add(new Pair<>(4, 1));
-        this.totalPanel.getGameArea().moveGameObject(enemyAroundArea.getPos(), this.enemyAI.move(this.enemyAroundArea));
-        assertTrue(expectedResult.contains(this.enemyAroundArea.getPos()));
+        assertTrue(expectedResult.contains(this.enemyAI.move(this.enemyAroundArea)));
 
         this.expectedResult.clear();
         this.player.setPos(new Pair<>(2, 0));
         this.expectedResult.add(new Pair<>(3, 1));
-        this.totalPanel.getGameArea().moveGameObject(enemyCrossArea.getPos(), this.enemyAI.move(this.enemyCrossArea));
-        assertTrue(expectedResult.contains(this.enemyCrossArea.getPos()));
+        assertTrue(expectedResult.contains(this.enemyAI.move(this.enemyCrossArea)));
 
         this.expectedResult.clear();
         this.enemyCrossArea.setPos(new Pair<>(3, 3));
@@ -82,8 +70,7 @@ public class EnemyAITest {
         this.expectedResult.add(new Pair<>(3, 2));
         this.expectedResult.add(new Pair<>(4, 3));
         this.expectedResult.add(new Pair<>(5, 3));
-        this.totalPanel.getGameArea().moveGameObject(enemyCrossArea.getPos(), this.enemyAI.move(this.enemyCrossArea));
-        assertTrue(expectedResult.contains(this.enemyCrossArea.getPos()));
+        assertTrue(expectedResult.contains(this.enemyAI.move(this.enemyCrossArea)));
     }
 
     @org.junit.Test
@@ -96,14 +83,12 @@ public class EnemyAITest {
         this.expectedResult.add(new Pair<>(4, 0));
         this.expectedResult.add(new Pair<>(4, 1));
         this.expectedResult.add(new Pair<>(4, 2));
-        this.totalPanel.getGameArea().moveGameObject(enemyAroundArea.getPos(), this.enemyAI.move(this.enemyAroundArea));
-        assertTrue(expectedResult.contains(this.enemyAroundArea.getPos()));
+        assertTrue(expectedResult.contains(this.enemyAI.move(this.enemyAroundArea)));
 
         this.expectedResult.clear();
         this.player.setPos(new Pair<>(7, 3));
         this.expectedResult.add(new Pair<>(5, 3));
-        this.totalPanel.getGameArea().moveGameObject(enemyCrossArea.getPos(), this.enemyAI.move(this.enemyCrossArea));
-        assertTrue(expectedResult.contains(this.enemyCrossArea.getPos()));
+        assertTrue(expectedResult.contains(this.enemyAI.move(this.enemyCrossArea)));
     }
 
     @org.junit.Test
@@ -116,14 +101,12 @@ public class EnemyAITest {
         this.expectedResult.add(new Pair<>(4, 2));
         this.expectedResult.add(new Pair<>(5, 2));
         this.expectedResult.add(new Pair<>(6, 2));
-        this.totalPanel.getGameArea().moveGameObject(enemyAroundArea.getPos(), this.enemyAI.move(this.enemyAroundArea));
-        assertTrue(expectedResult.contains(this.enemyAroundArea.getPos()));
+        assertTrue(expectedResult.contains(this.enemyAI.move(this.enemyAroundArea)));
 
         this.expectedResult.clear();
         this.player.setPos(new Pair<>(3, 0));
         this.expectedResult.add(new Pair<>(3, 1));
-        this.totalPanel.getGameArea().moveGameObject(enemyCrossArea.getPos(), this.enemyAI.move(this.enemyCrossArea));
-        assertTrue(expectedResult.contains(this.enemyCrossArea.getPos()));
+        assertTrue(expectedResult.contains(this.enemyAI.move(this.enemyCrossArea)));
     }
 
     @org.junit.Test
@@ -136,15 +119,13 @@ public class EnemyAITest {
         this.expectedResult.add(new Pair<>(6, 0));
         this.expectedResult.add(new Pair<>(6, 1));
         this.expectedResult.add(new Pair<>(6, 2));
-        this.totalPanel.getGameArea().moveGameObject(enemyAroundArea.getPos(), this.enemyAI.move(this.enemyAroundArea));
-        assertTrue(expectedResult.contains(this.enemyAroundArea.getPos()));
+        assertTrue(expectedResult.contains(this.enemyAI.move(this.enemyAroundArea)));
 
         this.expectedResult.clear();
         this.player.setPos(new Pair<>(5, 2));
         this.expectedResult.add(new Pair<>(4, 3));
         this.expectedResult.add(new Pair<>(5, 3));
-        this.totalPanel.getGameArea().moveGameObject(enemyCrossArea.getPos(), this.enemyAI.move(this.enemyCrossArea));
-        assertTrue(expectedResult.contains(this.enemyCrossArea.getPos()));
+        assertTrue(expectedResult.contains(this.enemyAI.move(this.enemyCrossArea)));
     }
 
 }
