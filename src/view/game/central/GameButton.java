@@ -54,7 +54,7 @@ public class GameButton extends JButton implements ActionListener {
           null);
     }
 
-    if (this.color.equals(RoomConstant.ATTACK_HIGHLIGHT) || this.color.equals(RoomConstant.MOVE_HIGHLIGHT)) {
+    if (checkHighlight()) {
       g.setColor(color);
       g.fillOval(0, 0, (int) buttonDimension.getWidth(), (int) buttonDimension.getHeight());
     }
@@ -62,6 +62,11 @@ public class GameButton extends JButton implements ActionListener {
       g.drawImage(image, 0, 0, (int) buttonDimension.getWidth(), (int) buttonDimension.getHeight(), null);
     }
 
+  }
+
+  private boolean checkHighlight() {
+    return this.color.equals(RoomConstant.ATTACK_HIGHLIGHT) || this.color.equals(RoomConstant.MOVE_HIGHLIGHT)
+        || this.color.equals(RoomConstant.ENEMY_RANGE);
   }
 
   /**
