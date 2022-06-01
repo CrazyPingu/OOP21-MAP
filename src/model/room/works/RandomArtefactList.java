@@ -26,7 +26,7 @@ import utilities.RoomConstant;
 public class RandomArtefactList extends ArrayList<Artefact> {
 
   private static final long serialVersionUID = -6692451133647329784L;
-  private Map<Object, Integer> factoryOfArtefact = new HashMap<>();
+  private final Map<Object, Integer> factoryOfArtefact = new HashMap<>();
 
   /**
    * 
