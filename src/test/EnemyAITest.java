@@ -31,13 +31,12 @@ public class EnemyAITest {
     private SimpleEnemy enemyAroundArea, enemyCrossArea;
     private List<Pair<Integer, Integer>> expectedResult;
     private final Pair<Integer, Integer> roomSize = new Pair<>(10, 4);
-    private Room room;
 
     @org.junit.Before
     public void init() {
     	this.player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createAxe(), mf.stepMovement(), "Marcello-test",
                 EntityTexture.PLAYER);
-    	this.room = new RoomImpl(roomSize, this.player, new Pair<>(2, 1));
+    	final Room room = new RoomImpl(roomSize, this.player, new Pair<>(2, 1));
         this.expectedResult = new ArrayList<>();
         this.enemyAI = new EnemyAIImpl(room);
         room.getEnemyList().clear();
