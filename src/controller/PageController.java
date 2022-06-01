@@ -16,42 +16,42 @@ public class PageController {
     }
     
     public void showMainMenu() {
-        frame.showInFrame("MainMenu");
+        frame.showInFrame(CardName.MAIN_MENU);
     }
 
     /**
      * show the loading screen
      */
     public void showLoadingScreen() {
-        frame.showInFrame("LoadingScreen");
+        frame.showInFrame(CardName.LOADING_SCREEN);
     }
 
     /**
      * show the game screen
      */
     public void showGame() {
-        frame.showInFrame("Game");
+        frame.showInFrame(CardName.TOTAL_PANEL);
     }
 
     /**
      * show the pause menu
      */
     public void showPauseMenu() {
-        frame.showInFrame("PauseMenu");
+        frame.showInFrame(CardName.PAUSE_MENU);
     }
 
     /**
      * show the lost game page
      */
     public void showDefeat() {
-        frame.showInFrame("Defeat");
+        frame.showInFrame(CardName.DEFEAT);
     }
 
     /**
      * show the win game page
      */
     public void showVictory() {
-        frame.showInFrame("Victory");
+        frame.showInFrame(CardName.VICTORY);
     }
   
     

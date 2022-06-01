@@ -38,14 +38,14 @@ public class GameLoop {
 
     this.loadingScreen = new LoadingScreenImpl(this.pageController);
     final MainMenu mainMenu = new MainMenu(this.pageController);
-    frame.addToCardLayout(mainMenu, "MainMenu");
+    frame.addToCardLayout(mainMenu, CardName.MAIN_MENU);
     final PauseMenu pauseMenu = new PauseMenu(this.pageController);
-    frame.addToCardLayout(pauseMenu, "PauseMenu");
+    frame.addToCardLayout(pauseMenu, CardName.PAUSE_MENU);
     final Victory victory = new Victory("Victory", this.pageController);
-    frame.addToCardLayout(victory, "Victory");
+    frame.addToCardLayout(victory, CardName.VICTORY);
     final Defeat defeat = new Defeat("Defeat", this.pageController);
-    frame.addToCardLayout(defeat, "Defeat");
-    frame.addToCardLayout(loadingScreen, "LoadingScreen");
+    frame.addToCardLayout(defeat, CardName.DEFEAT);
+    frame.addToCardLayout(loadingScreen, CardName.LOADING_SCREEN);
     this.pageController.showMainMenu();
   }
 
@@ -58,7 +58,7 @@ public class GameLoop {
         EntityTexture.PLAYER);
     this.room = gameAreaController.generateNewRoom(player);
     this.totalPanel = new TotalPanel(this, actionMenuController, gameAreaController, pageController, gameStats);
-    frame.addToCardLayout(totalPanel, "Game");
+    frame.addToCardLayout(totalPanel, CardName.TOTAL_PANEL);
     gameController = new BasicGameController(gameAreaController, pageController, this, gameStats);
   }
 
