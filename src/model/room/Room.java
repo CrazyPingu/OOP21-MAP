@@ -26,14 +26,6 @@ public interface Room {
 	 * @param pos    the position of the button in the grid
 	 */
 	void addButtonToCells(Pair<Integer, Integer> pos, GameButton button);
-	
-	 /**
-	   * Method that generate the door in the last x position, with the middle y
-	   * 
-	   * @param size the size of the room
-	   * @return a List with the cell of the door
-	   */
-	List<Pair<Integer, Integer>> generateDoor(Pair<Integer, Integer> size);
 
 	/**
 	 * @param currentPos the current game object position

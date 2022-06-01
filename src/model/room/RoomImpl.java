@@ -48,7 +48,12 @@ public class RoomImpl implements Room {
     return this.door.contains(this.player.getPos());
   }
 
-  @Override
+  /**
+   * Method that generate the door in the last x position, with the middle y
+   * 
+   * @param size the size of the room
+   * @return a List with the cell of the door
+   */
   public List<Pair<Integer, Integer>> generateDoor(final Pair<Integer, Integer> size) {
     final List<Pair<Integer, Integer>> tmp = new ArrayList<>();
     tmp.add(new Pair<Integer, Integer>(size.getX() - 1, size.getY() / 2));
