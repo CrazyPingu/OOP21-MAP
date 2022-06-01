@@ -62,7 +62,6 @@ public abstract class GameController {
    * Decrease the number of available action
    */
   public void decreaseAction() {
-    this.updateStats();
     this.currentActionNumber--;
     this.updateStats();
   }
@@ -120,8 +119,10 @@ public abstract class GameController {
       this.loop.moveGameObject(this.loop.getPlayer().getPos(), newpos);
       if (this.loop.getRoom().playerOnDoor()) {
         this.gameStats.increaseCompletedRooms();
-        this.updateStats();
         this.loop.changeRoom();
+        this.resetActionNumber();
+        this.updateStats();
+        this.currentActionNumber++;
       }
     }
     this.endPlayerTurn();
@@ -168,7 +169,7 @@ public abstract class GameController {
   private void endPlayerTurn() {
     this.loop.removeHighlight();
     this.decreaseAction();
-    if (this.getCurrentActionNumber() == 0) {
+    if (this.getCurrentActionNumber() <= 0) {
       enemyTurn();
     }
     if (isWon()) {
