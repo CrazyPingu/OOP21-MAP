@@ -17,15 +17,14 @@ public final class ImageModifier {
    * @return an image scaled with the same aspect ratio (not stretched)
    */
   public static Image scaleMaintainingAspectRatio(final Image image, final Dimension size) {
-    final double scaleFactor = Math.min(1d,
-        getScaleFactorToFit(new Dimension(image.getWidth(null), image.getHeight(null)), size));
+    final double scaleFactor = getScaleFactorToFit(new Dimension(image.getWidth(null), image.getHeight(null)), size);
     final int scaleWidth = (int) Math.round(image.getWidth(null) * scaleFactor);
     final int scaleHeight = (int) Math.round(image.getHeight(null) * scaleFactor);
     return image.getScaledInstance(scaleWidth, scaleHeight, Image.SCALE_SMOOTH);
   }
 
   private static double getScaleFactorToFit(final Dimension original, final Dimension toFit) {
-    double dScale = 1d;
+    double dScale = 0;
     if (original != null && toFit != null) {
       final double dScaleWidth = (double) toFit.width / (double) original.width;
       final double dScaleHeight = (double) toFit.height / (double) original.height;

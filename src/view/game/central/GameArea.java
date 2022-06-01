@@ -33,6 +33,7 @@ public class GameArea extends JPanel {
   private final GameAreaController gameAreaController;
   private Dimension buttonDimension;
 
+  @SuppressWarnings("PMD.ConstructorCallsOverridableMethod")
   public GameArea(final GameLoop loop, final GameAreaController gameAreaController) {
     this.gameAreaController = gameAreaController;
     this.setBackground(RoomConstant.BASIC_CELL_COLOR);
@@ -64,6 +65,7 @@ public class GameArea extends JPanel {
     this.drawEnemyFromList(this.room.getEnemyList());
     this.drawArtefactFromList(this.room.getArtefactList());
     this.drawPlayer(this.room.getPlayer());
+    this.highlightEnemyRange(room.getEnemyList());
   }
 
   /**
@@ -148,6 +150,14 @@ public class GameArea extends JPanel {
       this.repaint();
     }
   }
+  
+  public void highlightEnemyRange(final List<SimpleEnemy> enemy) {
+    for(final var i : enemy) {
+      for(final var j : i.getWeapon().getAttackArea(i.getPos(), size)) {
+        this.room.getCells().get(j).highlightCell(RoomConstant.ENEMY_RANGE);
+      }
+    }
+  }
 
   /**
    * Method that remove all the highight
@@ -156,6 +166,7 @@ public class GameArea extends JPanel {
     for (final var x : room.getCells().entrySet()) {
       x.getValue().removeHighlight();
     }
+    highlightEnemyRange(this.room.getEnemyList());
     repaint();
   }
 

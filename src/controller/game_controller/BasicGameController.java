@@ -37,6 +37,7 @@ public class BasicGameController extends GameController {
 	        this.damagePlayer(enemy, player);
 	      } else {
 	        this.getLoop().moveGameObject(enemy.getPos(), this.enemyAI.move(enemy));
+	        this.getLoop().removeHighlight();
 	      }
       }
     );
