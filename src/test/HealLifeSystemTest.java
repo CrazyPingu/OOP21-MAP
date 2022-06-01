@@ -2,7 +2,7 @@ package test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import org.junit.jupiter.api.Test;
+import org.junit.*;
 
 import model.life.impl.HealLifeSystem;
 

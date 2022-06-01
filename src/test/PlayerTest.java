@@ -3,7 +3,7 @@ package test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import java.awt.Image;
-import org.junit.jupiter.api.Test;
+import org.junit.*;
 
 import model.game_object.entity.Player;
 import model.life.impl.ExtendibleMaxLifeSystem;
