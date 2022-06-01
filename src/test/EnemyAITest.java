@@ -59,8 +59,9 @@ public class EnemyAITest {
     public void artefactPlayerOutside() {
         hf.bigHealArtefact(new Pair<Integer,Integer>(4,2));
         this.player.setPos(new Pair<>(2, 3));
-        //NOT EXPECTED TO MOVE IN this.expectedResult.add(new Pair<>(4, 2));
+        // NOT EXPECTED TO MOVE IN this.expectedResult.add(new Pair<>(4, 2));
         this.expectedResult.add(new Pair<>(4, 1));
+        this.expectedResult.add(new Pair<>(5, 2));
         assertTrue(expectedResult.contains(this.enemyAI.move(this.enemyAroundArea)));
     }
 
