@@ -22,12 +22,12 @@ import utilities.texture.EntityTexture;
 
 public class GameObjectSpawnTest {
 
-  private WeaponFactory weaponFactory = new WeaponFactoryImpl();;
-  private MovementFactory movementFactory = new MovementFactoryImpl();;
+  private final WeaponFactory weaponFactory = new WeaponFactoryImpl();
+  private final MovementFactory movementFactory = new MovementFactoryImpl();
   private Player player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), weaponFactory.createAxe(),
       movementFactory.stepMovement(), "Marcello", EntityTexture.PLAYER);
-  private RoomFactory roomFactory = new RoomFactoryImpl(player);
-  private Room room = roomFactory.createMediumRoom();
+  private final RoomFactory roomFactory = new RoomFactoryImpl(player);
+  private final Room room = roomFactory.createMediumRoom();
 	
 	@org.junit.Test
 	/**

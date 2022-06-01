@@ -25,8 +25,8 @@ import utilities.RoomConstant;
 public class LoadingScreenImpl extends JPanel implements LoadingScreen, Runnable {
 
   private static final long serialVersionUID = 8291207301630291996L;
-  private JProgressBar progressBar = new JProgressBar();
-  private JLabel message = new JLabel("", SwingConstants.CENTER);
+  private final JProgressBar progressBar = new JProgressBar();
+  private final JLabel message = new JLabel("", SwingConstants.CENTER);
   private final PageController pageController;
 
   public LoadingScreenImpl(final PageController pageController) {
