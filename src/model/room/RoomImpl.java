@@ -54,7 +54,7 @@ public class RoomImpl implements Room {
    * @param size the size of the room
    * @return a List with the cell of the door
    */
-  public List<Pair<Integer, Integer>> generateDoor(final Pair<Integer, Integer> size) {
+  private List<Pair<Integer, Integer>> generateDoor(final Pair<Integer, Integer> size) {
     final List<Pair<Integer, Integer>> tmp = new ArrayList<>();
     tmp.add(new Pair<Integer, Integer>(size.getX() - 1, size.getY() / 2));
     if (size.getY() % 2 == 0) {
