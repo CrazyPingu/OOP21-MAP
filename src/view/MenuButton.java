@@ -14,6 +14,9 @@ public class MenuButton extends JButton {
         super(text);
         this.setFont(Constant.genericFont("Tahoma", Font.PLAIN, Constant.horizontalAspectRatio(font)));
         this.setBackground(new Color(197, 199, 196));
+        this.setForeground(Color.BLACK);
+        this.setOpaque(true);
+        this.setFocusPainted(true);
         this.setBorder(
                 BorderFactory.createLineBorder(new Color(67, 59, 103), Constant.horizontalAspectRatio(10), false));
     }
