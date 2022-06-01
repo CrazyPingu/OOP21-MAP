@@ -1,6 +1,6 @@
 package test;
 
-import org.junit.*;
+import org.junit.jupiter.api.Test;
 
 import model.strategy.Strategy;
 import model.strategy.concrete_strategies.CrossArea;

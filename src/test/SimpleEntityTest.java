@@ -3,7 +3,8 @@ package test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import java.awt.Image;
-import org.junit.*;
+
+import org.junit.jupiter.api.Test;
 
 import model.game_object.entity.SimpleEnemy;
 import model.life.LifeSystem;

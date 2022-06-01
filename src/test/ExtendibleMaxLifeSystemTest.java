@@ -3,7 +3,7 @@ package test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.*;
+import org.junit.jupiter.api.Test;
 
 import model.life.impl.ExtendibleMaxLifeSystem;
 
