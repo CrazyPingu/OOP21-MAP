@@ -32,12 +32,13 @@ public class RoomImpl implements Room {
    * @param player       the player of the game
    * @param newPosPlayer the new position of the player
    */
+  @SuppressWarnings("PMD.ConstructorCallsOverridableMethod")
   public RoomImpl(final Pair<Integer, Integer> size, final Player player, final Pair<Integer, Integer> newPosPlayer) {
     player.setPos(newPosPlayer);
     this.size = size;
     this.player = player;
     this.cells = new HashMap<>();
-    this.door = generateDoor(size);
+    this.door = this.generateDoor(size);
     this.enemyList = new RandomEnemyList(size, player, door);
     this.artefactList = new RandomArtefactList(size, enemyList, player, door);
   }
@@ -48,25 +49,7 @@ public class RoomImpl implements Room {
   }
 
   @Override
-  public Artefact playerGetArtefact() {
-    if (playerOnArtefact()) {
-      this.removeObject(player.getPos());
-    }
-    return RoomConstant.searchArtefact(this.player.getPos(), artefactList);
-  }
-
-  @Override
-  public boolean playerOnArtefact() {
-    return RoomConstant.searchArtefact(this.player.getPos(), artefactList) != null;
-  }
-
-  /**
-   * Method that generate the door in the last x position, with the middle y
-   * 
-   * @param size the size of the room
-   * @return a List with the cell of the door
-   */
-  private List<Pair<Integer, Integer>> generateDoor(final Pair<Integer, Integer> size) {
+  public List<Pair<Integer, Integer>> generateDoor(final Pair<Integer, Integer> size) {
     final List<Pair<Integer, Integer>> tmp = new ArrayList<>();
     tmp.add(new Pair<Integer, Integer>(size.getX() - 1, size.getY() / 2));
     if (size.getY() % 2 == 0) {

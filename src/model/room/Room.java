@@ -22,25 +22,18 @@ public interface Room {
 	boolean playerOnDoor();
 
 	/**
-	 * Method that check if the player is on an artefact and return the artefact
-	 * 
-	 * @return an Artefact if the player is on it, and remove it from the list of
-	 *         artefact, else null
-	 */
-	Artefact playerGetArtefact();
-
-	/**
-	 * Method that check if the player is on an artefact
-	 * 
-	 * @return true if the player is on a artefact
-	 */
-	boolean playerOnArtefact();
-
-	/**
 	 * @param button the button that will be added to the grid
 	 * @param pos    the position of the button in the grid
 	 */
 	void addButtonToCells(Pair<Integer, Integer> pos, GameButton button);
+	
+	 /**
+	   * Method that generate the door in the last x position, with the middle y
+	   * 
+	   * @param size the size of the room
+	   * @return a List with the cell of the door
+	   */
+	List<Pair<Integer, Integer>> generateDoor(Pair<Integer, Integer> size);
 
 	/**
 	 * @param currentPos the current game object position
