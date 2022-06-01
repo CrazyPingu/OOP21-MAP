@@ -100,7 +100,9 @@ public class GameButton extends JButton implements ActionListener {
    * @param image the image to place on background
    */
   public void highlightCell(final Color backgroundColor) {
-    this.setEnabled(true);
+    if(backgroundColor != RoomConstant.ENEMY_RANGE) {
+      this.setEnabled(true);
+    }
     this.color = backgroundColor;
   }
 
