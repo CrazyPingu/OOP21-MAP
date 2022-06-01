@@ -25,3 +25,6 @@ hs_err_pid*
 
 # Testing environment
 /src/ourTest/
+
+# Intellijidea
+/.idea/
