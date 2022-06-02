@@ -10,7 +10,10 @@ import model.game_object.artefact.HealthArtefactFactory;
 import model.game_object.artefact.HealthArtefactFactoryImpl;
 import model.game_object.entity.Player;
 import model.game_object.entity.SimpleEnemy;
+import model.game_object.entity.enemy.EnemyFactory;
 import model.game_object.entity.enemy.EnemyFactoryImpl;
+import model.game_object.obstacle.ObstacleFactory;
+import model.game_object.obstacle.ObstacleFactoryImpl;
 import model.life.impl.ExtendibleMaxLifeSystem;
 import model.room.Room;
 import model.room.RoomImpl;
@@ -31,7 +34,8 @@ public class EnemyAITest {
     final WeaponFactory wf = new WeaponFactoryImpl();
     final HealthArtefactFactory hf = new HealthArtefactFactoryImpl();
     final MovementFactory mf = new MovementFactoryImpl();
-    final EnemyFactoryImpl ef = new EnemyFactoryImpl();
+    final EnemyFactory ef = new EnemyFactoryImpl();
+    final ObstacleFactory of = new ObstacleFactoryImpl();
     private EnemyAIImpl enemyAI;
     private Player player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createAxe(), mf.stepMovement(),
             "Marcello-test", EntityTexture.PLAYER);
@@ -46,6 +50,7 @@ public class EnemyAITest {
         this.enemyAI = new EnemyAIImpl(room);
         this.room.getEnemyList().clear();
         this.room.getArtefactList().clear();
+        this.room.getObstacleList().clear();
         this.enemyAroundArea = ef.createZombieStick(new Pair<>(5, 1));
         this.room.getEnemyList().add(this.enemyAroundArea);
         this.enemyCrossArea = ef.createZombieGun(new Pair<>(3, 3));
@@ -56,13 +61,17 @@ public class EnemyAITest {
     /**
      * testing of enemy's moving behavior whether there's an artefact on chosen cell
      */
-    public void artefactPlayerOutside() {
-        System.out.println("\n-- artefactPlayerOutside\n");
-        this.room.getArtefactList().add(hf.bigHealArtefact(new Pair<Integer,Integer>(4,2)));
+    public void objectInArea() {
+        System.out.println("\n-- objectInArea\n");
         this.player.setPos(new Pair<>(2, 3));
-        // NOT EXPECTED TO MOVE IN this.expectedResult.add(new Pair<>(4, 2));
+        
+        this.room.getArtefactList().add(hf.bigHealArtefact(new Pair<Integer,Integer>(4,2)));        
         this.expectedResult.add(new Pair<>(4, 1));
         this.expectedResult.add(new Pair<>(5, 2));
+        resultsToString(this.enemyAI.move(this.enemyAroundArea), this.expectedResult);
+        
+        this.room.getArtefactList().clear();
+        this.room.getObstacleList().add(of.createPebble(new Pair<Integer,Integer>(4,2)));
         resultsToString(this.enemyAI.move(this.enemyAroundArea), this.expectedResult);
     }
 
