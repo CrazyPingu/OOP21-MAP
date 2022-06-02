@@ -29,6 +29,7 @@ public class BasicGameController extends GameController {
 
     @Override
     public void enemyTurn() {
+        this.enemyAI.updateAIRoom(this.getLoop().getRoom());
         final List<SimpleEnemy> allEnemyList = this.getLoop().getRoom().getEnemyList();
         final Player player = this.getLoop().getPlayer();
         final Pair<Integer, Integer> roomSize = this.getLoop().getRoom().getSize();
