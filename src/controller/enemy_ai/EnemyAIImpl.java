@@ -29,7 +29,7 @@ public class EnemyAIImpl implements EnemyAI {
     return enemy.getReachableArea(this.room.getSize()).get().stream()
         .sorted((p1, p2) -> Integer.compare(calculateDistanceFromPlayer(p1, player.getPos()),
             calculateDistanceFromPlayer(p2, player.getPos())))
-        .filter(i -> !RoomConstant.cellsOccupated(this.room.getEnemyList(), this.room.getArtefactList(), player, i))
+        .filter(i -> !RoomConstant.cellsOccupated(this.room.getEnemyList(), this.room.getArtefactList(), this.room.getObstacleList(), player, i))
         .findFirst().get();
   }
 
