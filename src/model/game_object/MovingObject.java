@@ -1,6 +1,7 @@
 package model.game_object;
 
-import model.strategy.movement.Movement;
+import java.util.List;
+import java.util.Optional;
 import utilities.Pair;
 
 /**
@@ -25,7 +26,9 @@ public interface MovingObject {
 
   /**
    * 
-   * @return the movement System of the game object
+   * @param size of the room
+   * @return a list of Optional that represent the possible position the game
+   *         object can reach
    */
-  Movement getMovementSystem();
+  Optional<List<Pair<Integer, Integer>>> getReachableArea(Pair<Integer, Integer> size);
 }
