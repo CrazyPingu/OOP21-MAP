@@ -26,8 +26,10 @@ public class EntityTexture {
 	public static final Image ZOMBIE_GUN = ImageMethod.getImage("enemy/ZombieGun.png"); 
 	
 	/*
-     * OBSTACLE TEXTURE
+     * OBSTACLE TEXTURES
      */
-    public static final Image OBSTACLE = ImageMethod.getImage("obstacle/Rock.png");
+    public static final Image ROCK = ImageMethod.getImage("obstacle/Rock.png");
+    public static final Image PEBBLE = ImageMethod.getImage("obstacle/Pebble.png");
+    
 }
 

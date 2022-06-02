@@ -28,7 +28,7 @@ public class RandomObstacleList extends ArrayList<Obstacle> {
     for (int i = 0; i < size.getX() * size.getY() / RoomConstant.SPAWNING_RATIO; i++) {
       do {
         obstaclePos = new Pair<>(Constant.RANDOM.ints(0, size.getX()).findFirst().getAsInt(),
-            Constant.RANDOM.ints(0, size.getY()).findFirst().getAsInt());
+            Constant.RANDOM.ints(0, size.getY() - 2).findFirst().getAsInt());
       } while (RoomConstant.cellsOccupated(enemyList, artefactList, this, player, obstaclePos)
           || door.contains(obstaclePos));
       generateObstacle(obstaclePos);
