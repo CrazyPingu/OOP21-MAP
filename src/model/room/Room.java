@@ -6,6 +6,7 @@ import java.util.Map;
 import model.game_object.artefact.Artefact;
 import model.game_object.entity.Player;
 import model.game_object.entity.SimpleEnemy;
+import model.game_object.obstacle.Obstacle;
 import utilities.Pair;
 import view.game.central.GameButton;
 
@@ -67,4 +68,9 @@ public interface Room {
 	 * @return the door
 	 */
 	List<Pair<Integer, Integer>> getDoor();
+	
+	/**
+	 * @return the list of obstacle
+	 */
+	List<Obstacle> getObstacleList();
 }

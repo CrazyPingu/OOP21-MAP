@@ -83,10 +83,10 @@ public final class RoomConstant {
     }
     return null;
   }
-  
+
   /**
    * 
-   * @param pos the position of the Obstacle to be found
+   * @param pos  the position of the Obstacle to be found
    * @param list the list of the Obstacle to search out
    * @return the Obstacle if found, else null
    */
@@ -110,8 +110,8 @@ public final class RoomConstant {
    * @return true if an enemy, the player or a artefact is in that position, else
    *         false
    */
-  public static boolean cellsOccupated(final List<SimpleEnemy> enemyList, final List<Artefact> artefactList, final List<Obstacle> obstacleList,
-      final Player player, final Pair<Integer, Integer> pos) {
+  public static boolean cellsOccupated(final List<SimpleEnemy> enemyList, final List<Artefact> artefactList,
+      final List<Obstacle> obstacleList, final Player player, final Pair<Integer, Integer> pos) {
     return player.getPos().equals(pos) || searchEnemy(pos, enemyList) != null
         || searchArtefact(pos, artefactList) != null || searchObstacle(pos, obstacleList) != null;
   }

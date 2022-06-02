@@ -8,8 +8,10 @@ import java.util.Map;
 import model.game_object.artefact.Artefact;
 import model.game_object.entity.Player;
 import model.game_object.entity.SimpleEnemy;
+import model.game_object.obstacle.Obstacle;
 import model.room.works.RandomArtefactList;
 import model.room.works.RandomEnemyList;
+import model.room.works.RandomObstacleList;
 import utilities.Pair;
 import utilities.RoomConstant;
 import view.game.central.GameButton;
@@ -24,6 +26,7 @@ public class RoomImpl implements Room {
   private final Map<Pair<Integer, Integer>, GameButton> cells;
   private final List<SimpleEnemy> enemyList;
   private final List<Artefact> artefactList;
+  private final List<Obstacle> obstacleList;
   private Player player;
   private final List<Pair<Integer, Integer>> door;
 
@@ -41,6 +44,7 @@ public class RoomImpl implements Room {
     this.door = this.generateDoor(size);
     this.enemyList = new RandomEnemyList(size, player, door);
     this.artefactList = new RandomArtefactList(size, enemyList, player, door);
+    this.obstacleList = new RandomObstacleList(size, enemyList, artefactList, player, door);
   }
 
   @Override
@@ -116,5 +120,10 @@ public class RoomImpl implements Room {
   @Override
   public List<Pair<Integer, Integer>> getDoor() {
     return this.door;
+  }
+  
+  @Override
+  public List<Obstacle> getObstacleList(){
+    return this.obstacleList;
   }
 }

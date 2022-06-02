@@ -140,11 +140,13 @@ public class GameArea extends JPanel {
       }
       for (final var x : pos) {
         if (flag.equals(ActionFlag.MOVE)) {
-          if (RoomConstant.searchEnemy(x, this.room.getEnemyList()) == null) {
+          if (!RoomConstant.cellsOccupated(room.getEnemyList(), null, room.getObstacleList(), null, x)) {
             this.room.getCells().get(x).highlightCell(backgroudColor);
           }
         } else {
-          this.room.getCells().get(x).highlightCell(backgroudColor);
+          if(RoomConstant.searchObstacle(x, this.room.getObstacleList()) ==  null) {
+            this.room.getCells().get(x).highlightCell(backgroudColor);
+          }
         }
       }
       this.repaint();
