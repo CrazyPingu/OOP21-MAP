@@ -1,6 +1,8 @@
 package model.game_object.entity;
 
 import java.awt.Image;
+import java.util.List;
+import java.util.Optional;
 
 import model.game_object.ArtefactUserObject;
 import model.game_object.GameObject;
@@ -138,8 +140,8 @@ public class Player
   }
 
   @Override
-  public Movement getMovementSystem() {
-    return this.movement;
+  public Optional<List<Pair<Integer, Integer>>> getReachableArea(final Pair<Integer, Integer> size) {
+    return Optional.of(movement.reachableCells(pos, size));
   }
 
   @Override
@@ -157,4 +159,5 @@ public class Player
         + "\n current weapon = " + this.weapon.getName() + "\n weapon damage = " + this.weapon.getDamage()
         + "\n number action = " + this.getActionNumber();
   }
+
 }

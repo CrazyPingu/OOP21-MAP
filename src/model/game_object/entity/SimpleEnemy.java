@@ -1,6 +1,8 @@
 package model.game_object.entity;
 
 import java.awt.Image;
+import java.util.List;
+import java.util.Optional;
 
 import model.game_object.GameObject;
 import model.game_object.KillableObject;
@@ -77,8 +79,8 @@ public class SimpleEnemy implements MovingObject, WeaponizedObject, KillableObje
   }
 
   @Override
-  public Movement getMovementSystem() {
-    return this.movement;
+  public Optional<List<Pair<Integer, Integer>>> getReachableArea(final Pair<Integer, Integer> size) {
+    return Optional.of(movement.reachableCells(pos, size));
   }
 
   @Override

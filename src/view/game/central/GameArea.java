@@ -135,7 +135,7 @@ public class GameArea extends JPanel {
         pos = this.room.getPlayer().getWeapon().getAttackArea(this.room.getPlayer().getPos(), size);
         backgroudColor = RoomConstant.ATTACK_HIGHLIGHT;
       } else if (flag.equals(ActionFlag.MOVE)) {
-        pos = this.room.getPlayer().getMovementSystem().reachableCells(this.room.getPlayer().getPos(), size);
+        pos = this.room.getPlayer().getReachableArea(size).get();
         backgroudColor = RoomConstant.MOVE_HIGHLIGHT;
       }
       for (final var x : pos) {
@@ -150,10 +150,10 @@ public class GameArea extends JPanel {
       this.repaint();
     }
   }
-  
+
   public void highlightEnemyRange(final List<SimpleEnemy> enemy) {
-    for(final var i : enemy) {
-      for(final var j : i.getWeapon().getAttackArea(i.getPos(), size)) {
+    for (final var i : enemy) {
+      for (final var j : i.getWeapon().getAttackArea(i.getPos(), size)) {
         this.room.getCells().get(j).highlightCell(RoomConstant.ENEMY_RANGE);
       }
     }
@@ -169,6 +169,5 @@ public class GameArea extends JPanel {
     highlightEnemyRange(this.room.getEnemyList());
     repaint();
   }
-
 
 }
