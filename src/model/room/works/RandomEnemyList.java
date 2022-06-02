@@ -37,7 +37,7 @@ public class RandomEnemyList extends ArrayList<SimpleEnemy> {
         zombieSpawn = new Pair<>(
             Constant.RANDOM.ints(RoomConstant.FORBIDDEN_ZOMBIE_SPAWN, size.getX()).findFirst().getAsInt(),
             Constant.RANDOM.ints(0, size.getY()).findFirst().getAsInt());
-      } while (RoomConstant.cellsOccupated(this, null, player, zombieSpawn) || door.contains(zombieSpawn));
+      } while (RoomConstant.cellsOccupated(this, null, null, player, zombieSpawn) || door.contains(zombieSpawn));
       this.add(generateRandomEnemy(zombieSpawn));
     }
   }

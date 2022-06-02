@@ -12,7 +12,7 @@ public class MenuButton extends JButton {
 
     public MenuButton(final String text, final int font) {
         super(text);
-        this.setFont(Constant.genericFont("Tahoma", Font.PLAIN, Constant.horizontalAspectRatio(font)));
+        this.setFont(Constant.genericFont("Tahoma", Font.PLAIN, font));
         this.setBackground(new Color(197, 199, 196));
         this.setForeground(Color.BLACK);
         this.setOpaque(true);

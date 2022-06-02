@@ -8,6 +8,7 @@ import model.game_object.GameObject;
 import model.game_object.artefact.Artefact;
 import model.game_object.entity.Player;
 import model.game_object.entity.SimpleEnemy;
+import model.game_object.obstacle.Obstacle;
 
 public final class RoomConstant {
 
@@ -84,6 +85,24 @@ public final class RoomConstant {
   }
 
   /**
+   * 
+   * @param pos  the position of the Obstacle to be found
+   * @param list the list of the Obstacle to search out
+   * @return the Obstacle if found, else null
+   */
+  public static Obstacle searchObstacle(final Pair<Integer, Integer> pos, final List<Obstacle> obstacleList) {
+    if (obstacleList != null && !obstacleList.isEmpty()) {
+      for (final var x : obstacleList) {
+        if (x.getPos().equals(pos)) {
+          return x;
+        }
+      }
+    }
+    return null;
+
+  }
+
+  /**
    * @param enemyList    the list of the enemy
    * @param artefactList the list of the artefact
    * @param player       the player
@@ -92,8 +111,8 @@ public final class RoomConstant {
    *         false
    */
   public static boolean cellsOccupated(final List<SimpleEnemy> enemyList, final List<Artefact> artefactList,
-      final Player player, final Pair<Integer, Integer> pos) {
+      final List<Obstacle> obstacleList, final Player player, final Pair<Integer, Integer> pos) {
     return player.getPos().equals(pos) || searchEnemy(pos, enemyList) != null
-        || searchArtefact(pos, artefactList) != null;
+        || searchArtefact(pos, artefactList) != null || searchObstacle(pos, obstacleList) != null;
   }
 }

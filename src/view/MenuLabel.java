@@ -24,7 +24,7 @@ public class MenuLabel extends JLabel {
     this.setText(name);
     this.setForeground(Color.white);
     this.setPreferredSize(new Dimension(Constant.horizontalAspectRatio(500), Constant.verticalAspectRatio(100)));
-    this.setFont(Constant.genericFont("Arial", Font.PLAIN, Constant.horizontalAspectRatio(80)));
+    this.setFont(Constant.genericFont("Arial", Font.PLAIN, 80));
   }
 
 }

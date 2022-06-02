@@ -50,7 +50,7 @@ public class RandomArtefactList extends ArrayList<Artefact> {
       do {
         artefactPos = new Pair<>(Constant.RANDOM.ints(0, size.getX()).findFirst().getAsInt(),
             Constant.RANDOM.ints(0, size.getY()).findFirst().getAsInt());
-      } while (RoomConstant.cellsOccupated(enemyList, this, player, artefactPos) || door.contains(artefactPos));
+      } while (RoomConstant.cellsOccupated(enemyList, this, null, player, artefactPos) || door.contains(artefactPos));
       generateRandomArtefact(generateRandomArtefactFactory(), artefactPos);
     }
   }

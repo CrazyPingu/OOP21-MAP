@@ -41,7 +41,7 @@ public class GameAreaController {
    */
   public void removeGameObject(final Pair<Integer, Integer> pos) {
     if (pos != null && RoomConstant.cellsOccupated(this.loop.getRoom().getEnemyList(),
-        this.loop.getRoom().getArtefactList(), this.loop.getRoom().getPlayer(), pos)) {
+        this.loop.getRoom().getArtefactList(), null, this.loop.getRoom().getPlayer(), pos)) {
       this.loop.getRoom().getCells().get(pos).removeSprite();
       if (RoomConstant.searchEnemy(pos, this.loop.getRoom().getEnemyList()) != null) {
         this.loop.getRoom().getEnemyList().remove(RoomConstant.searchEnemy(pos, this.loop.getRoom().getEnemyList()));
