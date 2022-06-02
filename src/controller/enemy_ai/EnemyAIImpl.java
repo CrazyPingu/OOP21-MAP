@@ -13,11 +13,16 @@ import utilities.RoomConstant;
  */
 public class EnemyAIImpl implements EnemyAI {
 
-	private final Room room;
+	private Room room;
 
 	public EnemyAIImpl(final Room room) {
 		this.room = room;
 	}
+	
+	public void updateAIRoom(final Room room) {
+	        this.room = room;
+	    }
+
 
 	@Override
 	public Pair<Integer, Integer> move(final SimpleEnemy enemy) {
