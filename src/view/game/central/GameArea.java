@@ -18,6 +18,7 @@ import controller.GameLoop;
 import model.game_object.artefact.Artefact;
 import model.game_object.entity.Player;
 import model.game_object.entity.SimpleEnemy;
+import model.game_object.obstacle.Obstacle;
 import model.room.Room;
 
 /**
@@ -65,6 +66,7 @@ public class GameArea extends JPanel {
     this.drawEnemyFromList(this.room.getEnemyList());
     this.drawArtefactFromList(this.room.getArtefactList());
     this.drawPlayer(this.room.getPlayer());
+    this.drawObstacle(this.room.getObstacleList());
     this.highlightEnemyRange(room.getEnemyList());
   }
 
@@ -83,6 +85,19 @@ public class GameArea extends JPanel {
         }
         room.addButtonToCells(new Pair<Integer, Integer>(j, i), jb);
         this.add(jb);
+      }
+    }
+  }
+
+  /**
+   * Draw the list of obstacle passed
+   * 
+   * @param obstacleList : the list of obstacle to be drawn
+   */
+  private void drawObstacle(final List<Obstacle> obstacleList) {
+    if (obstacleList != null && !obstacleList.isEmpty()) {
+      for (final Obstacle obstacle : obstacleList) {
+        this.room.getCells().get(obstacle.getPos()).drawGameObject(obstacle);
       }
     }
   }
@@ -140,11 +155,11 @@ public class GameArea extends JPanel {
       }
       for (final var x : pos) {
         if (flag.equals(ActionFlag.MOVE)) {
-          if (!RoomConstant.cellsOccupated(room.getEnemyList(), null, room.getObstacleList(), null, x)) {
+          if (!RoomConstant.cellsOccupated(room.getEnemyList(), null, room.getObstacleList(), room.getPlayer(), x)) {
             this.room.getCells().get(x).highlightCell(backgroudColor);
           }
         } else {
-          if(RoomConstant.searchObstacle(x, this.room.getObstacleList()) ==  null) {
+          if (RoomConstant.searchObstacle(x, this.room.getObstacleList()) == null) {
             this.room.getCells().get(x).highlightCell(backgroudColor);
           }
         }
