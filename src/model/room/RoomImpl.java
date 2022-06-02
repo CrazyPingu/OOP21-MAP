@@ -44,7 +44,7 @@ public class RoomImpl implements Room {
     this.door = this.generateDoor(size);
     this.enemyList = new RandomEnemyList(size, player, door);
     this.artefactList = new RandomArtefactList(size, enemyList, player, door);
-    this.obstacleList = new RandomObstacleList(size, enemyList, artefactList, player, door);
+    this.obstacleList = new RandomObstacleList(size, enemyList, artefactList, player);
   }
 
   @Override

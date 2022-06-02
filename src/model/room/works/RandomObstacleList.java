@@ -22,15 +22,14 @@ public class RandomObstacleList extends ArrayList<Obstacle> {
   private final int possibleObstacle;
 
   public RandomObstacleList(final Pair<Integer, Integer> size, final List<SimpleEnemy> enemyList,
-      final List<Artefact> artefactList, final Player player, final List<Pair<Integer, Integer>> door) {
+      final List<Artefact> artefactList, final Player player) {
     possibleObstacle = obstacleFactory.getClass().getDeclaredMethods().length;
     Pair<Integer, Integer> obstaclePos;
     for (int i = 0; i < size.getX() * size.getY() / RoomConstant.SPAWNING_RATIO; i++) {
       do {
-        obstaclePos = new Pair<>(Constant.RANDOM.ints(0, size.getX()).findFirst().getAsInt(),
-            Constant.RANDOM.ints(0, size.getY() - 2).findFirst().getAsInt());
-      } while (RoomConstant.cellsOccupated(enemyList, artefactList, this, player, obstaclePos)
-          || door.contains(obstaclePos));
+        obstaclePos = new Pair<>(Constant.RANDOM.ints(0, size.getX() - 2).findFirst().getAsInt(),
+            Constant.RANDOM.ints(0, size.getY()).findFirst().getAsInt());
+      } while (checkPos(obstaclePos, enemyList, artefactList, player));
       generateObstacle(obstaclePos);
     }
   }
@@ -46,4 +45,20 @@ public class RandomObstacleList extends ArrayList<Obstacle> {
     }
     this.add(generateObstacle);
   }
+
+  private int calculateDistance(final Pair<Integer, Integer> p1, final Pair<Integer, Integer> p2) {
+    return Math.abs(p1.getX() - p2.getX()) + Math.abs(p1.getY() - p2.getY());
+  }
+
+  private boolean checkPos(final Pair<Integer, Integer> pos, final List<SimpleEnemy> enemyList,
+      final List<Artefact> artefactList, final Player player) {
+    for (final var x : this) {
+      if (calculateDistance(pos, x.getPos()) == 1
+          || RoomConstant.cellsOccupated(enemyList, artefactList, this, player, pos)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
 }
