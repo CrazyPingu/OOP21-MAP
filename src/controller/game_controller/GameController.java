@@ -107,7 +107,8 @@ public abstract class GameController {
    */
   private void move(final Pair<Integer, Integer> newpos) {
     this.updateStats();
-    if (RoomConstant.searchEnemy(newpos, this.loop.getRoom().getEnemyList()) == null) {
+    if (RoomConstant.searchEnemy(newpos, this.loop.getRoom().getEnemyList()) == null
+        && RoomConstant.searchObstacle(newpos, this.loop.getRoom().getObstacleList()) == null) {
       final Artefact artefact = RoomConstant.searchArtefact(newpos, this.loop.getRoom().getArtefactList());
       if (artefact != null) {
         artefact.execute(this.loop.getPlayer());
