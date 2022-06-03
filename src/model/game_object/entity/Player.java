@@ -1,15 +1,7 @@
 package model.game_object.entity;
 
 import java.awt.Image;
-import java.util.List;
-import java.util.Optional;
-
 import model.game_object.ArtefactUserObject;
-import model.game_object.GameObject;
-import model.game_object.KillableObject;
-import model.game_object.MovingObject;
-import model.game_object.MultipleActionObject;
-import model.game_object.WeaponizedObject;
 import model.life.impl.ExtendibleMaxLifeSystem;
 import model.strategy.movement.Movement;
 import model.strategy.weapon.Weapon;
@@ -17,21 +9,15 @@ import utilities.Pair;
 
 /**
  * 
- * Create the player's entity that can perform multiple action in a turn, can
+ * This class model the player's entity. Can perform multiple action in a turn, can
  * change is position, can use artefact, can take damage and can carry a weapon.
  *
  */
-public class Player
-    implements MultipleActionObject, ArtefactUserObject, MovingObject, WeaponizedObject, KillableObject, GameObject {
+public class Player extends Entity implements ArtefactUserObject {
 
   private final static int INITIAL_ACTION_NUMBER = 2;
   private final static Pair<Integer, Integer> STANDARD_SPAWN_POSITION = new Pair<>(0, 0);
-  private final String name;
   private final ExtendibleMaxLifeSystem life;
-  private final Image textureImage;
-  private Pair<Integer, Integer> pos;
-  private Weapon weapon;
-  private Movement movement;
   private int actionNumber;
 
   /**
@@ -48,12 +34,8 @@ public class Player
    */
   public Player(final ExtendibleMaxLifeSystem life, final Pair<Integer, Integer> pos, final Weapon weapon,
       final Movement movement, final String name, final Image textureImage, final int initialActionNumber) {
+    super(life, pos, weapon, movement, name, textureImage);
     this.life = life;
-    this.pos = pos;
-    this.weapon = weapon;
-    this.movement = movement;
-    this.name = name;
-    this.textureImage = textureImage;
     this.actionNumber = initialActionNumber;
   }
 
@@ -75,12 +57,12 @@ public class Player
 
   @Override
   public void changeWeapon(final Weapon weapon) {
-    this.weapon = weapon;
+    super.setWeapon(weapon);
   }
 
   @Override
   public void changeMovement(final Movement movement) {
-    this.movement = movement;
+    super.setMovement(movement);
   }
 
   @Override
@@ -95,53 +77,8 @@ public class Player
   }
 
   @Override
-  public String getName() {
-    return this.name;
-  }
-
-  @Override
-  public Image getTextureImage() {
-    return this.textureImage;
-  }
-
-  @Override
-  public void damage(final int damageValue) {
-    this.life.damage(damageValue);
-  }
-
-  @Override
-  public int getHealth() {
-    return this.life.getCurrentHealth();
-  }
-
-  @Override
   public int getMaxHealth() {
     return this.life.getMaxHealth();
-  }
-
-  @Override
-  public Boolean isDead() {
-    return this.life.isDead();
-  }
-
-  @Override
-  public Weapon getWeapon() {
-    return this.weapon;
-  }
-
-  @Override
-  public void setPos(final Pair<Integer, Integer> pos) {
-    this.pos = pos;
-  }
-
-  @Override
-  public Pair<Integer, Integer> getPos() {
-    return this.pos;
-  }
-
-  @Override
-  public Optional<List<Pair<Integer, Integer>>> getReachableArea(final Pair<Integer, Integer> size) {
-    return Optional.of(movement.reachableCells(pos, size));
   }
 
   @Override
@@ -155,8 +92,8 @@ public class Player
   }
 
   public String toString() {
-    return " name = " + this.name + "\n health = " + this.getHealth() + "\n max health = " + this.getMaxHealth()
-        + "\n current weapon = " + this.weapon.getName() + "\n weapon damage = " + this.weapon.getDamage()
+    return " name = " + super.getName() + "\n health = " + this.getHealth() + "\n max health = " + this.getMaxHealth()
+        + "\n current weapon = " + super.getWeapon().getName() + "\n weapon damage = " + super.getWeapon().getDamage()
         + "\n number action = " + this.getActionNumber();
   }
 

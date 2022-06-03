@@ -46,5 +46,11 @@ public interface ArtefactUserObject {
    * increase the number of action the entity can perform in a turn
    */
   void increaseActionNumber();
-
+  
+  /**
+   * 
+   * @return the number of action the object can perform in a turn
+   */
+  int getActionNumber();
 }
+
