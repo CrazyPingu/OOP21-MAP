@@ -20,12 +20,6 @@ public interface MovingObject {
 
   /**
    * 
-   * @return the current game object position
-   */
-  Pair<Integer, Integer> getPos();
-
-  /**
-   * 
    * @param size of the room
    * @return a list of Optional that represent the possible position the game
    *         object can reach
