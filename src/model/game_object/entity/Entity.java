@@ -13,18 +13,21 @@ import model.strategy.weapon.Weapon;
 import utilities.Pair;
 
 /**
- * @author lucab
- *
+ * Class to incapsulate an entity behaviur. This class will be extends to create
+ * more complex Entity.
+ * Implements all the common method for a simple game object able to hold a
+ * weapon, move and take damage. This class is used for the enemy
+ * implementation.
  */
 public class Entity implements MovingObject, WeaponizedObject, KillableObject, GameObject {
 
   private final LifeSystem life;
-  private final Weapon weapon;
-  private final Movement movement;
   private final String name;
   private final Image textureImage;
+  private Movement movement;
+  private Weapon weapon;
   private Pair<Integer, Integer> pos;
-  
+
   /**
    * 
    * @param life         is the life system of the entity
@@ -35,8 +38,8 @@ public class Entity implements MovingObject, WeaponizedObject, KillableObject, G
    * @param textureImage the texture of the entity. Texture can be found in
    *                     utilis.texture
    */
-  public Entity(final LifeSystem life, final Pair<Integer, Integer> pos, final Weapon weapon,
-      final Movement movement, final String name, final Image textureImage) {
+  public Entity(final LifeSystem life, final Pair<Integer, Integer> pos, final Weapon weapon, final Movement movement,
+      final String name, final Image textureImage) {
     this.life = life;
     this.pos = pos;
     this.weapon = weapon;
@@ -44,7 +47,7 @@ public class Entity implements MovingObject, WeaponizedObject, KillableObject, G
     this.name = name;
     this.textureImage = textureImage;
   }
-  
+
   @Override
   public void damage(final int damageValue) {
     this.life.damage(damageValue);
@@ -87,6 +90,24 @@ public class Entity implements MovingObject, WeaponizedObject, KillableObject, G
   @Override
   public Image getTextureImage() {
     return this.textureImage;
+  }
+
+  /**
+   * This method is used by the subclass to change the weapon.
+   * 
+   * @param weapon is the weapon that will substitute the the actual one
+   */
+  protected void setWeapon(final Weapon weapon) {
+    this.weapon = weapon;
+  }
+
+  /**
+   * This method is used by the subclass to change the movement.
+   * 
+   * @param movement is the movement that will substitute the actual one
+   */
+  protected void setMovement(final Movement movement) {
+    this.movement = movement;
   }
 
   public String toString() {
