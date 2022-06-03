@@ -17,7 +17,6 @@ public class Player extends Entity implements ArtefactUserObject {
 
   private final static int INITIAL_ACTION_NUMBER = 2;
   private final static Pair<Integer, Integer> STANDARD_SPAWN_POSITION = new Pair<>(0, 0);
-  private final String name;
   private final ExtendibleMaxLifeSystem life;
   private int actionNumber;
 
@@ -37,7 +36,6 @@ public class Player extends Entity implements ArtefactUserObject {
       final Movement movement, final String name, final Image textureImage, final int initialActionNumber) {
     super(life, pos, weapon, movement, name, textureImage);
     this.life = life;
-    this.name = name;
     this.actionNumber = initialActionNumber;
   }
 
@@ -94,7 +92,7 @@ public class Player extends Entity implements ArtefactUserObject {
   }
 
   public String toString() {
-    return " name = " + this.name + "\n health = " + this.getHealth() + "\n max health = " + this.getMaxHealth()
+    return " name = " + super.getName() + "\n health = " + this.getHealth() + "\n max health = " + this.getMaxHealth()
         + "\n current weapon = " + super.getWeapon().getName() + "\n weapon damage = " + super.getWeapon().getDamage()
         + "\n number action = " + this.getActionNumber();
   }
