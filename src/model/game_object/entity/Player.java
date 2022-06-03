@@ -2,7 +2,6 @@ package model.game_object.entity;
 
 import java.awt.Image;
 import model.game_object.ArtefactUserObject;
-import model.game_object.MultipleActionObject;
 import model.life.impl.ExtendibleMaxLifeSystem;
 import model.strategy.movement.Movement;
 import model.strategy.weapon.Weapon;
@@ -14,7 +13,7 @@ import utilities.Pair;
  * change is position, can use artefact, can take damage and can carry a weapon.
  *
  */
-public class Player extends Entity implements MultipleActionObject, ArtefactUserObject {
+public class Player extends Entity implements ArtefactUserObject {
 
   private final static int INITIAL_ACTION_NUMBER = 2;
   private final static Pair<Integer, Integer> STANDARD_SPAWN_POSITION = new Pair<>(0, 0);
