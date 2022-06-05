@@ -11,45 +11,30 @@ import model.strategy.concrete_strategies.VariableDistanceConstants;
  */
 
 public class WeaponFactoryImpl implements WeaponFactory {
-    final private static int STICK_DAMAGE = 1;
-    final private static int TUBE_DAMAGE = 2;
-    final private static int AXE_DAMAGE = 3;
-    final private static int DAGGER_DAMAGE = 3;
-    final private static int GUN_DAMAGE = 4;
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Weapon createStick() {
-        return new WeaponImpl(STICK_DAMAGE, "stick", new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE));
+        return new WeaponImpl(Damage.ONE.getDamage(), Name.STICK.getName(), new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE));
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Weapon createAxe() {
-        return new WeaponImpl(AXE_DAMAGE, "axe", new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE));
+        return new WeaponImpl(Damage.THREE.getDamage(), Name.AXE.getName(), new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE));
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Weapon createDagger() {
-        return new WeaponImpl(DAGGER_DAMAGE, "dagger", new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE));
+        return new WeaponImpl(Damage.THREE.getDamage(), Name.DAGGER.getName(), new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE));
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Weapon createTube() {
-        return new WeaponImpl(TUBE_DAMAGE, "tube", new AsteriskArea(VariableDistanceConstants.SINGLE_DISTANCE));
+        return new WeaponImpl(Damage.TWO.getDamage(), Name.TUBE.getName(), new AsteriskArea(VariableDistanceConstants.SINGLE_DISTANCE));
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Weapon createGun() {
-        return new WeaponImpl(GUN_DAMAGE, "gun", new AroundArea(VariableDistanceConstants.DOUBLE_DISTANCE));
+        return new WeaponImpl(Damage.FOUR.getDamage(), Name.GUN.getName(), new AroundArea(VariableDistanceConstants.DOUBLE_DISTANCE));
     }
 
 }

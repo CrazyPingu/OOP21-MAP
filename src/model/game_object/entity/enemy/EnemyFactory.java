@@ -9,22 +9,60 @@ import utilities.Pair;
  *
  */
 public interface EnemyFactory {
+
+    enum Health {
+        LOW_HEALTH(5), MID_HEALTH(7), HIGH_HEALTH(10);
+        
+        private final int health;
+
+        Health(final int health) {
+            this.health = health;
+        }
+
+        public int getHealth() {
+            return this.health;
+        }
+
+    }
+
+    enum Name {
+        STICK("zombie stick"),
+        AXE("zombie axe"),
+        DAGGER("zombie dagger"),
+        TUBE("zombie tube"),
+        GUN("zombie gun");
+
+        private String name;
+
+        Name(final String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return this.name;
+        }
+    }
+
     /**
      * @return a new enemy using a stick as a weapon.
      */
     SimpleEnemy createZombieStick(Pair<Integer, Integer> pos);
+
     /**
      * @return a new enemy using an axe as a weapon.
      */
     SimpleEnemy createZombieAxe(Pair<Integer, Integer> pos);
+
     /**
      * @return a new enemy using a dagger as a weapon.
      */
     SimpleEnemy createZombieDagger(Pair<Integer, Integer> pos);
+
     /**
      * @return a new enemy using a tube as a weapon.
      */
     SimpleEnemy createZombieTube(Pair<Integer, Integer> pos);
+
     /**
      * @return a new enemy using a gun as a weapon.
      */
