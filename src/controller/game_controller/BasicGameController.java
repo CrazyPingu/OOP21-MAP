@@ -73,7 +73,7 @@ public class BasicGameController extends GameController {
         } else {
             this.updateStats();
             this.getLoop().updateLog(
-                    player.getName() + " got hit " + enemy.getWeapon().getDamage() + " by " + enemy.getName() + "!");
+                    player.getName() + " got hit! Damage: " + enemy.getWeapon().getDamage() + " by " + enemy.getName() + ".");
         }
     }
 
