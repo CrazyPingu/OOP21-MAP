@@ -9,7 +9,7 @@ import model.weapon.Weapon;
  * excecute method.
  *
  */
-public interface ArtefactUserObject {
+public interface ArtefactUserObject extends GameObject {
 
   /**
    * 

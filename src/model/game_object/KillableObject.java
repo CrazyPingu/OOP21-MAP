@@ -5,7 +5,7 @@ package model.game_object;
  * Declare the common method for the game_object that can take damage and die
  *
  */
-public interface KillableObject {
+public interface KillableObject extends GameObject{
   /**
    * @param damageValue value that will be decreased from the entity's current
    *                    health.

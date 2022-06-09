@@ -3,7 +3,6 @@ package model.game_object.entity;
 import java.awt.Image;
 import java.util.List;
 import java.util.Optional;
-import model.game_object.GameObject;
 import model.game_object.KillableObject;
 import model.game_object.MovingObject;
 import model.game_object.WeaponizedObject;
@@ -19,7 +18,7 @@ import utilities.Pair;
  * weapon, move and take damage. This class is used for the enemy
  * implementation.
  */
-public class Entity implements MovingObject, WeaponizedObject, KillableObject, GameObject {
+public class Entity implements MovingObject, WeaponizedObject, KillableObject {
 
   private final LifeSystem life;
   private final String name;
