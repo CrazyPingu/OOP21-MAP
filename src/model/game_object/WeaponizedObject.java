@@ -1,6 +1,6 @@
 package model.game_object;
 
-import model.strategy.weapon.Weapon;
+import model.weapon.Weapon;
 
 /**
  * 

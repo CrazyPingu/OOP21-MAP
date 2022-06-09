@@ -1,7 +1,7 @@
 package model.game_object;
 
-import model.strategy.movement.Movement;
-import model.strategy.weapon.Weapon;
+import model.movement.Movement;
+import model.weapon.Weapon;
 
 /**
  * 

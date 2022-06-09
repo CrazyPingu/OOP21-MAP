@@ -1,4 +1,4 @@
-package model.strategy.movement;
+package model.movement;
 
 import model.strategy.concrete_strategies.AroundArea;
 import model.strategy.concrete_strategies.CrossArea;

@@ -2,8 +2,8 @@ package model.game_object.entity;
 
 import java.awt.Image;
 import model.life.LifeSystem;
-import model.strategy.movement.Movement;
-import model.strategy.weapon.Weapon;
+import model.movement.Movement;
+import model.weapon.Weapon;
 import utilities.Pair;
 
 /**

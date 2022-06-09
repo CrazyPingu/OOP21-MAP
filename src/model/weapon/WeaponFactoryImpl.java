@@ -1,4 +1,4 @@
-package model.strategy.weapon;
+package model.weapon;
 
 import model.strategy.concrete_strategies.AroundArea;
 import model.strategy.concrete_strategies.AsteriskArea;

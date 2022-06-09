@@ -2,8 +2,8 @@ package model.game_object.entity.enemy;
 
 import model.game_object.entity.SimpleEnemy;
 import model.life.impl.SimpleLifeSystem;
-import model.strategy.movement.MovementFactoryImpl;
-import model.strategy.weapon.WeaponFactoryImpl;
+import model.movement.MovementFactoryImpl;
+import model.weapon.WeaponFactoryImpl;
 import utilities.Pair;
 import utilities.texture.EntityTexture;
 
