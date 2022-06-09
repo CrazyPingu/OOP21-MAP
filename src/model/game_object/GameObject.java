@@ -1,7 +1,6 @@
 package model.game_object;
 
 import java.awt.Image;
-
 import utilities.Pair;
 
 /**

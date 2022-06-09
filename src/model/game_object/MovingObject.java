@@ -10,7 +10,7 @@ import utilities.Pair;
  * in the game grid
  *
  */
-public interface MovingObject {
+public interface MovingObject extends GameObject{
 
   /**
    * 
