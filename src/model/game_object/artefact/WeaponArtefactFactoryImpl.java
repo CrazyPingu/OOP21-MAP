@@ -1,8 +1,8 @@
 package model.game_object.artefact;
 
 import model.game_object.ArtefactUserObject;
-import model.strategy.weapon.WeaponFactory;
-import model.strategy.weapon.WeaponFactoryImpl;
+import model.weapon.WeaponFactory;
+import model.weapon.WeaponFactoryImpl;
 import utilities.Pair;
 import utilities.texture.ArtefactTexture;
 

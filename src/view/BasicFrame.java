@@ -1,4 +1,4 @@
-package view.frame;
+package view;
 
 import java.awt.CardLayout;
 import java.awt.Color;

@@ -3,8 +3,8 @@ package model.game_object.entity;
 import java.awt.Image;
 import model.game_object.ArtefactUserObject;
 import model.life.impl.ExtendibleMaxLifeSystem;
-import model.strategy.movement.Movement;
-import model.strategy.weapon.Weapon;
+import model.movement.Movement;
+import model.weapon.Weapon;
 import utilities.Pair;
 
 /**

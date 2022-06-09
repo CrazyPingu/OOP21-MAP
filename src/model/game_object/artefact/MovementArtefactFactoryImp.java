@@ -1,8 +1,8 @@
 package model.game_object.artefact;
 
 import model.game_object.ArtefactUserObject;
-import model.strategy.movement.MovementFactory;
-import model.strategy.movement.MovementFactoryImpl;
+import model.movement.MovementFactory;
+import model.movement.MovementFactoryImpl;
 import utilities.Pair;
 import utilities.texture.ArtefactTexture;
 

@@ -8,8 +8,8 @@ import model.game_object.KillableObject;
 import model.game_object.MovingObject;
 import model.game_object.WeaponizedObject;
 import model.life.LifeSystem;
-import model.strategy.movement.Movement;
-import model.strategy.weapon.Weapon;
+import model.movement.Movement;
+import model.weapon.Weapon;
 import utilities.Pair;
 
 /**

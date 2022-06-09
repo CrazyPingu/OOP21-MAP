@@ -1,4 +1,4 @@
-package model.strategy.movement;
+package model.movement;
 
 import java.util.List;
 

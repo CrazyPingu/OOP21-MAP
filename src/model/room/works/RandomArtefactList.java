@@ -13,7 +13,7 @@ import model.game_object.artefact.MovementArtefactFactoryImp;
 import model.game_object.artefact.WeaponArtefactFactoryImpl;
 import model.game_object.entity.Player;
 import model.game_object.entity.SimpleEnemy;
-import model.strategy.weapon.WeaponFactoryImpl;
+import model.weapon.WeaponFactoryImpl;
 import utilities.Constant;
 import utilities.Pair;
 import utilities.RoomConstant;

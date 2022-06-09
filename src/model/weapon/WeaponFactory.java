@@ -1,4 +1,4 @@
-package model.strategy.weapon;
+package model.weapon;
 
 /**
  * 

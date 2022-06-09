@@ -4,13 +4,13 @@ import static org.junit.Assert.assertEquals;
 
 import model.game_object.entity.Player;
 import model.life.impl.ExtendibleMaxLifeSystem;
+import model.movement.MovementFactory;
+import model.movement.MovementFactoryImpl;
 import model.room.Room;
 import model.room.RoomFactory;
 import model.room.RoomFactoryImpl;
-import model.strategy.movement.MovementFactory;
-import model.strategy.movement.MovementFactoryImpl;
-import model.strategy.weapon.WeaponFactory;
-import model.strategy.weapon.WeaponFactoryImpl;
+import model.weapon.WeaponFactory;
+import model.weapon.WeaponFactoryImpl;
 import utilities.RoomConstant;
 import utilities.texture.EntityTexture;
 

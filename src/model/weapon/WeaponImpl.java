@@ -1,4 +1,4 @@
-package model.strategy.weapon;
+package model.weapon;
 
 import java.util.List;
 

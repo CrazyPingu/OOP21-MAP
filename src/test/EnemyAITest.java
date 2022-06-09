@@ -15,12 +15,12 @@ import model.game_object.entity.enemy.EnemyFactoryImpl;
 import model.game_object.obstacle.ObstacleFactory;
 import model.game_object.obstacle.ObstacleFactoryImpl;
 import model.life.impl.ExtendibleMaxLifeSystem;
+import model.movement.MovementFactory;
+import model.movement.MovementFactoryImpl;
 import model.room.Room;
 import model.room.RoomImpl;
-import model.strategy.movement.MovementFactory;
-import model.strategy.movement.MovementFactoryImpl;
-import model.strategy.weapon.WeaponFactory;
-import model.strategy.weapon.WeaponFactoryImpl;
+import model.weapon.WeaponFactory;
+import model.weapon.WeaponFactoryImpl;
 import utilities.Pair;
 import utilities.texture.EntityTexture;
 

@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 import model.game_object.entity.SimpleEnemy;
 import model.life.LifeSystem;
 import model.life.impl.SimpleLifeSystem;
-import model.strategy.movement.MovementFactory;
-import model.strategy.movement.MovementFactoryImpl;
-import model.strategy.weapon.WeaponFactory;
-import model.strategy.weapon.WeaponFactoryImpl;
+import model.movement.MovementFactory;
+import model.movement.MovementFactoryImpl;
+import model.weapon.WeaponFactory;
+import model.weapon.WeaponFactoryImpl;
 import utilities.Pair;
 import utilities.texture.EntityTexture;
 
