@@ -1,6 +1,6 @@
 package controller;
 
-import view.frame.BasicFrame;
+import view.BasicFrame;
 
 public class PageController {
 
