@@ -1,4 +1,4 @@
-package model.life;
+package model.life_system;
 
 /**
  * 

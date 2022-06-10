@@ -23,7 +23,7 @@ public class MovementArtefactFactoryImp implements MovementArtefactFactory {
 
   @Override
   public Artefact runArtefact(final Pair<Integer, Integer> pos) {
-    return new Artefact(pos, "step artefact", ArtefactTexture.RUN) {
+    return new Artefact(pos, "run artefact", ArtefactTexture.RUN) {
 
       @Override
       public void execute(final ArtefactUserObject subject) {

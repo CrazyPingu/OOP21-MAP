@@ -1,6 +1,6 @@
 package model.life.impl;
 
-import model.life.HealSystem;
+import model.life_system.HealSystem;
 
 public class HealLifeSystem implements HealSystem {
 

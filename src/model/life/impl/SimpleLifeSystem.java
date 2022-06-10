@@ -1,6 +1,6 @@
 package model.life.impl;
 
-import model.life.LifeSystem;
+import model.life_system.LifeSystem;
 
 /**
  * 

@@ -7,8 +7,8 @@ import java.awt.Image;
 import org.junit.jupiter.api.Test;
 
 import model.game_object.entity.SimpleEnemy;
-import model.life.LifeSystem;
 import model.life.impl.SimpleLifeSystem;
+import model.life_system.LifeSystem;
 import model.movement.MovementFactory;
 import model.movement.MovementFactoryImpl;
 import model.weapon.WeaponFactory;

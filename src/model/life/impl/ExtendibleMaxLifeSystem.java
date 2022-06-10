@@ -1,6 +1,6 @@
 package model.life.impl;
 
-import model.life.ExtendibleMaxHealthSystem;
+import model.life_system.ExtendibleMaxHealthSystem;
 
 public class ExtendibleMaxLifeSystem implements ExtendibleMaxHealthSystem {
 

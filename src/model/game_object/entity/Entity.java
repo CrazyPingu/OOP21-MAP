@@ -6,7 +6,7 @@ import java.util.Optional;
 import model.game_object.KillableObject;
 import model.game_object.MovingObject;
 import model.game_object.WeaponizedObject;
-import model.life.LifeSystem;
+import model.life_system.LifeSystem;
 import model.movement.Movement;
 import model.weapon.Weapon;
 import utilities.Pair;
