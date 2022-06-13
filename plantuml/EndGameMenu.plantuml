@@ -1,0 +1,12 @@
+@startuml EndGameMenu
+!theme plain
+
+abstract class EndGameMenu extends JPanel{
+    + paintComponent() : void
+}
+
+class Defeat extends EndGameMenu{}
+
+class Victory extends EndGameMenu{}
+
+@enduml
