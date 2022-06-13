@@ -63,6 +63,6 @@ public class PageController {
      * close the application
      */
     public void quitGame() {
-      Runtime.getRuntime().exit(0);
+      System.exit(0);
     }
 }
