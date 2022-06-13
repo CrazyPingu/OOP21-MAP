@@ -5,7 +5,7 @@ package view.loading_screen;
  * Interface to generate a LoadingScreen
  *
  */
-public interface LoadingScreen {
+public interface LoadingScreen extends Runnable{
 
   /**
    * @param name : the file name of the image
