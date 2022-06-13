@@ -34,7 +34,6 @@ public class GameArea extends JPanel {
   private final GameAreaController gameAreaController;
   private Dimension buttonDimension;
 
-  @SuppressWarnings("PMD.ConstructorCallsOverridableMethod")
   public GameArea(final GameLoop loop, final GameAreaController gameAreaController) {
     this.gameAreaController = gameAreaController;
     this.setBackground(RoomConstant.BASIC_CELL_COLOR);

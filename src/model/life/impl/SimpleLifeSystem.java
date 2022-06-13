@@ -12,7 +12,6 @@ public class SimpleLifeSystem implements LifeSystem {
 	private int health;
 	private boolean isDead;
 
-	@SuppressWarnings("PMD.SimplifiedTernary")
   public SimpleLifeSystem(final int health) {
 		this.health = health;
 		this.isDead = health > 0 ? false : true;

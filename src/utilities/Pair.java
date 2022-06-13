@@ -43,7 +43,6 @@ public class Pair<X, Y> {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    @SuppressWarnings("unchecked")
     final Pair<X,Y> other = (Pair<X,Y>) obj;
     if (x == null) {
       if (other.x != null) {

@@ -35,7 +35,6 @@ public class RoomImpl implements Room {
    * @param player       the player of the game
    * @param newPosPlayer the new position of the player
    */
-  @SuppressWarnings("PMD.ConstructorCallsOverridableMethod")
   public RoomImpl(final Pair<Integer, Integer> size, final Player player, final Pair<Integer, Integer> newPosPlayer) {
     player.setPos(newPosPlayer);
     this.size = size;

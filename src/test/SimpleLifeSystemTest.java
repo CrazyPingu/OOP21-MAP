@@ -12,7 +12,6 @@ class SimpleLifeSystemTest {
   private static final int DAMAGE = 1;
 
   @Test
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
   /*
    * test the correct creation of a SimpleLifeSystem instantiation.
    */
@@ -22,7 +21,6 @@ class SimpleLifeSystemTest {
   }
 
   @Test
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
   /*
    * test the proper operation of the method damage.
    */
@@ -37,7 +35,6 @@ class SimpleLifeSystemTest {
   }
 
   @Test
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
   /*
    * test that the health value does not go below zero
    */
