@@ -1,0 +1,9 @@
+@startuml Entity
+!theme plain
+interface Room
+interface GameObject
+class Player implements GameObject
+class SimpleEnemy implements GameObject
+class Artefact implements GameObject
+GameObject -U-o Room
+@enduml
