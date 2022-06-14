@@ -4,14 +4,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import controller.ActionMenuController;
-
+/*
+ * The attack that make the player move in the game
+ */
 public class MoveAction implements ActionListener {
     ActionMenuController menucontroller;
 
     /**
      * 
      * @param menucontroller : the ActionMenuController
-     * @param button
      */
     public MoveAction(final ActionMenuController menucontroller) {
         this.menucontroller = menucontroller;
