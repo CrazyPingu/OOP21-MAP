@@ -4,7 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import controller.ActionMenuController;
-
+/*
+ * The action that skip the turn
+ */
 public class SkipAction implements ActionListener {
     ActionMenuController menucontroller;
 
