@@ -9,11 +9,11 @@ import utilities.texture.EntityTexture;
  *
  */
 public class ObstacleFactoryImpl implements ObstacleFactory{
-
+  @Override
   public Obstacle createRock(final Pair<Integer, Integer> pos) {
     return new Obstacle (pos, "rock",EntityTexture.ROCK);
   }
-  
+  @Override
   public Obstacle createPebble(final Pair<Integer, Integer> pos) {
     return new Obstacle (pos, "pebble", EntityTexture.PEBBLE);
   }
