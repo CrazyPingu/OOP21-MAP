@@ -28,8 +28,8 @@ public class RandomObstacleList extends ArrayList<Obstacle> {
 
   /**
    * @param size         the size of the room
-   * @param enemyList    the list of the enemies
-   * @param artefactList the list of the artefacts
+   * @param enemyList    the list of the enemies that are alive in the game field
+   * @param artefactList the list of the artefacts that are in the game field
    * @param player       the player of the game
    */
   public RandomObstacleList(final Pair<Integer, Integer> size, final List<SimpleEnemy> enemyList,
@@ -44,6 +44,7 @@ public class RandomObstacleList extends ArrayList<Obstacle> {
       generateObstacle(obstaclePos);
     }
   }
+
   /**
    * 
    * Function that add ostacle to a List
@@ -61,6 +62,7 @@ public class RandomObstacleList extends ArrayList<Obstacle> {
     }
     this.add(generateObstacle);
   }
+
   /**
    * 
    * @param p1 the first position
@@ -73,11 +75,11 @@ public class RandomObstacleList extends ArrayList<Obstacle> {
 
   /**
    * 
-   * @param pos           the pos of the ostacle
-   * @param enemyList     the list of enemies
-   * @param artefactList  the list of artefacts
-   * @param player        the player in the game
-   * @return              if the position is not occupied
+   * @param pos          the pos of the ostacle
+   * @param enemyList    the list of enemies
+   * @param artefactList the list of artefacts
+   * @param player       the player in the game
+   * @return if the position is not occupied
    */
   private boolean checkPos(final Pair<Integer, Integer> pos, final List<SimpleEnemy> enemyList,
       final List<Artefact> artefactList, final Player player) {
