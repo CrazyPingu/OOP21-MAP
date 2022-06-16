@@ -14,7 +14,7 @@ import view.pause.action.ResumeAction;
 /**
  * 
  * PauseMenu is a class that is used to implement the pause menu himself. Here
- * we can find four buttons: Resume, New Game, Main Menu and Quit.
+ * we can find three buttons: Resume, Main Menu and Quit.
  *
  */
 

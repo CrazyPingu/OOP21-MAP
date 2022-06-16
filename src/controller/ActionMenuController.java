@@ -1,5 +1,9 @@
 package controller;
-
+/*
+ * 
+ * Class that define the main action that the player can execute
+ * 
+ */
 public class ActionMenuController {
 
     private final GameLoop gameLoop;

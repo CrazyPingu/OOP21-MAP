@@ -17,7 +17,6 @@ import view.game.action.action_button.PauseAction;
 import view.game.action.action_button.SkipAction;
 /*
  * 
- * 
  * Class that create all the buttons in the ActionMenu part
  * 
  */
@@ -48,7 +47,7 @@ public class ActionMenu extends JPanel {
 
     this.setLayout(new GridBagLayout());
 
-    final Insets buttonInsets = GbcDimension.createInsets(0,20,0,20);
+    final Insets buttonInsets = GbcDimension.createInsets(0, 20, 0, 20);
     this.add(attack, new GbcDimension(0, 0, BUTTON_WIDTH, BUTTON_HEIGHT, buttonInsets));
     this.add(move, new GbcDimension(1, 0, BUTTON_WIDTH, BUTTON_HEIGHT, buttonInsets));
     this.add(skip, new GbcDimension(2, 0, BUTTON_WIDTH, BUTTON_HEIGHT, buttonInsets));
