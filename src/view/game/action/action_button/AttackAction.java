@@ -19,9 +19,7 @@ public class AttackAction implements ActionListener {
         this.menucontroller = menucontroller;
     }
 
-    /**
-     * Call attack method in ActionMenuController
-     */
+    @Override
     public void actionPerformed(final ActionEvent e) {
         this.menucontroller.setAttack();
     }

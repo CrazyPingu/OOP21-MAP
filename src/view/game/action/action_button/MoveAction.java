@@ -18,9 +18,7 @@ public class MoveAction implements ActionListener {
         this.menucontroller = menucontroller;
     }
 
-    /**
-     * Call the move method in ActionMenuController
-     */
+    @Override
     public void actionPerformed(final ActionEvent e) {
         this.menucontroller.setMove();
     }

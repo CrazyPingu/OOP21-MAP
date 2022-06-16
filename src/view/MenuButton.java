@@ -9,7 +9,11 @@ import utilities.Constant;
 public class MenuButton extends JButton {
 
     private static final long serialVersionUID = -8929834616886633143L;
-
+/**
+ * 
+ * @param text the string that button will show
+ * @param font the size of the font
+ */
     public MenuButton(final String text, final int font) {
         super(text);
         this.setFont(Constant.genericFont("Tahoma", Font.PLAIN, font));

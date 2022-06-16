@@ -13,9 +13,7 @@ public class QuitAction implements ActionListener {
         this.controller = controller;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void actionPerformed(final ActionEvent e) {
         controller.quitGame();
     }

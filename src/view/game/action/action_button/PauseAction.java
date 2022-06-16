@@ -18,9 +18,7 @@ public class PauseAction implements ActionListener {
         this.controller = controller;
     }
 
-    /**
-     * Call showPauseMenu method in PageController
-     */
+    @Override
     public void actionPerformed(final ActionEvent e) {
         controller.showPauseMenu();
     }

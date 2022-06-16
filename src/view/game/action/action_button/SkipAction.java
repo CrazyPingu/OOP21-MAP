@@ -18,9 +18,7 @@ public class SkipAction implements ActionListener {
         this.menucontroller = menucontroller;
     }
 
-    /**
-     * Call skip method in ActionMenuController
-     */
+    @Override
     public void actionPerformed(final ActionEvent e) {
         menucontroller.skip();
     }

@@ -9,17 +9,11 @@ public class MainMenuAction implements ActionListener {
 
     private final PageController controller;
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     public MainMenuAction(final PageController controller) {
         this.controller = controller;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void actionPerformed(final ActionEvent e) {
         controller.showMainMenu();
     }
