@@ -4,6 +4,11 @@ import model.game_object.ArtefactUserObject;
 import utilities.Pair;
 import utilities.texture.ArtefactTexture;
 
+/**
+ * 
+ * This class implements the method for the creation of the action number
+ * artefact. This class follow the pattern Factory.
+ */
 public class ActionNumberArtefactFactoryImpl implements ActionNumberArtefactFactory {
 
   @Override

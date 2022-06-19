@@ -9,7 +9,6 @@ import utilities.Pair;
 /**
  * 
  * This interface declare the common method for every artefact.
- *
  */
 public abstract class Artefact implements GameObject {
 
