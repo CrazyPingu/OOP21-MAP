@@ -12,6 +12,7 @@ import model.weapon.Weapon;
 import utilities.Pair;
 
 /**
+ * 
  * Class to incapsulate an entity behaviur. This class will be extends to create
  * more complex Entity.
  * Implements all the common method for a simple game object able to hold a
