@@ -18,6 +18,9 @@ public class RoomFactoryImpl implements RoomFactory {
   private final Pair<Integer, Integer> maxSize = new Pair<>(RoomConstant.MAX_X, RoomConstant.MAX_Y);
   private final Pair<Integer, Integer> minSize = new Pair<>(RoomConstant.MIN_X, RoomConstant.MIN_Y);
 
+  /**
+   * @param player the player of the game
+   */
   public RoomFactoryImpl(final Player player) {
     this.player = player;
   }
