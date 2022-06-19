@@ -3,8 +3,7 @@ package model.life_system;
 /**
  * 
  * this interface declare the methods for a life system that can use a method to
- * heal
- *
+ * heal.
  */
 public interface HealSystem extends LifeSystem {
 
