@@ -5,7 +5,6 @@ package view.game.log_stats;
  * Create the log label to display.
  *
  */
-
 public class Log extends TextAreaAppearance {
 
     private static final long serialVersionUID = 3777939147427639785L;
