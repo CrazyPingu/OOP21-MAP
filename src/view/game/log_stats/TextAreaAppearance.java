@@ -19,7 +19,6 @@ public class TextAreaAppearance extends JTextPane {
     /**
      * Sets appearance of the JTextPane
      */
-
     public TextAreaAppearance() {
         super.setEditable(false);
         super.setBorder(generateBorder(20, 10, 20, 0));
@@ -36,7 +35,6 @@ public class TextAreaAppearance extends JTextPane {
      * @param right  : right padding value to be scaled
      * @return an EmptyBorder to set JTextPane padding.
      */
-
     private EmptyBorder generateBorder(final int top, final int left, final int bottom, final int right) {
         return new EmptyBorder(Constant.verticalAspectRatio(top), Constant.horizontalAspectRatio(left),
                 Constant.verticalAspectRatio(bottom), Constant.horizontalAspectRatio(right));
