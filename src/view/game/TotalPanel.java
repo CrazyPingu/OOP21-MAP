@@ -61,6 +61,13 @@ public class TotalPanel extends JPanel {
 
   }
 
+  /**
+   * Method that fix the dimension of a JComponent
+   * 
+   * @param width      the width of the JComponent
+   * @param height     the height of the JComponent
+   * @param jComponent the JComponent to be changed
+   */
   private void fixSize(final int width, final int height, final JComponent jComponent) {
     jComponent.setPreferredSize(new Dimension(width, height));
     jComponent.setMinimumSize(new Dimension(width, height));
