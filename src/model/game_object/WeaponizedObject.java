@@ -4,8 +4,7 @@ import model.weapon.Weapon;
 
 /**
  * 
- * Declare the method for the game object that can hold a weapon
- *
+ * Declare the method for the game object that can hold a weapon. 
  */
 public interface WeaponizedObject extends GameObject{
 

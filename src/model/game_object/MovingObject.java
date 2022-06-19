@@ -7,8 +7,7 @@ import utilities.Pair;
 /**
  * 
  * Declare the common method for the game_oject that can change their position
- * in the game grid
- *
+ * in the game grid. 
  */
 public interface MovingObject extends GameObject{
 
