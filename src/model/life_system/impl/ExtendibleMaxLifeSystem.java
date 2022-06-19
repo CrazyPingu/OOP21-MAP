@@ -2,12 +2,24 @@ package model.life_system.impl;
 
 import model.life_system.ExtendibleMaxHealthSystem;
 
+/**
+ * This class model a life system that allows to take damage, die, heal and
+ * extend life.
+ */
 public class ExtendibleMaxLifeSystem implements ExtendibleMaxHealthSystem {
 
   private HealLifeSystem life;
   private final int maxHealthReachable;
 
-  
+  /**
+   * 
+   * @param startingLife       the amount of health the system start with. If
+   *                           greater than maxHealth it will automatically
+   *                           replaced with maxHealth value
+   * @param maxHealth          the starting maximum amount of health that can be
+   *                           reached using heal method
+   * @param maxHealthReachable the maximum extension of the life value
+   */
   public ExtendibleMaxLifeSystem(final int startingLife, final int maxHealth, final int maxHealthReachable) {
     final int newMaxHealth = maxHealth <= maxHealthReachable ? maxHealth : maxHealthReachable;
     this.life = new HealLifeSystem(startingLife, newMaxHealth);
