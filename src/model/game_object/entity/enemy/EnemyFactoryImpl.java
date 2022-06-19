@@ -1,7 +1,7 @@
 package model.game_object.entity.enemy;
 
 import model.game_object.entity.SimpleEnemy;
-import model.life.impl.SimpleLifeSystem;
+import model.life_system.impl.SimpleLifeSystem;
 import model.movement.MovementFactoryImpl;
 import model.weapon.WeaponFactoryImpl;
 import utilities.Pair;

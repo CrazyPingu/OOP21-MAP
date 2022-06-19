@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import model.life.impl.HealLifeSystem;
+import model.life_system.impl.HealLifeSystem;
 
 class HealLifeSystemTest {
   private static final int HEALTH = 9;

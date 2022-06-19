@@ -2,8 +2,7 @@ package model.life_system;
 
 /**
  * 
- * This class declare all the common method for a Life System implementation
- *
+ * This class declare all the common method for a Life System implementation.
  */
 public interface LifeSystem {
 

@@ -14,7 +14,7 @@ import model.game_object.entity.enemy.EnemyFactory;
 import model.game_object.entity.enemy.EnemyFactoryImpl;
 import model.game_object.obstacle.ObstacleFactory;
 import model.game_object.obstacle.ObstacleFactoryImpl;
-import model.life.impl.ExtendibleMaxLifeSystem;
+import model.life_system.impl.ExtendibleMaxLifeSystem;
 import model.movement.MovementFactory;
 import model.movement.MovementFactoryImpl;
 import model.room.Room;

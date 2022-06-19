@@ -7,7 +7,6 @@ import model.weapon.Weapon;
  * 
  * Declare the common method for the Object that can be used from an artefact
  * excecute method.
- *
  */
 public interface ArtefactUserObject extends GameObject {
 

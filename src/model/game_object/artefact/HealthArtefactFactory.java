@@ -2,6 +2,11 @@ package model.game_object.artefact;
 
 import utilities.Pair;
 
+/**
+ * 
+ * This interface declare the method for a class that create health artefact.
+ * artefacts. The implementation class follow the pattern Factory.
+ */
 public interface HealthArtefactFactory {
 
   /**

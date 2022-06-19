@@ -6,6 +6,11 @@ import model.movement.MovementFactoryImpl;
 import utilities.Pair;
 import utilities.texture.ArtefactTexture;
 
+/**
+ * 
+ * This class implements the method for the creation of the movement artefacts.
+ * This class follow the pattern Factory.
+ */
 public class MovementArtefactFactoryImp implements MovementArtefactFactory {
 
   final private MovementFactory movementFactory = new MovementFactoryImpl();

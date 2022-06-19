@@ -1,7 +1,11 @@
-package model.life.impl;
+package model.life_system.impl;
 
 import model.life_system.HealSystem;
 
+/**
+ * 
+ * This class model a life system that allows to take damage, die and heal.
+ */
 public class HealLifeSystem implements HealSystem {
 
   private SimpleLifeSystem life;

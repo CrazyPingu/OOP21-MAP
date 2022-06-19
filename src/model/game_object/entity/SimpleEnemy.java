@@ -11,7 +11,6 @@ import utilities.Pair;
  * 
  * Wraps the entity class and allow a simple way to distingue a entity from a
  * simpleEnemy
- *
  */
 public class SimpleEnemy extends Entity {
 

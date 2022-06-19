@@ -7,7 +7,6 @@ import utilities.Pair;
  * 
  * This class declare the common method for every object in game that can be
  * displayed in the game grid.
- *
  */
 public interface GameObject {
 

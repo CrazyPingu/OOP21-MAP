@@ -2,7 +2,7 @@ package model.game_object.entity;
 
 import java.awt.Image;
 import model.game_object.ArtefactUserObject;
-import model.life.impl.ExtendibleMaxLifeSystem;
+import model.life_system.impl.ExtendibleMaxLifeSystem;
 import model.movement.Movement;
 import model.weapon.Weapon;
 import utilities.Pair;
@@ -11,7 +11,6 @@ import utilities.Pair;
  * 
  * This class model the player's entity. Can perform multiple action in a turn, can
  * change is position, can use artefact, can take damage and can carry a weapon.
- *
  */
 public class Player extends Entity implements ArtefactUserObject {
 
