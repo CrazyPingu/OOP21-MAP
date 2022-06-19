@@ -7,7 +7,7 @@ import java.awt.Image;
 import org.junit.jupiter.api.Test;
 
 import model.game_object.entity.Player;
-import model.life.impl.ExtendibleMaxLifeSystem;
+import model.life_system.impl.ExtendibleMaxLifeSystem;
 import model.movement.MovementFactory;
 import model.movement.MovementFactoryImpl;
 import model.weapon.WeaponFactory;

@@ -1,4 +1,4 @@
-package model.life.impl;
+package model.life_system.impl;
 
 import model.life_system.HealSystem;
 

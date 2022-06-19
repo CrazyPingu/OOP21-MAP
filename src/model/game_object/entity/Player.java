@@ -2,7 +2,7 @@ package model.game_object.entity;
 
 import java.awt.Image;
 import model.game_object.ArtefactUserObject;
-import model.life.impl.ExtendibleMaxLifeSystem;
+import model.life_system.impl.ExtendibleMaxLifeSystem;
 import model.movement.Movement;
 import model.weapon.Weapon;
 import utilities.Pair;
