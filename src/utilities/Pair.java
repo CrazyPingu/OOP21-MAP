@@ -1,24 +1,43 @@
 package utilities;
 
+/**
+ *
+ * Class that model a pair of value
+ *
+ */
 public class Pair<X, Y> {
 
   private final X x;
   private final Y y;
 
+  /**
+   * @param x the first parameter
+   * @param y the second parameter
+   */
   public Pair(final X x, final Y y) {
     super();
     this.x = x;
     this.y = y;
   }
 
+  /**
+   * @param pair the original pair to revert
+   * @return a new Pair with the x and y inverted of the original pair passed
+   */
   public static Pair<Integer, Integer> revertPair(final Pair<Integer, Integer> pair) {
     return new Pair<Integer, Integer>(pair.getY(), pair.getX());
   }
 
+  /**
+   * @return the first value of the pair
+   */
   public X getX() {
     return x;
   }
-
+  
+  /**
+   * @return the second value of the pair
+   */
   public Y getY() {
     return y;
   }
@@ -43,7 +62,7 @@ public class Pair<X, Y> {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    final Pair<X,Y> other = (Pair<X,Y>) obj;
+    final Pair<X, Y> other = (Pair<X, Y>) obj;
     if (x == null) {
       if (other.x != null) {
         return false;
