@@ -3,6 +3,11 @@ package utilities;
 import java.awt.Dimension;
 import java.awt.Image;
 
+/**
+ * 
+ * Class to modify an image
+ *
+ */
 public final class ImageModifier {
 
   private ImageModifier() {
@@ -23,6 +28,14 @@ public final class ImageModifier {
     return image.getScaledInstance(scaleWidth, scaleHeight, Image.SCALE_SMOOTH);
   }
 
+  /**
+   * Method that return the best dimension of the image to maintain the aspect
+   * ratio
+   * 
+   * @param original the original aspect ratio of the image
+   * @param toFit    the dimension I want to get close to
+   * @return the best dimension possible
+   */
   private static double getScaleFactorToFit(final Dimension original, final Dimension toFit) {
     double dScale = 0;
     if (original != null && toFit != null) {
