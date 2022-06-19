@@ -20,7 +20,7 @@ public class BasicFrame extends JFrame {
   JPanel panel;
 
   /**
-   * {@inheritDoc}
+   * Create a new JFrame based with CardLayout
    */
   public BasicFrame() {
     setDefaultCloseOperation(EXIT_ON_CLOSE);
