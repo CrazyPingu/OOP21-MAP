@@ -14,6 +14,7 @@ public class PageController {
 
     /**
      * @param frame the frame of the game
+     * @param gameLoop the game loop
      */
     public PageController(final BasicFrame frame, final GameLoop gameLoop) {
         this.frame = frame;

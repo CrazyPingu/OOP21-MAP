@@ -66,57 +66,105 @@ public class GameLoop {
     this.gameController.skipTurn();
   }
 
+  /**
+   * 
+   * @param flag the flag we set
+   */
   public void setFlag(final ActionFlag flag) {
     this.gameController.setFlag(flag);
   }
 
   /**
-   * When this method is called the game loop start;
+   * When this method is called the game loop start
    */
   public void startGame() {
     this.newGame();
   }
 
+  /**
+   * 
+   * @param pos the pos of the player in the game field
+   */
   public void makeAction(final Pair<Integer, Integer> pos) {
     this.gameController.makeAction(pos);
   }
 
+  /**
+   * 
+   * @return the Room
+   */
   public Room getRoom() {
     return this.room;
   }
 
+  /**
+   * 
+   * @return the Player
+   */
   public Player getPlayer() {
     return this.player;
   }
 
+  /**
+   * 
+   * @return theGame Area Controller
+   */
   public GameAreaController getGameAreaController() {
     return gameAreaController;
   }
 
+  /**
+   * 
+   * @param text text to update in scrollable log
+   */
   public void updateLog(final String text) {
     this.gameAreaController.updateLog(this.totalPanel.getScrollableLog(), text);
   }
 
+  /**
+   * 
+   * @param statistics   the stats to update in scrollable stats
+   * @param actionNumber the remaining number of action available by the player
+   */
   public void updateStats(final GameStatisticsImpl statistics, final int actionNumber) {
     this.gameAreaController.updateStats(this.totalPanel.getScrollableStats(), player, statistics, actionNumber);
   }
-  
+
+  /*
+   * method used to remove the higlights in cells after a player action
+   */
   public void removeHighlight() {
     this.gameAreaController.removeHighlight(this.totalPanel.getGameArea());
   }
-  
+
+  /**
+   * 
+   * @param flag the flag setted at that moment
+   */
   public void highlightCells(final ActionFlag flag) {
     this.gameAreaController.highlightCells(flag, this.totalPanel.getGameArea());
   }
-  
+
+  /**
+   * 
+   * @param oldPos the actual position of the object
+   * @param newPos the new position of the object
+   */
   public void moveGameObject(final Pair<Integer, Integer> oldPos, final Pair<Integer, Integer> newPos) {
     this.gameAreaController.moveGameObject(oldPos, newPos);
   }
 
+  /*
+   * method that change room
+   */
   public void changeRoom() {
     this.gameAreaController.changeRoom(this.player, this.totalPanel.getGameArea());
   }
-  
+
+  /**
+   * 
+   * @param room the room
+   */
   public void setRoom(final Room room) {
     this.room = room;
   }
