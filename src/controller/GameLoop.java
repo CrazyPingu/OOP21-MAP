@@ -16,7 +16,11 @@ import view.game.TotalPanel;
 import view.loading_screen.LoadingScreenImpl;
 import view.main_menu.MainMenu;
 import view.pause.PauseMenu;
-
+/*
+ * 
+ * class that contains main methods for manage the player turn
+ * 
+ */
 public class GameLoop {
   private final BasicFrame frame;
 
@@ -49,6 +53,9 @@ public class GameLoop {
     this.pageController.showMainMenu();
   }
 
+  /**
+   * method that create a new game
+   */
   public void newGame() {
     final GameStatisticsImpl gameStats = new GameStatisticsImpl();
     this.loadingScreen.startProgressBar();
@@ -62,6 +69,9 @@ public class GameLoop {
     gameController = new BasicGameController(gameAreaController, pageController, this, gameStats);
   }
 
+  /**
+   * method that make the player skip the current turn
+   */
   public void skipTurn() {
     this.gameController.skipTurn();
   }
@@ -130,6 +140,9 @@ public class GameLoop {
     this.gameAreaController.updateStats(this.totalPanel.getScrollableStats(), player, statistics, actionNumber);
   }
 
+  /**
+  * method that remove the highlited cells during player turn
+  */
   public void removeHighlight() {
     this.gameAreaController.removeHighlight(this.totalPanel.getGameArea());
   }
@@ -151,6 +164,9 @@ public class GameLoop {
     this.gameAreaController.moveGameObject(oldPos, newPos);
   }
 
+  /**
+   * method that shows a new room
+   */
   public void changeRoom() {
     this.gameAreaController.changeRoom(this.player, this.totalPanel.getGameArea());
   }

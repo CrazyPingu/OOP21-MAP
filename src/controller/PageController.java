@@ -20,7 +20,9 @@ public class PageController {
         this.frame = frame;
         this.gameLoop = gameLoop; 
     }
-    
+     /**
+      * show the main menu
+      */
     public void showMainMenu() {
         frame.showInFrame(CardName.MAIN_MENU);
     }
@@ -60,7 +62,9 @@ public class PageController {
         frame.showInFrame(CardName.VICTORY);
     }
   
-    
+    /**
+     * method that start the game
+     */
     public void startGame() {
     	this.gameLoop.startGame();
     }
