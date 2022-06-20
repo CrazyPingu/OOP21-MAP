@@ -130,9 +130,6 @@ public class GameLoop {
     this.gameAreaController.updateStats(this.totalPanel.getScrollableStats(), player, statistics, actionNumber);
   }
 
-  /*
-   * method used to remove the higlights in cells after a player action
-   */
   public void removeHighlight() {
     this.gameAreaController.removeHighlight(this.totalPanel.getGameArea());
   }
@@ -154,9 +151,6 @@ public class GameLoop {
     this.gameAreaController.moveGameObject(oldPos, newPos);
   }
 
-  /*
-   * method that change room
-   */
   public void changeRoom() {
     this.gameAreaController.changeRoom(this.player, this.totalPanel.getGameArea());
   }
