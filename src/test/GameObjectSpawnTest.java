@@ -25,7 +25,7 @@ public class GameObjectSpawnTest {
   private final WeaponFactory weaponFactory = new WeaponFactoryImpl();
   private final MovementFactory movementFactory = new MovementFactoryImpl();
   private Player player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), weaponFactory.createAxe(),
-      movementFactory.stepMovement(), "Marcello", EntityTexture.PLAYER);
+      movementFactory.createStepMovement(), "Marcello", EntityTexture.PLAYER);
   private final RoomFactory roomFactory = new RoomFactoryImpl(player);
   private final Room room = roomFactory.createMediumRoom();
 

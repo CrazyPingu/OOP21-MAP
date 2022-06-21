@@ -17,23 +17,23 @@ public class MovementArtefactFactoryImp implements MovementArtefactFactory {
   final private MovementFactory movementFactory = new MovementFactoryImpl();
 
   @Override
-  public Artefact stepArtefact(final Pair<Integer, Integer> pos) {
+  public Artefact createStepArtefact(final Pair<Integer, Integer> pos) {
     return new Artefact(pos, "step artefact", ArtefactTexture.STEP) {
 
       @Override
       public void execute(final ArtefactUserObject subject) {
-        subject.changeMovement(movementFactory.stepMovement());
+        subject.changeMovement(movementFactory.createStepMovement());
       }
     };
   }
 
   @Override
-  public Artefact runArtefact(final Pair<Integer, Integer> pos) {
+  public Artefact createRunArtefact(final Pair<Integer, Integer> pos) {
     return new Artefact(pos, "run artefact", ArtefactTexture.RUN) {
 
       @Override
       public void execute(final ArtefactUserObject subject) {
-        subject.changeMovement(movementFactory.runMovement());
+        subject.changeMovement(movementFactory.createRunMovement());
       }
     };
   }

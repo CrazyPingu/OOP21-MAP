@@ -17,7 +17,7 @@ public class HealthArtefactFactoryImpl implements HealthArtefactFactory {
   private static final int LIFE_EXTENSION_VALUE = 1;
 
   @Override
-  public Artefact littleHealArtefact(final Pair<Integer, Integer> pos) {
+  public Artefact createLittleHealArtefact(final Pair<Integer, Integer> pos) {
     return new Artefact(pos, "little heal", ArtefactTexture.LITTLE_HEAL) {
 
       @Override
@@ -28,7 +28,7 @@ public class HealthArtefactFactoryImpl implements HealthArtefactFactory {
   }
 
   @Override
-  public Artefact bigHealArtefact(final Pair<Integer, Integer> pos) {
+  public Artefact createBigHealArtefact(final Pair<Integer, Integer> pos) {
     return new Artefact(pos, "big heal", ArtefactTexture.BIG_HEAL) {
 
       @Override
@@ -39,7 +39,7 @@ public class HealthArtefactFactoryImpl implements HealthArtefactFactory {
   }
 
   @Override
-  public Artefact extendsLifeArtefact(final Pair<Integer, Integer> pos) {
+  public Artefact createExtendsLifeArtefact(final Pair<Integer, Integer> pos) {
     return new Artefact(pos, "life extension", ArtefactTexture.HEALTH_EXTENDER) {
 
       @Override

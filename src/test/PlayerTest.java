@@ -39,7 +39,7 @@ class PlayerTest {
   @Test
   void simplePlayerCreationTest() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
-    this.player = new Player(life, START_POS, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
+    this.player = new Player(life, START_POS, this.weaponFactory.createAxe(), this.movementFactory.createStepMovement(), NAME,
         TEXTURE, DAMAGE);
     assertEquals(this.player.getHealth(), HEALTH);
     assertEquals(this.player.getMaxHealth(), MAX_HEALTH);
@@ -47,7 +47,7 @@ class PlayerTest {
     assertEquals(NAME, this.player.getName());
     assertFalse(this.player.isDead());
 
-    this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
+    this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.createStepMovement(), NAME,
         TEXTURE);
     assertEquals(this.player.getHealth(), HEALTH);
     assertEquals(this.player.getMaxHealth(), MAX_HEALTH);
@@ -62,7 +62,7 @@ class PlayerTest {
   @Test
   void damageEntityTest() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
-    this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
+    this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.createStepMovement(), NAME,
         TEXTURE);
     this.player.damage(DAMAGE);
     assertEquals(this.player.getHealth(), HEALTH - DAMAGE);
@@ -74,7 +74,7 @@ class PlayerTest {
   @Test
   void healthNotBelowZeroTest() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
-    this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
+    this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.createStepMovement(), NAME,
         TEXTURE);
     this.player.damage(this.player.getHealth() + DAMAGE);
     assertEquals(this.player.getHealth(), 0);
@@ -86,7 +86,7 @@ class PlayerTest {
   @Test
   void isDeadTest() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
-    this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
+    this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.createStepMovement(), NAME,
         TEXTURE);
     this.player.damage(this.player.getHealth() + DAMAGE);
     assertTrue(this.player.isDead());
@@ -98,7 +98,7 @@ class PlayerTest {
   @Test
   void healTest() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
-    this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
+    this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.createStepMovement(), NAME,
         TEXTURE);
 
     // test the correct funcioning of the method heal
@@ -120,7 +120,7 @@ class PlayerTest {
   @Test
   void healAfterDeath() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
-    this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
+    this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.createStepMovement(), NAME,
         TEXTURE);
 
     // the player die
@@ -140,7 +140,7 @@ class PlayerTest {
   @Test
   void maxHealthInRange() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
-    this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
+    this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.createStepMovement(), NAME,
         TEXTURE);
     // test the functioning of the method setMaxHealth
     this.player.setMaxHealth(MAX_HEALTH_LIMIT - 3);
@@ -159,7 +159,7 @@ class PlayerTest {
    */
   void playerPrintTest() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
-    this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
+    this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.createStepMovement(), NAME,
         TEXTURE);
 
     System.out.println(this.player.toString());
