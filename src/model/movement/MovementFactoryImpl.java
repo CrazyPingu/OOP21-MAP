@@ -12,12 +12,12 @@ import model.strategy.concrete_strategies.VariableDistanceConstants;
 public class MovementFactoryImpl implements MovementFactory {
 
   @Override
-  public MovementImpl stepMovement() {
+  public MovementImpl createStepMovement() {
     return new MovementImpl(new AroundArea(VariableDistanceConstants.SINGLE_DISTANCE));
   }
 
   @Override
-  public MovementImpl runMovement() {
+  public MovementImpl createRunMovement() {
     return new MovementImpl(new CrossArea(VariableDistanceConstants.DOUBLE_DISTANCE));
   }
 

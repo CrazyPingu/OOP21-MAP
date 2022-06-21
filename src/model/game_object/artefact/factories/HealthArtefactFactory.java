@@ -15,20 +15,20 @@ public interface HealthArtefactFactory {
    * @param pos is the artefact spawn position
    * @return an artefact that heal the subject
    */
-  Artefact littleHealArtefact(Pair<Integer, Integer> pos);
+  Artefact createLittleHealArtefact(Pair<Integer, Integer> pos);
 
   /**
    *
    * @param pos is the artefact spawn position
    * @return an artefact that heal the subject
    */
-  Artefact bigHealArtefact(Pair<Integer, Integer> pos);
+  Artefact createBigHealArtefact(Pair<Integer, Integer> pos);
 
   /**
    *
    * @param pos is the artefact spawn position
    * @return an artefact that extend the subject's life
    */
-  Artefact extendsLifeArtefact(Pair<Integer, Integer> pos);
+  Artefact createExtendsLifeArtefact(Pair<Integer, Integer> pos);
 
 }

@@ -36,7 +36,7 @@ public class EnemyAITest {
   final EnemyFactory ef = new EnemyFactoryImpl();
   final ObstacleFactory of = new ObstacleFactoryImpl();
   private EnemyAIImpl enemyAI;
-  private Player player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createAxe(), mf.stepMovement(),
+  private Player player = new Player(new ExtendibleMaxLifeSystem(4, 10, 20), wf.createAxe(), mf.createStepMovement(),
       "Marcello-test", EntityTexture.PLAYER);
   private SimpleEnemy enemyAroundArea, enemyCrossArea;
   private List<Pair<Integer, Integer>> expectedResult;
@@ -67,7 +67,7 @@ public class EnemyAITest {
     System.out.println("\n-- objectInArea\n");
     this.player.setPos(new Pair<>(2, 3));
 
-    this.room.getArtefactList().add(hf.bigHealArtefact(new Pair<Integer, Integer>(4, 2)));
+    this.room.getArtefactList().add(hf.createBigHealArtefact(new Pair<Integer, Integer>(4, 2)));
     this.expectedResult.add(new Pair<>(4, 1));
     this.expectedResult.add(new Pair<>(5, 2));
     resultsToString(this.enemyAI.move(this.enemyAroundArea), this.expectedResult);

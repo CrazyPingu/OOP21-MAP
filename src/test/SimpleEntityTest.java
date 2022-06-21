@@ -34,7 +34,7 @@ class SimpleEntityTest {
   void simpleEntityCreationTest() {
     this.life = new SimpleLifeSystem(HEALTH);
     this.entity = new SimpleEnemy(this.life, START_POS, this.weaponFactory.createAxe(),
-        this.movementFactory.stepMovement(), NAME, TEXTURE);
+        this.movementFactory.createStepMovement(), NAME, TEXTURE);
     assertEquals(this.entity.getHealth(), HEALTH);
     assertEquals(this.entity.getPos(), START_POS);
     assertEquals(NAME, this.entity.getName());
@@ -48,7 +48,7 @@ class SimpleEntityTest {
   void damageEntityTest() {
     this.life = new SimpleLifeSystem(HEALTH);
     this.entity = new SimpleEnemy(this.life, START_POS, this.weaponFactory.createAxe(),
-        this.movementFactory.stepMovement(), NAME, TEXTURE);
+        this.movementFactory.createStepMovement(), NAME, TEXTURE);
     this.entity.damage(DAMAGE);
     assertEquals(this.entity.getHealth(), HEALTH - DAMAGE);
   }
@@ -60,7 +60,7 @@ class SimpleEntityTest {
   void healthNotBelowZeroTest() {
     this.life = new SimpleLifeSystem(HEALTH);
     this.entity = new SimpleEnemy(this.life, START_POS, this.weaponFactory.createAxe(),
-        this.movementFactory.stepMovement(), NAME, TEXTURE);
+        this.movementFactory.createStepMovement(), NAME, TEXTURE);
     this.entity.damage(this.entity.getHealth() + DAMAGE);
     assertEquals(this.entity.getHealth(), 0);
   }
@@ -72,7 +72,7 @@ class SimpleEntityTest {
   void isDeadTest() {
     this.life = new SimpleLifeSystem(HEALTH);
     this.entity = new SimpleEnemy(this.life, START_POS, this.weaponFactory.createAxe(),
-        this.movementFactory.stepMovement(), NAME, TEXTURE);
+        this.movementFactory.createStepMovement(), NAME, TEXTURE);
     this.entity.damage(this.entity.getHealth() + DAMAGE);
     assertTrue(this.entity.isDead());
   }

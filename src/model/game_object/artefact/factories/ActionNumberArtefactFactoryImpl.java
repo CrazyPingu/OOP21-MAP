@@ -13,7 +13,7 @@ import utilities.texture.ArtefactTexture;
 public class ActionNumberArtefactFactoryImpl implements ActionNumberArtefactFactory {
 
   @Override
-  public Artefact increaseActionNumberArtefact(final Pair<Integer, Integer> pos) {
+  public Artefact createActionNumberArtefact(final Pair<Integer, Integer> pos) {
     return new Artefact(pos, "number action increaser", ArtefactTexture.ACTION_NUMBER_INCREASER) {
 
       @Override
