@@ -16,6 +16,7 @@ import view.game.TotalPanel;
 import view.loading_screen.LoadingScreenImpl;
 import view.main_menu.MainMenu;
 import view.pause.PauseMenu;
+
 /**
  * 
  * class that contains main methods for manage the player turn
@@ -33,9 +34,10 @@ public class GameLoop {
   private BasicGameController gameController;
   private Room room;
   private Player player;
-/**
- * Initialize the main fields
- */
+
+  /**
+   * Initialize the main fields
+   */
   public GameLoop() {
     frame = new BasicFrame();
     this.actionMenuController = new ActionMenuController(this);
@@ -143,8 +145,8 @@ public class GameLoop {
   }
 
   /**
-  * method that remove the highlited cells during player turn
-  */
+   * method that remove the highlited cells during player turn
+   */
   public void removeHighlight() {
     this.gameAreaController.removeHighlight(this.totalPanel.getGameArea());
   }
