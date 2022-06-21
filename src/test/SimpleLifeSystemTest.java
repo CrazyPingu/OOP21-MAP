@@ -5,14 +5,13 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import model.life.impl.SimpleLifeSystem;
+import model.life_system.impl.SimpleLifeSystem;
 
 class SimpleLifeSystemTest {
   private static final int HEALTH = 9;
   private static final int DAMAGE = 1;
 
   @Test
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
   /*
    * test the correct creation of a SimpleLifeSystem instantiation.
    */
@@ -22,7 +21,6 @@ class SimpleLifeSystemTest {
   }
 
   @Test
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
   /*
    * test the proper operation of the method damage.
    */
@@ -37,7 +35,6 @@ class SimpleLifeSystemTest {
   }
 
   @Test
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
   /*
    * test that the health value does not go below zero
    */

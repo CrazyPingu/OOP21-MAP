@@ -7,7 +7,18 @@ import model.room.Room;
 import model.room.RoomFactoryImpl;
 import utilities.Constant;
 
+/**
+ * 
+ * Class to generate random room
+ *
+ */
 public class RandomRoomGenerator {
+
+  /**
+   * 
+   * @param player the player of the game
+   * @return a random generated room
+   */
   public Room generateRoom(final Player player) {
     final RoomFactoryImpl roomFactory = new RoomFactoryImpl(player);
     Room room = null;

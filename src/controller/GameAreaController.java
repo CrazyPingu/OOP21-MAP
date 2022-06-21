@@ -9,18 +9,29 @@ import view.game.central.GameArea;
 import view.game.log_stats.ScrollableLog;
 import view.game.log_stats.ScrollableStats;
 
+/**
+ * 
+ * Controller part that manage the game area
+ *
+ */
 public class GameAreaController {
 
   private final GameLoop loop;
   private final RandomRoomGenerator randomRoomGenerator;
 
+  /**
+   * 
+   * @param loop the game loop
+   */
   public GameAreaController(final GameLoop loop) {
     this.loop = loop;
     this.randomRoomGenerator = new RandomRoomGenerator();
   }
 
   /**
-   * create a new Room.
+   * 
+   * @param player the player of the game
+   * @return a new generated random room
    */
   public Room generateNewRoom(final Player player) {
     return randomRoomGenerator.generateRoom(player);
@@ -52,22 +63,42 @@ public class GameAreaController {
     }
   }
 
+  /**
+   * Update the log appending the passed text
+   * 
+   * @param log  the ScrollableLog where to put the text
+   * @param text the text to write in the log
+   */
   public void updateLog(final ScrollableLog log, final String text) {
     log.getLogMessage().update(text);
   }
 
+  /**
+   * Refresh the stats with the passed field
+   * 
+   * @param stats        the ScrollableStats to refresh
+   * @param player       the player of the game
+   * @param statistic    the statistic of the game
+   * @param actionNumber the number of action that remain
+   */
   public void updateStats(final ScrollableStats stats, final Player player, final GameStatisticsImpl statistic,
       final int actionNumber) {
     stats.getStatsValues().update(player, statistic, actionNumber);
   }
 
   /**
-   * Method that remove all the highight
+   * Method that remove all the highlight
+   * 
+   * @param gameArea the GameArea to remove the highlight
    */
   public void removeHighlight(final GameArea gameArea) {
     gameArea.removeHighlight();
   }
 
+  /**
+   * @param flag     the flag with the color to change
+   * @param gameArea the gameArea to highlight
+   */
   public void highlightCells(final ActionFlag flag, final GameArea gameArea) {
     gameArea.highlightCells(flag);
   }
@@ -91,6 +122,12 @@ public class GameAreaController {
     }
   }
 
+  /**
+   * Method to change the room
+   * 
+   * @param player   the player of the game
+   * @param gameArea the GameArea that is shown
+   */
   public void changeRoom(final Player player, final GameArea gameArea) {
     final Room room = this.generateNewRoom(player);
     gameArea.changeRoom(room);

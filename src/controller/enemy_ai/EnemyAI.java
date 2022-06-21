@@ -11,21 +11,22 @@ import utilities.Pair;
  */
 public interface EnemyAI {
 
-    /**
-     * Enemy automated movement.
-     * 
-     * @param enemy: enemy of which is needed to change position
-     * @return the new calculated position for the enemy
-     */
-    Pair<Integer, Integer> move(SimpleEnemy enemy);
+  /**
+   * Enemy automated movement.
+   * 
+   * @param enemy: enemy of which is needed to change position
+   * @return the new calculated position for the enemy
+   */
+  Pair<Integer, Integer> move(SimpleEnemy enemy);
 
-    /**
-     * Checks if player is reachable by the enemy attack.
-     * 
-     * @param enemy:    entity of which is needed to know the attackable area
-     * @param player:   entity to be found whether or not is in the attackable area
-     * @param roomSize: size of the current room
-     */
-    boolean isPlayerInAttackArea(SimpleEnemy enemy, Player player, Pair<Integer, Integer> roomSize);
+  /**
+   * Checks if player is reachable by the enemy attack.
+   * 
+   * @param enemy:    entity of which is needed to know the attackable area
+   * @param player:   entity to be found whether or not is in the attackable area
+   * @param roomSize: size of the current room
+   * @return true if the player passed is in the attack area of the enemy passed
+   */
+  boolean isPlayerInAttackArea(SimpleEnemy enemy, Player player, Pair<Integer, Integer> roomSize);
 
 }

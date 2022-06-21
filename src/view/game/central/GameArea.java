@@ -34,7 +34,10 @@ public class GameArea extends JPanel {
   private final GameAreaController gameAreaController;
   private Dimension buttonDimension;
 
-  @SuppressWarnings("PMD.ConstructorCallsOverridableMethod")
+  /**
+   * @param loop               the game loop to obtain the room
+   * @param gameAreaController the controller of the game area
+   */
   public GameArea(final GameLoop loop, final GameAreaController gameAreaController) {
     this.gameAreaController = gameAreaController;
     this.setBackground(RoomConstant.BASIC_CELL_COLOR);
@@ -168,6 +171,11 @@ public class GameArea extends JPanel {
     }
   }
 
+  /**
+   * Method to highlight the enemy range
+   * 
+   * @param enemy the list that contains all the enemy
+   */
   public void highlightEnemyRange(final List<SimpleEnemy> enemy) {
     for (final var i : enemy) {
       for (final var j : i.getWeapon().getAttackArea(i.getPos(), size)) {

@@ -4,19 +4,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import controller.PageController;
-
+/**
+ * 
+ * Class that define the Quit Action in Pause Menu
+ * 
+ */
 public class QuitAction implements ActionListener {
 
-    PageController controller;
+  PageController controller;
 
-    public QuitAction(final PageController controller) {
-        this.controller = controller;
-    }
+  /**
+   * 
+   * @param controller the controller of the game
+   */
+  public QuitAction(final PageController controller) {
+    this.controller = controller;
+  }
 
-    /**
-     * {@inheritDoc}
-     */
-    public void actionPerformed(final ActionEvent e) {
-        controller.quitGame();
-    }
+  @Override
+  public void actionPerformed(final ActionEvent e) {
+    controller.quitGame();
+  }
 }

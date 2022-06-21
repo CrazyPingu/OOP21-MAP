@@ -3,8 +3,7 @@ package model.life_system;
 /**
  * 
  * This class declare all the common method for a Life System that can use a
- * method to heal and can upgrade the maximum health value
- *
+ * method to heal and can upgrade the maximum health value.
  */
 public interface ExtendibleMaxHealthSystem extends HealSystem {
 

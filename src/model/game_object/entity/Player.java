@@ -2,16 +2,16 @@ package model.game_object.entity;
 
 import java.awt.Image;
 import model.game_object.ArtefactUserObject;
-import model.life.impl.ExtendibleMaxLifeSystem;
+import model.life_system.impl.ExtendibleMaxLifeSystem;
 import model.movement.Movement;
 import model.weapon.Weapon;
 import utilities.Pair;
 
 /**
  * 
- * This class model the player's entity. Can perform multiple action in a turn, can
- * change is position, can use artefact, can take damage and can carry a weapon.
- *
+ * This class model the player's entity. Can perform multiple action in a turn,
+ * can change is position, can use artefact, can take damage and can carry a
+ * weapon.
  */
 public class Player extends Entity implements ArtefactUserObject {
 
@@ -24,13 +24,14 @@ public class Player extends Entity implements ArtefactUserObject {
    * This method allows an initialization for the player whit complete
    * customizable fields
    * 
-   * @param life         is the life system of the player
-   * @param pos          is the position of the player
-   * @param weapon       is the weapon the player is holding
-   * @param movement     is the movement system of the player
-   * @param name         the name of the player
-   * @param textureImage the texture of the player. Texture can be found in
-   *                     utilis.texture
+   * @param life                is the life system of the player
+   * @param pos                 is the position of the player
+   * @param weapon              is the weapon the player is holding
+   * @param movement            is the movement system of the player
+   * @param name                the name of the player
+   * @param textureImage        the texture of the player. Texture can be found in
+   *                            utilis.texture
+   * @param initialActionNumber the initial action number of the player
    */
   public Player(final ExtendibleMaxLifeSystem life, final Pair<Integer, Integer> pos, final Weapon weapon,
       final Movement movement, final String name, final Image textureImage, final int initialActionNumber) {

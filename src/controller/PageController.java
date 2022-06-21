@@ -2,6 +2,11 @@ package controller;
 
 import view.BasicFrame;
 
+/**
+ * 
+ * Class that contains all the methods to switch the page showed to the player
+ * 
+ */
 public class PageController {
 
     private final BasicFrame frame;
@@ -9,12 +14,15 @@ public class PageController {
 
     /**
      * @param frame the frame of the game
+     * @param gameLoop the game loop
      */
     public PageController(final BasicFrame frame, final GameLoop gameLoop) {
         this.frame = frame;
         this.gameLoop = gameLoop; 
     }
-    
+     /**
+      * show the main menu
+      */
     public void showMainMenu() {
         frame.showInFrame(CardName.MAIN_MENU);
     }
@@ -54,7 +62,9 @@ public class PageController {
         frame.showInFrame(CardName.VICTORY);
     }
   
-    
+    /**
+     * method that start the game
+     */
     public void startGame() {
     	this.gameLoop.startGame();
     }
@@ -62,8 +72,7 @@ public class PageController {
     /**
      * close the application
      */
-    @SuppressWarnings("PMD.DoNotTerminateVM")
     public void quitGame() {
-      Runtime.getRuntime().exit(0);
+      System.exit(0);
     }
 }

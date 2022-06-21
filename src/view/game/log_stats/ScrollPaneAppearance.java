@@ -6,12 +6,21 @@ import javax.swing.border.Border;
 
 import utilities.Constant;
 
+/**
+ * 
+ * Sets the appearance of scrollable text areas.
+ *
+ */
 public class ScrollPaneAppearance extends JScrollPane {
 
     private static final long serialVersionUID = 7085461478629284287L;
 
     private final Border border = BorderFactory.createLineBorder(Color.GRAY, 3);
 
+    /**
+     * 
+     * @param c: component
+     */
     public ScrollPaneAppearance(final Component c) {
         super(c);
     }

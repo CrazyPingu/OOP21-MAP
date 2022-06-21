@@ -1,0 +1,29 @@
+@startuml ActionMenu
+!theme plain
+
+package "java.awt.event"{
+    interface ActionListener{
+        + ActionPerformed(e : ActionEvent) : void
+    }
+}
+
+class AttackAction implements ActionListener{
+    + menucontroller : ActionMenuController
+}
+
+class MoveAction implements ActionListener{
+    + menucontroller : ActionMenuController
+}
+
+class PauseAction implements ActionListener{
+    + controller : PageController
+}
+
+class SkipAction implements ActionListener{
+    + menucontroller : ActionMenuController
+}
+
+ActionListener -[hidden]l-> SkipAction 
+ActionListener -[hidden]r-> PauseAction
+
+@enduml

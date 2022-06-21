@@ -1,0 +1,24 @@
+@startuml MVC
+!theme plain
+interface GameController {
+    enemyTurn() : void
+    playerTurn() : void
+}
+interface GameLoop {
+    startGame() : void
+}
+interface ViewController
+interface TotalPanel {
+    gameArea : GameArea
+    actionMenu : ActionMenu
+    log : Log
+    stats : Stats
+}
+interface Room 
+ViewController -R-> GameLoop
+GameLoop --> GameController
+GameController -right[hidden] Room
+GameController ----> Room
+GameController --> TotalPanel
+TotalPanel ---> ViewController
+@enduml

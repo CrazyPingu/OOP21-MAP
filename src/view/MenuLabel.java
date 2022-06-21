@@ -7,17 +7,16 @@ import javax.swing.JLabel;
 
 import utilities.Constant;
 
+/**
+ * 
+ * Class that define MenuLabel type for make easier and more readable the code
+ * 
+ */
 public class MenuLabel extends JLabel {
-
-  /**
-   * 
-   */
   private static final long serialVersionUID = -3673551791024448061L;
 
   /**
-   * 
-   * @param name : the string that label will show
-   * @return the label with string passed
+   * @param name the string that label will show
    */
   public MenuLabel(final String name) {
     this.setHorizontalAlignment(CENTER);

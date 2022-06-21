@@ -3,7 +3,6 @@ package model.game_object;
 /**
  * 
  * Declare the common method for the game_object that can take damage and die
- *
  */
 public interface KillableObject extends GameObject{
   /**

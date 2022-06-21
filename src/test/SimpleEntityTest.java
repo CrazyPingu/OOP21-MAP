@@ -7,8 +7,8 @@ import java.awt.Image;
 import org.junit.jupiter.api.Test;
 
 import model.game_object.entity.SimpleEnemy;
-import model.life.impl.SimpleLifeSystem;
 import model.life_system.LifeSystem;
+import model.life_system.impl.SimpleLifeSystem;
 import model.movement.MovementFactory;
 import model.movement.MovementFactoryImpl;
 import model.weapon.WeaponFactory;
@@ -32,7 +32,6 @@ class SimpleEntityTest {
   /*
    * test the correct creation of a SimpleLifeSystem instantiation.
    */
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
   void simpleEntityCreationTest() {
     this.life = new SimpleLifeSystem(HEALTH);
     this.entity = new SimpleEnemy(this.life, START_POS, this.weaponFactory.createAxe(),
@@ -44,7 +43,6 @@ class SimpleEntityTest {
   }
 
   @Test
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
   /*
    * test the proper operation of the method damage.
    */
@@ -60,7 +58,6 @@ class SimpleEntityTest {
   /*
    * test that the health value does not go below zero
    */
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
   void healthNotBelowZeroTest() {
     this.life = new SimpleLifeSystem(HEALTH);
     this.entity = new SimpleEnemy(this.life, START_POS, this.weaponFactory.createAxe(),

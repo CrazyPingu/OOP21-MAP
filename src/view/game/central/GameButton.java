@@ -32,6 +32,13 @@ public class GameButton extends JButton implements ActionListener {
   private final Pair<Integer, Integer> radius;
   private final Pair<Integer, Integer> dim;
 
+  /**
+   * 
+   * @param buttonDimension    the dimension in pixel of the button
+   * @param gameAreaController the controller of the GameArea
+   * @param pos                the position of the button in the GameArea's grid
+   * @param isDoor             boolean to say if the button is the door
+   */
   public GameButton(final Dimension buttonDimension, final GameAreaController gameAreaController,
       final Pair<Integer, Integer> pos, final boolean isDoor) {
     this.isDoor = isDoor;
@@ -49,6 +56,7 @@ public class GameButton extends JButton implements ActionListener {
     this.setOpaque(true);
   }
 
+  @Override
   protected void paintComponent(final Graphics g) {
     super.paintComponent(g);
     if (isDoor) {
@@ -68,6 +76,9 @@ public class GameButton extends JButton implements ActionListener {
 
   }
 
+  /**
+   * @return true if the area is highlighted
+   */
   private boolean checkHighlight() {
     return this.color.equals(RoomConstant.ATTACK_HIGHLIGHT) || this.color.equals(RoomConstant.MOVE_HIGHLIGHT)
         || this.color.equals(RoomConstant.ENEMY_RANGE);
@@ -95,12 +106,12 @@ public class GameButton extends JButton implements ActionListener {
   }
 
   /**
-   * Method that highlight the background with the passed image
+   * Method that highlight the background with the passed color
    * 
-   * @param image the image to place on background
+   * @param backgroundColor the color to place on background
    */
   public void highlightCell(final Color backgroundColor) {
-    if(backgroundColor != RoomConstant.ENEMY_RANGE) {
+    if (backgroundColor != RoomConstant.ENEMY_RANGE) {
       this.setEnabled(true);
     }
     this.color = backgroundColor;

@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import model.life.impl.HealLifeSystem;
+import model.life_system.impl.HealLifeSystem;
 
 class HealLifeSystemTest {
   private static final int HEALTH = 9;
@@ -14,7 +14,6 @@ class HealLifeSystemTest {
   private static final int HEAL = 5;
 
   @Test
-  @SuppressWarnings({ "PMD.SimplifiableTestAssertion", "PMD.AvoidDuplicateLiterals" })
   void createLifeTest() {
     HealLifeSystem life = new HealLifeSystem(HEALTH, MAX_HEALTH);
     assertTrue(life.getCurrentHealth() == HEALTH);
@@ -28,7 +27,6 @@ class HealLifeSystemTest {
   }
 
   @Test
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
   /*
    * test the proper operation of the method damage.
    */
@@ -41,7 +39,6 @@ class HealLifeSystemTest {
   }
 
   @Test
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
   /*
    * test that the health value does not go below zero
    */
@@ -63,7 +60,6 @@ class HealLifeSystemTest {
   }
 
   @Test
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
   /*
    * test the correct working of the heal method
    */

@@ -14,14 +14,23 @@ import utilities.ImageModifier;
 import view.MenuButton;
 import view.pause.action.MainMenuAction;
 import view.pause.action.QuitAction;
-
+/**
+ * 
+ * Class that calls method to show victory or defeat screen
+ * 
+ */
 public abstract class EndGameMenu extends JPanel {
 
     private static final long serialVersionUID = 6789169156087285519L;
     Image image;
     private static final int BUTTON_WIDTH =300;
     private static final int BUTTON_HEIGHT = 100;
-
+    
+    /**
+     * 
+     * @param imageName the name of the image
+     * @param controller the controller 
+     */
     public EndGameMenu(final String imageName, final PageController controller) {
 
         final MenuButton mainMenu = new MenuButton("Main Menu", 60);

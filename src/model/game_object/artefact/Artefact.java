@@ -9,7 +9,6 @@ import utilities.Pair;
 /**
  * 
  * This interface declare the common method for every artefact.
- *
  */
 public abstract class Artefact implements GameObject {
 
@@ -19,9 +18,9 @@ public abstract class Artefact implements GameObject {
 
   /**
    * 
-   * @param pos  represent the position of the artefact in the game grid
-   * @param name is the artefact name
-   * @param the  texture of the player. Texture can be found in utilis.texture
+   * @param pos          the position of the artefact in the game grid
+   * @param name         the artefact name
+   * @param textureImage the texture of the artefact
    */
   public Artefact(final Pair<Integer, Integer> pos, final String name, final Image textureImage) {
     this.pos = pos;

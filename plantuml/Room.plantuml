@@ -1,0 +1,63 @@
+@startuml Room
+!theme plain
+
+interface RoomFactory{
+    + createBigRoom() : Room
+    + createSmallRoom() : Room
+    + createMediumRoom() : Room
+}
+
+class RoomFactoryImpl implements RoomFactory{
+    - player : Player
+    - maxSize : Pair<Int, Int>
+    - minSize : Pair<Int, Int>
+}
+
+interface Room{
+    + playerOnDoor() : boolean
+    + addButtonToCells(pos : Pair<Int, Int>,button : GameButton) : void
+    + updatePosition(oldPos : Pair<Int, Int>, newPos : Pair<Int, Int>) : void
+    + removeGameObject(pos : Pair<Int, Int>) : void
+    + getCells() : Map<Pair<Int, Int>, GameButton>
+    + getSize() : Pair<Int, Int>
+    + getEnemyList() : List<SimpleEnemy>
+    + getPlayer() : Player
+    + getArtefactList() : List<Artefact>
+    + getDoor() : List<Pair<Int, Int>>
+}
+
+RoomFactoryImpl -d[hidden]-> RoomFactory
+Room -u[hidden]-> RoomFactoryImpl
+RoomFactory --o Room
+
+@enduml
+
+@startuml Room2
+!theme plain
+
+class java.util.ArrayList
+
+
+class RandomEnemyList extends java.util.ArrayList
+
+class RandomArtefactList extends java.util.ArrayList
+
+class RandomObstacleList extends java.util.ArrayList
+
+class RoomImpl {
+    - size : Pair<Int, Int>
+    - cells : Map<Pair<Int, Int>, GameButton>
+    - player : Player
+    - enemyList : List<SimpleEnemy>
+    - artefactList : List<Artefact>
+    - door : List<Pair<Int, Int>>
+    - generateDoor(size : Pair<Int, Int>) : List<Pair<Int, Int>>
+}
+
+RoomImpl -u-o RandomArtefactList
+RoomImpl -u-o RandomEnemyList
+RoomImpl -u-o RandomObstacleList
+
+RoomImpl -d[hidden]-> Room
+class RoomImpl implements Room
+@enduml

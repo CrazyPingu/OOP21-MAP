@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import controller.CardName;
 import utilities.Constant;
 
-/*
+/**
  * 
  * Class to create the frame that will contain the whole GUI using the CardLayout
  * 
@@ -20,7 +20,7 @@ public class BasicFrame extends JFrame {
   JPanel panel;
 
   /**
-   * {@inheritDoc}
+   * Create a new JFrame based on CardLayout
    */
   public BasicFrame() {
     setDefaultCloseOperation(EXIT_ON_CLOSE);

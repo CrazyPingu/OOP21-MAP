@@ -21,6 +21,13 @@ public class BasicGameController extends GameController {
     private final EnemyAIImpl enemyAI;
     private static final int ROOM_TO_WIN = 3;
 
+    /**
+     * 
+     * @param gameAreaController: controller of the game area
+     * @param pageController:     controller to switch view displayed
+     * @param loop:               game loop
+     * @param gameStats:          current game's statistics
+     */
     public BasicGameController(final GameAreaController gameAreaController, final PageController pageController,
             final GameLoop loop, final GameStatisticsImpl gameStats) {
         super(gameAreaController, pageController, gameStats, loop);
@@ -72,8 +79,8 @@ public class BasicGameController extends GameController {
             this.getPageController().showDefeat();
         } else {
             this.updateStats();
-            this.getLoop().updateLog(
-                    player.getName() + " got hit! Damage: " + enemy.getWeapon().getDamage() + " by " + enemy.getName() + ".");
+            this.getLoop().updateLog(player.getName() + " got hit! Damage: " + enemy.getWeapon().getDamage() + " by "
+                    + enemy.getName() + ".");
         }
     }
 

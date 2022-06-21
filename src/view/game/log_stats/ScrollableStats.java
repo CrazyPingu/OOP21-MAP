@@ -3,12 +3,24 @@ package view.game.log_stats;
 import model.game_object.entity.Player;
 import model.game_statistics.GameStatisticsImpl;
 
+/**
+ * 
+ * Sets a scrollable type of stats text area.
+ *
+ */
 public class ScrollableStats extends ScrollPaneAppearance {
 
     private static final long serialVersionUID = 3192980786022666161L;
 
     private final Stats statsValues;
 
+    /**
+     * 
+     * @param player:              player entity
+     * @param statsValues:         Stats label
+     * @param gameStats:           game's statistics
+     * @param currentActionNumber: current number of actions
+     */
     public ScrollableStats(final Player player, final Stats statsValues, final GameStatisticsImpl gameStats,
             final int currentActionNumber) {
         super(statsValues);

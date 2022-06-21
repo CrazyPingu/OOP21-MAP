@@ -1,21 +1,23 @@
-package model.life.impl;
+package model.life_system.impl;
 
 import model.life_system.LifeSystem;
 
 /**
  * 
- * this class models a Life System that can only take damage
- *
+ * This class models a Life System that can only take damage.
  */
 public class SimpleLifeSystem implements LifeSystem {
 
 	private int health;
 	private boolean isDead;
 
-	@SuppressWarnings("PMD.SimplifiedTernary")
+	/**
+	 * 
+	 * @param health the starting health value
+	 */
   public SimpleLifeSystem(final int health) {
 		this.health = health;
-		this.isDead = health > 0 ? false : true;
+		this.isDead = health <= 0;
 	}
 
 	@Override

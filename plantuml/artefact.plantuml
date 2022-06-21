@@ -1,0 +1,18 @@
+@startuml Artefact 
+!theme plain
+
+interface GameObject{ 
+}
+
+interface ArtefactUser{ 
+    
+}
+
+abstract Artefact {
+    abstract execute(subject : ArtefactUser)
+}
+
+abstract Artefact implements GameObject 
+Artefact -D-o ArtefactUser
+
+@enduml

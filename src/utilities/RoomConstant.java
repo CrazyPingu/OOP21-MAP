@@ -10,6 +10,11 @@ import model.game_object.entity.Player;
 import model.game_object.entity.SimpleEnemy;
 import model.game_object.obstacle.Obstacle;
 
+/**
+ * 
+ * Class that contains all of the constant of the room
+ *
+ */
 public final class RoomConstant {
 
   public static final int MAX_X = Constant.GAME_WIDTH / Constant.horizontalAspectRatio(Constant.GAME_WIDTH / 20);
@@ -53,8 +58,8 @@ public final class RoomConstant {
   }
 
   /**
-   * @param pos  the position of the Artefact to be found
-   * @param list the list of artefact to search out
+   * @param pos          the position of the Artefact to be found
+   * @param artefactList the list of artefact to search out
    * @return the artefact if found, else null
    */
   public static Artefact searchArtefact(final Pair<Integer, Integer> pos, final List<Artefact> artefactList) {
@@ -69,8 +74,8 @@ public final class RoomConstant {
   }
 
   /**
-   * @param pos  the position of the SimpleEntity to be found
-   * @param list the list of SimpleEntity to search out
+   * @param pos       the position of the SimpleEntity to be found
+   * @param enemyList the list of SimpleEntity to search out
    * @return the SimpleEntity if found, else null
    */
   public static SimpleEnemy searchEnemy(final Pair<Integer, Integer> pos, final List<SimpleEnemy> enemyList) {
@@ -86,8 +91,8 @@ public final class RoomConstant {
 
   /**
    * 
-   * @param pos  the position of the Obstacle to be found
-   * @param list the list of the Obstacle to search out
+   * @param pos          the position of the Obstacle to be found
+   * @param obstacleList the list of the Obstacle to search out
    * @return the Obstacle if found, else null
    */
   public static Obstacle searchObstacle(final Pair<Integer, Integer> pos, final List<Obstacle> obstacleList) {
@@ -105,6 +110,7 @@ public final class RoomConstant {
   /**
    * @param enemyList    the list of the enemy
    * @param artefactList the list of the artefact
+   * @param obstacleList the list of obstacle
    * @param player       the player
    * @param pos          the position to check
    * @return true if an enemy, the player or a artefact is in that position, else

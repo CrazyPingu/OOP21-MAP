@@ -1,0 +1,41 @@
+@startuml StatsLog
+!theme plain
+class Log extends TextAreaAppearance {
+    + update(message: String) : void
+}
+Log -down[hidden] TextAreaAppearance
+class Stats extends TextAreaAppearance {
+    + update(player: Player, gameStats: GameStatisticsImpl, currentActionNumber: int) : void
+}
+class ScrollableLog extends ScrollPaneAppearance {
+    - logMessage : Log
+    + getLogMessage() : Log
+}
+class ScrollableStats extends ScrollPaneAppearance  {
+    - statsValues : Stats
+    + getStatsValues() : Stats
+}
+ScrollableStats -down-o Stats
+ScrollableLog -down-o Log
+ScrollableLog -down[hidden]-o Stats
+TextAreaAppearance -up[hidden]-o Stats
+TextAreaAppearance -up[hidden]-o Log
+@enduml
+
+@startuml GameStatistics
+!theme plain
+interface GameStatistics {
+    increaseKilledEnemies() : void
+    increaseCompletedRooms() : void
+    increaseCollectedArtefacts() : void
+    increaseAttackActionCounter() : void
+    increaseMoveActionCounter() : void
+    getKilledEnemies() : int
+    getCompletedRooms() : int
+    getCollectedArtefacts() : int
+    getAttackActionCounter() : int
+    getMoveActionCounter() : int
+}
+class GameStatisticsImpl implements GameStatistics
+@enduml
+

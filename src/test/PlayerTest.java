@@ -7,7 +7,7 @@ import java.awt.Image;
 import org.junit.jupiter.api.Test;
 
 import model.game_object.entity.Player;
-import model.life.impl.ExtendibleMaxLifeSystem;
+import model.life_system.impl.ExtendibleMaxLifeSystem;
 import model.movement.MovementFactory;
 import model.movement.MovementFactoryImpl;
 import model.weapon.WeaponFactory;
@@ -31,7 +31,6 @@ class PlayerTest {
   private Player player;
 
   @Test
-  @SuppressWarnings({ "PMD.SimplifiableTestAssertion", "PMD.AvoidDuplicateLiterals" })
   /*
    * test the correct creation of a Player instantiation.
    */
@@ -58,7 +57,6 @@ class PlayerTest {
   /*
    * test the proper operation of the method damage.
    */
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
   void damageEntityTest() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
     this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
@@ -68,7 +66,6 @@ class PlayerTest {
   }
 
   @Test
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
   /*
    * test that the health value does not go below zero
    */
@@ -93,7 +90,6 @@ class PlayerTest {
   }
 
   @Test
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
   /*
    * test the heal method
    */
@@ -119,7 +115,6 @@ class PlayerTest {
   /*
    * test that the heal method do nothing after the player is dead
    */
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
   void healAfterDeath() {
     this.life = new ExtendibleMaxLifeSystem(HEALTH, MAX_HEALTH, MAX_HEALTH_LIMIT);
     this.player = new Player(this.life, this.weaponFactory.createAxe(), this.movementFactory.stepMovement(), NAME,
@@ -137,7 +132,6 @@ class PlayerTest {
   }
 
   @Test
-  @SuppressWarnings("PMD.SimplifiableTestAssertion")
   /*
    * test the max health stay in the correct range specified in the constructor
    */

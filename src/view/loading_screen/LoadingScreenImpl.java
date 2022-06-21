@@ -22,13 +22,17 @@ import utilities.RoomConstant;
  * JPanel that contain the loading screen
  *
  */
-public class LoadingScreenImpl extends JPanel implements LoadingScreen, Runnable {
+public class LoadingScreenImpl extends JPanel implements LoadingScreen {
 
   private static final long serialVersionUID = 8291207301630291996L;
   private final JProgressBar progressBar = new JProgressBar();
   private final JLabel message = new JLabel("", SwingConstants.CENTER);
   private final PageController pageController;
 
+  /**
+   * 
+   * @param pageController the controller to change card layout
+   */
   public LoadingScreenImpl(final PageController pageController) {
     this.pageController = pageController;
     this.setOpaque(false);
@@ -73,6 +77,7 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen, Runnable
     new Thread(this).start();
   }
 
+  @Override
   public void run() {
     this.pageController.showLoadingScreen();
     int i = 0;

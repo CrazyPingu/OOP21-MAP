@@ -1,0 +1,23 @@
+@startuml Movement 
+!theme plain
+
+interface Movement{ 
+    + reachableCells()
+}
+
+class MovementImpl {
+    - movingStrategy : Strategy 
+    + reachableCells()
+}
+
+interface MovingObject{ 
+   +getReachableArea()
+}
+
+class Strategy.ConcreteStrategies
+class MovementImpl implements Movement 
+
+MovementImpl -R-o Strategy
+MovingObject -U-o MovementImpl
+
+@enduml
