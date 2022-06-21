@@ -1,6 +1,7 @@
-package model.game_object.artefact;
+package model.game_object.artefact.factories;
 
 import model.game_object.ArtefactUserObject;
+import model.game_object.artefact.Artefact;
 import model.weapon.WeaponFactory;
 import model.weapon.WeaponFactoryImpl;
 import utilities.Pair;

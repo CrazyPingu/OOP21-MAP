@@ -29,28 +29,28 @@ public class RoomTest {
       movementFactory.stepMovement(), "Marcello", EntityTexture.PLAYER);
   private final RoomFactory roomFactory = new RoomFactoryImpl(player);
 
-  @org.junit.Test
   /**
    * testing the correct dimension of the big room
    */
+  @org.junit.Test
   public void bigRoomSize() {
     final Room room = this.roomFactory.createBigRoom();
     assertEquals(room.getSize(), new Pair<Integer, Integer>(RoomConstant.MAX_X, RoomConstant.MAX_Y));
   }
 
-  @org.junit.Test
   /**
    * testing the correct dimension of the small room
    */
+  @org.junit.Test
   public void smallRoomSize() {
     final Room room = this.roomFactory.createSmallRoom();
     assertEquals(room.getSize(), new Pair<Integer, Integer>(RoomConstant.MIN_X, RoomConstant.MIN_Y));
   }
 
-  @org.junit.Test
   /**
    * testing the correct spawn of the enemy
    */
+  @org.junit.Test
   public void forbiddenZombieSpawn() {
     final Room room = this.roomFactory.createMediumRoom();
     boolean flag = false;

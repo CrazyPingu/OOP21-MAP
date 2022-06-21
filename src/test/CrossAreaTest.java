@@ -21,7 +21,7 @@ public class CrossAreaTest {
   final private List<Pair<Integer, Integer>> expectedResults = new ArrayList<>();
 
   /**
-   * initialize the test
+   * Initialize the test
    */
   @org.junit.Before
   public void init() {
@@ -30,7 +30,7 @@ public class CrossAreaTest {
   }
 
   /**
-   * test of inner area cell choice
+   * Test of inner area cell choice
    */
   @org.junit.Test
   public void innerGridTest() {
@@ -44,7 +44,7 @@ public class CrossAreaTest {
   }
 
   /**
-   * test of grid's upper left corner cell choice
+   * Test of grid's upper left corner cell choice
    */
   @org.junit.Test
   public void upperLeftCornerTest() {
@@ -57,7 +57,7 @@ public class CrossAreaTest {
   }
 
   /**
-   * test of grid's bottom left corner cell choice
+   * Test of grid's bottom left corner cell choice
    */
   @org.junit.Test
   public void bottomLeftCornerTest() {
@@ -69,7 +69,7 @@ public class CrossAreaTest {
   }
 
   /**
-   * test of grid's upper left corner cell choice
+   * Test of grid's upper left corner cell choice
    */
   @org.junit.Test
   public void upperRightCornerTest() {
@@ -81,7 +81,7 @@ public class CrossAreaTest {
   }
 
   /**
-   * test of grid's upper left corner cell choice
+   * Test of grid's upper left corner cell choice
    */
   @org.junit.Test
   public void bottomRightCornerTest() {

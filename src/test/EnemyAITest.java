@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controller.enemy_ai.EnemyAIImpl;
-import model.game_object.artefact.HealthArtefactFactory;
-import model.game_object.artefact.HealthArtefactFactoryImpl;
+import model.game_object.artefact.factories.HealthArtefactFactory;
+import model.game_object.artefact.factories.HealthArtefactFactoryImpl;
 import model.game_object.entity.Player;
 import model.game_object.entity.SimpleEnemy;
 import model.game_object.entity.enemy.EnemyFactory;

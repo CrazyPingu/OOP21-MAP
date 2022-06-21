@@ -8,26 +8,30 @@ import org.junit.jupiter.api.Test;
 import utilities.Pair;
 import utilities.PosInGrid;
 
+/**
+ * 
+ * Test PosInGrid class
+ */
 class PosInGridTest {
 
   private final Pair<Integer, Integer> size = new Pair<>(6, 4);
   private Pair<Integer, Integer> pos;
 
-  @Test
-  /*
-   * test the correct result of the algorithm when is chosen a cell in the center
+  /**
+   * Test the correct result of the algorithm when is chosen a cell in the center
    * of the grid.
    */
+  @Test
   void innerAreaTest() {
     this.pos = new Pair<>(1, 1);
     assertTrue(PosInGrid.checkPosInGrid(pos, size));
   }
 
-  @Test
-  /*
-   * test the correct result of the algorithm when is chosen a cell in the border
+  /**
+   * Test the correct result of the algorithm when is chosen a cell in the border
    * of the grid.
    */
+  @Test
   void sideCoordinateTest() {
     this.pos = new Pair<>(1, 0);
     assertTrue(PosInGrid.checkPosInGrid(pos, size));
@@ -39,11 +43,11 @@ class PosInGridTest {
     assertTrue(PosInGrid.checkPosInGrid(pos, size));
   }
 
-  @Test
   /*
-   * test the correct result of the algorithm when is chosen a cell in the border
+   * Test the correct result of the algorithm when is chosen a cell in the border
    * of the grid.
    */
+  @Test
   void cornerCoordinateTest() {
     this.pos = new Pair<>(0, 0);
     assertTrue(PosInGrid.checkPosInGrid(pos, size));
@@ -55,10 +59,10 @@ class PosInGridTest {
     assertTrue(PosInGrid.checkPosInGrid(pos, size));
   }
 
-  @Test
-  /*
+  /**
    * test all the possible coordinate in the grid
    */
+  @Test
   void allCoordinateTest() {
     for (int i = 0; i < size.getX(); i++) {
       for (int j = 0; j < size.getY(); j++) {
@@ -68,10 +72,10 @@ class PosInGridTest {
     }
   }
 
-  @Test
-  /*
-   * test some wrong coordinates that don't belong to the grid
+  /**
+   * Test some wrong coordinates that don't belong to the grid
    */
+  @Test
   void wrongCoordinateTest() {
     pos = new Pair<>(-1, 0);
     assertFalse(PosInGrid.checkPosInGrid(pos, size));

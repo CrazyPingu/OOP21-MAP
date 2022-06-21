@@ -2,52 +2,57 @@ package test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
 import model.life_system.impl.SimpleLifeSystem;
 
+/**
+ * 
+ * Test a simple life system
+ */
 class SimpleLifeSystemTest {
   private static final int HEALTH = 9;
   private static final int DAMAGE = 1;
 
-  @Test
-  /*
-   * test the correct creation of a SimpleLifeSystem instantiation.
+  /**
+   * Test the correct creation of a SimpleLifeSystem instantiation.
    */
+  @Test
   void createLifeTest() {
     final SimpleLifeSystem life = new SimpleLifeSystem(HEALTH);
-    assertTrue(life.getCurrentHealth() == HEALTH);
+    assertEquals(life.getCurrentHealth(), HEALTH);
   }
 
-  @Test
   /*
-   * test the proper operation of the method damage.
+   * Test the proper operation of the method damage.
    */
+  @Test
   void damageTest() {
     final SimpleLifeSystem life = new SimpleLifeSystem(HEALTH);
     life.damage(-DAMAGE); // test that damage don't work with negative value
-    assertTrue(life.getCurrentHealth() == HEALTH);
+    assertEquals(life.getCurrentHealth(), HEALTH);
     life.damage(DAMAGE);
-    assertTrue(life.getCurrentHealth() == HEALTH - DAMAGE);
+    assertEquals(life.getCurrentHealth(), HEALTH - DAMAGE);
     life.damage(DAMAGE);
-    assertTrue(life.getCurrentHealth() == HEALTH - (2 * DAMAGE));
+    assertEquals(life.getCurrentHealth(), HEALTH - (2 * DAMAGE));
   }
 
-  @Test
   /*
-   * test that the health value does not go below zero
+   * Test that the health value does not go below zero
    */
+  @Test
   void healthNotBelowZeroTest() {
     final SimpleLifeSystem life = new SimpleLifeSystem(HEALTH);
     life.damage(life.getCurrentHealth() + DAMAGE);
-    assertTrue(life.getCurrentHealth() == 0);
+    assertEquals(life.getCurrentHealth(), 0);
   }
 
-  @Test
   /*
-   * test the correct working of the isDead method
+   * Test the correct working of the isDead method
    */
+  @Test
   void isDeadTest() {
     final SimpleLifeSystem life = new SimpleLifeSystem(HEALTH);
     assertFalse(life.isDead());
