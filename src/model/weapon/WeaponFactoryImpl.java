@@ -9,7 +9,6 @@ import model.strategy.concrete_strategies.VariableDistanceConstants;
  * Factory with methods to create different types of weapons.
  *
  */
-
 public class WeaponFactoryImpl implements WeaponFactory {
 
     @Override

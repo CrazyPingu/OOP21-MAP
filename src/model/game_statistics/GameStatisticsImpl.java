@@ -10,6 +10,9 @@ public class GameStatisticsImpl implements GameStatistics {
     final private Counter attackActionCounter;
     final private Counter moveActionCounter;
 
+    /**
+     * Constructor that initializes all counters.
+     */
     public GameStatisticsImpl() {
         this.killedEnemiesCounter = new CounterImpl();
         this.completedRoomsCounter = new CounterImpl();

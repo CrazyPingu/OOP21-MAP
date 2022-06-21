@@ -11,6 +11,10 @@ public class ScrollableLog extends ScrollPaneAppearance {
 
     private final Log logMessage;
 
+    /**
+     * 
+     * @param logMessage: set initial message to display
+     */
     public ScrollableLog(final Log logMessage) {
         super(logMessage);
         this.logMessage = logMessage;

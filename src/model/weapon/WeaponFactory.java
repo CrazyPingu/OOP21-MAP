@@ -7,6 +7,9 @@ package model.weapon;
  */
 public interface WeaponFactory {
     
+    /**
+     * Different types of damage values.
+     */
     enum Damage {
         ONE(1),
         TWO(2),
@@ -25,6 +28,9 @@ public interface WeaponFactory {
 
     }
 
+    /**
+     * Different weapons' names.
+     */
     enum Name {
         STICK("stick"),
         AXE("axe"),

@@ -29,7 +29,6 @@ import utilities.texture.EntityTexture;
  * JUnit test for enemy AI methods.
  *
  */
-
 public class EnemyAITest {
     final WeaponFactory wf = new WeaponFactoryImpl();
     final HealthArtefactFactory hf = new HealthArtefactFactoryImpl();
@@ -45,6 +44,9 @@ public class EnemyAITest {
     Room room = new RoomImpl(roomSize, this.player, new Pair<>(2, 1));
 
     @org.junit.Before
+    /**
+     * Initialize all elements needed.
+     */
     public void init() {
         this.expectedResult = new ArrayList<>();
         this.enemyAI = new EnemyAIImpl(room);
