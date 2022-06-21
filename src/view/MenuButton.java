@@ -6,7 +6,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import utilities.Constant;
 
-/*
+/**
  * 
  * Class that define MenuButton type for make easier and more readable the code
  * 

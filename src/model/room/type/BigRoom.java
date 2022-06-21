@@ -11,8 +11,13 @@ import utilities.Pair;
  */
 public class BigRoom extends RoomImpl {
 
-	public BigRoom(final Pair<Integer, Integer> size,final Player player) {
-		super(size, player, new Pair<Integer, Integer>(2, size.getY() / 2));
-	}
+  /**
+   * 
+   * @param size   the size of the room
+   * @param player the player of the game
+   */
+  public BigRoom(final Pair<Integer, Integer> size, final Player player) {
+    super(size, player, new Pair<Integer, Integer>(2, size.getY() / 2));
+  }
 
 }

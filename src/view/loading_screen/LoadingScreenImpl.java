@@ -29,6 +29,10 @@ public class LoadingScreenImpl extends JPanel implements LoadingScreen {
   private final JLabel message = new JLabel("", SwingConstants.CENTER);
   private final PageController pageController;
 
+  /**
+   * 
+   * @param pageController the controller to change card layout
+   */
   public LoadingScreenImpl(final PageController pageController) {
     this.pageController = pageController;
     this.setOpaque(false);

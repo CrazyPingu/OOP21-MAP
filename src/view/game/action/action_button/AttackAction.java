@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import controller.ActionMenuController;
 
-/*
+/**
  * The action that make the player attack
  */
 public class AttackAction implements ActionListener {

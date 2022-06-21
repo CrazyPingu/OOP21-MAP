@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import controller.ActionMenuController;
 
-/*
+/**
  * The action that make the player move in the game
  */
 public class MoveAction implements ActionListener {

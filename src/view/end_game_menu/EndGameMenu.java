@@ -14,7 +14,7 @@ import utilities.ImageModifier;
 import view.MenuButton;
 import view.pause.action.MainMenuAction;
 import view.pause.action.QuitAction;
-/*
+/**
  * 
  * Class that calls method to show victory or defeat screen
  * 

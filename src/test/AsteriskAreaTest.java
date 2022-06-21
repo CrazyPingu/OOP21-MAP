@@ -22,19 +22,19 @@ public class AsteriskAreaTest {
     final private Strategy asteriskStrategy = new AsteriskArea(VariableDistanceConstants.SINGLE_DISTANCE);
     final private List<Pair<Integer, Integer>> expectedResults = new ArrayList<>();
 
-    @org.junit.Before
     /**
      * Initialize test room size and clears expected results list.
      */
+    @org.junit.Before
     public void init() {
         this.size = new Pair<>(9, 5);
         this.expectedResults.clear();
     }
 
-    @org.junit.Test
     /**
      * test of inner area cell choice
      */
+    @org.junit.Test
     public void innerGridTest() {
         this.pos = new Pair<>(5, 2);
 
@@ -63,10 +63,10 @@ public class AsteriskAreaTest {
         assertEquals(expectedResults, asteriskStrategy.execute(this.pos, this.size));
     }
 
-    @org.junit.Test
     /**
      * test of grid's upper left corner cell choice
      */
+    @org.junit.Test
     public void upperLeftCornerTest() {
         this.pos = new Pair<>(0, 0);
 
@@ -81,10 +81,10 @@ public class AsteriskAreaTest {
         assertEquals(expectedResults, asteriskStrategy.execute(this.pos, this.size));
     }
 
-    @org.junit.Test
     /**
      * test of grid's bottom left corner cell choice
      */
+    @org.junit.Test
     public void bottomLeftCornerTest() {
         this.pos = new Pair<>(0, 4);
 
@@ -99,10 +99,10 @@ public class AsteriskAreaTest {
         assertEquals(expectedResults, asteriskStrategy.execute(this.pos, this.size));
     }
 
-    @org.junit.Test
     /**
      * test of grid's upper left corner cell choice
      */
+    @org.junit.Test
     public void upperRightCornerTest() {
         this.pos = new Pair<>(8, 0);
 
@@ -117,10 +117,10 @@ public class AsteriskAreaTest {
         assertEquals(expectedResults, asteriskStrategy.execute(this.pos, this.size));
     }
 
-    @org.junit.Test
     /**
      * test of grid's upper left corner cell choice
      */
+    @org.junit.Test
     public void bottomRightCornerTest() {
         this.pos = new Pair<>(8, 4);
 

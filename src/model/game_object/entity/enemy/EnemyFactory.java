@@ -10,68 +10,90 @@ import utilities.Pair;
  */
 public interface EnemyFactory {
 
+  /**
+   * Different types of health values.
+   */
+  enum Health {
+    LOW_HEALTH(5), MID_HEALTH(7), HIGH_HEALTH(10);
+
+    private final int health;
+
     /**
-     * Different types of health values.
+     * 
+     * @param health the health of the enum
      */
-    enum Health {
-        LOW_HEALTH(5), MID_HEALTH(7), HIGH_HEALTH(10);
-        
-        private final int health;
-
-        Health(final int health) {
-            this.health = health;
-        }
-
-        public int getHealth() {
-            return this.health;
-        }
-
+    Health(final int health) {
+      this.health = health;
     }
 
     /**
-     * Different enemies' names.
+     * 
+     * @return the relative health of the enum
      */
-    enum Name {
-        STICK("zombie stick"),
-        AXE("zombie axe"),
-        DAGGER("zombie dagger"),
-        TUBE("zombie tube"),
-        GUN("zombie gun");
+    public int getHealth() {
+      return this.health;
+    }
 
-        private String name;
+  }
 
-        Name(final String name) {
-            this.name = name;
-        }
+  /**
+   * Different enemies' names.
+   */
+  enum Name {
+    STICK("zombie stick"), AXE("zombie axe"), DAGGER("zombie dagger"), TUBE("zombie tube"), GUN("zombie gun");
 
-        public String getName() {
-            return this.name;
-        }
+    private String name;
+
+    /**
+     * 
+     * @param name the name that correspond to the weapon
+     */
+    Name(final String name) {
+      this.name = name;
     }
 
     /**
-     * @return a new enemy using a stick as a weapon.
+     * 
+     * @return the name of the weapon
      */
-    SimpleEnemy createZombieStick(Pair<Integer, Integer> pos);
+    public String getName() {
+      return this.name;
+    }
+  }
 
-    /**
-     * @return a new enemy using an axe as a weapon.
-     */
-    SimpleEnemy createZombieAxe(Pair<Integer, Integer> pos);
+  /**
+   * 
+   * @param pos the position to spawn the enemy
+   * @return a new enemy using a stick as a weapon.
+   */
+  SimpleEnemy createZombieStick(Pair<Integer, Integer> pos);
 
-    /**
-     * @return a new enemy using a dagger as a weapon.
-     */
-    SimpleEnemy createZombieDagger(Pair<Integer, Integer> pos);
+  /**
+   * 
+   * @param pos the position to spawn the enemy
+   * @return a new enemy using an axe as a weapon.
+   */
+  SimpleEnemy createZombieAxe(Pair<Integer, Integer> pos);
 
-    /**
-     * @return a new enemy using a tube as a weapon.
-     */
-    SimpleEnemy createZombieTube(Pair<Integer, Integer> pos);
+  /**
+   * 
+   * @param pos the position to spawn the enemy
+   * @return a new enemy using a dagger as a weapon.
+   */
+  SimpleEnemy createZombieDagger(Pair<Integer, Integer> pos);
 
-    /**
-     * @return a new enemy using a gun as a weapon.
-     */
-    SimpleEnemy createZombieGun(Pair<Integer, Integer> pos);
+  /**
+   * 
+   * @param pos the position to spawn the enemy
+   * @return a new enemy using a tube as a weapon.
+   */
+  SimpleEnemy createZombieTube(Pair<Integer, Integer> pos);
+
+  /**
+   * 
+   * @param pos the position to spawn the enemy
+   * @return a new enemy using a gun as a weapon.
+   */
+  SimpleEnemy createZombieGun(Pair<Integer, Integer> pos);
 
 }

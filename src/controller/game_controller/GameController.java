@@ -24,6 +24,13 @@ public abstract class GameController {
   private ActionFlag flag;
   private int currentActionNumber;
 
+  /**
+   * 
+   * @param gameAreaController the gameAreaController of the game
+   * @param pageController     the controller that change the page
+   * @param gameStats          the statistic of the game
+   * @param loop               the game loop
+   */
   public GameController(final GameAreaController gameAreaController, final PageController pageController,
       final GameStatisticsImpl gameStats, final GameLoop loop) {
     this.loop = loop;
@@ -50,10 +57,18 @@ public abstract class GameController {
    */
   public abstract boolean isWon();
 
+  /**
+   * 
+   * @return the statistics of the game
+   */
   public GameStatisticsImpl getGameStats() {
     return this.gameStats;
   }
 
+  /**
+   * 
+   * @return the controller of the page
+   */
   public PageController getPageController() {
     return this.pageController;
   }
@@ -66,6 +81,9 @@ public abstract class GameController {
     this.updateStats();
   }
 
+  /**
+   * method to update the stats
+   */
   public void updateStats() {
     this.loop.updateStats(this.getGameStats(), this.currentActionNumber);
   }
@@ -140,7 +158,7 @@ public abstract class GameController {
   /**
    * Specify the type of action to apply to GameArea's chosen cell.
    * 
-   * @param actionFlag : set the ActionFlag
+   * @param flag the actionFlag to be changed
    */
   public void setFlag(final ActionFlag flag) {
     this.flag = flag;
@@ -180,6 +198,10 @@ public abstract class GameController {
     }
   }
 
+  /**
+   * 
+   * @return the current game loop
+   */
   public GameLoop getLoop() {
     return this.loop;
   }
@@ -198,9 +220,12 @@ public abstract class GameController {
       this.gameStats.increaseMoveActionCounter();
       this.updateStats();
     }
-
   }
 
+  /**
+   * 
+   * @return true if the player has been defeated
+   */
   public abstract boolean isDefeated();
 
 }

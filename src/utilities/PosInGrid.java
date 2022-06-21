@@ -1,5 +1,10 @@
 package utilities;
 
+/**
+ * 
+ * Class to check if a position exist in the game grid
+ *
+ */
 public final class PosInGrid {
   private PosInGrid() {
 

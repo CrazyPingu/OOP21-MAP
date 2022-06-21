@@ -2,7 +2,7 @@ package controller;
 
 import view.BasicFrame;
 
-/*
+/**
  * 
  * Class that contains all the methods to switch the page showed to the player
  * 

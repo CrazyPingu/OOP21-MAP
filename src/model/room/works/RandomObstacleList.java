@@ -14,7 +14,7 @@ import utilities.Constant;
 import utilities.Pair;
 import utilities.RoomConstant;
 
-/*
+/**
  * 
  * Class that is a random generated List that containt Obstacle
  * 

@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import controller.PageController;
 
-/*
+/**
  * 
  * 
  * Class that define the Main Menu Action in Pause Menu

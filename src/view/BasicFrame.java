@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import controller.CardName;
 import utilities.Constant;
 
-/*
+/**
  * 
  * Class to create the frame that will contain the whole GUI using the CardLayout
  * 

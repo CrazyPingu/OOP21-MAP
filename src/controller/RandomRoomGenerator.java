@@ -13,6 +13,12 @@ import utilities.Constant;
  *
  */
 public class RandomRoomGenerator {
+
+  /**
+   * 
+   * @param player the player of the game
+   * @return a random generated room
+   */
   public Room generateRoom(final Player player) {
     final RoomFactoryImpl roomFactory = new RoomFactoryImpl(player);
     Room room = null;

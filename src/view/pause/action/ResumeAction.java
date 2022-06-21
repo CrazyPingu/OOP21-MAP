@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import controller.PageController;
 
-/*
+/**
  * 
  * Class to define the Resume Action in Pause Menu
  * 

@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import controller.PageController;
 
-/*
+/**
  * The action that shows the pause menu
  */
 public class PauseAction implements ActionListener {

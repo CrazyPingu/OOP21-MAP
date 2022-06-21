@@ -19,13 +19,19 @@ public class GameAreaController {
   private final GameLoop loop;
   private final RandomRoomGenerator randomRoomGenerator;
 
+  /**
+   * 
+   * @param loop the game loop
+   */
   public GameAreaController(final GameLoop loop) {
     this.loop = loop;
     this.randomRoomGenerator = new RandomRoomGenerator();
   }
 
   /**
-   * create a new Room.
+   * 
+   * @param player the player of the game
+   * @return a new generated random room
    */
   public Room generateNewRoom(final Player player) {
     return randomRoomGenerator.generateRoom(player);
@@ -81,7 +87,9 @@ public class GameAreaController {
   }
 
   /**
-   * Method that remove all the highight
+   * Method that remove all the highlight
+   * 
+   * @param gameArea the GameArea to remove the highlight
    */
   public void removeHighlight(final GameArea gameArea) {
     gameArea.removeHighlight();
@@ -117,7 +125,7 @@ public class GameAreaController {
   /**
    * Method to change the room
    * 
-   * @param player the player of the game
+   * @param player   the player of the game
    * @param gameArea the GameArea that is shown
    */
   public void changeRoom(final Player player, final GameArea gameArea) {
