@@ -10,6 +10,9 @@ import utilities.Pair;
  */
 public interface EnemyFactory {
 
+    /**
+     * Different types of health values.
+     */
     enum Health {
         LOW_HEALTH(5), MID_HEALTH(7), HIGH_HEALTH(10);
         
@@ -25,6 +28,9 @@ public interface EnemyFactory {
 
     }
 
+    /**
+     * Different enemies' names.
+     */
     enum Name {
         STICK("zombie stick"),
         AXE("zombie axe"),

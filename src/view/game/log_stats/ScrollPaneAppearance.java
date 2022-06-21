@@ -17,6 +17,10 @@ public class ScrollPaneAppearance extends JScrollPane {
 
     private final Border border = BorderFactory.createLineBorder(Color.GRAY, 3);
 
+    /**
+     * 
+     * @param c: component
+     */
     public ScrollPaneAppearance(final Component c) {
         super(c);
     }

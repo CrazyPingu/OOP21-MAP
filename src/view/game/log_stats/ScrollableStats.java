@@ -14,6 +14,13 @@ public class ScrollableStats extends ScrollPaneAppearance {
 
     private final Stats statsValues;
 
+    /**
+     * 
+     * @param player:              player entity
+     * @param statsValues:         Stats label
+     * @param gameStats:           game's statistics
+     * @param currentActionNumber: current number of actions
+     */
     public ScrollableStats(final Player player, final Stats statsValues, final GameStatisticsImpl gameStats,
             final int currentActionNumber) {
         super(statsValues);

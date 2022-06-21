@@ -23,6 +23,9 @@ public class AsteriskAreaTest {
     final private List<Pair<Integer, Integer>> expectedResults = new ArrayList<>();
 
     @org.junit.Before
+    /**
+     * Initialize test room size and clears expected results list.
+     */
     public void init() {
         this.size = new Pair<>(9, 5);
         this.expectedResults.clear();

@@ -15,6 +15,10 @@ public class EnemyAIImpl implements EnemyAI {
 
     private Room room;
 
+    /**
+     * 
+     * @param room: current room
+     */
     public EnemyAIImpl(final Room room) {
         this.room = room;
     }
