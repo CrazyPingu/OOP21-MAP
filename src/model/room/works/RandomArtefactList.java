@@ -6,11 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import model.game_object.artefact.ActionNumberArtefactFactoryImpl;
 import model.game_object.artefact.Artefact;
-import model.game_object.artefact.HealthArtefactFactoryImpl;
-import model.game_object.artefact.MovementArtefactFactoryImp;
-import model.game_object.artefact.WeaponArtefactFactoryImpl;
+import model.game_object.artefact.factories.ActionNumberArtefactFactoryImpl;
+import model.game_object.artefact.factories.HealthArtefactFactoryImpl;
+import model.game_object.artefact.factories.MovementArtefactFactoryImp;
+import model.game_object.artefact.factories.WeaponArtefactFactoryImpl;
 import model.game_object.entity.Player;
 import model.game_object.entity.SimpleEnemy;
 import model.weapon.WeaponFactoryImpl;

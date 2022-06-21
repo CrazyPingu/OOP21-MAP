@@ -1,6 +1,7 @@
-package model.game_object.artefact;
+package model.game_object.artefact.factories;
 
 import model.game_object.ArtefactUserObject;
+import model.game_object.artefact.Artefact;
 import model.movement.MovementFactory;
 import model.movement.MovementFactoryImpl;
 import utilities.Pair;
