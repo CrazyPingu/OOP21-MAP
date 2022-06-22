@@ -15,8 +15,8 @@ class ScrollableStats extends ScrollPaneAppearance  {
     - statsValues : Stats
     + getStatsValues() : Stats
 }
-ScrollableStats -down-o Stats
-ScrollableLog -down-o Log
+ScrollableStats *-down- Stats
+ScrollableLog *-down- Log
 ScrollableLog -down[hidden]-o Stats
 TextAreaAppearance -up[hidden]-o Stats
 TextAreaAppearance -up[hidden]-o Log

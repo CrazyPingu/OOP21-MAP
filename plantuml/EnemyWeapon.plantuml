@@ -8,8 +8,7 @@ interface EnemyFactory {
     + createZombieGun(pos: Pair<Integer, Integer>) : SimpleEnemy
 }
 class EnemyFactoryImpl implements EnemyFactory
-EnemyFactoryImpl -o WeaponFactoryImpl
-EnemyFactoryImpl -L-o SimpleEnemy
+EnemyFactory .up.> SimpleEnemy
 @enduml
 
 @startuml Weapon
@@ -32,7 +31,5 @@ class WeaponImpl implements Weapon {
     - name : String
     - shootingStrategy : Strategy
 }
-WeaponFactoryImpl -o WeaponImpl
-WeaponFactoryImpl -down[hidden] WeaponImpl
-WeaponImpl --down[hidden] Weapon
+WeaponFactory .up.> Weapon
 @enduml
