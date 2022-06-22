@@ -1,0 +1,23 @@
+@startuml EnemyAI
+!theme plain
+interface EnemyAI {
+    + move(enemy: SimpleEnemy) : Pair<Integer, Integer>
+    + isPlayerInAttackArea(enemy: SimpleEnemy, player: Player, roomSize: Pair<Integer, Integer>) : boolean
+}
+class EnemyAIImpl implements EnemyAI{
+    - room : Room
+    - calculateDistanceFromPlayer(cell: Pair<Integer, Integer>, playerPos : Pair<Integer, Integer>) : int
+}
+abstract class GameController
+class BasicGameController extends GameController {
+    - enemyAI : EnemyAIImpl
+    - {static} ROOM_TO_WIN : int
+    + enemyTurn() : void
+    + isDoorAvailable() : boolean
+    + isWon() : boolean
+    + isDefeated() : boolean
+    - damagePlayer(enemy: SimpleEnemy, player: Player) : void
+}
+BasicGameController .down.> EnemyAIImpl
+EnemyAI -up[hidden]-> EnemyAIImpl
+@enduml

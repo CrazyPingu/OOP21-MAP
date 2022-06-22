@@ -1,0 +1,61 @@
+@startuml GameArea
+!theme plain
+
+class GameArea{
+    - room : Room
+    - gameAreaController : GameAreaController
+    - placeClls() : void
+    + changeRoom(room : Room) : void
+    + highlightCells(flag : ActionFlag) : void
+    + highlightEnemyRange (enemyList : List<SimpleEnemy>) : void
+    + removeHighlight() : void
+} 
+
+class GameButton{
+    - gameAreaController : GameAreaController
+    - pos : Pair<Integer, Integer>
+    - color : Color
+    + drawGameObjec(object : GameObject) : void
+    + removeSprite() : void
+    + highlightCells(color : Color) : void
+    + removeHighlight() : void
+}
+
+interface java.awt.event.ActionListener{
+    - actionPerformed(e : ActionEvent) : void
+}
+
+GameArea *-- GameButton
+class GameButton implements java.awt.event.ActionListener
+@enduml
+
+@startuml GameArea2
+!theme plain
+
+class GameArea{
+    - room : Room
+    - gameAreaController : GameAreaController
+    - placeClls() : void
+    + changeRoom(room : Room) : void
+    + highlightCells(flag : ActionFlag) : void
+    + highlightEnemyRange (enemyList : List<SimpleEnemy>) : void
+    + removeHighlight() : void
+} 
+
+class GameAreaController{
+    + generateNewRoom(player : Player) : void
+    + makeAction(pos : Pair<Integer, Integer>) : void
+    + removeGameObject(pos : Pair<Integer, Integer>) : void
+    + moveGameObject(pos : Pair<Integer, Integer>) : void
+}
+
+class RandomRoomGenerator{
+    + generateRoom(player : Player) : Room
+}
+
+GameArea ..|> GameAreaController
+GameAreaController..|> RandomRoomGenerator
+
+
+
+@enduml

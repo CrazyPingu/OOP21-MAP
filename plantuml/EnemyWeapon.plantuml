@@ -1,0 +1,35 @@
+@startuml Enemy
+!theme plain
+interface EnemyFactory {
+    + createZombieStick(pos: Pair<Integer, Integer>) : SimpleEnemy
+    + createZombieAxe(pos: Pair<Integer, Integer>) : SimpleEnemy
+    + createZombieDagger(pos: Pair<Integer, Integer>) : SimpleEnemy
+    + createZombieTube(pos: Pair<Integer, Integer>) : SimpleEnemy
+    + createZombieGun(pos: Pair<Integer, Integer>) : SimpleEnemy
+}
+class EnemyFactoryImpl implements EnemyFactory
+EnemyFactory .up.> SimpleEnemy
+@enduml
+
+@startuml Weapon
+!theme plain
+interface WeaponFactory {
+    + createStick() : Weapon
+    + createAxe() : Weapon
+    + createDagger() : Weapon
+    + createTube() : Weapon
+    + createGun() : Weapon
+}
+class WeaponFactoryImpl implements WeaponFactory
+interface Weapon {
+    + getDamage() : int
+    + getName() : String
+    + getAttackArea(pos: Pair<Integer, Integer>, size: Pair<Integer, Integer>) : List<Pair<Integer, Integer>>
+}
+class WeaponImpl implements Weapon {
+    - damage : int
+    - name : String
+    - shootingStrategy : Strategy
+}
+WeaponFactory .up.> Weapon
+@enduml

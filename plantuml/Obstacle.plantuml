@@ -1,0 +1,26 @@
+@startuml Obstacle
+!theme plain
+
+interface GameObject{
+    + getPos() : Pair<Integer,Integer>
+    + getName() : String
+    + getTextureImage() : Image
+}
+
+class Obstacle implements GameObject{
+    - pos : Pair<Integer,Integer>
+    - name : String 
+    - textureImage : Image
+}
+
+interface ObstacleFactory{
+    + createRock(pos: Pair<Integer,Integer>) : Obstacle
+    + createPebble(pos: Pair<Integer,Integer>) : Obstacle
+}
+
+class ObstacleFactoryImpl implements ObstacleFactory{
+}
+
+ObstacleFactoryImpl -o Obstacle
+
+@enduml

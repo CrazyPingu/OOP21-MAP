@@ -1,0 +1,35 @@
+@startuml LifeSystem 
+!theme plain
+
+interface LifeSystem{ 
+    + damage(damageValue : int): void
+    + isDead(): boolean
+}
+
+class SympleLifeSystem {
+    + damage(damageValue : int): void
+    + isDead(): boolean 
+}
+
+class HealLifeSystem {
+    - SympleLifeSystem
+    + heal(healValue : int) : void
+    + damage(damageValue : int): void
+    + isDead(): boolean 
+}
+
+class ExtendibleMaxLifeSystem { 
+    - HealLifeSystem
+    + setMaxHealth(lifeExtension : int) : void
+    + heal(healValue : int) : void
+    + damage(damageValue : int): void
+    + isDead(): boolean  
+}
+
+class SympleLifeSystem implements LifeSystem 
+class HealLifeSystem implements LifeSystem
+class ExtendibleMaxLifeSystem implements LifeSystem
+HealLifeSystem -L-* SympleLifeSystem
+ExtendibleMaxLifeSystem -L-* HealLifeSystem
+
+@enduml

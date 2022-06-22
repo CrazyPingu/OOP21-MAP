@@ -1,0 +1,15 @@
+@startuml PauseMenu
+!theme plain
+
+package java.awt.events{
+    interface ActionListener
+}
+
+class ResumeAction implements ActionListener
+
+class QuitAction implements ActionListener
+
+class MainMenuAction implements ActionListener
+
+
+@enduml

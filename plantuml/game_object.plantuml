@@ -1,0 +1,25 @@
+@startuml GameObject 
+!theme plain
+
+interface GameObject{ 
+    + getPos(): Pair<>
+    + getName(): String
+    + getTextureImage(): Image
+}
+
+class SimpleEnemy
+class Player 
+
+interface ArtefactUserObject implements GameObject 
+interface KillableObject implements GameObject
+interface  MovingObject implements GameObject
+interface WeaponizedObject implements GameObject
+class Entity implements MovingObject, WeaponizedObject, KillableObject 
+class Player implements ArtefactUserObject 
+SimpleEnemy -L-|> Entity
+Player -R-|> Entity
+ArtefactUserObject -R[hidden]-> KillableObject
+SimpleEnemy -U[hidden]-> WeaponizedObject
+
+
+@enduml

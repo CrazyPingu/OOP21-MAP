@@ -1,0 +1,28 @@
+@startuml GameController
+!theme plain
+
+abstract class GameController{
+    + enemyTurn() : abstract void
+    + isDoorAvailable() : abstract boolean
+    + isWon() : abstract boolean
+    + getGameStats() : GameStatisticsImpl
+    + getPageController() : PageController
+    + decreaseAction() : void
+    + updateStats() : void
+    + skipTurn() : void
+    - attack(Pair<Integer, Integer> pos) : void
+    - move(Pair<Integer, Integer> newpos) : void
+    + isDead() : boolean
+    + setFlag(flag : ActionFlag) : void
+    + getCurrentActionNumber() : int
+    + resetActionNumber() : void
+    - endPlayerTurn() : void
+    + getLoop() : GameLoop
+    + makeAction(pos : Pair<Integer,Integer>) : void
+    + isDefeated() : abstract boolean
+}
+
+class BasicGameController extends GameController
+
+
+@enduml

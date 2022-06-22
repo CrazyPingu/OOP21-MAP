@@ -1,0 +1,25 @@
+@startuml loading_screen
+!theme plain
+
+interface LoadingScreen{
+    addImage() : void
+    addText() : void
+    addProgressBar() : void
+    addMessage() : void
+    startProgressBar() : void
+}
+
+interface java.lang.Runnable{
+    run() : void
+}
+
+LoadingScreenImpl ..U|> LoadingScreen
+LoadingScreen ..U|> java.lang.Runnable
+
+class LoadingScreenImpl {
+    - addProgressBar : JProgressBar
+    - message : JLabel
+    - pageController : PageController
+}
+
+@enduml

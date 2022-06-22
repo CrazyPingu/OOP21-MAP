@@ -1,10 +1,20 @@
 package controller;
 
+/**
+ * 
+ * Start of the program
+ *
+ */
+public final class Main {
+  private Main() {
+  }
 
-public class Main {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-	}
-
+  /**
+   * Start the game loop
+   * 
+   * @param args the argument to be passed
+   */
+  public static void main(final String[] args) {
+    new GameLoop();
+  }
 }
