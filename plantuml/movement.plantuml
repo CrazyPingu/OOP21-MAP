@@ -1,6 +1,12 @@
 @startuml Movement 
 !theme plain
 
+interface MovementFactory{ 
+    + createStepMovement()
+    + createRunMovement()
+}
+
+
 interface Movement{ 
     + reachableCells()
 }
@@ -11,13 +17,17 @@ class MovementImpl {
 }
 
 interface MovingObject{ 
-   +getReachableArea()
+   + getReachableArea()
+   + setPos()
 }
 
 class Strategy.ConcreteStrategies
 class MovementImpl implements Movement 
-
 MovementImpl -R-o Strategy
-MovingObject -U-o MovementImpl
+Entity -U-o MovementImpl
+Entity .L.|> MovingObject
+MovementFactory .R.> Movement
+class MovementFactoryImpl implements MovementFactory
+
 
 @enduml

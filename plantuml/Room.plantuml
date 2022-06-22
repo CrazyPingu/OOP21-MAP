@@ -28,7 +28,7 @@ interface Room{
 
 RoomFactoryImpl -d[hidden]-> RoomFactory
 Room -u[hidden]-> RoomFactoryImpl
-RoomFactory --o Room
+RoomFactory ..> Room
 
 @enduml
 
@@ -54,9 +54,9 @@ class RoomImpl {
     - generateDoor(size : Pair<Int, Int>) : List<Pair<Int, Int>>
 }
 
-RoomImpl -u-o RandomArtefactList
-RoomImpl -u-o RandomEnemyList
-RoomImpl -u-o RandomObstacleList
+RoomImpl *-u- RandomArtefactList
+RoomImpl *-u- RandomEnemyList
+RoomImpl *-u- RandomObstacleList
 
 RoomImpl -d[hidden]-> Room
 class RoomImpl implements Room

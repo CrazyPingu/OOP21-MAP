@@ -1,18 +1,34 @@
 @startuml Artefact 
 !theme plain
 
-interface GameObject{ 
+
+interface ActionNumberArtefactFactory{
+    + createActionNumberArtefact()
 }
 
-interface ArtefactUser{ 
-    
+interface HealthArtefactFactory{
+    + createActionNumberArtefact()
+}
+
+interface MovementArtefactFactory{ 
+    + createMovementArtefact()
+}
+
+interface WeaponArtefactFactory{ 
+    + createChangeWeaponArtefact()
 }
 
 abstract Artefact {
-    abstract execute(subject : ArtefactUser)
+    + abstract execute(subject : ArtefactUser)
 }
 
 abstract Artefact implements GameObject 
-Artefact -D-o ArtefactUser
+Artefact .R.> ArtefactUser
 
-@enduml
+ActionNumberArtefactFactory .U.> Artefact
+HealthArtefactFactory .R.> Artefact
+MovementArtefactFactory .U.> Artefact
+WeaponArtefactFactory .U.> Artefact
+
+
+@enduml 

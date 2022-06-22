@@ -13,7 +13,10 @@ interface java.lang.Runnable{
     run() : void
 }
 
-class LoadingScreenImpl implements LoadingScreen, java.lang.Runnable{
+LoadingScreenImpl ..U|> LoadingScreen
+LoadingScreen ..U|> java.lang.Runnable
+
+class LoadingScreenImpl {
     - addProgressBar : JProgressBar
     - message : JLabel
     - pageController : PageController

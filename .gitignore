@@ -30,3 +30,6 @@ hs_err_pid*
 /.idea/
 OOP21-MAP.iml
 /classes/
+
+# PlantUML
+/out/plantuml/

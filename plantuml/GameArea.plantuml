@@ -25,7 +25,7 @@ interface java.awt.event.ActionListener{
     - actionPerformed(e : ActionEvent) : void
 }
 
-GameArea --o GameButton
+GameArea *-- GameButton
 class GameButton implements java.awt.event.ActionListener
 @enduml
 
@@ -53,8 +53,8 @@ class RandomRoomGenerator{
     + generateRoom(player : Player) : Room
 }
 
-GameArea --o GameAreaController
-GameAreaController --o RandomRoomGenerator
+GameArea ..|> GameAreaController
+GameAreaController..|> RandomRoomGenerator
 
 
 
