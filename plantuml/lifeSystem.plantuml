@@ -29,7 +29,7 @@ class ExtendibleMaxLifeSystem {
 class SympleLifeSystem implements LifeSystem 
 class HealLifeSystem implements LifeSystem
 class ExtendibleMaxLifeSystem implements LifeSystem
-HealLifeSystem -L-o SympleLifeSystem
-ExtendibleMaxLifeSystem -L-o HealLifeSystem
+HealLifeSystem -L-* SympleLifeSystem
+ExtendibleMaxLifeSystem -L-* HealLifeSystem
 
 @enduml
