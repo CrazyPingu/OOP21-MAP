@@ -18,6 +18,6 @@ class BasicGameController extends GameController {
     + isDefeated() : boolean
     - damagePlayer(enemy: SimpleEnemy, player: Player) : void
 }
-BasicGameController -down-o EnemyAIImpl
+BasicGameController .down.> EnemyAIImpl
 EnemyAI -up[hidden]-> EnemyAIImpl
 @enduml
