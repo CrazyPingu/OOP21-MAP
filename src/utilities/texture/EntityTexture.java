@@ -15,8 +15,7 @@ public class EntityTexture {
    * PLAYER TEXTURE
    */
   public static final Image PLAYER = ImageMethod.getImage("player/Player.png");
-  public static final Image PLAYER_DEAD = ImageMethod.getImage("player/PlayerDead.png");
-  
+    
   /**
    * ENEMY TEXTURES
    */
